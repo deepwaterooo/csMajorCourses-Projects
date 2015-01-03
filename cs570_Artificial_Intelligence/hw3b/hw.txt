@@ -1,0 +1,5 @@
+Script started on 2013年04月20日 星期六 15时07分47秒
+]0;hhy@hhy-Dimension-9100: ~/docu/cs570/hw3bhhy@hhy-Dimension-9100:~/docu/cs570/hw3b$ exit./a.out[3Pexit
+exit
+
+Script done on 2013年04月20日 星期六 15时07分49秒

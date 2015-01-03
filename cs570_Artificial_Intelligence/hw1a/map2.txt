@@ -1,0 +1,9 @@
+30 6
+1 1
+25 5
+MMMhhffffffffffMMMhhffffffffff
+MMMMMhhffffffffMMMMMhhffffffff
+hMMMhhhffFFFfffhMMMhhhffFFFfff
+fhMhffFFFFFFFffhMMMhhhffFFFfff
+hMMMhhhffFFFfffhMMMhhhffFFFfff
+fhMhffFFFFFFFffhMMMhhhffFFFfff

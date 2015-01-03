@@ -1,0 +1,16 @@
+#include<iostream>
+
+class DecisionTree 
+{
+
+
+
+
+
+
+
+
+
+
+
+};

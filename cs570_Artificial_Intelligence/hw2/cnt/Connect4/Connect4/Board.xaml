@@ -1,0 +1,11 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Connect4.Board"
+	d:DesignWidth="245" d:DesignHeight="210" Background="{x:Null}">
+
+	<Canvas x:Name="LayoutRoot" Background="#FF291CBF" MouseLeftButtonDown="LayoutRoot_MouseLeftButtonDown" MouseMove="LayoutRoot_MouseMove" />
+</UserControl>

@@ -1,0 +1,17 @@
+﻿Build started 4/19/2013 1:54:28 AM.
+     1>Project "C:\Users\Bill Banks\Documents\Visual Studio 2010\Projects\fuzzylogic\fuzzylogic\fuzzylogic.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\fuzzylogic.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         fuzzylogic.vcxproj -> C:\Users\Bill Banks\Documents\Visual Studio 2010\Projects\fuzzylogic\Debug\fuzzylogic.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\fuzzylogic.unsuccessfulbuild".
+         Touching "Debug\fuzzylogic.lastbuildstate".
+     1>Done Building Project "C:\Users\Bill Banks\Documents\Visual Studio 2010\Projects\fuzzylogic\fuzzylogic\fuzzylogic.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.06

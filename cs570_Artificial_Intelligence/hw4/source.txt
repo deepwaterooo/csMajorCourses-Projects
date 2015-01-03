@@ -1,0 +1,15 @@
+weather temperature humidity wind forage
+sunny hot high FALSE no 
+sunny hot high TRUE no
+overcast hot high FALSE yes
+rainy warm high FALSE yes
+rainy cool norm FALSE yes
+rainy cool norm TRUE no 
+overcast cool norm yes
+sunny warm high FALSE no 
+sunny cool norm FALSE yes
+rainy cool norm FALSE yes
+sunny warm norm TRUE yes
+overcast warm high TRUE yes
+overcast hot norm FALSE yes
+rainy warm high TRUE no

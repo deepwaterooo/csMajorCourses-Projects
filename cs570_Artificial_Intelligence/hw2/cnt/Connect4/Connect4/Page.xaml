@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Connect4.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="400" Height="300" xmlns:Connect4="clr-namespace:Connect4">
+	<Canvas x:Name="LayoutRoot" Background="#FF000000">
+		<Rectangle Height="300" Width="97" Canvas.Left="303" Stroke="#FF000000">
+			<Rectangle.Fill>
+				<LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5" SpreadMethod="Pad" MappingMode="RelativeToBoundingBox">
+					<GradientStop Color="#FF090B4B"/>
+					<GradientStop Color="#FF2A2FBB" Offset="1"/>
+				</LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+		<TextBlock Height="26.75" Width="105" Canvas.Left="62.93" Canvas.Top="12.048" FontFamily="Georgia" FontSize="22" Foreground="#FFFFFFFF" Text="Connect 4" TextWrapping="Wrap" FontWeight="Normal"/>
+        <HyperlinkButton Height="16" Width="144" Canvas.Left="25" Canvas.Top="276" NavigateUri="http://bishoylabib.blogspot.com">
+            <TextBlock Text="Developed by Bishoy Labib" FontSize="10" Foreground="#FFFFFFFF"/>
+        </HyperlinkButton>
+        <Connect4:Board Height="210" Width="245" Canvas.Top="52" Canvas.Left="27" x:Name="board"/>
+		<Button x:Name="btnNewGame" IsEnabled="True" Canvas.Left="316" Canvas.Top="270" Content="New Game" Width="74" FontWeight="Normal" FontFamily="Portable User Interface" FontStyle="Normal" Click="btnNewGame_Click"/>
+		<Slider Height="103" x:Name="sliderLevel" Width="21" TabNavigation="Local" Canvas.Left="362.803" Canvas.Top="31" Orientation="Vertical" Maximum="3" Minimum="1" Value="2" SmallChange="1" ValueChanged="sliderLevel_ValueChanged"/>
+		<TextBlock Height="16" Width="40.803" Foreground="#FFFFFFFF" Text="Medium" TextWrapping="Wrap" Canvas.Left="318" Canvas.Top="75" FontSize="10"/>
+		<TextBlock Height="16" Width="40.803" Foreground="#FFFFFFFF" Text="Easy" TextWrapping="Wrap" Canvas.Left="318" Canvas.Top="31" FontSize="10"/>
+		<TextBlock Height="16" Width="40.803" Foreground="#FFFFFFFF" Text="Hard" TextWrapping="Wrap" Canvas.Left="318" Canvas.Top="118" FontSize="10"/>
+		<TextBlock Height="14.545" Width="71.721" Foreground="#FFFFFFFF" Text="Level:" TextWrapping="Wrap" FontSize="10" Canvas.Left="318" Canvas.Top="7.773" FontWeight="Bold" FontFamily="Portable User Interface"/>
+		<Ellipse Height="14.318" Width="14.318" Canvas.Left="26.771" Canvas.Top="10.389" Fill="#FFF60E0E" Stroke="#FF000000"/>
+		<Ellipse Height="14" Width="14" Fill="#FFEEF60E" Stroke="#FF000000" Canvas.Left="26.93" Canvas.Top="24.548"/>
+		<Ellipse Height="14" Width="14" Fill="#FFEEF60E" Stroke="#FF000000" Canvas.Left="40.93" Canvas.Top="10.548"/>
+		<Ellipse Height="14" Width="14" Fill="#FFF60E0E" Stroke="#FF000000" Canvas.Left="40.93" Canvas.Top="24.548"/>
+	</Canvas>
+</UserControl>
