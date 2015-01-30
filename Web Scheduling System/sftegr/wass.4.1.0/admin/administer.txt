@@ -1,0 +1,91 @@
+Administering WASS
+==================
+
+WASS includes a set of administrative utilities that can be used to query and maintain the system, as well as a parameters 
+file that can be used to exert global control (see below).  WASS does not include any  administrator scripts for controlling the system.  
+Instead, WASS uses a super-user password to permit administrators to login to the system using the credentials (e.g., userid) of 
+any WASS user.  Thus, for example, if a given user reports that there is a problem with their WASS calendar, an administrator 
+can login as that user and inspect their calendar (and make any necessary corrections). A typical use of the super-user password 
+is to login as a professor and create a calendar for them.
+
+The super-user password is the MySQL password for the WASS MySQL database.  
+
+To login as any user on the system, at the login page:
+
+If you are using CAS for WASS authentication:
+1) In the box labelled "E-mail:", enter the desired userid, followed by a space, followed by secret=mysqlpassword (where you 
+subsitute the WASS MySQL password following the = sign).
+2) Click the "Guest" button.
+
+If you are using LDAP or AD for WASS authentication:
+1) In the box where you would enter your own userid, enter the target userid.  In the password box, enter secret=mysqlpassword (where you 
+subsitute the WASS MySQL password following the = sign).
+2) Click the "Login" button.
+
+For example, if using CAS, to login as a user with userid "smith", on a WASS system that has a MySQL password of "officehr", you would type 
+the following into the "E-mail:" box on the login page:
+
+smith secret=officehr
+
+and click the "Guest" button.  You are now logged in as though you were user smith (but only for WASS; if you are using
+CAS authentication, you are NOT authenticated to CAS as user smith; you only get to act as "smith" within the
+WASS system).  
+
+
+
+Parameters
+==========
+
+The wassParms.class.php (in the "classes" directory) file contains a set of global parameters which are used to 
+localize and control the system. These parameters are initially set during the instllation of WASS, and can be reset 
+at any time, either by re-running the installation script (install.php, in the "admin" directory) or by directly editing 
+the wassParms.class.php file.
+
+Some of the important parameters are:
+
+RUNNING:  A boolean variable used to turn the system on or off.
+DOWNMSG: The message users see if RUNNING is set to 0 (off).
+REQSQL:  Whether WASS must be accessed using https.
+
+HOST: The hostname or socket file WASS uses to connect to the MySQL server.
+DATABASE: The name of the MySQL database.
+USER: The userid required to login to the WASS database.
+PASS: The password required to login to the WASS database.  This is also the administrator password for WASS.
+      You MUST NOT reset this value after installation unless you first reset the MySQL database password.
+
+
+
+WASS Utilities
+==============
+
+WASS comes with a number of utility scripts, all in the "admin" directory, which you can use for a variety
+of purposes.  All of the scripts require you to provide the MySQL password when you invoke them, and they also 
+require that you invoke them with https.  To invoke one of the scripts, you would use a URL of the form:
+
+https://wassserver.myuniversity.edu/admin/scriptname.php?secret=mysqlpassword
+
+You need to substitute the actual path to your WASS system and the WASS MySQL password in this URL.  The scripts are
+as follows:
+
+install.php:  Installs the WASS system.  You can also run the script against an already-installed WASS system if you
+want to change any of the parameters (localization) in wassParms.class.php.  You also run this script to install a new release of WASS.
+
+calendar.php:  Use this script to create, edit, or extend the academic calendar built into WASS.  This calendar tells WASS
+how to classify all of the days of any given academic year (so that professors can schedule recurring office hours that only 
+occur on, for example, teaching days).  You can run this script at any time (against a live system) to update the academic
+calendar.
+
+mailusers.php:  Use this script at any time to send email to all or any subset of WASS users (e.g., everyone who has
+a calendar in WASS, or anyone who has appointments scheduled in WASS, or other subsets of WASS users).
+
+makeical.page.php: Not really part of WASS.  This script allows you to enter events into a database and get back a URL which,
+when invoked, returns the events as an iCal stream.
+
+maketables.php:  used by install.php.  Creates the MySQL tables used by WASS.  You typically need to run this script when
+installing a new version of WASS to make sure your MySQL tables are complete and up-to-date.
+
+remind.php:  Sends out appointment reminders.  This script has to be run at regular intervals (this is explained as part of
+the installation procedure).
+
+In the interests of security, you should probably move this text file out of the WASS admin directory and into a directory that 
+is not accessible to web users.  It is not needed by the running WASS system.

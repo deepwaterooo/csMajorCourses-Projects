@@ -1,0 +1,24 @@
+
+Changes from release 2.0.6 to 2.0.7:
+
+1. Added ability to invoke install script using http, instead of https.  On 5/20/2010. Serge/
+	Files: install.php
+2. Added ability to lock/unlock (and show lock status) on the add/edit block page.  Put a lock icon next to any block that is locked on the view calendar page: month/week view.  Put the block column in gray on view calendar day view for locked blocks.  On 5/23/2010. Kelly.
+	Files: block.page.php, block.js, calendar.js, drawcalendar.js, calendar.css
+3. Put a required asterisk on Purpose on create appointment page, allow users to decide if they will require purpose on the block page.  On 5/30/2010. Kelly. 
+	Files: createappt.page.php, block.page.php
+4. Added PHP and MySQL code to support requiring purposes.  On 6/7/2010.  Serge.
+	Files: maketables.php, wassCalendar.class.php, wassSeries.class.php, wassBlock.class.php, block.page.php
+5. Added a link to What's New in the main menu.  On 6/9/2010.  Jill.
+	Files: mainmenu.js	
+6. Changed code to allow user to see a block, even if locked, if the user has appointments scheduled for that block.  On 6/10/2010. Serge.
+	Files: wassAjax.php
+	
+	
+	
+		
+
+	
+
+	
+	

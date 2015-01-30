@@ -1,0 +1,14 @@
+#+latex_class: cn-article
+#+latex_header: \lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false,keywordstyle=\color{blue!70},commentstyle=\color{red!55!green!55!blue!55!},rulesepcolor=\color{red!20!green!20!blue!20!}}
+#+title: CS WASS
+#+author: deepwaterooo
+
+* organize the existing code examples
+- TableDemo.java 
+- SimpleTableDemo.java
+- 
+- 
+- 
+- 
+- 
+

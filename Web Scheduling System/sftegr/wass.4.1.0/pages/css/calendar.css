@@ -1,0 +1,517 @@
+/* CSS Document */
+
+html, body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* View Calendar Page */
+#divMenuArea .month {
+	margin: 0px 15px 15px 15px;
+}
+#divMainArea {
+	margin: 10px 10px 0px 0px;
+	/*KDC,2-21-2008. Added below since now dayview isn't longer than left menu/calendars*/
+	min-height: 500px;
+	_height: 500px; /* for IE */
+
+}
+/*#selViews {
+	margin: 10px 20px 2px 720px;
+}*/
+
+
+/* hacks */
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+.clearfix {display: inline-table;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+
+
+/* Small Calendars */
+.month {
+	/*width: 200px;*/
+	/*margin: 0px 0px 14px 0px;*/
+}
+.monthheader, .monthcontrol, .monthdayofweek, .monthday, .monthday_selected, .monthday_available, .monthday_selected_available, .monthday_unavailable, .monthday_selected_unavailable, .monthday_appointment, .monthday_selected_appointment, .monthday_myappointment, .monthday_selected_myappointment, .today, .today_selected {
+	height: 21px;
+	padding: 0px;
+}
+.monthheader, .monthcontrol {
+	background-color: #3366CC;
+	font-weight: bold;
+	font-size: 11px;
+	color: #ffffff;
+	text-align: center;
+}
+.monthcontrol {
+	cursor: pointer;
+}
+.monthdayofweek, .monthday, .monthday_empty, .monthday_selected, .monthday_available, .monthday_selected_available, .monthday_unavailable, .monthday_selected_unavailable, .monthday_appointment, .monthday_selected_appointment, .monthday_myappointment, .monthday_selected_myappointment, .today, .today_selected {
+	width: 22px;
+	padding: 0px;
+	text-align: center;
+}
+.monthdayofweek {
+	color: #000000;
+	font-weight: bold;
+	font-size: 11px;
+	border-bottom: 1px solid #e7e7e7;
+}
+.monthday_empty {
+	background-color: #FFFFFF;
+}
+.monthday, .monthday_selected, .monthday_available, .monthday_selected_available, .monthday_unavailable, .monthday_selected_unavailable, .monthday_appointment, .monthday_selected_appointment, .monthday_myappointment, .monthday_selected_myappointment, .today, .today_selected {
+	color: #3366CC;
+	font-weight: normal;
+	font-size: 11px;
+	cursor: pointer;
+}
+.monthday {
+	background-color: #FFFFFF;
+}
+.today, .today_selected {
+	background-color: #75C0FF;
+}
+.monthday_available, .monthday_selected_available {
+	background-color: #FDB063;
+}
+.monthday_unavailable, .monthday_selected_unavailable {
+	background-color: #D1D3D4;
+}
+.monthday_appointment, .monthday_selected_appointment {
+	background-color: #FEFE9C;
+}
+.monthday_myappointment, .monthday_selected_myappointment {
+	background-color: #FEFE9C;
+}
+.today_selected, .monthday_selected, .monthday_selected_available, .monthday_selected_unavailable, .monthday_selected_appointment, .monthday_selected_myappointment {
+	text-decoration: underline;
+}
+.dateholder {
+	vertical-align: middle;
+}
+.datenum {
+	font-weight: normal;
+	vertical-align: middle;
+}
+.datetext, .datefooter {
+	display: none;
+}
+.weekBlockTitle {
+	font-weight: bold;
+	font-size:9px;
+}
+.weekBlockOwner {
+	font-weight: normal;
+	font-style: italic;
+	font-size:9px;
+}
+
+
+
+/* Calendar Day View */
+/* block text area styles */
+.blockarea {
+	/*width: 151px;*/ /* 150 then including a left border */ /*KDC, 2-21-2008. Changed*/
+	width: 166px; /* 165 then including a left border */
+	height: auto;
+	overflow: hidden;
+	/*background-color: blue;*/
+	/*border-bottom: 1px solid #000000;*/
+	vertical-align: top;
+}
+.block_apptblock {
+	border-bottom: 1px solid #000;
+}
+.blocktitle {
+	font-weight: bold;
+}
+.blocklocation {
+	font-style: italic;
+}
+.blockmax {
+
+}
+.blockurl {
+	font-size: 9px;
+}
+.blockbuttonstop, .blockbuttonsbottom {
+	padding: 3px 3px 3px 5px;
+}
+.blockbuttonstop, .blockbuttonsbottom, .blocktext {
+	/*width: 144px;*/ /*KDC, 2-21-2008. changed*/
+	width: 159px;
+	/*background-color: #FF9933;*/
+}
+.blockbuttonstop, .blockbuttonsbottom {
+	/*position: relative;*/
+	z-index: 10;
+	/*background-color: #00CC00;*/
+}
+.blockbuttonstop {
+	/*top: 0px;*/
+	height: 12px;
+	text-align: right;
+}
+.blockbuttonsbottom {
+	/*bottom: 0px;*/
+	height: 15px;
+	text-align: left;
+}
+.blocktext {
+	/*position: relative;*/
+	/*height: 100%;*/ /*auto;*/
+	overflow: hidden;
+	padding: 0px 3px 0px 3px;
+	z-index: 5;
+	font-size: 12px;
+	/*float: left;*/
+}
+
+
+/* Calendar Day View */
+/* appointment area styles */
+.blocknumavail {
+	font-size: 12px;
+	font-weight: normal;
+	margin:-13px 10px 10px 20px;
+}
+.blockdeadline {
+	font-style: italic;
+	font-size: 12px;
+	font-weight: normal;
+	margin:10px 10px 10px 20px;
+}
+.slottedappt, .unslottedappt, .unavailappt {
+	font-size: 12px;
+	font-weight: normal;
+	padding: 2px 2px 2px 2px;
+}
+.slottedappt, .unavailappt {
+	/*margin: 2px 3px 2px 3px;*/
+	margin: 0px 3px 0px 1px;
+	/*width: 534px;*/ /* 540 - 6 in margins */ /*KDC,2-21-2008. changed*/
+	width: 489px; /* 525 - 6 in margins */ /*KDC,2-22-2008. changed again -30px, so 495 - 6*/
+}
+.unavailappt {
+	margin-bottom: 0px;
+	padding-right: 0px;
+}
+.unslottedappt {
+	margin: 4px 10px 4px 15px;
+	/*width: 510px;*/ /* 540 - 30 in margins */ /*KDC,2-21-2008. changed*/
+	width: 465px; /* 525 - 30 in margins */ /*KDC,2-22-2008. changed again -30px, so 495 - 30*/
+}
+.apptname {
+
+}
+.apptemail {
+	text-decoration: underline;
+	color: #000000;
+}
+.apptphone {
+
+}
+
+/* Calendar Day View */
+/* calendar row, col styles */
+.blockheader, .timeheader, .apptheader {
+	height: 20px;
+	background-color: #3366CC;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 12px;
+	padding-left: 10px;
+	/*width: 140px;*/ /* 150-10 */ /*KDC,2-21-2008. changed*/
+	width: 155px; /* 150-10 */
+}
+.block_availblock, .block_noblock {
+	/*width: 150px;*/ /*KDC,2-21-2008. changed*/
+	width: 165px;
+}
+.block_availblock, .block_noblock {
+	border-left: 1px solid #000000;
+	background-color: #FFFFFF;
+	/*border-bottom: 1px solid #000000;*/
+}
+.block_apptblock, .block_availblock, .time_availblock, .appt_availblock, .appt_availblockunslotted, #tblMonthView .monthday_availblock {
+	background-color: #FF9933;
+}
+.block_unavailblock, .time_unavailblock, .appt_unavailblock, .appt_unavailblockunslotted, .unavailappt, #tblMonthView .monthday_unavailblock {
+	background-color: #D1D3D4;
+}
+/*.block_apptblock, .time_apptblock, .appt_apptblock, .slottedappt, .unslottedappt, #tblMonthView .monthday_apptblock {
+	background-color: #FFFF75;
+}*/
+/* for now, makgin block_apptblock be the same as above block_availblock (10-26-2006) */
+.time_apptblock, .appt_apptblock, .slottedappt, .unslottedappt, #tblMonthView .monthday_apptblock {
+	background-color: #FFFF75;
+}
+#tblMonthView .monthday_myapptblock {
+	background-color: #FEFE9C;
+}
+.appt_unavailblock {
+	padding-left: 25px;
+}
+.timeheader, .time, .time_noblock {
+	/*width: 73px;*/ /*KDC,2-22-2008. making wider to display start - end on same line for unslotted*/
+	width: 103px;
+}
+.time_availblock, .time_noblock, .time_unavailblock, .time_apptblock {
+	text-align: right;
+	border-left: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	font-size: 12px;
+	padding-right: 5px;
+}
+.apptheader, .appt, appt_noblock {
+	/*width: 540px;*/ /*KDC,2-21-2008. changed (15px smaller)*/
+	width: 495px; /*KDC,2-22-2008. adjusted 30px smaller for bigger time col*/
+}
+.appt_availblock, .appt_noblock, .appt_unavailblock, .appt_apptblock, .appt_unavailblockunslotted, .appt_availblockunslotted {
+	border-left: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+.appt_availblock, .appt_noblock, .appt_unavailblock, .appt_apptblock {
+	vertical-align: middle;
+	padding: 0px 3px 0px 3px;
+}
+.appt_availblockunslotted, .appt_unavailblockunslotted {
+	vertical-align: top;
+	padding: 5px 3px 5px 3px;
+}
+.appt_unavailblock, .appt_unavailblockunslotted {
+	font-size: 12px;
+	font-weight: bold;
+}
+.appt_apptblock {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+/* Calendar Month, Week View */
+#tblMonthView {
+	/*width: 200px;*/
+	margin: 0px 0px 0px 0px;
+	border-left: 1px solid #000000;
+}
+#tblMonthView .monthheader {
+	display: none;
+}
+#tblMonthView .monthdayofweek {
+	height: 20px;
+	background-color: #3366CC;
+	font-weight: bold;
+	font-size: 11px;
+	color: #ffffff;
+	text-align: center;
+	border-bottom: 1px solid #e7e7e7;
+	text-align: center;
+}
+
+#tblMonthView .monthdayofweek, #tblMonthView .monthday, #tblMonthView .monthday_empty, #tblMonthView .monthday_selected, #tblMonthView .monthday_availblock, #tblMonthView .monthday_unavailblock, #tblMonthView .monthday_apptblock, #tblMonthView .monthday_myapptblock {
+	width: 101px;
+}
+#tblMonthView .monthday, #tblMonthView .monthday_selected, #tblMonthView .monthday_empty, #tblMonthView .monthday_availblock, #tblMonthView .monthday_unavailblock, #tblMonthView .monthday_apptblock, #tblMonthView .monthday_myapptblock {
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	text-align: left;
+	vertical-align: top;
+	padding: 5px 5px 5px 5px;
+}
+#tblMonthView .monthday, #tblMonthView .monthday_selected, #tblMonthView .monthday_empty {
+	height: 100px;
+}
+#tblMonthView .monthday_availblock, #tblMonthView .monthday_unavailblock, #tblMonthView .monthday_apptblock, #tblMonthView .monthday_myapptblock {
+	min-height: 100px;
+	_height: 100px; /* for IE */
+}
+#tblMonthView .monthday, #tblMonthView .monthday_selected, #tblMonthView .monthday_availblock, #tblMonthView .monthday_unavailblock, #tblMonthView .monthday_apptblock, #tblMonthView .monthday_myapptblock {
+	color: #000000;
+	font-weight: normal;
+	font-size: 12px;
+	cursor: default;
+}
+/*#tblMonthView .monthday {
+	background-color: #FFFFFF;
+}
+#tblMonthView .monthday_selected {
+	background-color: #FFFFFF;
+}*/
+#tblMonthView .monthday_availblock {
+
+}
+#tblMonthView .monthday_apptblock {
+
+}#tblMonthView .monthday_empty {
+	background-color: #FFFFFF;
+}
+#tblMonthView .dateholder {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+#tblMonthView .datenum {
+	display: block;
+	width: 100%;
+	font-weight: bold;
+}
+#tblMonthView .today {
+	margin: 0px 15px 0px 15px;
+	font-weight: bold;
+	font-size: 10px;
+	font-style: italic;
+}
+#tblMonthView .datetext {
+	display: block;
+	width: 100%;
+	font-weight: normal;
+/*	background-color: red;*/
+	min-height: 70px;
+	_height: 70px; /* for IE */
+	padding: 0px 0px 3px 0px;
+}
+#tblMonthView .monthblock {
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;
+	margin: 2px 0px 4px 0px;
+	text-align: center;
+}
+#tblMonthView a.monthblock {
+	text-decoration: underline;
+}
+#tblMonthView .datefooter {
+	display: block;
+	width: 100%;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 10px;
+	/*color: #808080;*/
+	color: #000000;
+	text-align: center;
+}
+
+/* schedule opening, KDC, 2-15-2010.  JM, 2-17-2010. */
+.schedulingopeningcontainer {
+	margin-top:2px;
+}
+.schedulingopeningcontainer img{
+	float: left;
+	border: 0;
+	margin:2px 3px 25px 0px;
+	width:15px;
+}
+.schedopening {
+	float: left;
+	width: 82px;
+	font-size: .85em;
+	text-align: left;
+	margin-bottom: 8px;
+	font-style: italic;
+}
+#tblDayView .schedopening { /* this makes the text area larger within the day view */
+	width: 130px;
+}
+
+/* schedule opening, KDC, 2-15-2010.  JM, 2-17-2010. */
+.lockblockcontainer {
+	margin-top:2px;
+}
+.lockblockcontainer img{
+	float: left;
+	border: 0;
+	margin:2px 3px 25px 0px;
+	width:15px;
+}
+
+
+/* general */
+.icon, .icondisabled, .iconprint {
+	margin: 0px 5px 0px 2px;
+}
+.icon, .iconprint {
+	cursor: pointer;
+}
+.IEminheight {
+	/* height will be set by code */
+	float: right;
+	width: 1px;
+}
+
+
+#divDirectURL {
+	width:260px;
+	height: 16px;
+	margin:10px 0px 10px 0px;
+	/*margin-top: 3px;
+	margin-bottom: 3px;*/
+	text-align:right;
+	vertical-align:middle;
+	/*background-color:red;*/
+}
+#divDirectURL div {
+	display: inline;
+}
+#divDirectURL .icon {
+	margin:0px 10px 0px 15px;
+	/*height: 15px;
+	margin-top: 10px;*/
+	/*background-color: green;*/
+}
+#divDirectURL .icon img{
+	vertical-align:middle;
+	/*height: 15px;
+	margin-top: 10px;*/
+	/*background-color: green;*/
+}
+#divLinkBar {
+	padding-bottom:5px;
+	color:#2D57B0;
+	/*margin-left:550px;
+	_margin-left: 530px;
+	width:235px;
+	height: 15px;
+	padding-top: 5px;
+	_padding: 10px;
+	padding-bottom: 5px;*/	
+	/*display: block;*/
+	/*background-color:blue;*/
+	text-align: center;
+	cursor: pointer;
+	font-size: 10px;
+}
+#divLinkBar span {
+	/*float: left;*/
+	text-decoration: underline;
+}
+#divLinkWin {
+	visibility: hidden;
+}
+#divLinkWin {
+	position: absolute;
+	width: 400px;
+	height: 27px;
+	background-color: #F3F3F3;
+	border: 1px solid #000000;
+	padding: 10px;
+	font-size: 10px;
+	color:#222;
+}
+#divLinkWin {
+	left: 549px;
+	_left: 570px;
+	top: 185px;
+	_top: 200px;
+}

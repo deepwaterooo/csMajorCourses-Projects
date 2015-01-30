@@ -1,0 +1,179 @@
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=us-ascii">
+
+<html>
+<link rel="stylesheet" type="text/css" href="css/whatisnew.css"  /> 
+<link rel="stylesheet" type="text/css" href="css/print.css" media="print" /> 
+ 
+
+<title>What's New</title>
+<div id="whatsnewArea">
+
+<p class="whatsnew_Heading">What's New in Release 4.1.0</p>
+<h2>New Features</h2>
+<h3>Mobile support</h3>
+<p>WASS now includes a mobile-friendly interface for making appointments.  Append /m to the standard WASS URL on your mobile device.</p>
+
+<p class="whatsnew_Heading">What's New in Release 4.0.0</p>
+<h2>New Features</h2>
+<h3>Block URL</h3>
+<p>WASS now displays a URL on the Block and View Calendar pages that will take a user directly to a specific block.</p>
+<h3>Text msg email</h3>
+<p>Appointment makers can have WASS text them about appointments by entering their text msg email address when creating an appointment.</p>
+
+
+<p class="whatsnew_Heading">What's New in Release 3.1.0</p>
+<h2>New Features</h2>
+<h3>Email address validation</h3>
+<p>When a calendar is changed, or an appointment is made, the system will attempt to validate the specified email address.</p>
+<h3>Email address specification</h3>
+<p>The information provided when an appointment is synced with a local calendar now includes email addresses.</p>
+
+
+<p class="whatsnew_Heading">What's New in Release 3.0.1</p>
+<h2>New Features</h2>
+<h3>View list of pending appointments on a mobile device.</h3>
+<p>A new web page, pages/apps.page.php, displays a list of pending appointments formatted for a mobile device.</p>
+<h3>Sync pending appointments with your local calendar</h3>
+<p>Students can now subscribe their local calendar to a WASS page that will cause pending appointments to display on their local calendar.  Instructions are provided in the appointment email notifications and reminders.</p>
+
+
+<p class="whatsnew_Heading">What's New in Release 3.0.0</p>
+<h2>New Features</h2>
+<h3>None.  This is a maintenance release.</h3>
+
+
+<p class="whatsnew_Heading">What's New in Release 2.0.7</p>
+<h2>New Features</h2>
+<h3>Calendar owners/managers can now optionally require that an appointment purpose field be specified.</h3>
+<h3>If you are already logged in, when you re-access <?php echo wassParms::SYSID;?>, you will be taken directly to your calendar or to the make appointment page.</h3>
+<h3>Calendar owners/managers can now lock and unlock blocks directly from the Edit Block page, and locked blocks are displayed with a lock icon.</h3>
+
+
+<p class="whatsnew_Heading">What's New in Release 2.0.6</p>
+<h2>New Features</h2>
+<h3>The class year is displayed by default in the name field for undergraduates.</h3>
+<h3>Changes to Calendar fields correctly apply to Blocks.</h3>
+<p>If you change the Name, Phone, Office or Email fields in a calendar description, those changes will be reflected in any new blocks that you create.</p>
+
+
+<p class="whatsnew_Heading">What's New in Release 2.0.5</p>
+<h2>New Features</h2>
+<h3>Adding blocks to group calendars</h3>
+<p>Calendar owners can now add blocks to group calendars on behalf of group members.  Also, the day/week/month calendar displayys for a group calendar now show the block owner (which may not be the same as the calendar owner).
+</p>
+<h3>Schedule opening/deadline messages clarified.</h3>
+<p>An explanatopry message is now displayed when you specify a non-zero value for schedule opening or schedule deadline on the Add Block form.</p>
+
+<p class="whatsnew_Heading">What's New in Release 2.0.4</p>
+<h2>New Features</h2>
+<h3>Did You Know?</h3>
+<p>Some  pages now display a "Did You Know" area where various features of the <?php echo wassParms::SYSID;?> are discussed. We hope this will help you become familiar with the less-used  capabilities of the system.
+</p>
+<h3>Login page updated.</h3>
+<p>The login page has been changed to accentuate the distinction between guest and community-member login.
+</p>
+<h3>New appointment scheduling limit.</h3>
+<p>When you add a block (one-time or recurring) to a calendar, you can now specify that the block will only become available for appointment scheduling at 
+a designarted time prior to its start.  For example, you could add a block for March 22, 10-11am, and specify that appointments could not be schedule in that block until
+March 21 at noon (or any other date/time).  In addition, you can specify a deadline for scheduling appointments (a time after which appointments can no longer be scheduled) and a cancellation deadline (a time after which appointments cannot be cancelled).
+</p>
+<h3>Direct calendar URLs (links).</h3>
+<p>The View Calendar page can now display a URL which will take a user directly to a specific day, week or month on a calendar.  You can use these URLs to advertise specific blocks of time to prospective appointment makers. 
+</p>
+<h3>Block title in month view.</h3>
+<p>The first 16 characters of block titles are now displayed in the month view of a calendar.
+</p>
+<h3>Manager page now displays manager status.</h3>
+<p>The managers page now displays the status (pending or active) of all calendar managers.
+</p>
+
+<p class="whatsnew_Heading">What's New in Release 2.0.3</p>
+<h2>New Features</h2>
+<h3>You can now edit appointments.</h3>
+<p>The display of appointments on the View Calendar page now includes a "pencil" icon which, when clicked, will bring up a panel that lets you edit an appointment.  You can change the name/email/phone number associated with the appointment, as well as the start and end times (as long as you do not violate any block restrictions). 
+</p>
+<h3>Appointment day-of-week now displayed.</h3>
+<p>The Day view of View Calendar, and the appointment notification/reminder emails, all now display the day-of-week abbreviation (e.g., Mon, Tue, etc.) for the appointment.
+</p>
+
+<p class="whatsnew_Heading">What's New in Release 2.0.2</p>
+
+<h2>Bug Fixes</h2>
+<h3>Code will detect attempt to add an invalid manager id.</h3>
+<p>When you add a manager to a calendar, you need to enter the manager's <?php echo wassParms::NETID;?>, not their email address.  </p>
+
+
+<p class="whatsnew_Heading">What's New in Release 2.0.1</p>
+
+<h2>New Features</h2>
+<h3>You can now create multiple calendars.</h3>
+<p>The Calendar Setup page now allows you to create additional calendars.  You can create as many calendars as you like.  Each calendar has its own unique URL, and can be separately advertised to potential appointment makers.  For example, you might want to have a calender for office hours with undergraduates and another one for office hours with graduate students.  You can also create a calendar for an organization that you run or manage, or for controlling access to a piece of equipment or a specialized room or facility.  You no longer need to get a separate <?php echo wassParms::NETID;?> for each calendar you create. A person can have blocks of available time listed on one or more calendars, as long as those blocks of time do not conflict with each other.
+</p>
+<h3>You can now create "group" calendars.</h3>
+<p>When you go to create a calendar, Calendar Setup lets you specify that you want the calendar to be a "group" calendar.  A group calendar is a calendar that is shared by a set of people who offer a similar service.  For example, a group of tutors might create a single group calendar on which each tutor lists their availability.  Students look up a group calendar by its title (e.g., "Undergraduate Tutoring Calendar") rather than by the names of the members of the group. When they make an appointment, however, they are making it with a specific individual.   Where a regular calendar migh have one or more "managers", a group calendar has one or more "members", the people who are listing their available time on the calendar, and with whom people are making appointments.  Other than that, group calendars work just like regular calendars.  You can create as many as you like, and you can create both regular and group calendars.  A person might have blocks of time listed on one or more group calendars and on one or more regular calendars (as long as those blocks of time do not conflict with each other).
+</p>
+<h3>Each calendar can have its own set of managers</h3>
+<p>If you create more than one calendar (regular or group) you can specify a separate set of managers (or members, in the case of a group calendar) for each calendar.  Further, you can individually control which of the managers get notification and/or reminder emails.  All of this is done through a single web page that you access from the Calendar Setup page.
+<h3>Showing appointment details to everyone</h3>
+<p>Normally, when <?php echo wassParms::SYSID;?> displays a calendar to anyone who is not an owner or manager or member of the calendar, it masks details about appointments that other people have made (it only shows that an appointment slot is taken, with no information about who has taken the slot).  This is done to protect people's privacy.  There are cases, however, where a calendar owner/manager may want everyone to see who else has made appointments.  For example, if you are using the <?php echo wassParms::SYSID;?> to schedule meetings, you may want people to be able to see who else is attending the meeting.  You can now set a "show appointment details" flag when you add a block to your calendar.  This will cause full appointment details to be shown to anyone who has access to that block [Note:  you can, if you wish, restrict access to the block when you create/edit it].</p>
+<p>
+<h3>You can now "subscribe" your local calendar (e.g., Outlook, iCal, or Google calendar) to your <?php echo wassParms::SYSID;?> calendar.</h3>
+<p>This feature was actually added in release 1.6.1, but you may have missed it.  The Calendar Setup page now displays a special URL that you can use to link your <?php echo wassParms::SYSID;?> calendar to your local calendar (e.g., Outlook).  For details, go to the Calendar Setup page and click the little Help icon (a question-mark in a triangle) located next to the "subscribe" URL.</p>
+<p class="whatsnew_Heading">What's New in Release 1.6.1</p>
+
+<h2>New Features</h2>
+<h3>You can now "subscribe" your local calendar (e.g., Outlook, iCal, or Google calendar) to your <?php echo wassParms::SYSID;?> calendar.</h3>
+<p>The Calendar Setup page now displays a special URL that you can use to link your <?php echo wassParms::SYSID;?> calendar to your local calendar (e.g., Outlook).  For details, go to the Calendar Setup page and click the little Help icon (a question-mark in a triangle) located next to the the "subscribe" URL.</p>
+<h3>Adding/Removing calendar managers now consolidated in a single web page.</h3>
+<p>Adding and removing managers is now done by clicking the "Go" button on the Calendar Setup page.</p>
+<h3>Appointment slot availability now more clearly indicated.</h3>
+<p>Available appointment slots are now more clearly marked, with a line of text that indicates that the slot is available.</p>
+
+<h2>Bug Fixes</h2>
+<h3>Local calendar synchronization</h3>
+<p>Appointment deletions should now synchronize correctly with a local calendar.</p>
+<h3>Alignment</h3>
+<p>Various text alignment issues have been addressed.</p>
+
+<p class="whatsnew_Heading">What's New in Release 1.6</p>
+
+<h2>New Features</h2>
+
+<h3>A "What's New" page has been added!</h3>
+<p>From the home (login) page, you can bring up a page that lists new features and major bug fixes.</p>
+    
+<h3>Calendar Setup has been re-organized</h3>
+ <p>The "Calendar Setup" page is used to set default values for blocks that you add to your calendar.  The page has been re-organized to make this clearer.  When you make a change on this page, you will be given the option of propagating the change to an existing block, as well as using the new values as defaults for new blocks added to your calendar.</p>
+ 
+    
+<h3>"Week" view now shows appointments</h3>
+ <p>When you select the calendar "week" view, the display will include a list of all appointments for the week, organized by day of the week (instead of simply showing the count of appointments by day).</p>
+ 
+<h2>Bug Fixes</h2>
+<h3>User and course access lists now work</h3>
+ <p>When you add or edit a block, you can specify access restrictions for that block (who is allowed to view the block and/or make appointments).  You can make a block accessible to the world (anyone with an email address), restrict it to people with a Princeton netid, or further restrict it to a specific list of netids and/or courses (everyone enrolled in a specified set of course). The userid/course restriction code was broken, and is now working.</p>
+
+
+<p class="whatsnew_Heading">What's New in Release 1.5</p>
+
+<h2>New Features</h2>
+
+<h3>Manager notifications and reminders</h3>
+<p>You can now specify separate reminder and notification settings for managers and for the calendar owner.</p>
+    
+<h3>Optional notification/reminder email text</h3>
+<p>You can now specify text that will be added to reminder and notification emails.</p>
+ 
+<h3>Appointment cancellation deadline</h3>
+<p>When you add or edit blocks, you can specify an optional appointment cancellation deadline, in minutes.  When that deadline is reached, students will not be able to cancel their appointment (calendar owners and managers can always cancel an appointment).  The default is to have no deadline (students can cancel at any time, even just before the start of the appointment).</p>
+       
+<h2>Bug Fixes</h2>
+
+<h3>Changing blocks from slotted to unslotted, and vice-versa.</h3>
+ <p>Fixed code to allow a block with no scheduled appointments to be changed from slotted to unslotted (and vice-versa).</p>
+
+<h3>Sending appointment cancellation messages to managers</h3>
+<p>Fixed bug that was preventing Appointment cancellation messages from being sent to managers.</p>
+    
+</div>
+</html>

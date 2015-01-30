@@ -1,0 +1,35 @@
+
+Changes from release 2.0.2 to 2.0.3:
+
+1. Implemented PHP to support appointment editing.  On 11/03/2009.  Serge.
+	Files: createappt.page.php, wassAppointment.class.php, wassBlock.class.php, remind.php
+	
+2. Changed HTML scrubbing code to allow limited number of HTML tags in user inpit.  On 11/02/2009.  Serge.
+	Files: wassUtil.class.php
+	
+3. Added day-of-week to appointment emails.  On 11/05/2009. Serge.
+	Files: wassAppointment.class.php
+	
+4. Added changes on the front-end for editing appointments.  On 11/1/2009, 11/2/2009, 11/5/2009.  Kelly.
+	Files: createappt.page.php, appointment.js, global.js, edit_appt.gif
+
+5. Made format changes to date display in the calendar header.  On 11/4/2009, 11/5/2009. Kelly.
+	Files: calendarheader.js
+	
+6. Changed the getappointments ajax call to return appointments sorted by date and starttime, rather than just by date.  On 11/6/2009. Serge.
+	Files: wassAjax.class.php
+
+7. Added code to wrap the calendar title (through safeHTML) before passing it to javascript.  On 11/6/2009.  Serge.
+	Files: managecalendars.page.php, makeappt.page.php, buildcal.page.php
+	
+8. Fixed issue with special characters not working in AJAX XML responses.  On 11/11/2009.  Kelly.
+	Files: wassUtil.class.php
+	
+9. Added the simple HTML mark-up allowance into special character handling.  On 11/11/2009. Kelly.
+	Files: global.js 
+	
+10. Fixes to entity display for description - double quotes.  On 11/12/2009. Kelly.
+	drawcalendar.js, global.js
+	
+11. Added (undocumented) ability for prof. to store appointment notes.,  On 11/12/2009.  Serge.
+	Files: createappt.page.php

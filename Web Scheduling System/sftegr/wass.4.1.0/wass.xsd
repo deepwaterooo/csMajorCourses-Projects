@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://wass.princeton.edu/" 
+           xmlns="http://wass.princeton.edu/" 
+           elementFormDefault="qualified">
+
+
+<!-- Type Definitions -->
+			 
+	<xs:complexType name="preftype">
+		<xs:sequence>
+			<xs:element name="keytag" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="val" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="class" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:simpleType name="weekdaytypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="sunday"/>
+			<xs:enumeration value="monday"/>
+			<xs:enumeration value="tuesday"/>
+			<xs:enumeration value="wednesday"/>
+			<xs:enumeration value="thursday"/>
+			<xs:enumeration value="friday"/>
+			<xs:enumeration value="saturday"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="everytypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="daily"/>
+			<xs:enumeration value="dailyweekdays"/>
+			<xs:enumeration value="weekly"/>
+			<xs:enumeration value="otherweekly"/>
+			<xs:enumeration value="monthlyday"/>
+			<xs:enumeration value="monthlyweekday"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	
+	<xs:simpleType name="accesstypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="open"/>
+			<xs:enumeration value="limited"/>
+			<xs:enumeration value="restricted"/>
+			<xs:enumeration value="private"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="recurtypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="once"/>
+			<xs:enumeration value="multiple"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	
+	<xs:simpleType name="viewvalues">
+		<xs:restriction base="xs:decimal">
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="15"/>
+			<xs:enumeration value="20"/>
+			<xs:enumeration value="30"/>
+			<xs:enumeration value="60"/>
+		</xs:restriction>
+	</xs:simpleType>						
+	
+	
+	<xs:simpleType name="viewlist">
+		<xs:list itemType="viewvalues"/>		
+	</xs:simpleType>
+
+	
+	<xs:simpleType name="datestatusvalues">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="noblocks"/>
+			<xs:enumeration value="blocksnoappsnoslots"/>
+			<xs:enumeration value="blocksnoappsslots"/>
+			<xs:enumeration value="blocksappsnoslots"/>
+			<xs:enumeration value="blocksappsslots"/>
+			<xs:enumeration value="blocksmyappsslots"/>
+			<xs:enumeration value="blocksmyappsnoslots"/>
+		</xs:restriction>
+	</xs:simpleType>						
+	
+	
+	<xs:simpleType name="calendarlisttypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="userid"/>
+			<xs:enumeration value="name"/>
+			<xs:enumeration value="title"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="callist">
+  		<xs:list itemType='xs:decimal'/>
+	</xs:simpleType>
+
+	<xs:complexType name="daytypeslist">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="daytype" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+		
+	<xs:complexType name="datesavaillist">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="available" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="datestatuslist">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="status" type="datestatusvalues" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+			
+			
+	<xs:complexType name="periodinfo">	
+		<xs:sequence> 
+			<xs:element name="starttime" type="xs:time" minOccurs="1"/>
+			<xs:element name="endtime" type="xs:time" minOccurs="1"/>
+			<xs:element name="dayofweek" type="weekdaytypes" minOccurs="0"/>
+			<xs:element name="dayofmonth" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="weekofmonth" type="xs:decimal" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+		
+	<xs:complexType name="userlist">
+		<xs:sequence>
+			<xs:element name="userid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="valid" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+		
+	<xs:complexType name="courselist">
+		<xs:sequence>
+			<xs:element name="courseid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="valid" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:complexType name="appinfo">
+		<xs:sequence>
+			<xs:element name="appointmentid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="blockid" type="xs:decimal"/>
+			<xs:element name="calendarid" type="xs:decimal"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="email" type="xs:string"/>
+			<xs:element name="textemail" type="xs:string"/>
+			<xs:element name="phone" type="xs:string"/>
+			<xs:element name="userid" type="xs:string"/>
+			<xs:element name="starttime" type="xs:time"/>
+			<xs:element name="endtime" type="xs:time"/>
+			<xs:element name="purpose" type="xs:string" default=""/>
+			<xs:element name="remind" type="xs:boolean" default="true"/>
+			<xs:element name="notes" type="xs:string" default=""/>
+			<xs:element name="uid" type="xs:string" default=""/>
+			<xs:element name="whenmade" type="xs:string" default=""/>
+			<xs:element name="available" type="xs:boolean" default="true"/>
+			<xs:element name="sequence" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="blockinfo">
+		<xs:sequence>
+			<xs:element name="blockid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="periodid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="seriesid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="calendarid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="title" type="xs:string" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="userid" type="xs:string" minOccurs="0"/>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<xs:element name="phone" type="xs:string" minOccurs="0"/>
+			<xs:element name="email" type="xs:string" minOccurs="0"/>
+			<xs:element name="location" type="xs:string" minOccurs="0"/>
+			<xs:element name="starttime" type="xs:time" minOccurs="0"/>
+			<xs:element name="endtime" type="xs:time" minOccurs="0"/>
+			<xs:element name="slotted" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="slotsize" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="maxapps" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="maxper" type="xs:decimal" minOccurs="0"/>			
+			<xs:element name="deadline" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="candeadline" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="opening" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="date" type="xs:date" minOccurs="0"/>
+			<xs:element name="notify" type="xs:string" minOccurs="0"/>
+			<xs:element name="notifyman" type="xs:string" minOccurs="0"/>
+			<xs:element name="available" type="xs:string" minOccurs="0"/>
+			<xs:element name="makeaccess" type="xs:string" minOccurs="0"/>
+			<xs:element name="viewaccess" type="xs:string" minOccurs="0"/>
+			<xs:element name="makeulist" type="xs:string" minOccurs="0"/>
+			<xs:element name="makeclist" type="xs:string" minOccurs="0"/>
+			<xs:element name="viewulist" type="xs:string" minOccurs="0"/>
+			<xs:element name="viewclist" type="xs:string" minOccurs="0"/>
+			<xs:element name="remind" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="remindman" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="recurrence" type="recurtypes" minOccurs="0"/>
+			<xs:element name="appmsg" type="xs:string" minOccurs="0"/>
+			<xs:element name="showappinfo" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="uid" type="xs:string" default=""/>
+			<xs:element name="sequence" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:complexType name="seriesinfo">
+		<xs:sequence>
+			<xs:element name="seriesid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="calendarid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="title" type="xs:string" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="userid" type="xs:string" minOccurs="0"/>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<xs:element name="phone" type="xs:string" minOccurs="0"/>
+			<xs:element name="email" type="xs:string" minOccurs="0"/>
+			<xs:element name="location" type="xs:string" minOccurs="0"/>
+			<xs:element name="startdate" type="xs:date" minOccurs="0"/>
+			<xs:element name="enddate" type="xs:date" minOccurs="0"/>
+			<xs:element name="every" type="everytypes" minOccurs="0"/>
+			<xs:element name="daytypes" type="xs:string" minOccurs="0"/>
+			<xs:element name="slotted" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="slotsize" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="maxapps" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="maxper" type="xs:decimal" minOccurs="0"/>			
+			<xs:element name="deadline" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="candeadline" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="opening" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="notify" type="xs:string" minOccurs="0"/>
+			<xs:element name="notifyman" type="xs:string" minOccurs="0"/>
+			<xs:element name="available" type="xs:string" minOccurs="0"/>
+			<xs:element name="makeaccess" type="xs:string" minOccurs="0"/>
+			<xs:element name="viewaccess" type="xs:string" minOccurs="0"/>
+			<xs:element name="makeulist" type="xs:string" minOccurs="0"/>
+			<xs:element name="makeclist" type="xs:string" minOccurs="0"/>
+			<xs:element name="viewulist" type="xs:string" minOccurs="0"/>
+			<xs:element name="viewclist" type="xs:string" minOccurs="0"/>
+			<xs:element name="remind" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="remindman" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="appmsg" type="xs:string" minOccurs="0"/>
+			<xs:element name="showappinfo" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	  <xs:complexType name="calendarinfo">
+		  <xs:sequence>
+			  <xs:element name="calendarid" type="xs:decimal" minOccurs="0"/>
+			  <xs:element name="title" type="xs:string" minOccurs="0"/>
+			  <xs:element name="description" type="xs:string" minOccurs="0"/>
+			  <xs:element name="userid" type="xs:string" minOccurs="0"/>
+			  <xs:element name="name" type="xs:string" minOccurs="0"/>
+			  <xs:element name="phone" type="xs:string" minOccurs="0"/>
+			  <xs:element name="email" type="xs:string" minOccurs="0"/>			
+			  <xs:element name="managers" type="xs:string" minOccurs="0"/>
+			  <xs:element name="location" type="xs:string" minOccurs="0"/>
+			  <xs:element name="notify" type="xs:string" minOccurs="0"/>
+			  <xs:element name="notifyman" type="xs:string" minOccurs="0"/>
+			  <xs:element name="available" type="xs:string" minOccurs="0"/>
+			  <xs:element name="makeaccess" type="xs:string" minOccurs="0"/>
+			  <xs:element name="viewaccess" type="xs:string" minOccurs="0"/>
+			  <xs:element name="makeulist" type="xs:string" minOccurs="0"/>
+			  <xs:element name="makeclist" type="xs:string" minOccurs="0"/>
+			  <xs:element name="viewulist" type="xs:string" minOccurs="0"/>
+			  <xs:element name="viewclist" type="xs:string" minOccurs="0"/>
+			  <xs:element name="remind" type="xs:boolean" minOccurs="0"/>
+			  <xs:element name="remindman" type="xs:boolean" minOccurs="0"/>
+			  <xs:element name="appmsg" type="xs:string" minOccurs="0"/>
+			  <xs:element name="showappinfo" type="xs:boolean" minOccurs="0"/>
+			  <xs:element name="group" type="xs:boolean" minOccurs="0"/>
+			  <xs:element name="purreq" type="xs:boolean" minOccurs="0"/>
+			  <xs:element name="overlapok" type="xs:boolean" minOccurs="0"/>
+	  </xs:sequence>
+	  </xs:complexType>
+	
+	<xs:complexType name="appdata">
+		<xs:sequence>
+			<xs:element name="appointmentid" type="xs:decimal"/>
+			<xs:element name="blockid" type="xs:decimal"/>
+			<xs:element name="calendarid" type="xs:decimal"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="for_name" type="xs:string"/>
+			<xs:element name="for_email" type="xs:string"/>
+			<xs:element name="for_phone" type="xs:string"/>
+			<xs:element name="for_userid" type="xs:string"/>
+			<xs:element name="with_name" type="xs:string"/>
+			<xs:element name="with_email" type="xs:string"/>
+			<xs:element name="with_phone" type="xs:string"/>
+			<xs:element name="with_userid" type="xs:string"/>
+			<xs:element name="location" type="xs:string" minOccurs="0"/>
+			<xs:element name="starttime" type="xs:time"/>
+			<xs:element name="endtime" type="xs:time"/>
+			<xs:element name="purpose" type="xs:string" default=""/>
+			<xs:element name="whenmade" type="xs:string" default=""/>
+		</xs:sequence>
+	</xs:complexType>
+
+		<xs:complexType name="errorinfo">
+			<xs:sequence>
+				<xs:element name="errorcode" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="errortext" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>	
+
+
+	<xs:simpleType name="topiclist">
+		<xs:list itemType="xs:string"/>
+	</xs:simpleType>
+
+	<xs:complexType name="didyouknowentry">
+		<xs:sequence>
+			<xs:element name="didyouknowid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="dateadded" type="xs:date" minOccurs="0"/>
+			<xs:element name="release" type="xs:string" minOccurs="0"/>
+			<xs:element name="topics" type="topiclist" minOccurs="0"/>
+			<xs:element name="header" type="xs:string" minOccurs="0"/>
+			<xs:element name="details" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+<!-- New Type Definitions for Mobile Support (Fall, 2012) -->
+
+
+
+	<xs:complexType name="userinfo">
+		<xs:sequence>
+			<xs:element name="userid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="phone" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="office" type="xs:string" minOccurs="0" maxOccurs="1"/>	
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="calendarheaderinfo">
+		<xs:sequence>
+			<xs:element name="calendarid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="owner" type="userinfo" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="blockheaderinfo">
+		<xs:sequence>
+			<xs:element name="blockid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="seriesid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="calendarid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="blockowner" type="userinfo" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="date" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="location" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- minOccurs for appointmentid is 0 for adding calendars -->
+	<xs:complexType name="apptheaderinfo">
+		<xs:sequence>
+			<xs:element name="appointmentid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="starttime" type="xs:time" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="endtime" type="xs:time" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="apptmaker" type="userinfo" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="blockid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="calendarid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="slotinfo">
+		<xs:sequence>
+			<xs:element name="blockid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="starttime" type="xs:time" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="endtime" type="xs:time" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<!-- minOccurs for appointmentid is 0 for adding calendars -->
+	<xs:complexType name="apptinfo">
+		<xs:sequence>
+			<xs:element name="appointmentid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="starttime" type="xs:time" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="date" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="endtime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="apptmaker" type="userinfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="blockid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="purpose" type="xs:string" default="" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="remind" type="xs:boolean" default="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="textemail" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="whenmade" type="xs:string" default="" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="madeby" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="available" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="uid" type="xs:string" default="" minOccurs="0" maxOccurs="1"/><!-- for iCal --> 										
+			<xs:element name="sequence" type="xs:decimal" minOccurs="0" maxOccurs="1"/><!-- for iCal -->
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+<!-- Element Definitions -->
+
+	<xs:element name="wass">
+	<xs:complexType>
+	<xs:sequence>
+
+
+		<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+
+
+		<xs:element name="login" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="userid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="1"/>					
+					<xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+
+		<xs:element name="saveprefs" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="pref" type="preftype" minOccurs="0" maxOccurs="unbounded"/>
+ 				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>		
+	
+
+		<xs:element name="getalluserprefs" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="pref" type="preftype" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>		
+		
+
+		<xs:element name="getprefs" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="pref" type="preftype" minOccurs="0" maxOccurs="unbounded"/>
+ 				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>		
+
+		
+		<xs:element name="validateusers" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="user" type="userlist" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+
+		<xs:element name="validatecourses" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="course" type="courselist" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+
+		<xs:element name="getdaytypes" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+						<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="daytypes" type="daytypeslist" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>	
+
+
+	 	<xs:element name="getparameter" minOccurs="0" maxOccurs="unbounded">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="parameter" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		 
+
+
+	 	<xs:element name="getuserdetails" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="userid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="phone" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="office" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		 
+
+			
+		<xs:element name="getallviews" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+
+					<xs:element name="allviews" type="viewlist" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>		
+			</xs:complexType>
+		</xs:element>
+
+		
+		<xs:element name="getvalidviews" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="validviews" type="viewlist" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+		
+		<xs:element name="getbestview" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="bestview" type="viewvalues" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+
+		<xs:element name="iscalendarviewable" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="isallowed" type="xs:boolean" minOccurs="0" maxOccurs="1"/>	
+				</xs:sequence>
+ 			</xs:complexType>
+		</xs:element>
+
+
+		<xs:element name="isblockviewable" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="blockid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="isallowed" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+ 			</xs:complexType>
+		</xs:element>
+
+
+		<xs:element name="isappointmentmakeable" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="blockid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="isallowed" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="reason" type="xs:string" minOccurs="0" maxOccurs="1"/>
+ 				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>
+
+
+		<xs:element name="makeableapps" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="blockid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="count" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+ 				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>
+
+
+		<xs:element name="getavailabledates" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="startdate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="enddate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="dates" type="datesavaillist" minOccurs="0" maxOccurs="1"/>
+ 				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>
+
+		<xs:element name="getdatestatus" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="calendarid" type="callist" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="startdate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="enddate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="blockownerid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="dates" type="datestatuslist" minOccurs="0" maxOccurs="1"/>
+ 				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>
+
+									
+		<xs:element name="getcalendars" minOccurs="0" maxOccurs="unbounded">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:choice>
+						<xs:element name="calendarid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="userid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>	
+					</xs:choice>
+					<xs:element name="calendar" type="calendarinfo" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+		<xs:element name="addcalendar" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="calendar" type="calendarinfo" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		
+
+
+	 	<xs:element name="editcalendar" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="calendar" type="calendarinfo" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>			
+
+		 		
+	 	<xs:element name="deletecalendar" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="canceltext" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		 
+
+	 		
+	 	<xs:element name="listcalendars" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="listtype" type="calendarlisttypes" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="listvalue" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		 
+
+	 	
+		<xs:element name="getblocks" minOccurs="0" maxOccurs="unbounded">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="startdate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="enddate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="starttime" type="xs:time" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="endtime" type="xs:time" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="userid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="block" type="blockinfo" minOccurs="1" maxOccurs="1"/>
+						<xs:element name="series" type="seriesinfo" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="whynotmakeable" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>			
+
+	
+		<xs:element name="addblock" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="block" type="blockinfo" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		
+
+
+	 	<xs:element name="editblock" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="block" type="blockinfo" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>			
+
+		 		
+	 	<xs:element name="deleteblock" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="blockid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="canceltext" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		 
+
+	 		
+		<xs:element name="addseries" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="series" type="seriesinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="period" type="periodinfo" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		
+
+
+	 	<xs:element name="editseries" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="series" type="seriesinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="period" type="periodinfo" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		
+
+
+	 	<xs:element name="deleteseries" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="seriesid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="canceltext" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		 
+
+
+		<xs:element name="listappointments" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="userid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="startdate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="enddate" type="xs:date" minOccurs="0" maxOccurs="1"/>	
+					<xs:element name="starttime" type="xs:time" minOccurs="0" maxOccurs="1"/>	
+					<xs:element name="endtime" type="xs:time" minOccurs="0" maxOccurs="1"/>		
+					<xs:element name="appointment" type="appdata" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>	
+
+
+		<xs:element name="getappointments" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:choice>
+						<xs:element name="blockid" type="xs:decimal" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="userid" type="xs:string" minOccurs="0" maxOccurs="1"/>	
+					</xs:choice>
+					<xs:element name="appointment" type="appinfo" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>	
+
+
+		<xs:element name="addappointment" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="appointment" type="appinfo" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>	
+
+
+	 	<xs:element name="deleteappointment" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="appointmentid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="canceltext" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>	
+		
+		<xs:element name="getdidyouknow" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>	
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>	
+					<xs:element name="didyouknow" type="didyouknowentry" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="total" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="remaining" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>					 
+
+		
+		<xs:element name="isemailvalid" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>	
+					<xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="isvalid" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>					 
+
+
+<!-- New Element Definitions for Mobile Support (Fall, 2012) -->
+
+		<!-- This will return a the info for a given userid (LDAP) -->
+	 	<xs:element name="getuserinfo" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="userid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="userinfo" type="userinfo" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		 
+
+	<!-- This is for calendar auto-complete and calendar listing -->
+		<!-- Ordered by netID, name, title. Search in both "appt with" and "block owner" fields. -->
+		<xs:element name="getmatchingcalendars" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:choice>
+						<xs:element name="searchstring" type="xs:string" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="userid" type="xs:string" minOccurs="0" maxOccurs="1"/><!--this can be comma-separated list-->
+					</xs:choice>
+					<xs:element name="calendar" type="calendarheaderinfo" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+ 	
+		<!-- This will return a list of one-time blocks and recurring blocks (but just one instance for each) -->
+		<!-- Block header information only, with available slots -->
+		<xs:element name="getblockheaders" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="startdate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="enddate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="starttime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="endtime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="block" type="blockheaderinfo" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>			
+
+
+		<!-- This will return a list of available appointment slots for a given block 
+		 (or series, ordered by date) -->
+		<xs:element name="getblockslots" minOccurs="0" maxOccurs="unbounded">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:choice>
+						<xs:element name="seriesid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+						<xs:element name="blockid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					</xs:choice>
+					<xs:element name="slot" type="slotinfo" minOccurs="0" maxOccurs="unbounded"/>
+ 				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>
+
+
+		<!-- Returns a list of blocks with available appointment slots for a given calendarid, start date, and optional end date
+		 ordered by block start date -->
+		<xs:element name="getblockswithslots" minOccurs="0" maxOccurs="unbounded">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="startdate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="enddate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="blockswithslots" minOccurs="0" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="block" type="blockheaderinfo" minOccurs="1" maxOccurs="1"/>
+								<xs:element name="slot" type="slotinfo" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>	
+					</xs:element>
+ 				</xs:sequence>
+			</xs:complexType>	
+		</xs:element>
+
+
+		<!-- This will return the info for a block, given the ID -->
+		<!-- Block header information only, with available slots -->
+		<xs:element name="getblockheaderinfo" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="blockid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:sequence>
+						<xs:element name="block" type="blockheaderinfo" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="slot" type="slotinfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>			
+
+
+		<!-- This will return the info for an appointment, given the ID -->
+		<xs:element name="getapptinfo" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="apptid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="appt" type="apptinfo" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>			
+
+<!-- This will return a list of appointments, with the given filter(s), ordered by date, by time -->
+		<!-- Search "appt by" against both "appt with" and "block owner" fields. -->
+		<xs:element name="getappts" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="startdate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="enddate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="starttime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="endtime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="calendarid" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="apptby" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="apptwithblock" minOccurs="0" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="appt" type="apptheaderinfo" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="block" type="blockheaderinfo" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>	
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>	
+
+
+		<!-- Add a new appointment -->
+		<xs:element name="addappt" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="appt" type="apptinfo" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>	
+
+		<xs:element name="editappt" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="appt" type="apptinfo" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>	
+
+		<!-- Sync appointment -->
+	 	<xs:element name="syncappointment" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="userid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="appointmentid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		
+		
+		<!-- Lock appointment - make appointment unavailable or available.  
+			"makeavailable" = true will set it to available -->
+	 	<xs:element name="lockappointment" minOccurs="0" maxOccurs="1">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="error" type="errorinfo" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="sessionid" type="xs:string" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="appointmentid" type="xs:decimal" minOccurs="1" maxOccurs="1"/>				
+					<xs:element name="makeavailable" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>		
+
+
+	</xs:sequence>
+	</xs:complexType>
+	</xs:element>
+
+</xs:schema>

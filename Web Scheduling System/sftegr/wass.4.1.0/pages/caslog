@@ -1,0 +1,17 @@
+BA22 .START ****************** [CAS.php:471]
+BA22 .=> phpCAS::client('2.0', 'fed.princeton.edu/cas/login', 443, 'cas') [login.page.php:58]
+BA22 .|    => CASClient::CASClient('2.0', false, 'fed.princeton.edu/cas/login', 443, 'cas', true) [CAS.php:372]
+BA22 .|    |    Starting session handling [client.php:561]
+BA22 .|    |    No ticket found [client.php:564]
+BA22 .|    <= ''
+BA22 .<= ''
+BA22 .=> phpCAS::setNoCasServerValidation() [login.page.php:59]
+BA22 .<= ''
+BA22 .=> phpCAS::isAuthenticated() [login.page.php:69]
+BA22 .|    => CASClient::isAuthenticated() [CAS.php:1033]
+BA22 .|    |    => CASClient::wasPreviouslyAuthenticated() [client.php:921]
+BA22 .|    |    |    user = `serge' [client.php:1042]
+BA22 .|    |    <= true
+BA22 .|    |    user was already authenticated, no need to look for tickets [client.php:924]
+BA22 .|    <= true
+BA22 .<= true

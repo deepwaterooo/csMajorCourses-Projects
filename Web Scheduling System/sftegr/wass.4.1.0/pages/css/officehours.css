@@ -1,0 +1,333 @@
+/* CSS Document */
+
+html, body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* hacks */
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+.clearfix {display: inline-table;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+
+
+/* Small Calendars */
+.month {
+	/*width: 200px;*/
+	margin: 0px 0px 14px 0px;
+}
+.monthheader, .monthcontrol, .monthdayofweek, .monthday, .monthday_selected {
+	height: 20px;
+}
+.monthheader, .monthcontrol {
+	background-color: #3333FF;
+	font-weight: bold;
+	font-size: 12px;
+	color: #ffffff;
+	text-align: center;
+}
+.monthcontrol {
+	cursor: pointer;
+}
+.monthdayofweek, .monthday, .monthday_empty, .monthday_selected {
+	width: 20px;
+	text-align: center;
+}
+.monthdayofweek {
+	color: #000000;
+	font-weight: bold;
+	font-size: 12px;
+	border-bottom: 1px solid #e7e7e7;
+}
+.monthday_empty {
+	background-color: #FFFFFF;
+}
+.monthday, .monthday_selected {
+	color: #3333FF;
+	font-weight: normal;
+	font-size: 12px;
+	cursor: pointer;
+}
+.monthday {
+	background-color: #FFFFFF;
+}
+.monthday_selected {
+	background-color: #FF9900;
+}
+.dateholder {
+	vertical-align: middle;
+}
+.datenum {
+	font-weight: normal;
+	vertical-align: middle;
+}
+.datetext, .datefooter {
+	display: none;
+}
+
+
+
+
+/* Calendar Day View */
+/* block text area styles */
+.blockarea {
+	width: 151px; /* 150 then including a left border */
+	height: auto;
+	overflow: hidden;
+	/*background-color: blue;*/
+	vertical-align: top;
+}
+.blocktitle {
+	font-weight: bold;
+}
+.blocklocation {
+	font-style: italic;
+}
+.blockmax {
+
+}
+.blockbuttonstop, .blockbuttonsbottom {
+	padding: 3px 3px 3px 5px;
+	_padding: 0px;
+}
+.blockbuttonstop, .blockbuttonsbottom, .blocktext {
+	width: 143px;
+	/*background-color: #FF9933;*/
+}
+.blockbuttonstop, .blockbuttonsbottom {
+	/*position: relative;*/
+	z-index: 10;
+	/*background-color: #00CC00;*/
+}
+.blockbuttonstop {
+	/*top: 0px;*/
+	height: 12px;
+	text-align: right;
+}
+.blockbuttonsbottom {
+	/*bottom: 0px;*/
+	height: 15px;
+	text-align: left;
+}
+.blocktext {
+	/*position: relative;*/
+	/*height: 100%;*/ /*auto;*/
+	overflow: hidden;
+	padding: 0px 3px 0px 3px;
+	z-index: 5;
+	font-size: 12px;
+	/*float: left;*/
+}
+
+
+/* Calendar Day View */
+/* appointment area styles */
+.blocknumavail {
+	font-size: 12px;
+	font-weight: normal;
+}
+.slottedappt, .unslottedappt {
+	font-size: 12px;
+	font-weight: normal;
+	padding: 2px 2px 2px 2px;
+}
+.slottedappt {
+	margin: 2px 3px 2px 3px;
+	width: 594px; /* 600 - 6 in margins */
+}
+.unslottedappt {
+	margin: 4px 15px 4px 15px;
+	width: 570px; /* 600 - 30 in margins */
+}
+.apptname {
+
+}
+.apptemail {
+	text-decoration: underline;
+	color: #000000;
+}
+.apptphone {
+
+}
+
+/* Calendar Day View */
+/* calendar row, col styles */
+.blockheader, .timeheader, .apptheader {
+	height: 20px;
+	background-color: #3333FF;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 13px;
+	padding-left: 10px;
+	width: 140px; /* 150-10 */
+}
+.block_availblock, .block_noblock {
+	width: 150px;
+}
+.block_availblock, .block_noblock, .block_unavailblock {
+	border-left: 1px solid #000000;
+	background-color: #FFFFFF;
+	/*border-bottom: 1px solid #000000;*/
+}
+.block_availblock, .time_availblock, .appt_availblock, .appt_availblockunslotted, #tblMonthView .monthday_availblock {
+	background-color: #FF9933;
+}
+.block_unavailblock, .time_unavailblock, .appt_unavailblock, .appt_unavailblockunslotted {
+	background-color: #c7c7c7;
+}
+.block_apptblock, .time_apptblock, .appt_apptblock, .slottedappt, .unslottedappt, #tblMonthView .monthday_apptblock {
+	background-color: #FFFF99;
+}
+.appt_unavailblock {
+	padding-left: 15px;
+}
+.timeheader, .time, .time_noblock {
+	width: 80px;
+}
+.time_availblock, .time_noblock, .time_unavailblock {
+	text-align: right;
+	border-left: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	font-size: 12px;
+	padding-right: 5px;
+}
+.apptheader, .appt, appt_noblock {
+	width: 600px;
+}
+.appt_availblock, .appt_noblock, .appt_unavailblock, .appt_apptblock, .appt_unavailblockunslotted, .appt_availblockunslotted {
+	border-left: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+.appt_availblock, .appt_noblock, .appt_unavailblock, .appt_apptblock {
+	vertical-align: middle;
+	padding: 0px 3px 0px 3px;
+}
+.appt_availblockunslotted, .appt_unavailblockunslotted {
+	vertical-align: top;
+	padding: 5px 3px 5px 3px;
+}
+.appt_unavailblock, .appt_unavailblockunslotted {
+	font-size: 12px;
+	font-weight: bold;
+}
+.appt_apptblock {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+/* Calendar Month, Week View */
+#tblMonthView {
+	/*width: 200px;*/
+	margin: 0px 0px 14px 0px;
+	border-left: 1px solid #000000;
+}
+#tblMonthView .monthheader {
+	display: none;
+}
+#tblMonthView .monthdayofweek {
+	height: 20px;
+	background-color: #3333FF;
+	font-weight: bold;
+	font-size: 12px;
+	color: #ffffff;
+	text-align: center;
+	border-bottom: 1px solid #e7e7e7;
+	text-align: center;
+}
+
+#tblMonthView .monthdayofweek, #tblMonthView .monthday, #tblMonthView .monthday_empty, #tblMonthView .monthday_selected, #tblMonthView .monthday_availblock, #tblMonthView .monthday_apptblock {
+	width: 120px;
+}
+#tblMonthView .monthday, #tblMonthView .monthday_selected, #tblMonthView .monthday_empty, #tblMonthView .monthday_availblock, #tblMonthView .monthday_apptblock {
+	height: 120px;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	text-align: left;
+	vertical-align: top;
+	padding: 5px 5px 5px 5px;
+}
+
+#tblMonthView .monthday, #tblMonthView .monthday_selected, #tblMonthView .monthday_availblock, #tblMonthView .monthday_apptblock {
+	color: #000000;
+	font-weight: normal;
+	font-size: 12px;
+	cursor: default;
+}
+/*#tblMonthView .monthday {
+	background-color: #FFFFFF;
+}
+#tblMonthView .monthday_selected {
+	background-color: #FFFFFF;
+}*/
+#tblMonthView .monthday_availblock {
+
+}
+#tblMonthView .monthday_apptblock {
+
+}#tblMonthView .monthday_empty {
+	background-color: #FFFFFF;
+}
+#tblMonthView .dateholder {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+#tblMonthView .datenum {
+	display: block;
+	width: 100%;
+	font-weight: bold;
+}
+#tblMonthView .datetext {
+	display: block;
+	width: 100%;
+	font-weight: normal;
+/*	background-color: yellow;*/
+	min-height: 90px;
+	_height: 90px; /* for IE */
+	padding: 0px 0px 3px 0px;
+}
+#tblMonthView .monthblock {
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: underline;
+	margin: 2px 0px 4px 0px;
+	text-align: center;
+}
+#tblMonthView .datefooter {
+	display: block;
+	width: 100%;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 10px;
+	color: #808080;
+	text-align: center;
+}
+
+
+
+
+/* general */
+.icon, .icondisabled, .iconprint {
+	margin: 0px 5px 0px 2px;
+}
+.icon {
+	cursor: pointer;
+}
+.IEminheight {
+	/* height will be set by code */
+	float: right;
+	width: 1px;
+}
+

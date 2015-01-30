@@ -1,0 +1,32 @@
+/* Styles for printing any pages without a calendar */
+#divMenuArea {display:none;}
+#pageHeader {
+	background-image:none;
+	background-repeat:none;
+	border-right:none;
+	border-bottom:none; 
+	background-color:none; 
+	position:relative;
+}
+#welcome {display:none;}
+#pageTitle {font-size:22px;}
+#divMainArea {
+	border-top: 1px #000000 solid;
+	border-bottom: 1px #000000 solid;
+}
+#footer {border:none;}
+#contentDivider {border-left:none;}
+#content {padding-top:45px;}
+.icon {display:none;}
+#menu {display:none;}
+.buttons {border:none; background-color: none; text-decoration:underline;}
+.button1 {border:none; background-color: none; text-decoration:underline;}
+.button2 {border:none; background-color: none; text-decoration:underline;}
+#faqArea {
+	width:auto; 
+	height: auto; 
+	padding: 0px 0px 0px 55px; 
+	overflow-y:visible; 
+	overflow-x:visible;
+}
+#close {display:none;}

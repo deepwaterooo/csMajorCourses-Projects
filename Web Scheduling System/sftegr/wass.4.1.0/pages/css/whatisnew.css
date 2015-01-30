@@ -1,0 +1,50 @@
+/*
+Copyright 2006, 2008, 2009 The Trustees of Princeton University.
+
+For licensing terms, see the license.txt file in the admin directory.
+
+Written by: Serge J. Goldstein, serge@princeton.edu.
+            Kelly D. Cole, kellyc@princeton.edu
+			Jill Moraca, jmoraca@princeton.edu
+		   
+*/
+
+
+/*
+
+       This page presents CSS styles for "What is New".
+ 
+*/
+#whatsnewArea {
+	width:565px; 
+	height: 530px; 
+	padding: 0px 0px 0px 55px; 
+	overflow-y:scroll; 
+	overflow-x:hidden; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:12px; border-bottom:1px solid #CCCCCC; 
+	line-height:15px;
+}
+#whatsnewArea p {
+	margin-top:0px;
+	margin-bottom:35px;
+}
+.whatsnew_Heading {
+	font-size:18px; 
+	font-weight:bold;
+	border-top:20px solid #F2F7FF;
+	padding-top:10px;
+}
+#whatsnewArea h2 {
+	font-size:16px; 
+	font-weight:bold; 
+	color:#999999;
+}
+#whatsnewArea h3{
+	font-size:12px;
+	font-weight:bold; 
+	color:#333399;
+	margin-bottom:5px;
+}   
+
+

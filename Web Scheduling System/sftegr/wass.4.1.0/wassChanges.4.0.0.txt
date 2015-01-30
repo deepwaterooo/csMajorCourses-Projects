@@ -1,0 +1,42 @@
+
+Changes from release 3.2.0 to 4.0.0:
+
+1. Added a direct URL to the block at the top of the block page (after block is already created). For non-recurring blocks only.  Kelly. 4/23/2011.
+	Files: block.page.php, styles.css, help.page.php, global.js
+
+2. Added the direct block URL to the info section on the viewcalendar page (day view) for blocks.  Kelly. 6/1/2011. 
+	Files: viewcalendar.page.php, block.js, calendar.css, drawcalendar.js, global.js, styles.css
+
+3. Made "All" the default day type on the block page. Kelly. 5/4/2011.
+	Files: block.page.php
+	
+4. Added a "Txt msg E-mail" field on the create appointment page so that users can put in an email address to have a notification sent to their phones. Need table/PHP changes still. Kelly. 5/4/2011. 
+	Files: apptinfo.page.php, createappt.page.php, global.js 
+
+5. Added an institution logo to the footer. Kelly. 5/21/2011. 
+	Files: homelogo.png, princetonlogo.png, footer.js, styles.css, wassParms.class.php, calendarsetup.page.php, login.page.php, makeappt.page.php, managecalendars.page.php, mlogin.page.php, searchappts.page.php, viewappts.page.php, viewcalendar.page.php
+	
+6. Put "days, hours, minutes" fields instead of just minutes fields for the 3 deadlines on the create/edit block page. Kelly. 5/22/2011.
+	Files: block.page.php, global.js
+
+7. Missing <?php on line 115, from Rhon Fitzwater. Kelly. 5/24/2011.
+	Files apps.page.php
+	
+8. If a user is logged in and has no calendar and manages another calendar: from the viewcalendar page, if user clicks "Create Calendar", the calendar setup page uses the stored session calendar id instead of using the "blank" sent indicating a new calendar.  Fixed this bug by checking isset($cal_id). Kelly. 6/8/11.
+	Files: calendarsetup.page.php, mainmenu.js
+	
+9. PHP added to save/use the text message email field. Serge. 6/9/11.
+	Files: maketables.php, wass.xsd, wassAppointment.class.php and createappt.page.php
+	
+10. If a user has no calendar and manages a calendar, and clicks "create additional calendar" from that managed calendar's create setup page, the additional calendar owner was being set to the logged in user instead of the owner of the managed calendar.  Fixed this bug.  Kelly. 6/15/11.
+	Files: calendarsetup.page.php
+	
+11. Issue with slashes in quoted names "O\\'Brien".  Set using SafeHTML instead of SafeHTMLJS in createappt.page.php.  This change should propagate through to email. Kelly. 6/15/11.
+	Files: createappt.page.php
+
+12. If a user has one and only one personal calendar, the calendar setup button in the main menu always points to that calendar.  Needed to set a hidden variable on all "main menu" pages to hold that personal calendar id.  Manage calendars page takes care of itself. Kelly. 6/26/11.
+	Files: calendarsetup.page.php, makeappt.page.php, searchappts.page.php, viewappts.page.php
+	
+13. Made email messages about appointments easier to read using unordered lists (bullet points). 7/11/2011. Kelly.
+	Files: wassAppointment.class.php.
+	

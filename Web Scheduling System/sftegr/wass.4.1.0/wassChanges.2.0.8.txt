@@ -1,0 +1,13 @@
+
+Changes from release 2.0.7 to 2.0.8:
+
+1. Added a new script, showcals.page.php, which, when invoked with a userid= argument, will do one of three things:  is the user has no calendar, take them to the makeappt page with an error message;  If the user has one calendar, take them to that calendar;  if the user has more than one calendar, take them to makeappt and show them the available calendars.  On 6/23/2010.  Serge.
+	Files: showcals.page.php (new), makeappt.page.php
+	
+	
+		
+
+	
+
+	
+	

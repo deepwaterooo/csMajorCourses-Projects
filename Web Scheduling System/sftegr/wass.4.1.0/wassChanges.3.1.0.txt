@@ -1,0 +1,11 @@
+
+Changes from release 3.0.12 to 3.1.0:
+
+1. Code was added to check for a null elfirst value before setting focus.  On 10/15/2010.  Kelly.
+	Files: many.
+	
+	
+	
+
+
+	

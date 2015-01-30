@@ -1,0 +1,15 @@
+
+Changes from release 3.0.1 to 3.0.2:
+
+1. Added front-end code to check for valid email addresses.  On 9/19/2010.  Kelly.
+	Files: ajax.js, block.page.php, calendarsetup.page.php, createappt.page.php
+2. Added the ability to maintain a local login/directory table for institutions that do not use LDAP or CAS.  On 9/27/2010.  Serge.
+	Files: maketables.php, wassDirectory.class.php, wassParms.class.php, wassParms.template.php
+3. Added Rhon Fitzwater bug fixes/suggestions.  On 11/4/2010. Kelly.
+	Files: block.page.php, cancelappt.page.php, calendarsetup.page.php, removecal.page.php, viewcalendar.page.php, global.js
+	
+	
+	
+
+
+	

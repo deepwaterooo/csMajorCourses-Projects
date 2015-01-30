@@ -1,0 +1,98 @@
+<style>
+table {
+text-align: center;
+border-collapse:collapse;}
+
+table td{
+border: 1px solid #D3D3D3;
+margin: 3px;
+}
+
+table th{
+border: 1px solid #D3D3D3;
+background-color: #EDF3FE;
+font-weight: normal;
+}
+
+table.monthcal {
+border: #D3D3D3 4px solid;
+margin: 1em;
+}
+
+table.monthcal td.selected{
+background-color: #6666FF;
+}
+table.monthcal td.selected a{
+color: white;
+}
+table.daycal {
+border: #D3D3D3 4px solid;
+}
+
+
+table.monthcal td{
+padding: 4px;
+}
+
+td.empty {
+text-align:center;
+}
+
+</style>
+
+<h1>中国日历</h1>
+
+<form tal:attributes="action cal_url">
+
+<input type="hidden" name="day" value="1" />
+公历：
+<select name="year">
+  <option tal:repeat="anyyear python:range(1900,2050)" 
+          tal:content="anyyear"
+          tal:attributes="selected python:anyyear == year"></option>
+</select>年
+
+<select name="month">
+  <option tal:repeat="anymonth python:range(1,13)" 
+          tal:content="anymonth" 
+          tal:attributes="selected python:anymonth == month"></option>
+</select>月
+
+<input type="submit" name="submit" value="查看" />
+</form>
+
+
+<table class="monthcal">
+<tr>
+  <td> <a tal:attributes="href string:$cal_url?year=$l_year&month=$l_month&day=1">&lt;</a> </td>
+  <td colspan="5"> <span tal:content="string:$year-$month"/> <br /><span tal:content="lunal_year_info" />  </td>
+  <td> <a tal:attributes="href string:$cal_url?year=$n_year&month=$n_month&day=1">&gt;</a> </td>
+</tr>
+
+<tr>
+ <th> 一 </th> <th> 二 </th> <th> 三 </th> <th> 四 </th> <th> 五 </th> <th> 六 </th> <th> 日 </th>
+</tr>
+
+
+
+<tr tal:repeat="week cal">
+ <td tal:repeat="c_day week"
+     tal:attributes="class python:c_day == day and 'selected' or ''">
+     <a tal:condition="c_day" tal:content="c_day"
+        tal:attributes="href string:$cal_url?month=$month&year=$year&day=$c_day;"> 2 </a>
+     <br />
+     <span tal:condition="c_day" tal:content="python:lunal_dayinfo[c_day]" />
+ </td>
+</tr>
+
+<tr>
+ <td colspan="7"> <a href="?">今天</a> </td>
+</tr>
+
+</table>
+
+
+<p>
+本软件使用<a href="http://python.org">强大的python</a>开发，使用了<a href="http://code.google.com/p/py-zh"> pyzh阴历支持包 </a>，部署在<a href="http://everydo.com/paas">易度云开发平台</a> 之上。
+<a href="http://everydo.com/apps/zopen.calendar.rst">下载源代码，了解更多...</a>
+</p>

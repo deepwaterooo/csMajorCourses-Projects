@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteRule ^/$ /pages/browsercheck.page.php [R] 
+RewriteRule ^$ /pages/browsercheck.page.php [R]
+RewriteRule ^mobile\s*$ /mobile/views/login.page.php [R]
+RewriteRule ^m\s*$ /mobile/views/login.page.php [R]
+RewriteCond %{SERVER_PORT} !443
+RewriteRule http:(.*) https:$1 [R] 
+Options -Indexes
+<Files *.txt>
+order allow,deny
+deny from all
+</Files>
+php_flag display_errors on
+php_flag display_startup_errors on
+#php_value error_reporting 127
+php_value error_reporting 85

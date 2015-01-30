@@ -1,0 +1,20 @@
+#+latex_class: cn-article
+#+latex_header: \lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false,keywordstyle=\color{blue!70},commentstyle=\color{red!55!green!55!blue!55!},rulesepcolor=\color{red!20!green!20!blue!20!}}
+#+title: cs502 Software engineer Python Project
+#+author: deepwaterooo
+
+* classes 
+** test file
+- test.py
+** classes
+- Application.py
+- Login
+- UserClass
+- CheckBox
+- 
+- 
+- 
+- 
+- 
+- 
+- 

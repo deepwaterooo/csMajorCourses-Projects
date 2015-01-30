@@ -1,0 +1,36 @@
+This file documents the local user facility in WASS.
+
+WASS is designed to work with LDAP and/or CAS systems to authenticate and identify users.  If you are not running an LDAP
+and/or CAS server, and you have a very limited set of users, you can use a new facility added in WASS 3.0.2 that allows you 
+to maintain a table of users and their passwords (along with a limited set of directory information about these users).
+
+This facility is based on the wassUser table that was added to the WASS distribution in release 3.0.2.  This simple
+table consists in a set of rows, one per authenticating user.  WASS has no facilities for editing or managing this table.
+If you want to use this facility, you will need to use a tool such as phpMyAdmin to edit this table (add, edit and remove entries).
+
+The table consists of the following fields:
+
+userid			a text field that stores the login userid
+password		a text field that stores the password for the user
+displayname		a text field that stores the user's full name
+mail			a text field that stores the user's email address
+street			a text field that stores the user's office address
+telephonenumber	a text field that stores the user's telephone number
+
+Note that these field names correspond to the values of the LDAP attributes in the wassParms.class.php file, so do not change them unless
+you also change the field names in the wassParms.class.php file. 
+
+To use this facility, simply enter one ore more users into the table.  The only required field values are the userid and password.
+The other values are used as defaults when the user edits their calendar and/or makes appointments.
+
+When a user goes to login in (and you are not using LDAP or CAS), WASS will look up the user in the wassUser table and, if found, compare
+their entered password with the password stored in the table.  If you need to do more complex password validation (e.g., the password
+values you have entered into the wassUser table are encrypted in some way), then you can code your own password validation by adding code to
+the checkPassword method of the wassLocal table.  To do this, start by copying the wassLocal.template.php file from the admin directory into 
+the classes directory, renaming it to wassLocal.class.php.  Then enter your code into the checkPassword method.  The sample code provided does a 
+simple string comparison of the entered and stored passwords.
+
+If you are using LDAP for authentication, you can also use the local password facility to create "private" WASS users.  If WASS is unable 
+to locate a user in LDAP, it will try to find them in the wassUser table, so you can create a set of private WASS users by making entries 
+in this table.  This will not work if you are using CAS for authentication.
+

@@ -1,0 +1,138 @@
+@charset "UTF-8";
+/* CSS Document */
+html, body {
+	/*font: 12px/15px sans-serif;*/
+	font: .9em sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background: #fff;
+	padding: 0px;
+	color: #000;
+	margin: 0;
+	}
+form {
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	float: none;
+	}
+	
+#sidebar, #footer {
+	display: none;
+	}
+	
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	}
+	
+#content img { 
+	max-width: 250px;
+	}
+	
+.center {
+	width: 100%; !important;
+	text-align: center;
+	}
+	
+a:link, a:visited {
+	text-decoration: underline;
+	color: #0000CC;
+	}
+a:hover, a:active {
+	text-decoration: underline;
+	color: #660066;
+	}
+
+
+
+#header {
+	position:absolute;
+	top: 0px;
+	height: 45px;
+	text-align: left;
+}
+#header, #header a {
+	font-size: 1.3em;
+	color: #000000;
+}
+#headerimage{
+	float:left;
+	width:52px;
+}
+#headertitle {
+	float:left;
+	margin: 18px 0px 0px 6px;
+	whitespace: normal;
+}
+#headertitle a:link, #headertitle a:visited, #headertitle a:hover, #headertitle a:active {
+	text-decoration:none;
+}
+#pageHeader {
+	position:absolute;
+	margin:45px 0px 0px 0px;
+	width:100%;
+	height:40px;
+	background-image:url("../images/titlebkgd.jpg");
+	background-repeat:repeat-x;
+	border-right:solid #E6E6E6 1px;
+	border-bottom:solid #E6E6E6 1px;
+	background-color:#E6E6E6; 
+}
+#pageTitle {
+	float:left;
+	color: #3366CC;
+	text-align: left;
+	font-weight: bold;
+	margin:8px 0px 0px 17px;
+	_margin:5px 0px 0px 10px;
+	vertical-align:middle;
+	letter-spacing: -1px;
+}
+.pageTitle, .pageSubtitle {
+}
+.pageTitle {
+	font-size: 1.6em;
+}
+#content {
+	padding-top:90px;
+	padding-left: 3px;
+	/*background-color: green;*/
+}
+#appointmentlist {
+	/*border: 1px solid #000;*/
+	margin: 0px 2px 2px 0px;
+	padding: 0px 0px 0px 0px;
+	width: 300px;
+}
+#appointmentlist li {
+	margin-bottom: 10px;
+}
+.listdate {
+	font-weight: bold;
+	text-decoration: underline;
+}
+.listtime, .listpersoninfo {
+	font-style: italic;
+}
+.listname {
+	font-weight: bold;
+}
+.listlocation {
+}
+.listpurpose {
+	font-weight: normal;
+}
+
+
+@media only screen and (max-device-width: 480px) { 
+
+	.selector {
+		padding: 0;
+		margin: 0;
+		}
+
+	html {
+		-webkit-text-size-adjust: none;
+	}
+}

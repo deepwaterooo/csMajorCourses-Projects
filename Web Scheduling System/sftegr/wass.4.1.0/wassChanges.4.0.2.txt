@@ -1,0 +1,12 @@
+
+Changes from release 4.0.0 to 4.0.1:
+	
+1. Added a "Loading..." message to the view calendar page in case load time is slow. On 3/28/2012. Kelly.
+	Files: drawcalendar.js, viewcalendar.page.php
+	
+2. CSV file export on Search Appointments page.  On 4/18/2012. Kelly.
+	Files: searchappts.page.php, wassSQL.class.php, wassUtil.class.php
+
+	
+	
+	
