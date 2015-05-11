@@ -1,0 +1,68 @@
+ERROR(16): Symbol 'cat' is not defined.
+ERROR(18): Function 'dog' at line 12 is expecting to return type int but got type bool.
+ERROR(25): Function 'cat' at line 21 is expecting to return type int but return has no return value.
+ERROR(53): Symbol 'x' is already defined at line 52.
+ERROR(54): Symbol 'x' is already defined at line 52.
+ERROR(62): Symbol 'v' is not defined.
+ERROR(64): Expecting Boolean test condition in if statement but got type int.
+ERROR(65): Expecting Boolean test condition in while statement but got type int.
+ERROR(66): Symbol 'ox' is not defined.
+ERROR(66): Expecting Boolean test condition in while statement but got type (null).
+ERROR(68): Cannot use function 'cat' as a simple variable.
+ERROR(69): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(70): '+=' requires operands of type int but rhs is of type bool.
+ERROR(71): '-=' requires operands of type int but lhs is of type bool.
+ERROR(72): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(73): Unary '++' requires an operand of type int but was given type bool.
+ERROR(75): Cannot use array as test condition in if statement.
+ERROR(76): Cannot use array as test condition in while statement.
+ERROR(78): Cannot have a break statement outside of loop.
+ERROR(82): The operation '+' does not work with arrays.
+ERROR(83): The operation '<' does not work with arrays.
+ERROR(84): '<' requires operands of type char or type int but lhs is of type bool.
+ERROR(84): '<' requires operands of type char or type int but rhs is of type bool.
+ERROR(84): The operation '<' does not work with arrays.
+ERROR(86): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(90): '+' requires operands of type int but lhs is of type bool.
+ERROR(92): '*' requires operands of type int but rhs is of type bool.
+ERROR(94): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(95): '+' requires operands of type int but rhs is of type bool.
+ERROR(95): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(96): Unary '-' requires an operand of type int but was given type bool.
+ERROR(98): Cannot index nonarray 'x'.
+ERROR(99): 'and' requires operands of type bool but lhs is of type int.
+ERROR(99): 'and' requires operands of type bool but rhs is of type int.
+ERROR(99): '*' requires operands of type int but rhs is of type bool.
+ERROR(100): Symbol 'y' is not defined.
+ERROR(100): 'and' requires operands of type bool but lhs is of type int.
+ERROR(100): '*' requires operands of type int but rhs is of type bool.
+ERROR(101): 'and' requires operands of type bool but lhs is of type int.
+ERROR(101): 'and' requires operands of type bool but rhs is of type int.
+ERROR(101): '*' requires operands of type int but rhs is of type bool.
+ERROR(101): 'or' requires operands of type bool but rhs is of type int.
+ERROR(103): The operation '*' only works with arrays.
+ERROR(104): 'and' requires operands of type bool but lhs is of type int.
+ERROR(108): Array 'aa' should be indexed by type int but got type bool.
+ERROR(110): Cannot use function 'cat' as a simple variable.
+ERROR(112): Array index is the unindexed array 'aa'.
+ERROR(113): Symbol 'AA' is not defined.
+ERROR(115): Symbol 'meerkat' is not defined.
+ERROR(117): Symbol 'xyzzy' is not defined.
+ERROR(118): Symbol 'meerkat' is not defined.
+ERROR(119): Symbol 'xyzzy' is not defined.
+ERROR(119): 'and' requires operands of type bool but rhs is of type int.
+ERROR(121): Symbol 'flight' is not defined.
+ERROR(121): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(121): Unary '-' requires an operand of type int but was given type bool.
+ERROR(121): Symbol 'uu' is not defined.
+ERROR(121): Symbol 'y' is not defined.
+ERROR(121): '*' requires operands of type int but rhs is of type bool.
+ERROR(123): 'x' is a simple variable and cannot be called.
+ERROR(125): Too many parameters passed for function 'dog' defined on line 12.
+ERROR(126): Symbol 'ibex' is not defined.
+ERROR(128): Expecting type int in parameter 1 of call to 'dog' def------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: basicAll.tm
+Halted
+Bye.

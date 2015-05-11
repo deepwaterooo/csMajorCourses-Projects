@@ -1,0 +1,17 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: nest.tm
+Enter command: 
+command: a 10000
+command: g
+6 7 8 9 10 666 666 8 9 666 11 12 13 14 15 11 12 13 14 15 16 17 18 19 20 16 17 18 19 20 666 666 666 19 666 16 17 18 4 20 Halted
+Last executed cmd:  384: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 384, PC is now 385
+command: e
+EXEC STAT: Number of instructions executed: 636
+EXEC STAT: Instruction memory used: 385
+EXEC STAT: Data memory used: 19
+command: x
+Bye.

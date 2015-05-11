@@ -1,0 +1,17 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: polynum.tm
+Enter command: 
+command: a 10000000
+command: g
+1 6 11111111 2 15 11111111 3 36 11111111 4 225 11111111 5 561 11111111 6 1225 11111111 Halted
+Last executed cmd:  232: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 232, PC is now 233
+command: e
+EXEC STAT: Number of instructions executed: 6961410
+EXEC STAT: Instruction memory used: 233
+EXEC STAT: Data memory used: 14
+command: x
+Bye.

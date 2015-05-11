@@ -1,0 +1,57 @@
+// C-F13
+// C-F09
+int ant()
+{
+    return 0;
+}
+
+bool bat(int x)
+{
+    return x;
+}
+
+  cat(bool x)
+{
+    return;
+}
+
+int dog(int a, b[]; bool c, d[])
+{
+    return a;
+}
+
+int eel;
+bool fox[11];
+
+  gnu()
+{
+	eel = eel + 666;
+	return;
+}
+
+  hog()
+{
+	int ibex;
+}
+
+  junko()
+{
+}
+
+int max(int x, y) {
+    int z;
+
+    if (x>y) z=x; else z=y;
+    return z;
+}
+
+  main()
+{
+    int a[5];
+    bool b[7];
+
+    ant();
+    bat(2);
+    cat(true);
+    dog(3, false, a, b);
+}

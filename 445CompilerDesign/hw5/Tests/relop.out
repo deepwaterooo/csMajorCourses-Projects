@@ -1,0 +1,7 @@
+ERROR(14): Symbol 'x' is already defined at line 6.
+ERROR(15): Symbol 'x' is already defined at line 6.
+ERROR(20): Symbol 'x' is already defined at line 6.
+ERROR(21): Symbol 'x' is already defined at line 6.
+Number of warnings: 0
+Number of errors: 4
+------------------------------------

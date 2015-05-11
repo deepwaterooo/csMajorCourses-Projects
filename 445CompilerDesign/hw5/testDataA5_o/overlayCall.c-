@@ -1,0 +1,10 @@
+void dog();
+
+void main()
+{
+    { 
+        int x[10]; 
+        dog();
+    }        
+    dog();
+}

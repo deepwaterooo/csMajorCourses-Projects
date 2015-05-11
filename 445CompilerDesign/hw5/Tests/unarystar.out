@@ -1,0 +1,7 @@
+ERROR(10): The operation '*' only works with arrays.
+ERROR(11): The operation '*' only works with arrays.
+ERROR(14): The operation '*' only works with arrays.
+ERROR(15): The operation '*' only works with arrays.
+Number of warnings: 0
+Number of errors: 4
+------------------------------------

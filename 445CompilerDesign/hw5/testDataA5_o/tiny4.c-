@@ -1,0 +1,13 @@
+// C-F09
+int wolf(int garion[])
+{
+	int w[2];
+	return garion[1];
+}
+
+void main()
+{
+	int y[3];
+	y[1] = 666;
+	wolf(y);
+}

@@ -1,0 +1,13 @@
+int v:"a dog^Jand cat",
+w:"\\\\ dog comment",
+x:"dog\n\tcat", 
+y:"dog\"\'\s and cats",
+z:"a dog and more\0cats";
+
+int newline:'^J',
+backslash:'\\',
+newline2:'\n',
+tab: '\t',
+doubleQuote:'\"', 
+singleQuote:'\'';
+

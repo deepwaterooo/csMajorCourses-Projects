@@ -1,0 +1,16 @@
+// C-F13
+int dog()
+{
+   static int x:8*8;
+   return x--;
+}
+
+main()
+{
+     output(dog());        
+     output(dog());        
+     output(dog());        
+     output(dog());        
+}
+
+        

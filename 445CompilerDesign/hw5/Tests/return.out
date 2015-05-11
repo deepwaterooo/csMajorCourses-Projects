@@ -1,0 +1,4 @@
+ERROR(8): Function 'cat' at line 6 is expecting no return value, but return has return value.
+Number of warnings: 0
+Number of errors: 1
+------------------------------------

@@ -1,0 +1,18 @@
+// C-F13
+int z;
+
+  cat(int z)
+{
+    output(z);
+    z = 122;
+    output(z);
+}
+
+  main()
+{
+    int z;
+
+    z = 637;
+    cat(z);
+    output(z);
+}

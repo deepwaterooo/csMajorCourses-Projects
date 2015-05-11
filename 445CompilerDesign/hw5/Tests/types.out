@@ -1,0 +1,67 @@
+ERROR(11): '+' requires operands of type int but rhs is of type bool.
+ERROR(12): '+' requires operands of type int but lhs is of type bool.
+ERROR(13): '+' requires operands of type int but lhs is of type bool.
+ERROR(13): '+' requires operands of type int but rhs is of type bool.
+ERROR(15): 'and' requires operands of type bool but lhs is of type int.
+ERROR(15): 'and' requires operands of type bool but rhs is of type int.
+ERROR(16): 'and' requires operands of type bool but lhs is of type int.
+ERROR(17): 'and' requires operands of type bool but rhs is of type int.
+ERROR(21): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(22): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(26): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(27): '==' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(31): '!=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(32): '!=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(35): The operation '+' does not work with arrays.
+ERROR(36): '+' requires operands of type int but rhs is of type bool.
+ERROR(36): The operation '+' does not work with arrays.
+ERROR(37): '+' requires operands of type int but lhs is of type bool.
+ERROR(37): The operation '+' does not work with arrays.
+ERROR(38): '+' requires operands of type int but lhs is of type bool.
+ERROR(38): '+' requires operands of type int but rhs is of type bool.
+ERROR(38): The operation '+' does not work with arrays.
+ERROR(40): 'and' requires operands of type bool but lhs is of type int.
+ERROR(40): 'and' requires operands of type bool but rhs is of type int.
+ERROR(40): The operation 'and' does not work with arrays.
+ERROR(41): 'and' requires operands of type bool but lhs is of type int.
+ERROR(41): The operation 'and' does not work with arrays.
+ERROR(42): 'and' requires operands of type bool but rhs is of type int.
+ERROR(42): The operation 'and' does not work with arrays.
+ERROR(43): The operation 'and' does not work with arrays.
+ERROR(46): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(47): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(51): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(52): '==' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(55): '+' requires operands of type int but lhs is of type bool.
+ERROR(56): '+' requires operands of type int but rhs is of type bool.
+ERROR(57): '+' requires operands of type int but rhs is of type bool.
+ERROR(59): 'or' requires operands of type bool but lhs is of type int.
+ERROR(60): 'or' requires operands of type bool but rhs is of type int.
+ERROR(61): 'or' requires operands of type bool but rhs is of type int.
+ERROR(64): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(65): The operation 'not' does not work with arrays.
+ERROR(66): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(66): The operation 'not' does not work with arrays.
+ERROR(68): Unary '-' requires an operand of type int but was given type bool.
+ERROR(70): Unary '-' requires an operand of type int but was given type bool.
+ERROR(70): The operation '-' does not work with arrays.
+ERROR(71): The operation '-' does not work with arrays.
+ERROR(74): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(75): '>' requires operands of type char or type int but rhs is of type bool.
+ERROR(76): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(77): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(77): '>' requires operands of type char or type int but rhs is of type bool.
+ERROR(80): Expecting Boolean test condition in if statement but got type int.
+ERROR(83): Cannot use array as test condition in if statement.
+ERROR(86): Expecting Boolean test condition in if statement but got type int.
+ERROR(86): Cannot use array as test condition in if statement.
+ERROR(92): Expecting Boolean test condition in if statement but got type int.
+ERROR(95): Expecting Boolean test condition in while statement but got type int.
+ERROR(96): Cannot use array as test condition in while statement.
+ERROR(97): Expecting Boolean test condition in while statement but got type int.
+ERROR(97): Cannot use array as test condition in while statement.
+ERROR(99): Expecting Boolean test condition in while statement but got type int.
+WARNING(3): Expecting to return type int but function 'main' has no return statement.
+Number of warnings: 1
+Number of errors: 63
+------------------------------------

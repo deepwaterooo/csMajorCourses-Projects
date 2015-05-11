@@ -1,0 +1,113 @@
+// 2013-09-10 Wednesday
+
+NFA --> DFA
+Closure Operator/Operation
+
+# check the posted code, EClosure, Ne(T, a)
+
+def EClosure(Set T):
+
+    
+def EClosure(Set T):
+    Set Start
+
+    Start = 
+
+
+Context Free grammar
+the problems with the grammers, write bison grammers for C- languate for hw2
+
+
+// 09/12/2013 Wed
+
+nonterm <____> : is defined as ::=
+alternation:     |
+contatenation:   adjacent terminals and non-terminals
+
+Productions rules for substitution:
+
+sentence in launguage is <exp>
+
+<exp> ::= <exp> <op> <exp>  // production 1a
+| (<exp>)                   // production 1b
+| num                       // production 1c
+;
+
+<op> ::= + //2a
+|-  //2b
+|*  //2c
+;
+
+(34 - 3) * 4
+1a: <exp> <op> <exp>
+1b: ( <exp> ) <op> <exp>
+1a: ( <exp> <op> <exp> ) <op> <exp>
+1c: ( num <op> num ) <op> num
+2b: ( num - num ) <op> num
+2c: ( num - num ) * num
+
+associativity & precedence: 
+   %assoc
+
+   %left
+   %right
+
+<exp> ::= <exp> - <term>
+| <term>
+;
+<exp> ::= <term> ^ <exp>  
+| <term>
+;
+<term> ::= 
+;
+
+Higher precedence grammers are listed slightly belowed in the grammer rules.
+
+hw2:
+build trees;
+example compiler in the book serves as example for hw2!!!
+
+<vardecl> ::= <subtype> <csl> ";"
+<subtype> ::= <type>
+| STATIC <subtype> 
+
+
+// IF statement
+
+<stat> ::= <ifstat> 
+| <other>
+
+<ifstat> ::= IF '(' <exp> ')' <stat>
+| IF '(' <exp> ')' <stat> ELSE <stat>
+
+
+// 09-16-2013 Monday
+// dangling else problem
+
+<stat> ::= <full>
+       | <part>
+       | if ( <exp> ) <stat>
+
+       | if ( <exp> ) <full> else <part>
+       | if ( <exp> ) <full> else <full>
+
+       | if ( <exp> ) <full> else <stat>
+       | <other>
+<full> ::= if ( <exp> ) <full> else <full>
+       | <other>
+<part> ::= if ( <exp> ) <stat>
+       | if ( <exp> ) <full> else <part>
+
+
+// modified version:
+
+<stat> ::= if ( <exp> ) <stat>
+       | if ( <exp> ) <full> else <stat>
+       | <other>
+<full> ::= if ( <exp> ) <full> else <full>
+       | <other>
+
+
+// endif statement
+// start with chapter 4, top-down parsing
+bison flex right now bottom-up approach

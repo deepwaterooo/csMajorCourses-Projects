@@ -1,0 +1,34 @@
+#+LaTeX_HEADER: \usepackage{CJKutf8}
+#+LaTeX_HEADER: \usepackage{listings}
+#+LaTeX_HEADER: \begin{CJK}{UTF8}{gbsn}
+
+* ABC我是中国人
+** dfkljdf
+*** gkhfklj
+- this is heyan heyan 
+- goo do to go goo goo good good. 
+*** the second one
+- this is heyan
+- this is my sister
+- 我是中国人，何必学外文 
+** i am god							 
+** this is heyanSSSS
+   SSSSSSSSSSSsSSSSSSSSSSSSSSSSSSS
+* DEF
+** heyan
+\begin{lstlisting}[language=c++]
+int main() {
+    int a;
+}
+\end{lstlisting}
+** this is heyan again
+*** this is correctSS
+SS
+** this is correct
+SSSSSSSSSS
+- dklfjdl;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;s
+** this i sgood
+- fldkjjjjjjjjjs;                                    dlkfjdskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+- dklggggggggggggggggggggf
+- dlkgjjjjjjjjjjjjjjjjjjjj
+

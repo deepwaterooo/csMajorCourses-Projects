@@ -1,0 +1,82 @@
+\documentclass[10pt,leqno]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{multirow}
+
+%\usepackage{geometry}
+%\geometry{left=0cm,right=0cm,top=2cm,bottom=2cm}
+
+\usepackage{CJKutf8}
+\usepackage{multicol}
+\usepackage{listings}
+
+\usepackage{amsmath,amssymb,amsfonts} % Typical maths resource packages
+\usepackage{graphics}                 % Packages to allow inclusion of graphics
+%\usepackage{color}                    % For creating coloured text and background
+\usepackage{xcolor}                    % For creating coloured text and background
+\usepackage{hyperref}                 % For creating hyperlinks in cross references
+
+\parindent 1cm
+\parskip 0.2cm
+\topmargin 0.1cm
+\oddsidemargin 1cm
+\evensidemargin -0.5cm
+\textwidth 17cm
+\textheight 23cm
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+\def\R{\mathbb{ R}}
+\def\S{\mathbb{ S}}
+\def\I{\mathbb{ I}}
+\makeindex
+
+\title{Pointer, Function Pointers \& Class meember Function Pointers}
+\author{Heyan Huang\\
+{\small\em \copyright \  Draft date \today }}
+\date{ }
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+\maketitle
+
+\lstset{language=c++,
+numbers=left, 
+numberstyle=\tiny,
+basicstyle=\ttfamily,
+tabsize=4,
+%keywordstyle=\color{blue!70}, commentstyle=\color{red!55!green!55!blue!55}, 
+%frame=shadowbox, 
+%rulesepcolor=\color{red!20!green!20!blue!20},
+escapeinside=``, 
+%xleftmargin=0em,xrightmargin=0em, aboveskip=0.5em
+extendedchars=false %这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+}
+
+
+% \addcontentsline{toc}{chapter}{Contents}
+\pagenumbering{roman}
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+\frontmatter
+\tableofcontents
+%\include{preface}
+
+\mainmatter
+\include{ch1}
+%\include{ch2}
+%\include{ch3}
+%\include{ch4}
+%\include{ch5}
+
+\backmatter
+
+\end{CJK}
+\end{document}

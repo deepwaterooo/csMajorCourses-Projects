@@ -1,0 +1,46 @@
+take1(int s);
+
+int intvalue();
+
+novalue();
+
+main()
+{
+        int x;
+        int x:undef;
+        int y[3];
+
+        x+x;
+        x+undef;
+        x+novalue();
+        undef+x;
+        novalue()+x;
+        undef+undef;
+        novalue()+novalue();
+
+        x+x+x;
+        x+undef+x;
+        x+novalue()+x;
+        undef+x+x;
+        novalue()+x+x;
+        undef+undef+x;
+        novalue()+novalue()+x;
+
+        x = undef;
+        y = undef;
+        undef = x;
+        undef = y;
+
+        undef(x+false, 3=='c', *7);
+        x(x+false, 3=='c', *7);
+
+        novalue = 3;
+        intvalue = 3;
+        
+        take1(novalue());
+        take1(novalue);
+        take1(undef());
+        take1(undef);
+        take1(intvalue());
+        take1(intvalue);
+}

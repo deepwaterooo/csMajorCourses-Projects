@@ -1,0 +1,11 @@
+// C-F13
+// C-F09
+  main()
+{
+    output(true);
+    outputb(666);
+    outnl();
+
+    return;
+}
+

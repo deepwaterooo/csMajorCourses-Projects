@@ -1,0 +1,2725 @@
+Terminals unused in grammar
+
+   QUIT
+   E
+
+
+State 70 conflicts: 23 reduce/reduce
+State 71 conflicts: 23 reduce/reduce
+State 75 conflicts: 23 reduce/reduce
+State 76 conflicts: 23 reduce/reduce
+State 77 conflicts: 23 reduce/reduce
+State 161 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: declaration_list
+
+    2 declaration_list: declaration_list declaration
+    3                 | declaration
+
+    4 declaration: var_declaration
+    5            | fun_declaration
+
+    6 var_declaration: type_specifier var_decl_list semicolon
+
+    7 scoped_var_declaration: scoped_type_specifier var_decl_list semicolon
+
+    8 var_decl_list: var_decl_list comma var_decl_initialize
+    9              | var_decl_initialize
+
+   10 var_decl_initialize: var_decl_id
+   11                    | var_decl_id colon simple_expression
+
+   12 var_decl_id: ID id_exp0
+
+   13 id_exp0: /* empty */
+   14        | leftp3 NUMCONST rightp3
+
+   15 scoped_type_specifier: STATIC type_specifier
+   16                      | type_specifier
+
+   17 type_specifier: INT
+   18               | BOOL
+   19               | CHAR
+
+   20 fun_declaration: type_specifier ID leftp params rightp statement
+   21                | ID leftp params rightp statement
+
+   22 params: param_list
+   23       | /* empty */
+
+   24 param_list: param_list semicolon param_type_list
+   25           | param_type_list
+
+   26 param_type_list: type_specifier param_id_list
+
+   27 param_id_list: param_id_list comma param_id
+   28              | param_id
+
+   29 param_id: ID
+   30         | ID leftp3 mid_exp rightp3
+
+   31 mid_exp: NUMCONST
+   32        | /* empty */
+
+   33 statement: expression_stmt
+   34          | compound_stmt
+   35          | selection_stmt
+   36          | iteration_stmt
+   37          | return_stmt
+   38          | break_stmt
+
+   39 compound_stmt: leftp2 local_declarations statement_list rightp2
+
+   40 local_declarations: local_declarations scoped_var_declaration
+   41                   | /* empty */
+
+   42 statement_list: statement_list statement
+   43               | /* empty */
+
+   44 expression_stmt: expression semicolon
+   45                | semicolon
+
+   46 selection_stmt: matched
+   47               | unmatched
+
+   48 matched: IF leftp simple_expression rightp matched ELSE matched
+   49        | expression_stmt
+   50        | compound_stmt
+   51        | iteration_stmt
+   52        | return_stmt
+   53        | break_stmt
+
+   54 unmatched: IF leftp simple_expression rightp unmatched_exp
+
+   55 unmatched_exp: matched_exp
+   56              | unmatched
+
+   57 matched_exp: matched matched_else_exp
+
+   58 matched_else_exp: /* empty */
+   59                 | ELSE unmatched
+
+   60 iteration_stmt: WHILE leftp simple_expression rightp statement
+   61               | FOREACH leftp mutable IN simple_expression rightp statement
+
+   62 return_stmt: RETURN semicolon
+   63            | RETURN expression semicolon
+
+   64 break_stmt: BREAK semicolon
+
+   65 expression: mutable equal expression
+   66           | mutable PASSIGN expression
+   67           | mutable MASSIGN expression
+   68           | mutable INC
+   69           | mutable DEC
+   70           | simple_expression
+
+   71 simple_expression: simple_expression OR and_expression
+   72                  | and_expression
+
+   73 and_expression: and_expression AND unary_rel_expression
+   74               | unary_rel_expression
+
+   75 unary_rel_expression: NOT unary_rel_expression
+   76                     | rel_expression
+
+   77 rel_expression: sum_expression sum_expression_rest
+
+   78 sum_expression_rest: /* empty */
+   79                    | relop sum_expression
+
+   80 relop: lt
+   81      | gt
+   82      | LEQ
+   83      | GEQ
+   84      | EQ
+   85      | NEQ
+
+   86 sum_expression: sum_expression sumop term
+   87               | term
+
+   88 sumop: plus
+   89      | minus
+
+   90 term: term mulop unary_expression
+   91     | unary_expression
+
+   92 mulop: multiply
+   93      | divide
+   94      | mod
+
+   95 unary_expression: unaryop unary_expression
+   96                 | factor
+
+   97 unaryop: minus
+   98        | multiply
+
+   99 factor: immutable
+  100       | mutable
+
+  101 mutable: ID id_exp39
+
+  102 id_exp39: /* empty */
+  103         | leftp3 expression rightp3
+
+  104 immutable: leftp expression rightp
+  105          | call
+  106          | constant
+
+  107 call: ID leftp args rightp
+
+  108 args: arg_list
+  109     | /* empty */
+
+  110 arg_list: expression comma arg_list
+  111         | expression
+
+  112 constant: NUMCONST
+  113         | CHARCONST
+  114         | STRINGCONST
+  115         | TRUE
+  116         | FALSE
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+ID (258) 12 20 21 29 30 101 107
+QUIT (259)
+CHARCONST (260) 113
+NUMCONST (261) 14 31 112
+STRINGCONST (262) 114
+IF (263) 48 54
+ELSE (264) 48 59
+WHILE (265) 60
+FOREACH (266) 61
+IN (267) 61
+STATIC (268) 15
+INT (269) 17
+BOOL (270) 18
+CHAR (271) 19
+E (272)
+TRUE (273) 115
+FALSE (274) 116
+RETURN (275) 62 63
+BREAK (276) 64
+OR (277) 71
+NOT (278) 75
+INC (279) 68
+DEC (280) 69
+LEQ (281) 82
+GEQ (282) 83
+EQ (283) 84
+NEQ (284) 85
+PASSIGN (285) 66
+MASSIGN (286) 67
+lt (287) 80
+gt (288) 81
+equal (289) 65
+plus (290) 88
+minus (291) 89 97
+multiply (292) 92 98
+divide (293) 93
+mod (294) 94
+comma (295) 8 27 110
+semicolon (296) 6 7 24 44 45 62 63 64
+colon (297) 11
+leftp2 (298) 39
+leftp (299) 20 21 48 54 60 61 104 107
+leftp3 (300) 14 30 103
+rightp2 (301) 39
+rightp (302) 20 21 48 54 60 61 104 107
+rightp3 (303) 14 30 103
+AND (304) 73
+
+
+Nonterminals, with rules where they appear
+
+$accept (50)
+    on left: 0
+program (51)
+    on left: 1, on right: 0
+declaration_list (52)
+    on left: 2 3, on right: 1 2
+declaration (53)
+    on left: 4 5, on right: 2 3
+var_declaration (54)
+    on left: 6, on right: 4
+scoped_var_declaration (55)
+    on left: 7, on right: 40
+var_decl_list (56)
+    on left: 8 9, on right: 6 7 8
+var_decl_initialize (57)
+    on left: 10 11, on right: 8 9
+var_decl_id (58)
+    on left: 12, on right: 10 11
+id_exp0 (59)
+    on left: 13 14, on right: 12
+scoped_type_specifier (60)
+    on left: 15 16, on right: 7
+type_specifier (61)
+    on left: 17 18 19, on right: 6 15 16 20 26
+fun_declaration (62)
+    on left: 20 21, on right: 5
+params (63)
+    on left: 22 23, on right: 20 21
+param_list (64)
+    on left: 24 25, on right: 22 24
+param_type_list (65)
+    on left: 26, on right: 24 25
+param_id_list (66)
+    on left: 27 28, on right: 26 27
+param_id (67)
+    on left: 29 30, on right: 27 28
+mid_exp (68)
+    on left: 31 32, on right: 30
+statement (69)
+    on left: 33 34 35 36 37 38, on right: 20 21 42 60 61
+compound_stmt (70)
+    on left: 39, on right: 34 50
+local_declarations (71)
+    on left: 40 41, on right: 39 40
+statement_list (72)
+    on left: 42 43, on right: 39 42
+expression_stmt (73)
+    on left: 44 45, on right: 33 49
+selection_stmt (74)
+    on left: 46 47, on right: 35
+matched (75)
+    on left: 48 49 50 51 52 53, on right: 46 48 57
+unmatched (76)
+    on left: 54, on right: 47 56 59
+unmatched_exp (77)
+    on left: 55 56, on right: 54
+matched_exp (78)
+    on left: 57, on right: 55
+matched_else_exp (79)
+    on left: 58 59, on right: 57
+iteration_stmt (80)
+    on left: 60 61, on right: 36 51
+return_stmt (81)
+    on left: 62 63, on right: 37 52
+break_stmt (82)
+    on left: 64, on right: 38 53
+expression (83)
+    on left: 65 66 67 68 69 70, on right: 44 63 65 66 67 103 104 110
+    111
+simple_expression (84)
+    on left: 71 72, on right: 11 48 54 60 61 70 71
+and_expression (85)
+    on left: 73 74, on right: 71 72 73
+unary_rel_expression (86)
+    on left: 75 76, on right: 73 74 75
+rel_expression (87)
+    on left: 77, on right: 76
+sum_expression_rest (88)
+    on left: 78 79, on right: 77
+relop (89)
+    on left: 80 81 82 83 84 85, on right: 79
+sum_expression (90)
+    on left: 86 87, on right: 77 79 86
+sumop (91)
+    on left: 88 89, on right: 86
+term (92)
+    on left: 90 91, on right: 86 87 90
+mulop (93)
+    on left: 92 93 94, on right: 90
+unary_expression (94)
+    on left: 95 96, on right: 90 91 95
+unaryop (95)
+    on left: 97 98, on right: 95
+factor (96)
+    on left: 99 100, on right: 96
+mutable (97)
+    on left: 101, on right: 61 65 66 67 68 69 100
+id_exp39 (98)
+    on left: 102 103, on right: 101
+immutable (99)
+    on left: 104 105 106, on right: 99
+call (100)
+    on left: 107, on right: 105
+args (101)
+    on left: 108 109, on right: 107
+arg_list (102)
+    on left: 110 111, on right: 108 110
+constant (103)
+    on left: 112 113 114 115 116, on right: 106
+
+
+state 0
+
+    0 $accept: . program $end
+
+    ID    shift, and go to state 1
+    INT   shift, and go to state 2
+    BOOL  shift, and go to state 3
+    CHAR  shift, and go to state 4
+
+    program           go to state 5
+    declaration_list  go to state 6
+    declaration       go to state 7
+    var_declaration   go to state 8
+    type_specifier    go to state 9
+    fun_declaration   go to state 10
+
+
+state 1
+
+   21 fun_declaration: ID . leftp params rightp statement
+
+    leftp  shift, and go to state 11
+
+
+state 2
+
+   17 type_specifier: INT .
+
+    $default  reduce using rule 17 (type_specifier)
+
+
+state 3
+
+   18 type_specifier: BOOL .
+
+    $default  reduce using rule 18 (type_specifier)
+
+
+state 4
+
+   19 type_specifier: CHAR .
+
+    $default  reduce using rule 19 (type_specifier)
+
+
+state 5
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 12
+
+
+state 6
+
+    1 program: declaration_list .
+    2 declaration_list: declaration_list . declaration
+
+    ID    shift, and go to state 1
+    INT   shift, and go to state 2
+    BOOL  shift, and go to state 3
+    CHAR  shift, and go to state 4
+
+    $default  reduce using rule 1 (program)
+
+    declaration      go to state 13
+    var_declaration  go to state 8
+    type_specifier   go to state 9
+    fun_declaration  go to state 10
+
+
+state 7
+
+    3 declaration_list: declaration .
+
+    $default  reduce using rule 3 (declaration_list)
+
+
+state 8
+
+    4 declaration: var_declaration .
+
+    $default  reduce using rule 4 (declaration)
+
+
+state 9
+
+    6 var_declaration: type_specifier . var_decl_list semicolon
+   20 fun_declaration: type_specifier . ID leftp params rightp statement
+
+    ID  shift, and go to state 14
+
+    var_decl_list        go to state 15
+    var_decl_initialize  go to state 16
+    var_decl_id          go to state 17
+
+
+state 10
+
+    5 declaration: fun_declaration .
+
+    $default  reduce using rule 5 (declaration)
+
+
+state 11
+
+   21 fun_declaration: ID leftp . params rightp statement
+
+    INT   shift, and go to state 2
+    BOOL  shift, and go to state 3
+    CHAR  shift, and go to state 4
+
+    $default  reduce using rule 23 (params)
+
+    type_specifier   go to state 18
+    params           go to state 19
+    param_list       go to state 20
+    param_type_list  go to state 21
+
+
+state 12
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+state 13
+
+    2 declaration_list: declaration_list declaration .
+
+    $default  reduce using rule 2 (declaration_list)
+
+
+state 14
+
+   12 var_decl_id: ID . id_exp0
+   20 fun_declaration: type_specifier ID . leftp params rightp statement
+
+    leftp   shift, and go to state 22
+    leftp3  shift, and go to state 23
+
+    $default  reduce using rule 13 (id_exp0)
+
+    id_exp0  go to state 24
+
+
+state 15
+
+    6 var_declaration: type_specifier var_decl_list . semicolon
+    8 var_decl_list: var_decl_list . comma var_decl_initialize
+
+    comma      shift, and go to state 25
+    semicolon  shift, and go to state 26
+
+
+state 16
+
+    9 var_decl_list: var_decl_initialize .
+
+    $default  reduce using rule 9 (var_decl_list)
+
+
+state 17
+
+   10 var_decl_initialize: var_decl_id .
+   11                    | var_decl_id . colon simple_expression
+
+    colon  shift, and go to state 27
+
+    $default  reduce using rule 10 (var_decl_initialize)
+
+
+state 18
+
+   26 param_type_list: type_specifier . param_id_list
+
+    ID  shift, and go to state 28
+
+    param_id_list  go to state 29
+    param_id       go to state 30
+
+
+state 19
+
+   21 fun_declaration: ID leftp params . rightp statement
+
+    rightp  shift, and go to state 31
+
+
+state 20
+
+   22 params: param_list .
+   24 param_list: param_list . semicolon param_type_list
+
+    semicolon  shift, and go to state 32
+
+    $default  reduce using rule 22 (params)
+
+
+state 21
+
+   25 param_list: param_type_list .
+
+    $default  reduce using rule 25 (param_list)
+
+
+state 22
+
+   20 fun_declaration: type_specifier ID leftp . params rightp statement
+
+    INT   shift, and go to state 2
+    BOOL  shift, and go to state 3
+    CHAR  shift, and go to state 4
+
+    $default  reduce using rule 23 (params)
+
+    type_specifier   go to state 18
+    params           go to state 33
+    param_list       go to state 20
+    param_type_list  go to state 21
+
+
+state 23
+
+   14 id_exp0: leftp3 . NUMCONST rightp3
+
+    NUMCONST  shift, and go to state 34
+
+
+state 24
+
+   12 var_decl_id: ID id_exp0 .
+
+    $default  reduce using rule 12 (var_decl_id)
+
+
+state 25
+
+    8 var_decl_list: var_decl_list comma . var_decl_initialize
+
+    ID  shift, and go to state 35
+
+    var_decl_initialize  go to state 36
+    var_decl_id          go to state 17
+
+
+state 26
+
+    6 var_declaration: type_specifier var_decl_list semicolon .
+
+    $default  reduce using rule 6 (var_declaration)
+
+
+state 27
+
+   11 var_decl_initialize: var_decl_id colon . simple_expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    simple_expression     go to state 47
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 56
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 28
+
+   29 param_id: ID .
+   30         | ID . leftp3 mid_exp rightp3
+
+    leftp3  shift, and go to state 60
+
+    $default  reduce using rule 29 (param_id)
+
+
+state 29
+
+   26 param_type_list: type_specifier param_id_list .
+   27 param_id_list: param_id_list . comma param_id
+
+    comma  shift, and go to state 61
+
+    $default  reduce using rule 26 (param_type_list)
+
+
+state 30
+
+   28 param_id_list: param_id .
+
+    $default  reduce using rule 28 (param_id_list)
+
+
+state 31
+
+   21 fun_declaration: ID leftp params rightp . statement
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    IF           shift, and go to state 62
+    WHILE        shift, and go to state 63
+    FOREACH      shift, and go to state 64
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    RETURN       shift, and go to state 65
+    BREAK        shift, and go to state 66
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    semicolon    shift, and go to state 67
+    leftp2       shift, and go to state 68
+    leftp        shift, and go to state 46
+
+    statement             go to state 69
+    compound_stmt         go to state 70
+    expression_stmt       go to state 71
+    selection_stmt        go to state 72
+    matched               go to state 73
+    unmatched             go to state 74
+    iteration_stmt        go to state 75
+    return_stmt           go to state 76
+    break_stmt            go to state 77
+    expression            go to state 78
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 32
+
+   24 param_list: param_list semicolon . param_type_list
+
+    INT   shift, and go to state 2
+    BOOL  shift, and go to state 3
+    CHAR  shift, and go to state 4
+
+    type_specifier   go to state 18
+    param_type_list  go to state 81
+
+
+state 33
+
+   20 fun_declaration: type_specifier ID leftp params . rightp statement
+
+    rightp  shift, and go to state 82
+
+
+state 34
+
+   14 id_exp0: leftp3 NUMCONST . rightp3
+
+    rightp3  shift, and go to state 83
+
+
+state 35
+
+   12 var_decl_id: ID . id_exp0
+
+    leftp3  shift, and go to state 23
+
+    $default  reduce using rule 13 (id_exp0)
+
+    id_exp0  go to state 24
+
+
+state 36
+
+    8 var_decl_list: var_decl_list comma var_decl_initialize .
+
+    $default  reduce using rule 8 (var_decl_list)
+
+
+state 37
+
+  101 mutable: ID . id_exp39
+  107 call: ID . leftp args rightp
+
+    leftp   shift, and go to state 84
+    leftp3  shift, and go to state 85
+
+    $default  reduce using rule 102 (id_exp39)
+
+    id_exp39  go to state 86
+
+
+state 38
+
+  113 constant: CHARCONST .
+
+    $default  reduce using rule 113 (constant)
+
+
+state 39
+
+  112 constant: NUMCONST .
+
+    $default  reduce using rule 112 (constant)
+
+
+state 40
+
+  114 constant: STRINGCONST .
+
+    $default  reduce using rule 114 (constant)
+
+
+state 41
+
+  115 constant: TRUE .
+
+    $default  reduce using rule 115 (constant)
+
+
+state 42
+
+  116 constant: FALSE .
+
+    $default  reduce using rule 116 (constant)
+
+
+state 43
+
+   75 unary_rel_expression: NOT . unary_rel_expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    unary_rel_expression  go to state 87
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 56
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 44
+
+   97 unaryop: minus .
+
+    $default  reduce using rule 97 (unaryop)
+
+
+state 45
+
+   98 unaryop: multiply .
+
+    $default  reduce using rule 98 (unaryop)
+
+
+state 46
+
+  104 immutable: leftp . expression rightp
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    expression            go to state 88
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 47
+
+   11 var_decl_initialize: var_decl_id colon simple_expression .
+   71 simple_expression: simple_expression . OR and_expression
+
+    OR  shift, and go to state 89
+
+    $default  reduce using rule 11 (var_decl_initialize)
+
+
+state 48
+
+   72 simple_expression: and_expression .
+   73 and_expression: and_expression . AND unary_rel_expression
+
+    AND  shift, and go to state 90
+
+    $default  reduce using rule 72 (simple_expression)
+
+
+state 49
+
+   74 and_expression: unary_rel_expression .
+
+    $default  reduce using rule 74 (and_expression)
+
+
+state 50
+
+   76 unary_rel_expression: rel_expression .
+
+    $default  reduce using rule 76 (unary_rel_expression)
+
+
+state 51
+
+   77 rel_expression: sum_expression . sum_expression_rest
+   86 sum_expression: sum_expression . sumop term
+
+    LEQ    shift, and go to state 91
+    GEQ    shift, and go to state 92
+    EQ     shift, and go to state 93
+    NEQ    shift, and go to state 94
+    lt     shift, and go to state 95
+    gt     shift, and go to state 96
+    plus   shift, and go to state 97
+    minus  shift, and go to state 98
+
+    $default  reduce using rule 78 (sum_expression_rest)
+
+    sum_expression_rest  go to state 99
+    relop                go to state 100
+    sumop                go to state 101
+
+
+state 52
+
+   87 sum_expression: term .
+   90 term: term . mulop unary_expression
+
+    multiply  shift, and go to state 102
+    divide    shift, and go to state 103
+    mod       shift, and go to state 104
+
+    $default  reduce using rule 87 (sum_expression)
+
+    mulop  go to state 105
+
+
+state 53
+
+   91 term: unary_expression .
+
+    $default  reduce using rule 91 (term)
+
+
+state 54
+
+   95 unary_expression: unaryop . unary_expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    unary_expression  go to state 106
+    unaryop           go to state 54
+    factor            go to state 55
+    mutable           go to state 56
+    immutable         go to state 57
+    call              go to state 58
+    constant          go to state 59
+
+
+state 55
+
+   96 unary_expression: factor .
+
+    $default  reduce using rule 96 (unary_expression)
+
+
+state 56
+
+  100 factor: mutable .
+
+    $default  reduce using rule 100 (factor)
+
+
+state 57
+
+   99 factor: immutable .
+
+    $default  reduce using rule 99 (factor)
+
+
+state 58
+
+  105 immutable: call .
+
+    $default  reduce using rule 105 (immutable)
+
+
+state 59
+
+  106 immutable: constant .
+
+    $default  reduce using rule 106 (immutable)
+
+
+state 60
+
+   30 param_id: ID leftp3 . mid_exp rightp3
+
+    NUMCONST  shift, and go to state 107
+
+    $default  reduce using rule 32 (mid_exp)
+
+    mid_exp  go to state 108
+
+
+state 61
+
+   27 param_id_list: param_id_list comma . param_id
+
+    ID  shift, and go to state 28
+
+    param_id  go to state 109
+
+
+state 62
+
+   48 matched: IF . leftp simple_expression rightp matched ELSE matched
+   54 unmatched: IF . leftp simple_expression rightp unmatched_exp
+
+    leftp  shift, and go to state 110
+
+
+state 63
+
+   60 iteration_stmt: WHILE . leftp simple_expression rightp statement
+
+    leftp  shift, and go to state 111
+
+
+state 64
+
+   61 iteration_stmt: FOREACH . leftp mutable IN simple_expression rightp statement
+
+    leftp  shift, and go to state 112
+
+
+state 65
+
+   62 return_stmt: RETURN . semicolon
+   63            | RETURN . expression semicolon
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    semicolon    shift, and go to state 113
+    leftp        shift, and go to state 46
+
+    expression            go to state 114
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 66
+
+   64 break_stmt: BREAK . semicolon
+
+    semicolon  shift, and go to state 115
+
+
+state 67
+
+   45 expression_stmt: semicolon .
+
+    $default  reduce using rule 45 (expression_stmt)
+
+
+state 68
+
+   39 compound_stmt: leftp2 . local_declarations statement_list rightp2
+
+    $default  reduce using rule 41 (local_declarations)
+
+    local_declarations  go to state 116
+
+
+state 69
+
+   21 fun_declaration: ID leftp params rightp statement .
+
+    $default  reduce using rule 21 (fun_declaration)
+
+
+state 70
+
+   34 statement: compound_stmt .
+   50 matched: compound_stmt .
+
+    $end         reduce using rule 34 (statement)
+    $end         [reduce using rule 50 (matched)]
+    ID           reduce using rule 34 (statement)
+    ID           [reduce using rule 50 (matched)]
+    CHARCONST    reduce using rule 34 (statement)
+    CHARCONST    [reduce using rule 50 (matched)]
+    NUMCONST     reduce using rule 34 (statement)
+    NUMCONST     [reduce using rule 50 (matched)]
+    STRINGCONST  reduce using rule 34 (statement)
+    STRINGCONST  [reduce using rule 50 (matched)]
+    IF           reduce using rule 34 (statement)
+    IF           [reduce using rule 50 (matched)]
+    ELSE         reduce using rule 34 (statement)
+    ELSE         [reduce using rule 50 (matched)]
+    WHILE        reduce using rule 34 (statement)
+    WHILE        [reduce using rule 50 (matched)]
+    FOREACH      reduce using rule 34 (statement)
+    FOREACH      [reduce using rule 50 (matched)]
+    INT          reduce using rule 34 (statement)
+    INT          [reduce using rule 50 (matched)]
+    BOOL         reduce using rule 34 (statement)
+    BOOL         [reduce using rule 50 (matched)]
+    CHAR         reduce using rule 34 (statement)
+    CHAR         [reduce using rule 50 (matched)]
+    TRUE         reduce using rule 34 (statement)
+    TRUE         [reduce using rule 50 (matched)]
+    FALSE        reduce using rule 34 (statement)
+    FALSE        [reduce using rule 50 (matched)]
+    RETURN       reduce using rule 34 (statement)
+    RETURN       [reduce using rule 50 (matched)]
+    BREAK        reduce using rule 34 (statement)
+    BREAK        [reduce using rule 50 (matched)]
+    NOT          reduce using rule 34 (statement)
+    NOT          [reduce using rule 50 (matched)]
+    minus        reduce using rule 34 (statement)
+    minus        [reduce using rule 50 (matched)]
+    multiply     reduce using rule 34 (statement)
+    multiply     [reduce using rule 50 (matched)]
+    semicolon    reduce using rule 34 (statement)
+    semicolon    [reduce using rule 50 (matched)]
+    leftp2       reduce using rule 34 (statement)
+    leftp2       [reduce using rule 50 (matched)]
+    leftp        reduce using rule 34 (statement)
+    leftp        [reduce using rule 50 (matched)]
+    rightp2      reduce using rule 34 (statement)
+    rightp2      [reduce using rule 50 (matched)]
+    $default     reduce using rule 34 (statement)
+
+
+state 71
+
+   33 statement: expression_stmt .
+   49 matched: expression_stmt .
+
+    $end         reduce using rule 33 (statement)
+    $end         [reduce using rule 49 (matched)]
+    ID           reduce using rule 33 (statement)
+    ID           [reduce using rule 49 (matched)]
+    CHARCONST    reduce using rule 33 (statement)
+    CHARCONST    [reduce using rule 49 (matched)]
+    NUMCONST     reduce using rule 33 (statement)
+    NUMCONST     [reduce using rule 49 (matched)]
+    STRINGCONST  reduce using rule 33 (statement)
+    STRINGCONST  [reduce using rule 49 (matched)]
+    IF           reduce using rule 33 (statement)
+    IF           [reduce using rule 49 (matched)]
+    ELSE         reduce using rule 33 (statement)
+    ELSE         [reduce using rule 49 (matched)]
+    WHILE        reduce using rule 33 (statement)
+    WHILE        [reduce using rule 49 (matched)]
+    FOREACH      reduce using rule 33 (statement)
+    FOREACH      [reduce using rule 49 (matched)]
+    INT          reduce using rule 33 (statement)
+    INT          [reduce using rule 49 (matched)]
+    BOOL         reduce using rule 33 (statement)
+    BOOL         [reduce using rule 49 (matched)]
+    CHAR         reduce using rule 33 (statement)
+    CHAR         [reduce using rule 49 (matched)]
+    TRUE         reduce using rule 33 (statement)
+    TRUE         [reduce using rule 49 (matched)]
+    FALSE        reduce using rule 33 (statement)
+    FALSE        [reduce using rule 49 (matched)]
+    RETURN       reduce using rule 33 (statement)
+    RETURN       [reduce using rule 49 (matched)]
+    BREAK        reduce using rule 33 (statement)
+    BREAK        [reduce using rule 49 (matched)]
+    NOT          reduce using rule 33 (statement)
+    NOT          [reduce using rule 49 (matched)]
+    minus        reduce using rule 33 (statement)
+    minus        [reduce using rule 49 (matched)]
+    multiply     reduce using rule 33 (statement)
+    multiply     [reduce using rule 49 (matched)]
+    semicolon    reduce using rule 33 (statement)
+    semicolon    [reduce using rule 49 (matched)]
+    leftp2       reduce using rule 33 (statement)
+    leftp2       [reduce using rule 49 (matched)]
+    leftp        reduce using rule 33 (statement)
+    leftp        [reduce using rule 49 (matched)]
+    rightp2      reduce using rule 33 (statement)
+    rightp2      [reduce using rule 49 (matched)]
+    $default     reduce using rule 33 (statement)
+
+
+state 72
+
+   35 statement: selection_stmt .
+
+    $default  reduce using rule 35 (statement)
+
+
+state 73
+
+   46 selection_stmt: matched .
+
+    $default  reduce using rule 46 (selection_stmt)
+
+
+state 74
+
+   47 selection_stmt: unmatched .
+
+    $default  reduce using rule 47 (selection_stmt)
+
+
+state 75
+
+   36 statement: iteration_stmt .
+   51 matched: iteration_stmt .
+
+    $end         reduce using rule 36 (statement)
+    $end         [reduce using rule 51 (matched)]
+    ID           reduce using rule 36 (statement)
+    ID           [reduce using rule 51 (matched)]
+    CHARCONST    reduce using rule 36 (statement)
+    CHARCONST    [reduce using rule 51 (matched)]
+    NUMCONST     reduce using rule 36 (statement)
+    NUMCONST     [reduce using rule 51 (matched)]
+    STRINGCONST  reduce using rule 36 (statement)
+    STRINGCONST  [reduce using rule 51 (matched)]
+    IF           reduce using rule 36 (statement)
+    IF           [reduce using rule 51 (matched)]
+    ELSE         reduce using rule 36 (statement)
+    ELSE         [reduce using rule 51 (matched)]
+    WHILE        reduce using rule 36 (statement)
+    WHILE        [reduce using rule 51 (matched)]
+    FOREACH      reduce using rule 36 (statement)
+    FOREACH      [reduce using rule 51 (matched)]
+    INT          reduce using rule 36 (statement)
+    INT          [reduce using rule 51 (matched)]
+    BOOL         reduce using rule 36 (statement)
+    BOOL         [reduce using rule 51 (matched)]
+    CHAR         reduce using rule 36 (statement)
+    CHAR         [reduce using rule 51 (matched)]
+    TRUE         reduce using rule 36 (statement)
+    TRUE         [reduce using rule 51 (matched)]
+    FALSE        reduce using rule 36 (statement)
+    FALSE        [reduce using rule 51 (matched)]
+    RETURN       reduce using rule 36 (statement)
+    RETURN       [reduce using rule 51 (matched)]
+    BREAK        reduce using rule 36 (statement)
+    BREAK        [reduce using rule 51 (matched)]
+    NOT          reduce using rule 36 (statement)
+    NOT          [reduce using rule 51 (matched)]
+    minus        reduce using rule 36 (statement)
+    minus        [reduce using rule 51 (matched)]
+    multiply     reduce using rule 36 (statement)
+    multiply     [reduce using rule 51 (matched)]
+    semicolon    reduce using rule 36 (statement)
+    semicolon    [reduce using rule 51 (matched)]
+    leftp2       reduce using rule 36 (statement)
+    leftp2       [reduce using rule 51 (matched)]
+    leftp        reduce using rule 36 (statement)
+    leftp        [reduce using rule 51 (matched)]
+    rightp2      reduce using rule 36 (statement)
+    rightp2      [reduce using rule 51 (matched)]
+    $default     reduce using rule 36 (statement)
+
+
+state 76
+
+   37 statement: return_stmt .
+   52 matched: return_stmt .
+
+    $end         reduce using rule 37 (statement)
+    $end         [reduce using rule 52 (matched)]
+    ID           reduce using rule 37 (statement)
+    ID           [reduce using rule 52 (matched)]
+    CHARCONST    reduce using rule 37 (statement)
+    CHARCONST    [reduce using rule 52 (matched)]
+    NUMCONST     reduce using rule 37 (statement)
+    NUMCONST     [reduce using rule 52 (matched)]
+    STRINGCONST  reduce using rule 37 (statement)
+    STRINGCONST  [reduce using rule 52 (matched)]
+    IF           reduce using rule 37 (statement)
+    IF           [reduce using rule 52 (matched)]
+    ELSE         reduce using rule 37 (statement)
+    ELSE         [reduce using rule 52 (matched)]
+    WHILE        reduce using rule 37 (statement)
+    WHILE        [reduce using rule 52 (matched)]
+    FOREACH      reduce using rule 37 (statement)
+    FOREACH      [reduce using rule 52 (matched)]
+    INT          reduce using rule 37 (statement)
+    INT          [reduce using rule 52 (matched)]
+    BOOL         reduce using rule 37 (statement)
+    BOOL         [reduce using rule 52 (matched)]
+    CHAR         reduce using rule 37 (statement)
+    CHAR         [reduce using rule 52 (matched)]
+    TRUE         reduce using rule 37 (statement)
+    TRUE         [reduce using rule 52 (matched)]
+    FALSE        reduce using rule 37 (statement)
+    FALSE        [reduce using rule 52 (matched)]
+    RETURN       reduce using rule 37 (statement)
+    RETURN       [reduce using rule 52 (matched)]
+    BREAK        reduce using rule 37 (statement)
+    BREAK        [reduce using rule 52 (matched)]
+    NOT          reduce using rule 37 (statement)
+    NOT          [reduce using rule 52 (matched)]
+    minus        reduce using rule 37 (statement)
+    minus        [reduce using rule 52 (matched)]
+    multiply     reduce using rule 37 (statement)
+    multiply     [reduce using rule 52 (matched)]
+    semicolon    reduce using rule 37 (statement)
+    semicolon    [reduce using rule 52 (matched)]
+    leftp2       reduce using rule 37 (statement)
+    leftp2       [reduce using rule 52 (matched)]
+    leftp        reduce using rule 37 (statement)
+    leftp        [reduce using rule 52 (matched)]
+    rightp2      reduce using rule 37 (statement)
+    rightp2      [reduce using rule 52 (matched)]
+    $default     reduce using rule 37 (statement)
+
+
+state 77
+
+   38 statement: break_stmt .
+   53 matched: break_stmt .
+
+    $end         reduce using rule 38 (statement)
+    $end         [reduce using rule 53 (matched)]
+    ID           reduce using rule 38 (statement)
+    ID           [reduce using rule 53 (matched)]
+    CHARCONST    reduce using rule 38 (statement)
+    CHARCONST    [reduce using rule 53 (matched)]
+    NUMCONST     reduce using rule 38 (statement)
+    NUMCONST     [reduce using rule 53 (matched)]
+    STRINGCONST  reduce using rule 38 (statement)
+    STRINGCONST  [reduce using rule 53 (matched)]
+    IF           reduce using rule 38 (statement)
+    IF           [reduce using rule 53 (matched)]
+    ELSE         reduce using rule 38 (statement)
+    ELSE         [reduce using rule 53 (matched)]
+    WHILE        reduce using rule 38 (statement)
+    WHILE        [reduce using rule 53 (matched)]
+    FOREACH      reduce using rule 38 (statement)
+    FOREACH      [reduce using rule 53 (matched)]
+    INT          reduce using rule 38 (statement)
+    INT          [reduce using rule 53 (matched)]
+    BOOL         reduce using rule 38 (statement)
+    BOOL         [reduce using rule 53 (matched)]
+    CHAR         reduce using rule 38 (statement)
+    CHAR         [reduce using rule 53 (matched)]
+    TRUE         reduce using rule 38 (statement)
+    TRUE         [reduce using rule 53 (matched)]
+    FALSE        reduce using rule 38 (statement)
+    FALSE        [reduce using rule 53 (matched)]
+    RETURN       reduce using rule 38 (statement)
+    RETURN       [reduce using rule 53 (matched)]
+    BREAK        reduce using rule 38 (statement)
+    BREAK        [reduce using rule 53 (matched)]
+    NOT          reduce using rule 38 (statement)
+    NOT          [reduce using rule 53 (matched)]
+    minus        reduce using rule 38 (statement)
+    minus        [reduce using rule 53 (matched)]
+    multiply     reduce using rule 38 (statement)
+    multiply     [reduce using rule 53 (matched)]
+    semicolon    reduce using rule 38 (statement)
+    semicolon    [reduce using rule 53 (matched)]
+    leftp2       reduce using rule 38 (statement)
+    leftp2       [reduce using rule 53 (matched)]
+    leftp        reduce using rule 38 (statement)
+    leftp        [reduce using rule 53 (matched)]
+    rightp2      reduce using rule 38 (statement)
+    rightp2      [reduce using rule 53 (matched)]
+    $default     reduce using rule 38 (statement)
+
+
+state 78
+
+   44 expression_stmt: expression . semicolon
+
+    semicolon  shift, and go to state 117
+
+
+state 79
+
+   70 expression: simple_expression .
+   71 simple_expression: simple_expression . OR and_expression
+
+    OR  shift, and go to state 89
+
+    $default  reduce using rule 70 (expression)
+
+
+state 80
+
+   65 expression: mutable . equal expression
+   66           | mutable . PASSIGN expression
+   67           | mutable . MASSIGN expression
+   68           | mutable . INC
+   69           | mutable . DEC
+  100 factor: mutable .
+
+    INC      shift, and go to state 118
+    DEC      shift, and go to state 119
+    PASSIGN  shift, and go to state 120
+    MASSIGN  shift, and go to state 121
+    equal    shift, and go to state 122
+
+    $default  reduce using rule 100 (factor)
+
+
+state 81
+
+   24 param_list: param_list semicolon param_type_list .
+
+    $default  reduce using rule 24 (param_list)
+
+
+state 82
+
+   20 fun_declaration: type_specifier ID leftp params rightp . statement
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    IF           shift, and go to state 62
+    WHILE        shift, and go to state 63
+    FOREACH      shift, and go to state 64
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    RETURN       shift, and go to state 65
+    BREAK        shift, and go to state 66
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    semicolon    shift, and go to state 67
+    leftp2       shift, and go to state 68
+    leftp        shift, and go to state 46
+
+    statement             go to state 123
+    compound_stmt         go to state 70
+    expression_stmt       go to state 71
+    selection_stmt        go to state 72
+    matched               go to state 73
+    unmatched             go to state 74
+    iteration_stmt        go to state 75
+    return_stmt           go to state 76
+    break_stmt            go to state 77
+    expression            go to state 78
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 83
+
+   14 id_exp0: leftp3 NUMCONST rightp3 .
+
+    $default  reduce using rule 14 (id_exp0)
+
+
+state 84
+
+  107 call: ID leftp . args rightp
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    $default  reduce using rule 109 (args)
+
+    expression            go to state 124
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    args                  go to state 125
+    arg_list              go to state 126
+    constant              go to state 59
+
+
+state 85
+
+  103 id_exp39: leftp3 . expression rightp3
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    expression            go to state 127
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 86
+
+  101 mutable: ID id_exp39 .
+
+    $default  reduce using rule 101 (mutable)
+
+
+state 87
+
+   75 unary_rel_expression: NOT unary_rel_expression .
+
+    $default  reduce using rule 75 (unary_rel_expression)
+
+
+state 88
+
+  104 immutable: leftp expression . rightp
+
+    rightp  shift, and go to state 128
+
+
+state 89
+
+   71 simple_expression: simple_expression OR . and_expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    and_expression        go to state 129
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 56
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 90
+
+   73 and_expression: and_expression AND . unary_rel_expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    unary_rel_expression  go to state 130
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 56
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 91
+
+   82 relop: LEQ .
+
+    $default  reduce using rule 82 (relop)
+
+
+state 92
+
+   83 relop: GEQ .
+
+    $default  reduce using rule 83 (relop)
+
+
+state 93
+
+   84 relop: EQ .
+
+    $default  reduce using rule 84 (relop)
+
+
+state 94
+
+   85 relop: NEQ .
+
+    $default  reduce using rule 85 (relop)
+
+
+state 95
+
+   80 relop: lt .
+
+    $default  reduce using rule 80 (relop)
+
+
+state 96
+
+   81 relop: gt .
+
+    $default  reduce using rule 81 (relop)
+
+
+state 97
+
+   88 sumop: plus .
+
+    $default  reduce using rule 88 (sumop)
+
+
+state 98
+
+   89 sumop: minus .
+
+    $default  reduce using rule 89 (sumop)
+
+
+state 99
+
+   77 rel_expression: sum_expression sum_expression_rest .
+
+    $default  reduce using rule 77 (rel_expression)
+
+
+state 100
+
+   79 sum_expression_rest: relop . sum_expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    sum_expression    go to state 131
+    term              go to state 52
+    unary_expression  go to state 53
+    unaryop           go to state 54
+    factor            go to state 55
+    mutable           go to state 56
+    immutable         go to state 57
+    call              go to state 58
+    constant          go to state 59
+
+
+state 101
+
+   86 sum_expression: sum_expression sumop . term
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    term              go to state 132
+    unary_expression  go to state 53
+    unaryop           go to state 54
+    factor            go to state 55
+    mutable           go to state 56
+    immutable         go to state 57
+    call              go to state 58
+    constant          go to state 59
+
+
+state 102
+
+   92 mulop: multiply .
+
+    $default  reduce using rule 92 (mulop)
+
+
+state 103
+
+   93 mulop: divide .
+
+    $default  reduce using rule 93 (mulop)
+
+
+state 104
+
+   94 mulop: mod .
+
+    $default  reduce using rule 94 (mulop)
+
+
+state 105
+
+   90 term: term mulop . unary_expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    unary_expression  go to state 133
+    unaryop           go to state 54
+    factor            go to state 55
+    mutable           go to state 56
+    immutable         go to state 57
+    call              go to state 58
+    constant          go to state 59
+
+
+state 106
+
+   95 unary_expression: unaryop unary_expression .
+
+    $default  reduce using rule 95 (unary_expression)
+
+
+state 107
+
+   31 mid_exp: NUMCONST .
+
+    $default  reduce using rule 31 (mid_exp)
+
+
+state 108
+
+   30 param_id: ID leftp3 mid_exp . rightp3
+
+    rightp3  shift, and go to state 134
+
+
+state 109
+
+   27 param_id_list: param_id_list comma param_id .
+
+    $default  reduce using rule 27 (param_id_list)
+
+
+state 110
+
+   48 matched: IF leftp . simple_expression rightp matched ELSE matched
+   54 unmatched: IF leftp . simple_expression rightp unmatched_exp
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    simple_expression     go to state 135
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 56
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 111
+
+   60 iteration_stmt: WHILE leftp . simple_expression rightp statement
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    simple_expression     go to state 136
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 56
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 112
+
+   61 iteration_stmt: FOREACH leftp . mutable IN simple_expression rightp statement
+
+    ID  shift, and go to state 137
+
+    mutable  go to state 138
+
+
+state 113
+
+   62 return_stmt: RETURN semicolon .
+
+    $default  reduce using rule 62 (return_stmt)
+
+
+state 114
+
+   63 return_stmt: RETURN expression . semicolon
+
+    semicolon  shift, and go to state 139
+
+
+state 115
+
+   64 break_stmt: BREAK semicolon .
+
+    $default  reduce using rule 64 (break_stmt)
+
+
+state 116
+
+   39 compound_stmt: leftp2 local_declarations . statement_list rightp2
+   40 local_declarations: local_declarations . scoped_var_declaration
+
+    STATIC  shift, and go to state 140
+    INT     shift, and go to state 2
+    BOOL    shift, and go to state 3
+    CHAR    shift, and go to state 4
+
+    $default  reduce using rule 43 (statement_list)
+
+    scoped_var_declaration  go to state 141
+    scoped_type_specifier   go to state 142
+    type_specifier          go to state 143
+    statement_list          go to state 144
+
+
+state 117
+
+   44 expression_stmt: expression semicolon .
+
+    $default  reduce using rule 44 (expression_stmt)
+
+
+state 118
+
+   68 expression: mutable INC .
+
+    $default  reduce using rule 68 (expression)
+
+
+state 119
+
+   69 expression: mutable DEC .
+
+    $default  reduce using rule 69 (expression)
+
+
+state 120
+
+   66 expression: mutable PASSIGN . expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    expression            go to state 145
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 121
+
+   67 expression: mutable MASSIGN . expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    expression            go to state 146
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 122
+
+   65 expression: mutable equal . expression
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    expression            go to state 147
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 123
+
+   20 fun_declaration: type_specifier ID leftp params rightp statement .
+
+    $default  reduce using rule 20 (fun_declaration)
+
+
+state 124
+
+  110 arg_list: expression . comma arg_list
+  111         | expression .
+
+    comma  shift, and go to state 148
+
+    $default  reduce using rule 111 (arg_list)
+
+
+state 125
+
+  107 call: ID leftp args . rightp
+
+    rightp  shift, and go to state 149
+
+
+state 126
+
+  108 args: arg_list .
+
+    $default  reduce using rule 108 (args)
+
+
+state 127
+
+  103 id_exp39: leftp3 expression . rightp3
+
+    rightp3  shift, and go to state 150
+
+
+state 128
+
+  104 immutable: leftp expression rightp .
+
+    $default  reduce using rule 104 (immutable)
+
+
+state 129
+
+   71 simple_expression: simple_expression OR and_expression .
+   73 and_expression: and_expression . AND unary_rel_expression
+
+    AND  shift, and go to state 90
+
+    $default  reduce using rule 71 (simple_expression)
+
+
+state 130
+
+   73 and_expression: and_expression AND unary_rel_expression .
+
+    $default  reduce using rule 73 (and_expression)
+
+
+state 131
+
+   79 sum_expression_rest: relop sum_expression .
+   86 sum_expression: sum_expression . sumop term
+
+    plus   shift, and go to state 97
+    minus  shift, and go to state 98
+
+    $default  reduce using rule 79 (sum_expression_rest)
+
+    sumop  go to state 101
+
+
+state 132
+
+   86 sum_expression: sum_expression sumop term .
+   90 term: term . mulop unary_expression
+
+    multiply  shift, and go to state 102
+    divide    shift, and go to state 103
+    mod       shift, and go to state 104
+
+    $default  reduce using rule 86 (sum_expression)
+
+    mulop  go to state 105
+
+
+state 133
+
+   90 term: term mulop unary_expression .
+
+    $default  reduce using rule 90 (term)
+
+
+state 134
+
+   30 param_id: ID leftp3 mid_exp rightp3 .
+
+    $default  reduce using rule 30 (param_id)
+
+
+state 135
+
+   48 matched: IF leftp simple_expression . rightp matched ELSE matched
+   54 unmatched: IF leftp simple_expression . rightp unmatched_exp
+   71 simple_expression: simple_expression . OR and_expression
+
+    OR      shift, and go to state 89
+    rightp  shift, and go to state 151
+
+
+state 136
+
+   60 iteration_stmt: WHILE leftp simple_expression . rightp statement
+   71 simple_expression: simple_expression . OR and_expression
+
+    OR      shift, and go to state 89
+    rightp  shift, and go to state 152
+
+
+state 137
+
+  101 mutable: ID . id_exp39
+
+    leftp3  shift, and go to state 85
+
+    $default  reduce using rule 102 (id_exp39)
+
+    id_exp39  go to state 86
+
+
+state 138
+
+   61 iteration_stmt: FOREACH leftp mutable . IN simple_expression rightp statement
+
+    IN  shift, and go to state 153
+
+
+state 139
+
+   63 return_stmt: RETURN expression semicolon .
+
+    $default  reduce using rule 63 (return_stmt)
+
+
+state 140
+
+   15 scoped_type_specifier: STATIC . type_specifier
+
+    INT   shift, and go to state 2
+    BOOL  shift, and go to state 3
+    CHAR  shift, and go to state 4
+
+    type_specifier  go to state 154
+
+
+state 141
+
+   40 local_declarations: local_declarations scoped_var_declaration .
+
+    $default  reduce using rule 40 (local_declarations)
+
+
+state 142
+
+    7 scoped_var_declaration: scoped_type_specifier . var_decl_list semicolon
+
+    ID  shift, and go to state 35
+
+    var_decl_list        go to state 155
+    var_decl_initialize  go to state 16
+    var_decl_id          go to state 17
+
+
+state 143
+
+   16 scoped_type_specifier: type_specifier .
+
+    $default  reduce using rule 16 (scoped_type_specifier)
+
+
+state 144
+
+   39 compound_stmt: leftp2 local_declarations statement_list . rightp2
+   42 statement_list: statement_list . statement
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    IF           shift, and go to state 62
+    WHILE        shift, and go to state 63
+    FOREACH      shift, and go to state 64
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    RETURN       shift, and go to state 65
+    BREAK        shift, and go to state 66
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    semicolon    shift, and go to state 67
+    leftp2       shift, and go to state 68
+    leftp        shift, and go to state 46
+    rightp2      shift, and go to state 156
+
+    statement             go to state 157
+    compound_stmt         go to state 70
+    expression_stmt       go to state 71
+    selection_stmt        go to state 72
+    matched               go to state 73
+    unmatched             go to state 74
+    iteration_stmt        go to state 75
+    return_stmt           go to state 76
+    break_stmt            go to state 77
+    expression            go to state 78
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 145
+
+   66 expression: mutable PASSIGN expression .
+
+    $default  reduce using rule 66 (expression)
+
+
+state 146
+
+   67 expression: mutable MASSIGN expression .
+
+    $default  reduce using rule 67 (expression)
+
+
+state 147
+
+   65 expression: mutable equal expression .
+
+    $default  reduce using rule 65 (expression)
+
+
+state 148
+
+  110 arg_list: expression comma . arg_list
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    expression            go to state 124
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    arg_list              go to state 158
+    constant              go to state 59
+
+
+state 149
+
+  107 call: ID leftp args rightp .
+
+    $default  reduce using rule 107 (call)
+
+
+state 150
+
+  103 id_exp39: leftp3 expression rightp3 .
+
+    $default  reduce using rule 103 (id_exp39)
+
+
+state 151
+
+   48 matched: IF leftp simple_expression rightp . matched ELSE matched
+   54 unmatched: IF leftp simple_expression rightp . unmatched_exp
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    IF           shift, and go to state 62
+    WHILE        shift, and go to state 63
+    FOREACH      shift, and go to state 64
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    RETURN       shift, and go to state 65
+    BREAK        shift, and go to state 66
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    semicolon    shift, and go to state 67
+    leftp2       shift, and go to state 68
+    leftp        shift, and go to state 46
+
+    compound_stmt         go to state 159
+    expression_stmt       go to state 160
+    matched               go to state 161
+    unmatched             go to state 162
+    unmatched_exp         go to state 163
+    matched_exp           go to state 164
+    iteration_stmt        go to state 165
+    return_stmt           go to state 166
+    break_stmt            go to state 167
+    expression            go to state 78
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 152
+
+   60 iteration_stmt: WHILE leftp simple_expression rightp . statement
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    IF           shift, and go to state 62
+    WHILE        shift, and go to state 63
+    FOREACH      shift, and go to state 64
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    RETURN       shift, and go to state 65
+    BREAK        shift, and go to state 66
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    semicolon    shift, and go to state 67
+    leftp2       shift, and go to state 68
+    leftp        shift, and go to state 46
+
+    statement             go to state 168
+    compound_stmt         go to state 70
+    expression_stmt       go to state 71
+    selection_stmt        go to state 72
+    matched               go to state 73
+    unmatched             go to state 74
+    iteration_stmt        go to state 75
+    return_stmt           go to state 76
+    break_stmt            go to state 77
+    expression            go to state 78
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 153
+
+   61 iteration_stmt: FOREACH leftp mutable IN . simple_expression rightp statement
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    leftp        shift, and go to state 46
+
+    simple_expression     go to state 169
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 56
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 154
+
+   15 scoped_type_specifier: STATIC type_specifier .
+
+    $default  reduce using rule 15 (scoped_type_specifier)
+
+
+state 155
+
+    7 scoped_var_declaration: scoped_type_specifier var_decl_list . semicolon
+    8 var_decl_list: var_decl_list . comma var_decl_initialize
+
+    comma      shift, and go to state 25
+    semicolon  shift, and go to state 170
+
+
+state 156
+
+   39 compound_stmt: leftp2 local_declarations statement_list rightp2 .
+
+    $default  reduce using rule 39 (compound_stmt)
+
+
+state 157
+
+   42 statement_list: statement_list statement .
+
+    $default  reduce using rule 42 (statement_list)
+
+
+state 158
+
+  110 arg_list: expression comma arg_list .
+
+    $default  reduce using rule 110 (arg_list)
+
+
+state 159
+
+   50 matched: compound_stmt .
+
+    $default  reduce using rule 50 (matched)
+
+
+state 160
+
+   49 matched: expression_stmt .
+
+    $default  reduce using rule 49 (matched)
+
+
+state 161
+
+   48 matched: IF leftp simple_expression rightp matched . ELSE matched
+   57 matched_exp: matched . matched_else_exp
+
+    ELSE  shift, and go to state 171
+
+    ELSE      [reduce using rule 58 (matched_else_exp)]
+    $default  reduce using rule 58 (matched_else_exp)
+
+    matched_else_exp  go to state 172
+
+
+state 162
+
+   56 unmatched_exp: unmatched .
+
+    $default  reduce using rule 56 (unmatched_exp)
+
+
+state 163
+
+   54 unmatched: IF leftp simple_expression rightp unmatched_exp .
+
+    $default  reduce using rule 54 (unmatched)
+
+
+state 164
+
+   55 unmatched_exp: matched_exp .
+
+    $default  reduce using rule 55 (unmatched_exp)
+
+
+state 165
+
+   51 matched: iteration_stmt .
+
+    $default  reduce using rule 51 (matched)
+
+
+state 166
+
+   52 matched: return_stmt .
+
+    $default  reduce using rule 52 (matched)
+
+
+state 167
+
+   53 matched: break_stmt .
+
+    $default  reduce using rule 53 (matched)
+
+
+state 168
+
+   60 iteration_stmt: WHILE leftp simple_expression rightp statement .
+
+    $default  reduce using rule 60 (iteration_stmt)
+
+
+state 169
+
+   61 iteration_stmt: FOREACH leftp mutable IN simple_expression . rightp statement
+   71 simple_expression: simple_expression . OR and_expression
+
+    OR      shift, and go to state 89
+    rightp  shift, and go to state 173
+
+
+state 170
+
+    7 scoped_var_declaration: scoped_type_specifier var_decl_list semicolon .
+
+    $default  reduce using rule 7 (scoped_var_declaration)
+
+
+state 171
+
+   48 matched: IF leftp simple_expression rightp matched ELSE . matched
+   59 matched_else_exp: ELSE . unmatched
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    IF           shift, and go to state 62
+    WHILE        shift, and go to state 63
+    FOREACH      shift, and go to state 64
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    RETURN       shift, and go to state 65
+    BREAK        shift, and go to state 66
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    semicolon    shift, and go to state 67
+    leftp2       shift, and go to state 68
+    leftp        shift, and go to state 46
+
+    compound_stmt         go to state 159
+    expression_stmt       go to state 160
+    matched               go to state 174
+    unmatched             go to state 175
+    iteration_stmt        go to state 165
+    return_stmt           go to state 166
+    break_stmt            go to state 167
+    expression            go to state 78
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 172
+
+   57 matched_exp: matched matched_else_exp .
+
+    $default  reduce using rule 57 (matched_exp)
+
+
+state 173
+
+   61 iteration_stmt: FOREACH leftp mutable IN simple_expression rightp . statement
+
+    ID           shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    NUMCONST     shift, and go to state 39
+    STRINGCONST  shift, and go to state 40
+    IF           shift, and go to state 62
+    WHILE        shift, and go to state 63
+    FOREACH      shift, and go to state 64
+    TRUE         shift, and go to state 41
+    FALSE        shift, and go to state 42
+    RETURN       shift, and go to state 65
+    BREAK        shift, and go to state 66
+    NOT          shift, and go to state 43
+    minus        shift, and go to state 44
+    multiply     shift, and go to state 45
+    semicolon    shift, and go to state 67
+    leftp2       shift, and go to state 68
+    leftp        shift, and go to state 46
+
+    statement             go to state 176
+    compound_stmt         go to state 70
+    expression_stmt       go to state 71
+    selection_stmt        go to state 72
+    matched               go to state 73
+    unmatched             go to state 74
+    iteration_stmt        go to state 75
+    return_stmt           go to state 76
+    break_stmt            go to state 77
+    expression            go to state 78
+    simple_expression     go to state 79
+    and_expression        go to state 48
+    unary_rel_expression  go to state 49
+    rel_expression        go to state 50
+    sum_expression        go to state 51
+    term                  go to state 52
+    unary_expression      go to state 53
+    unaryop               go to state 54
+    factor                go to state 55
+    mutable               go to state 80
+    immutable             go to state 57
+    call                  go to state 58
+    constant              go to state 59
+
+
+state 174
+
+   48 matched: IF leftp simple_expression rightp matched ELSE matched .
+
+    $default  reduce using rule 48 (matched)
+
+
+state 175
+
+   59 matched_else_exp: ELSE unmatched .
+
+    $default  reduce using rule 59 (matched_else_exp)
+
+
+state 176
+
+   61 iteration_stmt: FOREACH leftp mutable IN simple_expression rightp statement .
+
+    $default  reduce using rule 61 (iteration_stmt)

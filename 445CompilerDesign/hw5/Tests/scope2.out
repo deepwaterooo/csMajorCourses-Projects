@@ -1,0 +1,4 @@
+ERROR(13): Symbol 'b' is already defined at line 7.
+Number of warnings: 0
+Number of errors: 1
+------------------------------------

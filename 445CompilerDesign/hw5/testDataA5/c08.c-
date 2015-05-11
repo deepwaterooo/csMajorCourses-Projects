@@ -1,0 +1,10 @@
+bool x[3];
+bool y[4];
+
+void main()
+{
+    x[2] = true;
+    y[1] = false;
+    outputb(x[2] or y[1]);
+    outnl();
+}

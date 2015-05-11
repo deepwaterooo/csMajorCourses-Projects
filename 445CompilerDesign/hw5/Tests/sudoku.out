@@ -1,0 +1,8 @@
+ERROR(226): Symbol 'initBoard' is not defined.
+ERROR(227): Symbol 'getInput' is not defined.
+ERROR(228): Symbol 'solve' is not defined.
+ERROR(229): Symbol 'showBoard' is not defined.
+ERROR(228): Expecting Boolean test condition in if statement but got type (null).
+Number of warnings: 0
+Number of errors: 5
+------------------------------------

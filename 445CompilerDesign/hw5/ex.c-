@@ -1,0 +1,91 @@
+                         // init goffset=0
+
+int g;                   // decl node is annotated with
+                         //   location: 0, size: 1, referenceType: global
+                         // update goffset=1
+
+                         // enter scope of dog in symbol table
+                         // foffset=-2
+
+int dog(int x, y)        // decl node for x is annotated with
+                         //   location: -2, size: 1, referenceType: parameter
+                         // update local offset
+                         // decl node for y is annotated with
+                         //   location: -3, size: 1, referenceType: parameter
+                         // update local offset
+{
+        int z;           // decl node for z is annotated with
+                         //   location: -4, size: 1, referenceType: local
+                         // update local offset
+        z = x + y;       // annotate the id nodes with location/size/referenceType via
+                         //   lookup in symbol table
+        return g*z;      // annotate the id nodes with location/size/referenceType via
+                         //   lookup in symbol table
+}
+                         // save size of frame (5) for dog in global symbol dog.
+                         //     This is in foffset.
+                         // exit scope of dog in symbol table
+
+int h[10];               // decl node is for global variable annotated with
+                         //   location: -2, size: 10+1 for array size, referenceType: global
+                         //   allocate 1 for size, then 10 for the array it self.  Location
+                         //   is array itself
+                         // update goffset=-12
+
+                         // enter scope of cat in symbol table
+                         // foffset=-2
+
+//void cat(int x[], y)     // decl node for x is annotated with
+cat(int x[], y)     // decl node for x is annotated with
+                         //   location: -2, size: 1, referenceType: parameter
+                         //   (arrays are passed by reference and so size is 1.
+                         //      see code generation section.)
+                         // update local offset foffset=-3
+                         // decl node for y is annotated with
+                         //   location: -3, size: 1, referenceType: parameter
+                         // update local offset foffset=-4
+{
+        int z[10];       // decl node for z is annotated with
+                         //   location: -5, size: 10+1 for size, referenceType: local
+                         // update local offset foffset=-15
+
+        z[8] = z[9];     // annotate the id nodes with location/size/referenceType via
+                         //   lookup in symbol table
+        h[8] = h[9];     // annotate the id nodes with location/size/referenceType via
+                         //   lookup in symbol table
+        z[7] = x[y];     // annotate the id nodes with location/size/referenceType via
+                         //   lookup in symbol table
+        x[7] = z[y];     // annotate the id nodes with location/size/referenceType via
+                         //   lookup in symbol table
+}
+
+                         // save size of frame (15) for cat in global symbol cat.
+                         //    This is the value of the foffset.
+                         // exit scope of cat in symbol table
+
+                         // enter scope of main in symbol table
+                         // foffset=-2
+//void main()
+main()
+{
+        int a[10];       // decl node for a is annotated with
+                         //   location: -3, size: 10+1, referenceType: local
+                         // update local offset  foffset=-13
+        int b;           // decl node for b is annotated with
+                         //   location: -13, size: 1, referenceType: local
+                         // update local offset
+
+        dog(b, 999);     // annotate the id node with location/size/referenceType via
+                         //   lookup in symbol table
+                         // annotate the func node with size via symbol table
+        cat(a, 6);       // annotate the id node with location/size/referenceType via
+                         //   lookup in symbol table
+                         // annotate the func node with size via symbol table
+        b = dog(777,888);  // annotate id nodes with location/size/referenceType via
+                         //   lookup in symbol table
+                         // annotate the func node with size via symbol table
+}
+
+                         // save size of frame (14) for main in global
+                         // symbol dog.  This is foffset.  exit scope
+                         // of cat in symbol table

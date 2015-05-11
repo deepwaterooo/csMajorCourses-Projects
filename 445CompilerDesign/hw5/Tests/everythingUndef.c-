@@ -1,0 +1,51 @@
+// C-F13
+// C-F09
+//
+// Test all the basic elements of C-
+//
+// version F07-2.0
+//
+  wallace(int wrong, trousers)
+{
+   close;
+   close = shave;
+   wrong = trousers % (666/wrong);
+   gromit = wrong * trousers - gromit + -42;
+   gromit += 27182818;
+   gromit -= 31415927;
+   close = wrong < trousers  and  trousers <= gromit;
+   shave = wrong > trousers  and  trousers >= gromit;
+   {
+      a = grand += day -= out;
+   }
+   close = -1*2+3<4*5 and 6+7>-3;
+   shave = true or ((-(1*(2+3)))<(4*5) and ((6+7)>(-3)));
+   if (shave != close) shave =  not  close;
+   if ( not (shave == close)  or   not close) shave = true;
+   else close = false;
+   while (shave) {
+       sheep[2] = 1618;
+       if (sheep[2]<496) break;
+       wallace(gromit, were-rabbit);
+   }
+   return;
+}       
+
+int Wendolene(int wool; bool shawn; int yarn[]; bool preston[])
+{
+	return wool + yarn[0];
+}
+
+bool ramsBottom()
+{
+    42 * Wendolene(1+2+3,  not true or true and false, chicken, run);
+
+    return  not wallace[1]>=-gromit[2]*3;
+}
+
+int cheese() while (x>0) if (y>3) x--; else return x*x%y;
+
+int main()
+{
+        wallace(cheese(62, 62), gromit);
+}

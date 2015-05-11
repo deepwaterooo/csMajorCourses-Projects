@@ -1,0 +1,96 @@
+\chapter{C++对象指针—指向对象成员的指针}
+
+\begin{enumerate}
+\item 指向对象数据成员的指针定义指向对象数据成员的指针变量的方法和定义指向普通变量的指针变量方法相同。例如
+  
+  int *p1; //定义指向整型数据的指针变量
+
+  定义指向对象数据成员的指针变量的一般形式为数据类型名 *指针变量名；如果Time类的数据成员hour为公用的整型数据，则可以在类外通过指向对象数据成员的指针变量访问对象数据成员hour。
+  \begin{lstlisting}[language=c++]
+    p1=&t1.hour;//将对象t1的数据成员hour的地址赋给p1，p1指向t1.hour
+    cout<<*p1<<endl;//输出t1.hour的值
+  \end{lstlisting}
+
+\item 指向对象成员函数的指针需要提醒读者注意： 定义指向对象成员函数的指针变量的方法和定义指向普通函数的指针变量方法有所不同。
+  
+  成员函数与普通函数有一个最根本的区别： 它是类中的一个成员。编译系统要求在上面的赋值语句中，指针变量的类型必须与赋值号右侧函数的类型相匹配，要求在以下3方面都要匹配：
+  \begin{enumerate}
+    \itemsep=-3pt
+  \item 函数参数的类型和参数个数；
+  \item 函数返回值的类型；
+  \item 所属的类。
+  \end{enumerate}
+
+  定义指向成员函数的指针变量应该采用下面的形式：
+  \begin{lstlisting}[language=c++]
+    void (Time::*p2)( );//定义p2为指向Time类中公用成员函数的指针变量
+  \end{lstlisting}
+  
+   定义指向公用成员函数的指针变量的一般形式为
+   数据类型名 (类名::*指针变量名)(参数表列)；
+
+   可以让它指向一个公用成员函数，只需把公用成员函数的入口地址赋给一个指向公用成员函数的指针变量即可。如
+   p2=&Time::get_time;
+   使指针变量指向一个公用成员函数的一般形式为
+   指针变量名=&类名::成员函数名;
+   例9.7 有关对象指针的使用方法。
+   \begin{lstlisting}[language=c++]
+     #include <iostream>
+     using namespace std;
+
+     class Time
+     {
+       public:
+       Time(int,int,int);
+       int hour;
+       int minute;
+       int sec;
+       void get_time( );
+     };
+
+     Time::Time(int h,int m,int s)
+     {
+       hour=h;
+       minute=m;
+       sec=s;
+     }
+
+     void Time::get_time( ) //声明公有成员函数
+     //定义公有成员函数
+     {
+       cout<<hour<<":"<<minute<<":" <<sec<<endl;
+     }
+
+     int main( )
+     {
+       Time t1(10,13,56);   //定义Time类对象t1
+       int *p1 = &t1.hour;  //定义指向整型数据的指针变量p1，并使p1指向t1.hour
+       cout << *p1 << endl; //输出p1所指的数据成员t1.hour
+       t1.get_time( );      //调用对象t1的成员函数get_time
+
+       Time *p2 = &t1;      //定义指向Time类对象的指针变量p2，并使p2指向t1
+       p2->get_time( );     //调用p2所指向对象(即t1)的get_time函数
+       
+       void (Time::*p3)( ); //定义指向Time类公用成员函数的指针变量p3
+       p3 = &Time::get_time;//使p3指向Time类公用成员函数get_time
+       (t1.*p3)( );         //调用对象t1中p3所指的成员函数(即t1.get_time( ))
+     }
+   \end{lstlisting}
+
+   程序运行结果为
+   10 (main函数第4行的输出)
+   10:13:56 (main函数第5行的输出)
+   10:13:56 (main函数第7行的输出)
+   10:13:56 (main函数第10行的输出)
+   可以看到为了输出t1中hour,minute和sec的值，可以采用3种不同的方法。
+ \end{enumerate}
+
+ 几点说明：
+ \begin{enumerate}
+   \itemsep=-3pt
+ \item 从main函数第9行可以看出： 成员函数的入口地址的正确写法是： \&类名::成员函数名。
+ \item main函数第8、9两行可以合写为一行：
+   \begin{lstlisting}[language=c++]
+     void (Time::*p3)( )=&Time::get_time; //定义指针变量时指定其指向
+   \end{lstlisting}
+ \end{enumerate}

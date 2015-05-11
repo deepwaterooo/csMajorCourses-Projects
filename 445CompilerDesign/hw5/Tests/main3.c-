@@ -1,0 +1,10 @@
+// C-F13
+  main()
+{
+    output(true);
+    outputb(666);
+    outnl();
+
+    return;
+}
+

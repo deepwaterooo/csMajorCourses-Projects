@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{CJKutf8}
+
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{listings}
+
+
+
+\usepackage{geometry}
+\geometry{b5paper}
+\usepackage{graphicx}
+
+\title{CS572 Project \#1b Report}
+\author{Heyan Huang}
+
+\usepackage{geometry}
+%\geometry{left=0cm,right=0cm,top=0.1cm,bottom=0cm}
+
+\newenvironment{narrow}[2]{% 
+\begin{list}{}{% 
+\setlength{\topsep}{0pt}% 
+\setlength{\leftmargin}{#1}% 
+\setlength{\rightmargin}{#2}% 
+%\setlength{\listparindent}{\parindent}% 
+%\setlength{\itemindent}{\parindent}% 
+\setlength{\parsep}{\parskip}% 
+}% 
+\item[]}{\end{list}} 
+%\begin{narrow}{0.35in}{0in}  \end{narrow}
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+\maketitle
+
+
+\lstset{language=c++,
+numbers=left, 
+numberstyle=\tiny, 
+tabsize=4,
+%keywordstyle=\color{blue!70}, commentstyle=\color{red!55!green!55!blue!55}, 
+%frame=shadowbox, 
+%rulesepcolor=\color{red!20!green!20!blue!20},
+escapeinside=``, 
+%xleftmargin=0em,xrightmargin=0em, aboveskip=0.5em
+extendedchars=false %这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+}
+
+
+
+\section{Algorithm Descriptions}
+
+\subsection{Data Structure}
+\begin{itemize}
+  \itemsep=-3pt
+\item In this project, I have implemented Object-Oriented(OO) design as suggested by Dr. Soule. 
+
+\item There are two classes. 
+  \begin{itemize}
+    \itemsep=-3pt
+  \item The base class is called Individual, indcludes member data indicating Individual point with a 30-dimension(length) dynamically allocated float values array, and a float fitness value.
+  \item The publicly derived class is called Population, indcludes member data indicating a int variable size storing the Population size, and a pointer to Individual dynamic array of Population size, pointer to dynamic int array for storing sample index, and pointer to float array storing the weight matrix for Roulette wheel selection method, together with constructor, copy constructor, destructor functions and some member functions.
+  \end{itemize}
+
+\item The base class pointer is not necessary. As the first time of implementing some OO design, I tried to manage pointer, but it ended up to be an fair experience. The advantages and disadvantages will be discussed in the discussion section. 
+\end{itemize}
+
+
+\subsection{Algorithm Step-Wise Descriptions}
+
+
+\subsubsection{Generate Base Individual Class}
+To make the implementation step-wise, I Generated the base class and make sure it works first.
+\begin{itemize}
+  \itemsep=-3pt
+
+\item Data members include float variable fitness, and a pointer to float array of dynamic size;
+\begin{lstlisting}[language=c++]
+    float* point;      // pointer to dynamic array of dimension p
+    float fitness;     // store fitness value for the point
+\end{lstlisting}
+  
+\item Since I have pointer included in my interface, I need to develop my own constructor, destructor, copy constructor, and assignment operator, as well as declaring the destructor and assignment operator virtual for later on potential dynamic binding at run time. 
+\begin{lstlisting}[language=c++]
+Individual::Individual(): fitness(INF) {
+    point = new float[p];
+}
+
+Individual::Individual(const Individual &orig): fitness(orig.fitness)
+{ }
+\end{lstlisting}
+\end{itemize}
+
+\end{CJK}
+\end{document}

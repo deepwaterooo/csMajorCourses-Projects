@@ -1,0 +1,51 @@
+ERROR(3): Syntax error.  Unexpected '+'.  Expecting id.
+ERROR(7): Syntax error.  Unexpected '+'.  Expecting id.
+ERROR(14): Syntax error.  Unexpected '{'.  Expecting ';'.
+ERROR(16): Syntax error.  Unexpected '+'.  Expecting id.
+ERROR(17): Syntax error.  Unexpected '+'.
+WARNING(18): Invalid input character: ^.  Character ignored.
+ERROR(19): Syntax error.  Unexpected '+'.
+ERROR(19): Syntax error.  Unexpected ';'.
+ERROR(20): Syntax error.  Unexpected '+'.
+ERROR(22): Syntax error.  Unexpected '+'.
+ERROR(23): Syntax error.  Unexpected '+'.
+ERROR(24): Syntax error.  Unexpected '+'.
+ERROR(24): Syntax error.  Unexpected id: x.  Expecting or or ')'.
+ERROR(25): Syntax error.  Unexpected '+'.
+ERROR(25): Syntax error.  Unexpected id: x.  Expecting or or ')'.
+ERROR(25): Syntax error.  Unexpected else.
+ERROR(26): Syntax error.  Unexpected '+'.
+ERROR(26): Syntax error.  Unexpected id: x.  Expecting or or ')'.
+ERROR(26): Syntax error.  Unexpected else.
+ERROR(27): Syntax error.  Unexpected '+'.
+ERROR(27): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(28): Syntax error.  Unexpected '+'.
+ERROR(28): Syntax error.  Unexpected if.  Expecting or or ')'.
+ERROR(29): Syntax error.  Unexpected '+'.
+ERROR(30): Syntax error.  Unexpected '+'.
+ERROR(30): Syntax error.  Unexpected id: x.  Expecting or or ')'.
+ERROR(30): Syntax error.  Unexpected else.
+ERROR(31): Syntax error.  Unexpected else.
+ERROR(32): Syntax error.  Unexpected ';'.
+ERROR(33): Syntax error.  Unexpected '+'.
+ERROR(33): Syntax error.  Unexpected id: x.  Expecting or or ')'.
+ERROR(34): Syntax error.  Unexpected '+'.
+ERROR(35): Syntax error.  Unexpected if.  Expecting ')'.
+ERROR(35): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(36): Syntax error.  Unexpected if.  Expecting ')'.
+ERROR(36): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(37): Syntax error.  Unexpected if.  Expecting ')'.
+ERROR(37): Syntax error.  Unexpected ';'.
+ERROR(38): Syntax error.  Unexpected while.  Expecting ')'.
+ERROR(38): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(39): Syntax error.  Unexpected while.  Expecting ')'.
+ERROR(39): Syntax error.  Unexpected ';'.
+ERROR(42): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(43): Syntax error.  Unexpected '+'.
+ERROR(43): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(44): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(45): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(48): Syntax error.  Unexpected '}'.  Expecting ')'.
+Number of warnings: 1
+Number of errors: 47
+------------------------------------

@@ -1,0 +1,48 @@
+//call.out
+WARNING(1): Expecting to return type int but function 'showInt' has no return statement.
+WARNING(7): Expecting to return type int but function 'showIntArray' has no return statement.
+WARNING(18): Expecting to return type int but function 'showBool' has no return statement.
+Number of warnings: 3
+Number of errors: 0
+
+
+call3.out
+ERROR(4): Symbol 'fred' is not defined.
+ERROR(4): Symbol 'x' is not defined.
+ERROR(4): Symbol 'y' is not defined.
+ERROR(4): 'and' requires operands of type bool but lhs is of type int.
+ERROR(4): 'and' requires operands of type bool but rhs is of type int.
+ERROR(6): Function 'main' at line 1 is expecting no return value, but return has return value.
+ERROR(12): Too many parameters passed for function 'fred' defined on line 9.
+ERROR(12): The operation '*' only works with arrays.
+ERROR(14): Too few parameters passed for function 'fred' defined on line 9.
+ERROR(13): Expecting array in parameter 1 of call to 'fred' defined on line 9.
+ERROR(15): Expecting type char in parameter 1 of call to 'fred' defined on line 9 but got type int.
+WARNING(9): Expecting to return type char but function 'fred' has no return statement.
+ERROR(20): 'x' is a simple variable and cannot be called.
+ERROR(20): '+' requires operands of type int but rhs is of type bool.
+ERROR(20): The operation '*' only works with arrays.
+ERROR(20): 'and' requires operands of type bool but lhs is of type int.
+ERROR(20): 'and' requires operands of type bool but rhs is of type int.
+ERROR(21): Symbol 'y' is not defined.
+ERROR(21): '+' requires operands of type int but rhs is of type bool.
+ERROR(21): The operation '*' only works with arrays.
+ERROR(21): 'and' requires operands of type bool but lhs is of type int.
+ERROR(21): 'and' requires operands of type bool but rhs is of type int.
+ERROR(22): 'z' is a simple variable and cannot be called.
+ERROR(22): '+' requires operands of type int but rhs is of type bool.
+ERROR(22): The operation '*' only works with arrays.
+ERROR(22): 'and' requires operands of type bool but lhs is of type int.
+ERROR(22): 'and' requires operands of type bool but rhs is of type int.
+ERROR(25): Symbol 'output' is already defined at line -1.
+ERROR(26): Symbol 'outputb' is already defined at line -1.
+ERROR(27): Symbol 'outputc' is already defined at line -1.
+ERROR(29): Symbol 'input' is already defined at line -1.
+ERROR(30): Symbol 'inputb' is already defined at line -1.
+ERROR(31): Symbol 'inputc' is already defined at line -1.
+ERROR(43): Symbol 'x' is already defined at line 42.
+WARNING(42): Expecting to return type int but function 'AlanTuring' has no return statement.
+ERROR(50): Symbol 'AlanTuring' is already defined at line 42.
+WARNING(50): Expecting to return type int but function 'AlanTuring' has no return statement.
+Number of warnings: 3
+Number of errors: 34

@@ -1,0 +1,297 @@
+ERROR(4): Symbol 'i' is not defined.
+ERROR(4): Symbol 'i' is not defined.
+ERROR(5): Symbol 'i' is not defined.
+ERROR(5): Symbol 'b' is not defined.
+ERROR(6): Symbol 'b' is not defined.
+ERROR(6): Symbol 'i' is not defined.
+ERROR(7): Symbol 'b' is not defined.
+ERROR(7): Symbol 'b' is not defined.
+ERROR(9): Symbol 'i' is not defined.
+ERROR(9): Symbol 'i' is not defined.
+ERROR(10): Symbol 'i' is not defined.
+ERROR(10): Symbol 'b' is not defined.
+ERROR(11): Symbol 'b' is not defined.
+ERROR(11): Symbol 'i' is not defined.
+ERROR(12): Symbol 'b' is not defined.
+ERROR(12): Symbol 'b' is not defined.
+ERROR(14): Symbol 'i' is not defined.
+ERROR(14): Symbol 'i' is not defined.
+ERROR(15): Symbol 'i' is not defined.
+ERROR(15): Symbol 'b' is not defined.
+ERROR(16): Symbol 'b' is not defined.
+ERROR(16): Symbol 'i' is not defined.
+ERROR(17): Symbol 'b' is not defined.
+ERROR(17): Symbol 'b' is not defined.
+ERROR(19): Symbol 'i' is not defined.
+ERROR(19): Symbol 'i' is not defined.
+ERROR(20): Symbol 'i' is not defined.
+ERROR(20): Symbol 'b' is not defined.
+ERROR(21): Symbol 'b' is not defined.
+ERROR(21): Symbol 'i' is not defined.
+ERROR(22): Symbol 'b' is not defined.
+ERROR(22): Symbol 'b' is not defined.
+ERROR(24): Symbol 'i' is not defined.
+ERROR(24): Symbol 'i' is not defined.
+ERROR(25): Symbol 'i' is not defined.
+ERROR(25): Symbol 'b' is not defined.
+ERROR(26): Symbol 'b' is not defined.
+ERROR(26): Symbol 'i' is not defined.
+ERROR(27): Symbol 'b' is not defined.
+ERROR(27): Symbol 'b' is not defined.
+ERROR(29): Symbol 'ia' is not defined.
+ERROR(29): Symbol 'ia' is not defined.
+ERROR(30): Symbol 'ia' is not defined.
+ERROR(30): Symbol 'ba' is not defined.
+ERROR(31): Symbol 'ba' is not defined.
+ERROR(31): Symbol 'ia' is not defined.
+ERROR(32): Symbol 'ba' is not defined.
+ERROR(32): Symbol 'ba' is not defined.
+ERROR(34): Symbol 'ia' is not defined.
+ERROR(34): Symbol 'ia' is not defined.
+ERROR(35): Symbol 'ia' is not defined.
+ERROR(35): Symbol 'ba' is not defined.
+ERROR(36): Symbol 'ba' is not defined.
+ERROR(36): Symbol 'ia' is not defined.
+ERROR(37): Symbol 'ba' is not defined.
+ERROR(37): Symbol 'ba' is not defined.
+ERROR(39): Symbol 'ia' is not defined.
+ERROR(39): Symbol 'ia' is not defined.
+ERROR(40): Symbol 'ia' is not defined.
+ERROR(40): Symbol 'ba' is not defined.
+ERROR(41): Symbol 'ba' is not defined.
+ERROR(41): Symbol 'ia' is not defined.
+ERROR(42): Symbol 'ba' is not defined.
+ERROR(42): Symbol 'ba' is not defined.
+ERROR(44): Symbol 'ia' is not defined.
+ERROR(44): Symbol 'ia' is not defined.
+ERROR(45): Symbol 'ia' is not defined.
+ERROR(45): Symbol 'ba' is not defined.
+ERROR(46): Symbol 'ba' is not defined.
+ERROR(46): Symbol 'ia' is not defined.
+ERROR(47): Symbol 'ba' is not defined.
+ERROR(47): Symbol 'ba' is not defined.
+ERROR(49): Symbol 'b' is not defined.
+ERROR(49): Symbol 'i' is not defined.
+ERROR(49): Symbol 'i' is not defined.
+ERROR(50): Symbol 'i' is not defined.
+ERROR(50): Symbol 'b' is not defined.
+ERROR(50): Symbol 'i' is not defined.
+ERROR(51): Symbol 'i' is not defined.
+ERROR(51): Symbol 'i' is not defined.
+ERROR(51): Symbol 'b' is not defined.
+ERROR(53): Symbol 'i' is not defined.
+ERROR(53): Symbol 'b' is not defined.
+ERROR(53): 'or' requires operands of type bool but lhs is of type (null).
+ERROR(53): 'or' requires operands of type bool but rhs is of type (null).
+ERROR(53): Symbol 'b' is not defined.
+ERROR(53): 'or' requires operands of type bool but rhs is of type (null).
+ERROR(54): Symbol 'b' is not defined.
+ERROR(54): Symbol 'i' is not defined.
+ERROR(54): 'or' requires operands of type bool but lhs is of type (null).
+ERROR(54): 'or' requires operands of type bool but rhs is of type (null).
+ERROR(54): Symbol 'b' is not defined.
+ERROR(54): 'or' requires operands of type bool but rhs is of type (null).
+ERROR(55): Symbol 'b' is not defined.
+ERROR(55): Symbol 'b' is not defined.
+ERROR(55): 'or' requires operands of type bool but lhs is of type (null).
+ERROR(55): 'or' requires operands of type bool but rhs is of type (null).
+ERROR(55): Symbol 'i' is not defined.
+ERROR(55): 'or' requires operands of type bool but rhs is of type (null).
+ERROR(57): Symbol 'b' is not defined.
+ERROR(57): Unary 'not' requires an operand of type bool but was given type (null).
+ERROR(58): Symbol 'i' is not defined.
+ERROR(58): Unary 'not' requires an operand of type bool but was given type (null).
+ERROR(59): Symbol 'ba' is not defined.
+ERROR(59): Unary 'not' requires an operand of type bool but was given type (null).
+ERROR(60): Symbol 'ia' is not defined.
+ERROR(60): Unary 'not' requires an operand of type bool but was given type (null).
+ERROR(62): Symbol 'b' is not defined.
+ERROR(62): Unary '-' requires an operand of type int but was given type (null).
+ERROR(63): Symbol 'i' is not defined.
+ERROR(63): Unary '-' requires an operand of type int but was given type (null).
+ERROR(64): Symbol 'ba' is not defined.
+ERROR(64): Unary '-' requires an operand of type int but was given type (null).
+ERROR(65): Symbol 'ia' is not defined.
+ERROR(65): Unary '-' requires an operand of type int but was given type (null).
+ERROR(67): Symbol 'i' is not defined.
+ERROR(67): Symbol 'i' is not defined.
+ERROR(67): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(67): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(67): Symbol 'i' is not defined.
+ERROR(67): Symbol 'i' is not defined.
+ERROR(67): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(67): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(68): Symbol 'b' is not defined.
+ERROR(68): Symbol 'i' is not defined.
+ERROR(68): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(68): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(68): Symbol 'i' is not defined.
+ERROR(68): Symbol 'i' is not defined.
+ERROR(68): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(68): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(69): Symbol 'i' is not defined.
+ERROR(69): Symbol 'b' is not defined.
+ERROR(69): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(69): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(69): Symbol 'i' is not defined.
+ERROR(69): Symbol 'i' is not defined.
+ERROR(69): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(69): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(70): Symbol 'i' is not defined.
+ERROR(70): Symbol 'i' is not defined.
+ERROR(70): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(70): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(70): Symbol 'b' is not defined.
+ERROR(70): Symbol 'i' is not defined.
+ERROR(70): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(70): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(71): Symbol 'b' is not defined.
+ERROR(71): Symbol 'i' is not defined.
+ERROR(71): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(71): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(71): Symbol 'i' is not defined.
+ERROR(71): Symbol 'b' is not defined.
+ERROR(71): '>' requires operands of type char or type int but lhs is of type (null).
+ERROR(71): '>' requires operands of type char or type int but rhs is of type (null).
+ERROR(72): Symbol 'b' is not defined.
+ERROR(72): Symbol 'b' is not defined.
+ERROR(72): 'or' requires operands of type bool but lhs is of type (null).
+ERROR(72): 'or' requires operands of type bool but rhs is of type (null).
+ERROR(72): Symbol 'b' is not defined.
+ERROR(72): Symbol 'b' is not defined.
+ERROR(72): 'or' requires operands of type bool but lhs is of type (null).
+ERROR(72): 'or' requires operands of type bool but rhs is of type (null).
+ERROR(75): Symbol 'i' is not defined.
+ERROR(75): Symbol 'i' is not defined.
+ERROR(76): Symbol 'b' is not defined.
+ERROR(76): Symbol 'b' is not defined.
+ERROR(75): Expecting Boolean test condition in if statement but got type int.
+ERROR(78): Symbol 'ba' is not defined.
+ERROR(78): Symbol 'i' is not defined.
+ERROR(78): Symbol 'i' is not defined.
+ERROR(79): Symbol 'b' is not defined.
+ERROR(79): Symbol 'b' is not defined.
+ERROR(78): Expecting Boolean test condition in if statement but got type (null).
+ERROR(81): Symbol 'ia' is not defined.
+ERROR(81): Symbol 'i' is not defined.
+ERROR(81): Symbol 'i' is not defined.
+ERROR(82): Symbol 'b' is not defined.
+ERROR(82): Symbol 'b' is not defined.
+ERROR(81): Expecting Boolean test condition in if statement but got type (null).
+ERROR(84): Symbol 'b' is not defined.
+ERROR(84): Symbol 'i' is not defined.
+ERROR(84): Symbol 'i' is not defined.
+ERROR(85): Symbol 'b' is not defined.
+ERROR(85): Symbol 'b' is not defined.
+ERROR(84): Expecting Boolean test condition in if statement but got type (null).
+ERROR(87): Symbol 'i' is not defined.
+ERROR(87): Symbol 'i' is not defined.
+ERROR(87): Symbol 'i' is not defined.
+ERROR(88): Symbol 'b' is not defined.
+ERROR(88): Symbol 'b' is not defined.
+ERROR(87): Expecting Boolean test condition in if statement but got type (null).
+ERROR(90): Symbol 'i' is not defined.
+ERROR(90): Symbol 'i' is not defined.
+ERROR(90): Expecting Boolean test condition in while statement but got type int.
+ERROR(91): Symbol 'ba' is not defined.
+ERROR(91): Symbol 'i' is not defined.
+ERROR(91): Symbol 'i' is not defined.
+ERROR(91): Expecting Boolean test condition in while statement but got type (null).
+ERROR(92): Symbol 'ia' is not defined.
+ERROR(92): Symbol 'i' is not defined.
+ERROR(92): Symbol 'i' is not defined.
+ERROR(92): Expecting Boolean test condition in while statement but got type (null).
+ERROR(93): Symbol 'b' is not defined.
+ERROR(93): Symbol 'i' is not defined.
+ERROR(93): Symbol 'i' is not defined.
+ERROR(93): Expecting Boolean test condition in while statement but got type (null).
+ERROR(94): Symbol 'i' is not defined.
+ERROR(94): Symbol 'i' is not defined.
+ERROR(94): Symbol 'i' is not defined.
+ERROR(94): Expecting Boolean test condition in while statement but got type (null).
+WARNING(2): Expecting to return type int but function 'main' has no return statement.
+
+Symbol Stack:
+              globals ---- 
+   outputc    globals 1 Func outputc returns type void allocated as Global of size -3 at location 0.
+
+    inputc    globals 1 Func inputc returns type char allocated as Global of size -2 at location 0.
+
+     outnl    globals 1 Func outnl returns type void allocated as Global of size -2 at location 0.
+
+   outputb    globals 1 Func outputb returns type void allocated as Global of size -3 at location 0.
+
+    inputb    globals 1 Func inputb returns type bool allocated as Global of size -2 at location 0.
+
+    output    globals 1 Func output returns type void allocated as Global of size -3 at location 0.
+
+     input    globals 1 Func input returns type int allocated as Global of size -2 at location 0.
+
+      main    globals 1 Func main returns type int allocated as Global of size -2 at location 0.
+
+FuncK->size: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -2
+toff: -3
+toff: -2
+toff: -2
+toff: -3
+toff: -2
+toff: -2
+toff: -3
+toff: -2
+toff: -2
+toff: -3
+toff: -2
+toff: -2
+toff: -3
+toff: -2
+toff: -2
+toff: -3
+Loop through global scope
+Number of warnings: 1
+Number of errors: 211
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: typesUndef.tm

@@ -1,0 +1,65 @@
+// C-F10
+//
+int g, ga[10];
+
+void cat(int x, xa[])
+{
+    output(x);
+    output(xa[3]);
+    output(*xa);
+    outnl();
+}
+
+void dog(int x, xa[])
+{
+    output(x);
+    output(xa[3]);
+    outnl();
+
+    x = 668;
+    xa[1+2] = 669;
+    output(x);
+    output(xa[3]);
+    outnl();
+
+    g = 670;
+    ga[2+1] = 671;
+    output(g);
+    output(ga[3]);
+    outnl();
+
+    cat(x, xa);
+    cat(g, ga);
+}
+     
+void fox()
+{
+    static int s, sa[11];
+
+    sa[3] = 1000;
+    s = 777;
+    sa[3] -= s + (s = 999);
+    output(s);
+    output(sa[3]);
+    outnl();
+    cat(s, sa);
+}
+
+void main()
+{
+    int y, ya[12];
+
+    y = 666;
+    ya[1+2] = 667;
+    output(y);
+    output(ya[3]);
+    outnl();
+
+    dog(y, ya);
+
+    output(y);
+    output(ya[3]);
+    outnl();
+
+    fox();
+}

@@ -1,0 +1,25 @@
+#+latex_class: cn-article
+#+latex_header: \usepackage{CJKutf8}
+#+latex_header: \begin{CJK}{UTF8}{gbsn}
+#+latex_header: \lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false,keywordstyle=\color{blue!70},commentstyle=\color{red!55!green!55!blue!55!},rulesepcolor=\color{red!20!green!20!blue!20!}}
+#+title: CS572 Project 4a Report
+#+author: Heyan Huang
+
+For me the Project 4 will be a GA working on the Schwefel function that we have worked on Project 1. Compared with Project 1, for this project 4, I will apply fitness sharing on this specific problem using fitness besed selection method instead of the Tournament selection. 
+\newline 
+\newline 
+
+Because the Schwefel function is slightly difficult to solve using the regulary rank-based method, and as in the class, Dr. Soule has coved the topic of fitness sharing, which quite fits this problem, I want to apply this method on the project to see how well the fitness sharing method can improve the searching result in term of the algorithm run time and the searching global optima results, the global optima the algorithm has achieved compared to the ones that I have got from Project 1. 
+\newline 
+\newline 
+
+The algorithm details will be pretty similar like Project 1. I will still use the steady state GA,instead of using the old previously I have used tournament selection, becuase it is fitness sharing, I will have to used the Roulette wheel selection method which is fitness based selection method. And keep one copy of the parent into next generation to accelerate the searching results.
+\newline 
+\newline 
+
+And Because the result of this Project will be measued by comparing the searching results and searching time, and the searching algorithms have quite some randomness, I will have to repeat the experiment quite some times to make this small experiment results solid and sound. 
+\newline 
+\newline 
+
+The results of this project will be represented by tables and graphics. The tables will list the numeric numbers that two projects have achieved, and the graphics will give some more direct version from the tables. 
+ 

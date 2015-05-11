@@ -1,0 +1,11 @@
+// C-F13
+// C-F09
+// a simple loop
+  main()
+{
+    bool x;
+    x = true;
+    while (x) {
+	x =  not x;
+    }
+}

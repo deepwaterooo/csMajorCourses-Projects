@@ -1,0 +1,7 @@
+ERROR(5): Symbol 'lund' is already defined at line 3.
+ERROR(26): Cannot use function 'arwen' as a simple variable.
+ERROR(26): '+' requires operands of type int but lhs is of type void.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 0
+Number of errors: 4
+------------------------------------

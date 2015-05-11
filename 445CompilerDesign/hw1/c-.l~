@@ -1,0 +1,84 @@
+%{
+
+#include <string.h>  
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include "scanType.h"
+#include "c.tab.h" 
+
+static int linnum = 1
+
+int setValue(int linnum, int tokenClass, char * svalue);
+
+%}
+%%
+
+"quit"                  {return setValue(linnum, QUIT, yytext);}
+"static"                {return stat;}
+"int"                   {return int;}
+"bool"                  {return bool;}
+"char"                  {return char;}
+"if"                    {return if;}
+"else"                  {return else;}
+"while"                 {return while;}
+"foreach"               {return foreach;}
+"in"                    {return in;}
+"return"                {return return;}
+"break"                 {return break;}
+"or"                    {return or;}
+"and"                   {return and;}
+"not"                   {return not;}
+"true"                  {return true;}
+"false"                 {return false;}
+"void"                  {return void;}
+
+"{"                     {return '{';}
+"}"                     {return '}';}
+"("                     {return '(';}
+")"                     {return ')';}
+","                     {return ',';}
+":"                     {return ':';}
+";"                     {return ';';}
+"+"                     {return '+';}
+"-"                     {return '-';}
+"*"                     {return '*';}
+"/"                     {return '/';}
+"%"                     {return '%';}
+"<"                     {return '<';}
+">"                     {return '>';}
+"="                     {return '=';}
+
+[(<=)]                  {return lteq;}
+[(>=)]                  {return gteq;}
+[(==)]                  {return equ;}
+[(!=)]                  {return nequ;}
+[(+=)]                  {return pleq;}
+[(-=)]                  {return mieq;}
+
+[a-zA-Z][0-9a-zA-Z_]*   {return setValue(linnum, ID, yytext);}
+[0-9]+                  {return setValue(linnum, NUMCONST, yytext);}
+[\t]                    ;
+[\\][\*]                ;/*{return setValue(linnum, yytext, yytext);}*/
+"'"[(^'\\)([\\][\*])]"'"{return setValue(linnum, CHARCONST, yytext);}
+\"0+[([\\][\\]+)([\\][\\]+[^0\\])*]\" {return setValue(linnum, STRINGCONST, yytext);}
+[ \n]                   {linnum++;}
+"//"[^\n]*\n            ; 
+
+%%
+
+int setValue(int linnum, int tokenClass, char * svalue){
+   yylval.tokenData = new TokenData;
+
+   yylval.tokenData->tokenClass = tokenClass;
+   yylval.tokenData->linnum = linnum;
+   yylval.tokenData->tokenstr = svalue;
+
+   switch(tokenClass){
+      case NUMCONST:
+         yylval.tokenData->numvalue = atol(svalue);  /* convert string to long integer */
+      case ID:
+         yylval.tokenData->Idvalue = svalue - 'a';
+    }
+    return 0;
+}

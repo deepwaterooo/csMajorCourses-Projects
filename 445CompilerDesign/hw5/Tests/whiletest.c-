@@ -1,0 +1,58 @@
+// C-F13
+// C-F09
+// Randomly generated if/while combinations
+//
+  main()
+{
+  if ( true ) false ;
+  if ( true ) false ; else true ;
+  if ( false ) true ; else if ( false ) true ;
+  if ( false ) true ; else if ( false ) true ; else false ;
+  if ( true ) false ; else if ( true ) if ( false ) true ;
+  if ( false ) true ; else if ( false ) while ( true ) false ;
+  if ( true ) false ; else while ( true ) false ;
+  if ( true ) false ; else while ( true ) if ( false ) true ;
+  if ( false ) true ; else while ( false ) while ( true ) false ;
+  if ( true ) if ( false ) true ;
+  if ( false ) if ( true ) false ; else true ;
+  if ( false ) if ( true ) false ; else true ; else false ;
+  if ( true ) if ( false ) true ; else if ( false ) true ;
+  if ( false ) if ( true ) false ; else while ( true ) false ;
+  if ( true ) if ( false ) if ( true ) false ;
+  if ( true ) if ( false ) if ( true ) false ; else true ;
+  if ( false ) if ( true ) if ( false ) if ( true ) false ;
+  if ( true ) if ( false ) if ( true ) while ( false ) true ;
+  if ( false ) if ( true ) while ( false ) true ;
+  if ( false ) if ( true ) while ( false ) true ; else false ;
+  if ( true ) if ( false ) while ( true ) if ( false ) true ;
+  if ( false ) if ( true ) while ( false ) while ( true ) false ;
+  if ( true ) while ( false ) true ;
+  if ( false ) while ( true ) false ; else true ;
+  if ( false ) while ( true ) false ; else if ( true ) false ;
+  if ( true ) while ( false ) true ; else while ( false ) true ;
+  if ( false ) while ( true ) if ( false ) true ;
+  if ( false ) while ( true ) if ( false ) true ; else false ;
+  if ( true ) while ( false ) if ( true ) if ( false ) true ;
+  if ( false ) while ( true ) if ( false ) while ( true ) false ;
+  if ( true ) while ( false ) if ( true ) while ( false ) true ; else false ;
+  if ( true ) while ( false ) if ( true ) while ( false ) true ; else false ; else true ;
+  if ( false ) while ( true ) while ( false ) true ;
+  if ( false ) while ( true ) while ( false ) true ; else false ;
+  if ( true ) while ( false ) while ( true ) if ( false ) true ;
+  if ( false ) while ( true ) while ( false ) if ( true ) false ; else true ;
+  if ( false ) while ( true ) while ( false ) if ( true ) if ( false ) true ;
+  if ( false ) while ( true ) while ( false ) if ( true ) if ( false ) true ; else false ;
+  while ( true ) false ;
+  while ( true ) if ( false ) true ;
+  while ( false ) if ( true ) false ; else true ;
+  while ( false ) if ( true ) false ; else if ( true ) false ;
+  while ( true ) if ( false ) true ; else while ( false ) true ;
+  while ( false ) if ( true ) if ( false ) true ;
+  while ( false ) if ( true ) if ( false ) true ; else false ;
+  while ( true ) if ( false ) if ( true ) if ( false ) true ;
+  while ( false ) if ( true ) while ( false ) true ;
+  while ( false ) if ( true ) while ( false ) true ; else false ;
+  while ( true ) while ( false ) true ;
+  while ( false ) while ( true ) if ( false ) true ;
+  while ( false ) while ( true ) if ( false ) true ; else false ;
+}

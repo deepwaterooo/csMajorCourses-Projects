@@ -1,0 +1,49 @@
+// C-F13
+// C-F09
+int +(int x)
+{
+}
+
+int fred(int +)
+{
+}
+
+int fred(int x)
+{
+
+  main() {
+     int x;
+     int +;
+     + x;
+     ^x//;
+     *+-*;
+     +x+y;
+     x;
+     { + }
+     if (true) { + }
+     if (+) x;
+     if (+) x; else x;
+     if (+) x; else if (true) x;
+     if (true) + else if (true) x;
+     while (+)  if (true) x;
+     +;
+     if (+) x; else y;
+     if (true) x else y;
+     if (true) +; else y;
+     while (+) x;
+     while (true) +;
+     if (+) if (+) x; else y;
+     if (+) if (true) x else y;
+     if (+) if (true) +; else y;
+     if (+) while (+) x;
+     if (+) while (true) +;
+     return +;
+     *+3+4+*;
+     3+(+);
+     (((+)));
+     fred(+);     
+     fred(%,*,+);     
+     (;}
+     {;)
+}
+int %;

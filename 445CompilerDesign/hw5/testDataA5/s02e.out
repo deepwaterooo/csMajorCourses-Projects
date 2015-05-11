@@ -1,0 +1,4 @@
+ERROR(8): Symbol 'load' is already defined at line 6.
+ERROR(11): Symbol 'load' is already defined at line 10.
+Number of warnings: 0
+Number of errors: 2

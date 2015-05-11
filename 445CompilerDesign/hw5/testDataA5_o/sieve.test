@@ -1,0 +1,63 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: sieve.tm
+Enter command: 
+command: a 10000000
+command: g
+2 
+3 
+5 
+7 
+11 
+13 
+17 
+19 
+23 
+29 
+31 
+37 
+41 
+43 
+47 
+53 
+59 
+61 
+67 
+71 
+73 
+79 
+83 
+89 
+97 
+101 
+103 
+107 
+109 
+113 
+127 
+131 
+137 
+139 
+149 
+151 
+157 
+163 
+167 
+173 
+179 
+181 
+191 
+193 
+197 
+199 
+Halted
+Last executed cmd:  192: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 192, PC is now 193
+command: e
+EXEC STAT: Number of instructions executed: 15319
+EXEC STAT: Instruction memory used: 193
+EXEC STAT: Data memory used: 208
+command: x
+Bye.

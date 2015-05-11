@@ -1,0 +1,9 @@
+int main() {
+   bool a: true;
+   while (a) {
+      while(a) {
+         output(5);
+     }
+ }
+ return 0;
+}

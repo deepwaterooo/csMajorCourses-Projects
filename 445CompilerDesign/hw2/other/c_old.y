@@ -1,0 +1,323 @@
+// c-.y
+
+%{
+
+#include <stdio.h>
+#include <stdio.h>
+#including </usr/include/libintl.h>
+#include "scanType.h"  // this one may not help
+#include "c.tab.h"
+
+// stuff from flex that Bison needs to know about: 
+//extern int yylex();
+//extern int yyparse();
+//extern FILE * yyin;
+#define YYDEBUG 1;
+
+//void yyerror(const char * s);
+
+%}
+
+
+// user defined yystype for tokens of any arbitrary data type
+// C union holds each of the types of tokens that Flex could return, 
+// has Bison use that union instead of "int" for the definition of "yystype"
+%union {
+  Token * token;
+  int value;
+}
+
+
+// define the "terminal symbol" token types I am going to use
+// in CAPS by convention, and associate each with a field of the union
+%token <token> NUMBER ID QUIT CHARCONST NUMCONST STRINGCONST
+%type <value> term   // exp varornum
+
+%term stat intc bool charc e  
+%term ifc elsec whilec foreach in
+%term truec falsec voidc
+%term returnc breakc 
+
+%nonassoc or and not
+%nonassoc  '<' '>' '=' lteq gteq equ nequ pleq mieq 
+			    // '<=' '>=' '==' '!=' '+=' '-='
+%left '+' '-' '*' '/' '%' ',' ';' ':'
+%left '{' '(' '['
+%right '}' ')' ']'
+
+%start program
+ 
+%%
+			
+// this is the actual grammar that Bison will parse		       
+program: declaration-list
+;		 
+declaration-list: declaration-list declaration
+| declaration
+;
+declaration: var-declaration
+| fun-declaration
+;
+var-declaration: type-specifier var-decl-list
+;
+
+scoped-var-declaration: scoped-type-specifier var-decl-list
+;
+var-decl-list: var-decl-list ',' var-decl-initialize
+| var-decl-initialize
+;
+
+// 7
+var-decl-initialize: var-decl-id  
+| var-decl-id ':' simple-expression
+;
+var-decl-id: ID
+| ID '[' NUMCONST ']'
+;
+
+//9
+scoped-type-specifier: stat type-specifier
+| type-specifier
+;
+type-specifier: intc
+| bool
+| charc
+;
+
+// 11
+fun-declaration: type-specifier ID '(' params ')' statement
+| ID '(' params ')' statement
+;
+
+// 12
+params: param-list
+| e
+;
+param-list: param-list ';' param-type-list
+| param-type-list
+;
+param-type-list: type-specifier param-id-list
+;
+param-id-list: param-id-list ',' param-id
+| param-id
+;
+param-id: ID
+| ID '[' ']'
+;
+
+// 17
+statement: expression-stmt 
+| compound-stmt
+| selection-stmt
+| iteration-stmt
+| return-stmt
+| break-stmt
+;
+compound-stmt: '{' local-declarations statement-list '}'
+;
+local-declarations: local-declarations scoped-var-declaration
+| e
+;
+statement-list: statement-list statement
+| e
+;
+expression-stmt: expression ';'
+| ';'
+;
+selection-stmt: ifc '(' simple-expression ')' statement
+| ifc '(' simple-expression ')' statement elsec statement
+;
+iteration-stmt: whilec '(' simple-expression ')' statement
+| foreach '(' mutable in simple-expression ')' statement
+;
+return-stmt: returnc ';'
+| returnc expression ';'
+;
+break-stmt: breakc ';'
+;
+
+// 26
+expression: mutable '=' expression 
+| mutable '+=' expression 
+| mutable '−=' expression
+| mutable '++' 
+| mutable '−−' 
+| simple-expression
+;
+simple-expression: simple-expression or and-expression 
+| and-expression
+;
+and-expression: and-expression and unary-rel-expression 
+| unary-rel-expression
+;
+unary-rel-expression: not unary-rel-expression 
+| rel-expression
+;
+rel-expression: sum-expression relop sum-expression 
+| sum-expression
+;
+relop: '<' 
+| '>' 
+| '<='
+| '>=' 
+| '==' 
+| '!='  // something maybe wrong here
+;
+sum-expression: sum-expression sumop term 
+| term
+;
+sumop: '+' 
+| '−'
+;
+term: term mulop unary-expression 
+| unary-expression
+;
+mulop: '∗' 
+| '/' 
+| '%'
+;
+unary-expression: unaryop unary-expression 
+| factor
+;
+unaryop: '−' 
+| '∗'
+;
+factor: immutable 
+| mutable
+;
+mutable: ID 
+| ID '[' expression ']'
+;
+immutable: '(' expression ')'
+| call 
+| constant
+;
+call: ID '(' args ')'
+;
+args: arg-list 
+| e
+;
+arg-list: arg-list ',' expression 
+| expression
+;
+constant: NUMCONST 
+| CHARCONST 
+| STRINGCONST 
+| truec 
+| falsec
+;
+
+terminallist :  
+STATIC   {tokBisonExe(yylval.token);}
+| INT    {tokBisonExe(yylval.token);}
+| BOOL   {tokBisonExe(yylval.token);}
+| CHAR   {tokBisonExe(yylval.token);}
+| E      {tokBisonExe(yylval.token);}
+| IF     {tokBisonExe(yylval.token);}
+| ELSE   {tokBisonExe(yylval.token);}
+| WHILE  {tokBisonExe(yylval.token);}
+| FOREACH {tokBisonExe(yylval.token);}
+| IN     {tokBisonExe(yylval.token);}
+| TRUE   {tokBisonExe(yylval.token);}
+| FALSE  {tokBisonExe(yylval.token);}
+| RETURN {tokBisonExe(yylval.token);}
+| BREAK  {tokBisonExe(yylval.token);}
+| OR     {tokBisonExe(yylval.token);}
+| AND    {tokBisonExe(yylval.token);}
+| NOT    {tokBisonExe(yylval.token);}
+| lt     {tokBisonExe(yylval.token);}
+| gt     {tokBisonExe(yylval.token);}
+| equal  {tokBisonExe(yylval.token);}
+| LEQ   {tokBisonExe(yylval.token);}
+| GEQ   {tokBisonExe(yylval.token);}
+| EQ    {tokBisonExe(yylval.token);}
+| NEQ   {tokBisonExe(yylval.token);}
+| PASSIGN {tokBisonExe(yylval.token);}
+| MASSIGN {tokBisonExe(yylval.token);}
+| plus   {tokBisonExe(yylval.token);}
+| minus  {tokBisonExe(yylval.token);}
+| multiply {tokBisonExe(yylval.token);}
+| divide {tokBisonExe(yylval.token);}
+| mod    {tokBisonExe(yylval.token);}
+| comma  {tokBisonExe(yylval.token);}
+| semicolon {tokBisonExe(yylval.token);}
+| colon  {tokBisonExe(yylval.token);}
+| leftp2 {tokBisonExe(yylval.token);}
+| leftp  {tokBisonExe(yylval.token);}
+| leftp3 {tokBisonExe(yylval.token);}
+| rightp2 {tokBisonExe(yylval.token);}
+| rightp {tokBisonExe(yylval.token);}
+| rightp3 {tokBisonExe(yylval.token);}
+| INC   {tokBisonExe(yylval.token);}
+| DEC    {tokBisonExe(yylval.token);}
+| ID      {tokBisonExe(yylval.token);}
+| QUIT    {tokBisonExe(yylval.token);}
+| CHARCONST {tokBisonExe(yylval.token);}
+| NUMCONST {tokBisonExe(yylval.token);}
+| STRINGCONST {tokBisonExe(yylval.token);}
+;
+
+
+void tokBisonExe(Token * token){
+  cout << "Line " << linnum << " Token: ";
+
+  switch (token->tokenClass) {    
+    case ID: 
+      cout << "ID"  << " Value: " << yytext << endl;
+      break;
+    case BOOL: 
+      cout << "BOOLEAN" << endl;
+      break;
+    case NUMCONST: 
+      cout << "NUMCONST"  << " Value: " << token->numValue << endl;
+      break;
+    case CHARCONST: 
+      cout << "CHARCONST"  << " Value: " << yytext << endl;
+      break;
+    case STRINGCONST: 
+      cout << "STRINGCONST"  << " Value: " << yytext << endl;
+      break;
+    case LEQ: 
+      cout << "LEQ" << endl;
+      break;
+    case GEQ: 
+      cout << "GEQ" << endl;
+      break;
+    case EQ: 
+      cout << "EQ" << endl;
+      break;
+    case NEQ: 
+      cout << "NEQ" << endl;
+      break;
+    case PASSIGN: 
+      cout << "PASSIGN" << endl;
+      break;
+    case MASSIGN: 
+      cout << "MASSIGN" << endl;
+      break;
+    case INC: 
+      cout << "INC" << endl;
+      break;
+    case DEC: 
+      cout << "DEC" << endl;
+      break;
+    default: 
+      int i = 0;
+      char * a = token->tokenstr;
+      while (*(a) != '\0'){
+	i++;
+	a++;
+      }
+      if (i == 1 )
+	cout << *token->tokenstr; 
+      else {
+	for (int a = 0; a < i; a++) {
+	  char c = *(token->tokenstr);
+	  putchar (toupper(c));
+	  (token->tokenstr)++;
+	}
+      }
+      cout << endl;
+    }
+}
+

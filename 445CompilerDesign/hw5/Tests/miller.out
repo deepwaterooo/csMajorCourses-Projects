@@ -1,0 +1,18 @@
+ERROR(46): Symbol 'dog' is not defined.
+ERROR(49): Symbol 'dog' is not defined.
+ERROR(54): Symbol 'dog' is not defined.
+ERROR(59): Symbol 'dog' is not defined.
+ERROR(70): Symbol 'dog' is not defined.
+ERROR(86): Symbol 'dog' is not defined.
+ERROR(91): Symbol 'getnxtindex' is not defined.
+ERROR(93): Symbol 'dog' is not defined.
+ERROR(103): Symbol 'dog' is not defined.
+ERROR(115): Symbol 'showIntArray' is not defined.
+Number of warnings: 0
+Number of errors: 10
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: miller.tm
+Halted
+Bye.

@@ -1,0 +1,769 @@
+#+latex_class: cn-article
+#+latex_header: \usepackage{CJKutf8}
+#+latex_header: \begin{CJK}{UTF8}{gbsn}
+#+latex_header: \lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false}
+#+title: Review for CS541 Exam I
+
+* Chapter 1
+* Chapter 2
+* Chapter 3
+** Process vs Threads
+Page 54
+*** Process: 
+
+进程是一个程序，同时包含它的执行环境（内存、寄存器、程序计数器等），是操作系统中独立存在的可执行的基本程序单位；
+
+通俗理解：串行应用程序编译形成的可执行代码，分为“指令”和“数据”两个部分，并在程序执行时“独立地申请和占有”内存空间，且所有计算均局限于该内存空间。
+
+Process are the basic computationan units in an operating system. A process is a program in execution. 
+
+A process is sequential if a single thread of control regulates its execution. 
+
+We use the tem concurrent process to describe simultaneous interacting sequential processes. Concurrent processes are asynchronous and each has its own logical address space. Between two processes, some components in the processes are disjointed and can be executed concurrently. Others need to communicate or have synchronization between them. 
+
+*** Threads
+
+Allowing multiple threads of control in a process introduce a new level of concurrency in the system. A process may spawn new processes, thus creating multiple threads of execution. A special case of interest is when the process and subprocesses are grouped together to share a common address space, but each has its own local state. These processes are called *light-weighted processes (LWP), or threads*. 
+
+*** User space thread implementation vs Kernel space thread implementation, adv disadv
+**** User space thread implementation
+Page 57 still difficult to understand
+
+**** Kernel space thread implementation
+Page 57
+
+** Shared memory vs Message passing
+*** Shared-variable Synchronization
+Page 72
+*** Message Passing Synchronization
+Page 77
+
+在并发编程中，我们必须考虑的问题时如何在两个线程间进行通讯。这里的通讯指的是不同的线程之间如何交换信息。
+
+目前有两种方式：
+
+1、共享内存
+
+2、消息传递（actor 模型）
+
+*** 共享内存：
+共享内存这种方式比较常见，我们经常会设置一个共享变量。然后多个线程去操作同一个共享变量。从而达到线程通讯的目的。例如，我们使用多个线程去执行页面抓取任务，我们可以使用一个共享变量count来记录任务完成的数量。每当一个线程完成抓取任务，会在原来的count上执行加1操作。这样每个线程都可以通过获取这个count变量来获得当前任务的完成情况。当然必须要考虑的是共享变量的同步问题，这也共享内存容易出错的原因所在。
+#+caption: shared memory
+[[./1.png]]
+这种通讯模型中，不同的线程之间是没有直接联系的。都是通过共享变量这个“中间人”来进行交互。而这个“中间人”必要情况下还需被保护在临界区内（加锁或同步）。由此可见，一旦共享变量变得多起来，并且涉及到多种不同线程对象的交互，这种管理会变得非常复杂，极容易出现死锁等问题。
+
+*** 消息传递
+
+消息传递方式采取的是线程之间的直接通信，不同的线程之间通过显式的发送消息来达到交互目的。消息传递最有名的方式应该是actor模型了。在这种模型下，一切都是actor，所有的actor之间的通信都必须通过传递消息才能达到。每个actor都有一个收件箱（消息队列）用来保存收到其他actor传递来的消息。actor自己也可以给自己发送消息。这才是面向对象的精髓啊！
+#+caption: Message passing
+[[./2.png]]
+这种模型看起来比共享内存模型要复杂。但是一旦碰到复杂业务的话，actor模型的优势就体现出来了。我们还是以刚才多线程抓取网站为例子看一下在这种模型下如何去解决。
+
+首先我们定义一个统计actor用来统计任务完成量。然后把多个网址（消息方式）发给多个抓取actor，抓取actor处理完任务后发送消息通知统计actor任务完成，统计actor对自己保存的变量count（这个只有统计actor才能看到）加一。
+
+(另一个来源的文章)上面提到的其他的方法就是消息传递（message passing）。这种进程间通信的方法使用两条原语send和receive，它们像信号量而不像管程，是系统调用而不是语言成分。因此，可以很容易地将它们加入到库例程中去。例如：
+
+send(destination, &message);
+
+和
+
+receive(source, &message);
+
+前一个调用向一个给定的目标发送一条消息，后一个调用从一个给定的源（或者是任意源，如果接收者不介意的话）接收一条消息。如果没有消息可用，则接收者可能被阻塞，直到一条消息到达，或者，带着一个错误码立即返回。
+
+**** 消息传递系统的设计要点
+
+消息传递系统面临着许多信号量和管程所未涉及的问题和设计难点，特别是位于网络中不同机器上的通信进程的情况。例如，消息有可能被网络丢失。为了防止消息丢失，发送方和接收方可以达成如下一致：一旦接收到信息，接收方马上回送一条特殊的确认（acknowledgement）消息。如果发送方在一段时间间隔内未收到确认，则重发消息。
+
+现在考虑消息本身被正确接收，而返回给发送者的确认信息丢失的情况。发送者将重发信息，这样接收者将接收到两次相同的消息。对于接收者来说，如何区分新的消息和一条重发的老消息是非常重要的。通常采用在每条原始消息中嵌入一个连续的序号来解决此问题。如果接收者收到一条消息，它具有与前面某一条消息一样的序号，就知道这条消息是重复的，可以忽略。不可靠消息传递中的成功通信问题是计算机网络的主要研究内容。更多的信息可以参考相关文献（Tanenbaum，1996）。
+
+消息系统还需要解决进程命名的问题，在send和receive调用中所指定的进程必须是没有二义性的。身份认证（authentication）也是一个问题。比如，客户机怎么知道它是在与一个真正的文件服务器通信，而不是与一个冒充者通信？
+
+对于发送者和接收者在同一台机器上的情况，也存在若干设计问题。其中一个设计问题就是性能问题。将消息从一个进程复制到另一个进程通常比信号量操作和进入管程要慢。为了使消息传递变得高效，人们已经做了许多工作。例如，Cheriton（1984）建议限制信息的大小，使其能装入机器的寄存器中，然后便可以使用寄存器进行消息传递。
+
+**** 用消息传递解决生产者-消费者问题
+
+现在我们来考察如何用消息传递而不是共享内存来解决生产者-消费者问题。在图2-36中，我们给出了一种解法。假设所有的消息都有同样的大小，并且在尚未接收到发出的消息时，由操作系统自动进行缓冲。在该解决方案中共使用N条消息，这就类似于一块共享内存缓冲区中的N个槽。消费者首先将N条空消息发送给生产者。当生产者向消费者传递一个数据项时，它取走一条空消息并送回一条填充了内容的消息。通过这种方式，系统中总的消息数保持不变，所以消息都可以存放在事先确定数量的内存中。
+
+如果生产者的速度比消费者快，则所有的消息最终都将被填满，等待消费者，生产者将被阻塞，等待返回一条空消息。如果消费者速度快，则情况正好相反：所有的消息均为空，等待生产者来填充它们，消费者被阻塞，以等待一条填充过的消息。
+
+消息传递方式可以有许多变体。我们首先介绍如何对消息进行编址。一种方法是为每个进程分配一个惟一的地址，让消息按进程的地址编址。另一种方法是引入一种新的数据结构，称作信箱（mailbox）。信箱是一个用来对一定数量的消息进行缓冲的地方，信箱中消息数量的设置方法也有多种，典型的方法是在信箱创建时确定消息的数量。当使用信箱时，在send和receive调用中的地址参数就是信箱的地址，而不是进程的地址。当一个进程试图向一个满的信箱发消息时，它将被挂起，直到信箱内有消息被取走，从而为新消息腾出空间。
+
+对于生产者-消费者问题，生产者和消费者均应创建足够容纳N条消息的信箱。生产者向消费者信箱发送包含实际数据的消息，消费者则向生产者信箱发送空的消息。当使用信箱时，缓冲机制的作用是很清楚的：目标信箱容纳那些已被发送但尚未被目标进程接收的消息。
+#+caption: 用N条消息实现的生产者-消费者问题
+[[./pc.jpg]]
+
+使用信箱的另一种极端方法是彻底取消缓冲。采用这种方法时，如果send在receive之前执行，则发送进程被阻塞，直到receive发生。在执行receive时，消息可以直接从发送者复制到接收者，不用任何中间缓冲。类似地，如果先执行receive，则接收者会被阻塞，直到send发生。这种方案常被称为会合（rendezvous）。与带有缓冲的消息方案相比，该方案实现起来更容易一些，但却降低了灵活性，因为发送者和接收者一定要以步步紧接的方式运行。
+
+通常在并行程序设计系统中使用消息传递。例如，一个著名的消息传递系统是消息传递接口（Message-Passing Interface，MPI），它广泛应用在科学计算中。有关该系统的更多信息，可参考相关文献（Gropp 等人，1994；Snir等人，1996）。
+
+*** 最后让我们来总结一下这两种通讯模式：
+
+|并发模型 | 通信机制	| 同步机制 |
+|--------+------------+--------|
+|共享内存 |线程之间共享程序的公共状态，线程之间通| 同步是显式进行的。程序员必须显式指定某个|
+|         |过写-读内存中的公共状态来隐式进行通信。|方法或某段代码需要在线程之间互斥执行。|
+|--------+------------+--------|
+|消息传递 | 线程之间没有公共状态，线程之间必须通过明| 由于消息的发送必须在消息的接收之前，|
+|（actor) |确的发送消息来显式进行通信。   | 因此同步是隐式进行的。|
+|--------+------------+--------|
+
+** Logical clock, synchronization issues
+Page 66
+
+*** 逻辑时钟的定义
+
+**** 一般定义
+
+逻辑时钟，可以是计算机、数字电路、机械结构密码机、CPU内部操作、显卡和各种系统等等内部操作的时钟，她的状态于时间基准有固定或可改变的规则。例如各种跳频通讯，加密、解密通讯，解码、编码方式，VCD、DVD的图像处理，电视台的图像同步信号，3G通讯格式，声音、图像的编码传输都有复杂的逻辑时钟关系。
+
+**** 分布式系统中的定义
+
+逻辑时钟是（松耦合）分布式系统的特性，要求的是系统节点进展之间的相对一致性（同步）。 只有相关的系统（进程）才需要有逻辑时钟同步，同步的目的是维持事件的顺序性。除时间的基本特性（一维）外，逻辑时钟与标准时钟（物理时钟）之间没有通用意义上的明确的关系。
+
+*** 逻辑时钟算法的可行性
+
+逻辑时钟同步的算法是有意义并且可行的，只要有以下三方面的理由：
+
+（1）如果两个进程之间不存在相互作用，它们的同步没有意义；
+
+（2）时钟同步不需要绝对同步，不需要所有进程在时间上完全一致，而是它们在事件的发生顺序要完全一致；
+
+（3）逻辑时钟只关心事件的发生顺序，而不关心是否与物理时间接近。
+
+*** 逻辑时钟同步化的算法
+
+**** 算法涉及到的概念
+
+（1）时标：逻辑时钟通常用时标(timestamp)表示，称为Lamport时标，没有具有物理意义的单位的概念，一般情况下以正整数标识；
+
+特点：时标只能通过节点之间进行消息交换完成；时标完全没有物理时钟方面的要求。
+
+（2）事件：进程中相对独立的一段程序（代码，语句序列）的一次运行，具有不可分割性和相对独立的语义。
+
+特点：是并发与同步分析的基本单位（不可分割）；事件之间不存在包含关系；含有发送或接收动作的事件是系统的同步点。
+
+（3）事件间的关系：一个没有死锁的特定系统，在确定了并发进程和各进程的事件后，任何2个事件间要么是“先于发生（→）”关系，要么是“并发（||）”关系。具有并发关系的事件可以并发完成，也可以先后完成，没有顺序要求，具有发生在先关系的事件必须按该关系所规定顺序先后完成。
+
+***** 发生在先关系的定义为：
+　　1）如果a和b是同一个进程中的事件且a在b之前被执行，则a→b；
+
+　　2）如果a是某个进程发送消息的事件，b是另一个进程接收该消息的事件，则a→b；
+
+　　3）如果a→b且b→c，则a→c；
+
+　　4）a→a对于任何事件a都不成立。如果事件a和b之间不存在发生在先关系，则它们是并发的。
+
+结合前文->关系的定义，我们可以把上面的条件细化成如下两条：
+
+    1. 如果a和b是进程Pi中的两个事件，并且在Pi中，a在b之前发生，那么Ci(a) < Ci(b)；
+       
+    2. 如果a是Pi发送消息m，b是Pj接收消息m，那么Ci(a) < Cj(b)；
+       
+    上面就定义了合理的逻辑时钟。显然，一个系统可以有无数个合理的逻辑时钟。实现逻辑时钟也相对简单，只要遵守两条实现规则就可以了：
+
+    1. 每个进程Pi在自己的任何两个连续的事件之间增加Ci值；
+
+    2. 如果事件a是Pi发送消息m，那么在m中应该带上时间戳Tm=Ci(a)；如果b是进程Pj接收到消息m，那么，进程Pj应该设置Cj为大于max(Tm, Cj(b))。
+
+***** 事件发生在先关系要求：
+　　1）单个进程执行中所有的事件是全（偏）序的；
+
+　　2）相对的要求，可以通过调节事件的分割来满足
+
+　　3）当消息接收方发现自己的（逻辑）时钟小于收到的消息的时标时，要将自己的时钟调整到比收到的时标至少大1的值，以维持偏序关系的成立。
+
+**** Lamport标量逻辑时钟
+
+没有一个直接的全局的逻辑时钟，但每个进程Pi维护一个当前逻辑时钟LCi，它是一个非减的整数序列且初始化为init (≥0)。进程中的每个事件均有一个逻辑时钟，其数值等于发生时刻所属进程的逻辑时钟的取值；Pi发出的每个消息m都带有本地逻辑时钟，可表示为(m,LCi, i)。通过这些逻辑时钟和消息，可以维护事件间的先于发生关系。附加条件：两个事件不可以同时发生。LCi的更新原则为：
+
+1）在发生一个（外部发送或内部）事件之前更新LCi=LCi+ d；
+
+2）当收到一个带时戳的消息(m, LCj, j)时，Pi执行更新LCi=max (LCi,LCj) + d (d>0）。
+
+**** 向量时钟
+
+对标量逻辑时钟算法的改进是向量时钟算法。在一个由n个并发进程构成的系统中，每个事件的逻辑时钟均由一个n维向量（n元组）构成，其中第i维（分量）对应于第i个进程的逻辑时钟Vi。第i个进程在事件发生时，继承上一事件的逻辑时钟并将自身所对应的分量Vi增加一个步长，任何进程Pi在发出任何信息时都要将自己当前的逻辑时钟分量Vi起发送出去，如果是接收事件，且发送方为j，则比较自己继承的Vj和收到的逻辑时钟，并取其中较大者为自己的Vj。这样，每次消息都能使接收方更新对系统每个进程的时钟认识。
+
+**** 一致割
+
+一致割是指处理器可以并发保留的状态，在一个分布式系统中，基本上没有可以记录系统状态瞬时快照的观察者。可是，这样一种能力在解决譬如系统崩溃后的恢复、检测系统中是否存在死锁及检测计算是否已经终止时是需要的。可以取代的方法是系统自身通过协作来获取近似的瞬时信息快照。分布式系统里的一个割是一个n元的向量<0k,1k, , ,nk>。使得处理器Pi的状态是指第ik个事件之后的状态。对于任意的i和j，如果Pi上第Ki+1个计算事件不在Pj上第Kj个事件之前发生，那么这个向量就是一致的，称为一致割。
+
+* Chapter 9 Models of Distributed Computation
+** Models for distributed computing
+** Lamport Timestamps
+Page 327
+
+The algorithm of Lamport timestamps is a simple algorithm used to determine the order of events in a distributed computer system. As different nodes or processes will typically not be perfectly synchronized, this algorithm is used to provide a partial ordering of events with minimal overhead, and conceptually provide a starting point for the more advanced vector clock method. They are named after their creator, Leslie Lamport.
+
+Lamport invented a simple mechanism by which the happened-before ordering can be captured numerically. A Lamport logical clock is an incrementing software counter maintained in each process.
+
+It follows some simple rules:
+
+-- A process increments its counter before each event in that process;
+
+-- When a process sends a message, it includes its counter value with the message;
+
+-- On receiving a message, the receiver process sets its counter to be greater than the maximum of its own value and the received value before it considers the message received.
+
+*** Lamport逻辑时钟
+
+Lamport认为，重要的不是所有进程在时间上完全一致，而是它们在事件的发生顺序上要达成一致。
+
+先发生的定义： a → b 表示a在b之前发生，此时 C(a) < C(b), a b可以是同一个进程中的两个事件或进程间的消息发送事件。并发事件没有先后关系。
+
+Lamport算法：
+
+-- 遵循事件的先发生关系，每个消息都应携带根据发送者时钟的发送时间，当消息到达并接收时，接收者时钟显示的时间比消息发送者时间早时，接收者就将时钟调到比发送者者的时间大1的值。
+
+-- 为了满足全局时间的需要：在每两个事件之间，时钟必须至少滴答一次，如果一个进程以相当快的速度发送或者接收两个消息，那么他得时钟必须在这之间至少滴答一次。
+
+-- 两个事件不会精确地同时发生
+
+*** Lamport逻辑时钟的缺陷
+
+不能捕捉因果关系，而向量时间戳可以。
+
+-- Lamport时间戳导致分布式系统中所有事件都要经过排序以具有这样的关系：如果a发生在b之前， 那么C(a) < C(b)
+
+-- Lamport时间戳只能捕捉事件发生的先后关系，而不能捕捉因果关系。C(a) < C(b)不能说明a事件发生在b事件之前。 因果关系需要通过向量时间戳来捕获。
+
+*** Causal vs Concurrent
+
+并发模型(models of concurrency) : 描述并发系统行为的数学模型。
+
+若一个系统内部发生的两个事件之间没有因果关系，则称此两个事件是并发的。因果关系不等于事件先后关系，有因果关系者必有先后关系，反之则不一定。存在并发事件的系统称为并发系统。例如操作系统是一个并发系统，人类社会也是一个并发系统。 并发概念由C．A.Petri于1962年首创。他的并发模型严格遵守并发即无因果联系的思想，用此模型描述的系统不含统一的时钟。此外还有另一种并发概念，例如R．Milner认为：若一个系统内部的两个事件可以按任意次序发生，则称此两个事件是并发的。习惯上称前一种并发为真并发，称后一种并发为交叠式并发。前一种并发概念的描述能力强于后一种并发概念的描述能力，但是在程序设计的大多数场合，后一种并发概念也够用了。 并发模型可分为两个层次：描述性的并发模型和语义性的并发模型。
+
+** Vector Timestamps
+
+#+caption: 向量时钟
+[[./vs1.jpg]]
+
+因果关系：如果VT(a) < VT(b) 则a在因果上处于事件b之前。向量时间戳是让每个进程P都维护一个向量V来完成，该向量的性质如下：
+
+a)Vi[i]是到目前为止进程Pi发生的事件的数量。 
+
+b)如果Vi[j]=k，那么进程Pi知道进程Pj中已经发生了k个事件
+
+接收者可以通过消息m的时间戳知道其他进程中有多少事件发生在它之前，消息m在因果上可能依赖于这些事件。
+
+当Pj收到消息m，调整自己的向量，将每项Vj[k]设置为max{Vj[k], vt[k]}, 然后 Vj[i]增加1。
+
+#+caption: 看图计算向量时间惟 
+[[./vs2.png]]
+
+*** Vector Clock
+
+Vector clocks is an algorithm for generating a partial ordering of events in a distributed system and detecting causality violations. Just as in Lamport timestamps, interprocess messages contain the state of the sending process's logical clock. A vector clock of a system of N processes is an array/vector of N logical clocks, one clock per process; a local "smallest possible values" copy of the global clock-array is kept in each process, with the following rules for clock updates:
+
+Example of a system of vector clocks. Events in the blue region are the causes leading to event B4, whereas those in the red region are the effects of event B4
+
+-- Initially all clocks are zero.
+
+-- Each time a process experiences an internal event, it increments its own logical clock in the vector by one.
+
+-- Each time a process prepares to send a message, it increments its own logical clock in the vector by one and then sends its entire vector along with the message being sent.
+
+-- Each time a process receives a message, it increments its own logical clock in the vector by one and updates each element in its vector by taking the maximum of the value in its own vector clock and the value in the vector in the received message (for every element).
+
+#+caption: Example of a systems of vector clocks. Events in the blue region are the causes leading to event B4, whereas those in the red region are the effects of event B4
+[[./vlc.png]]
+
+The vector clocks algorithm was independently developed by Colin Fidge and Friedemann Mattern in 1988.[1][2]
+
+** Representing a distributed system
+
+* Chapter 10
+** Timestamps Algorithms
+Page 358
+
+** Voting graph structure
+*Voting -- Page 361*
+
+** Distributed system archeture
+** Election
+Page 376
+
+* 分布式同步（synchronization）
+
+集中式系统中，由于只有一个时间源，所以同步不是问题。分布式系统中，每个进程都运行在不同的机器上，所以很难对时间达成一致。这会影响程序的正确性，比如unix里面的make。
+
+** 时钟同步
+
+*** 由于绝对的同步无法达到，那么需要了解分布式的时钟的基本要求：
+
+没有交互的进程之间时钟不需要同步
+
+进程间不是需要一个统一的时间，而是需要知道事件发生的先后顺序
+
+逻辑时钟可以满足上面要求
+
+逻辑时钟：不需要和实际时间一致，只要能表示顺序就行
+
+物理时钟：必须和实际时间一致（UTC）
+
+*** 物理时钟同步
+**** Christian算法
+一种集中式的时间服务器拥有标准时间，所有机器都通过周期性询问的方式与这个时间服务器同步。
+
+**** Berkeley算法
+集中式的时间守护进程（daemon）没有标准时间，通过周期性询问所有的机器得到它们的时间，然后对这个时间取平均，再告诉每个机器如何同步（快几分钟或慢几分钟）。
+
+*** 逻辑时钟同步
+
+目的是确定事件之间的happens-before关系。Happens-before关系定义为：
+
+同一进程内a发生先于b，则a->b（箭头->表示happens-before关系）
+
+a是进程1发送消息的事件，而b是进程2接收到那个消息的事件，则a->b
+
+happens-before关系是可传递的，a->b and b->c则a->c
+
+如果以上都不能确定关系的x和y，称它们为并行的事件(a||b)
+
+**** Lamprot Timestamp
+当要确定两个事件的先后顺序的时候，通过比较时间戳来确定。时间戳可以是一个二元组(Ti, i）,其中Ti是事件发生时进程i的逻辑时钟，而i是进程i的进程id，其作用在于当两个事件的逻辑时钟相等时，双方依然还是能够给出一个一致的对于顺序看法。
+
+Lamport算法其实也就是双方互相比较Lamport时间戳，同步到比较快的时间。
+
+**** Lamport算法
+
+使用时间戳确定事件的先后顺序。每个进程有一个逻辑时钟，本质上也就是一个不断增加的计数器。
+
+Lamport算法的问题：
+
+不反映事件真实的顺序；
+
+也无法反映事件的因果关系。
+
+解决办法使用向量时钟。
+
+**** 向量时钟(vector clock)
+    向量时钟也就是每个进程都有一个逻辑时钟向量，其中保存了它对所有其他进程逻辑时钟的观点（也就是它以为别的进程的逻辑时钟是什么）。每个进程间的通信的消息都会带上逻辑时间戳，而接收进程可以通过这个时间戳来更新它自己的时间。更新的原则是比较向量中每个元素，取相应元素的最大值。
+
+确定事件先后关系
+如果两事件的时间戳向量的所有分量都相等就是事件是同时发生的。
+如果事件a的时间戳的所有分量都小于事件b的时间戳，则说a->b。
+如果无法通过上面两个办法判断，则说两事件是并行的（concurrent）。
+
+** 全局状态和选举算法
+*** 全局状态
+有些应用需要知道全局状态，比如垃圾回收（GC），死锁检测，进程的终止等。一个进程需要知道的全局状态包括进程本身的状态和当前要发送给该进程的消息。获得全局状态的算法主要是快照（snapshot）算法。   
+**** 快照（Snapshot）算法
+算法主要思想是通过一个特殊的消息（marker），把需要获得全局状态那个时刻与当前进程相关的信道的消息都挤空。
+**** 算法过程:
+
+发起：
+
+a) 进程1需要知道全局状态，则向所有其他进程发送marker消息，并开始记录发送过marker消息的信道的状态。
+
+记录：
+
+a) 当进程从某个信道第一次收到marker消息的时候，则开始记录该信道状态。并且向所有其他信道发送marker。
+
+b) 若进程从某个信道第二次收到marker消息的时候，则结束记录该信道状态。将记录到的信息当作该信道状态。
+
+假设系统进程之间的联系可以表示成有向完全图。如果把初始进程开始记录消息看作是由于收到一个虚拟信道（不存在的）来的marker的话。那么可以看出，每个进程第一次收到一个marker的时候，该进程的记录就开始了，以后任何信道来的marker作用都只是结束记录了。那么，显然每个进程都发送了n-1条消息，那么n个进程共发送了(n-1)*n条消息，刚好覆盖了所有的边，每个信道刚好是一出一进，一开一关，所以算法最终会结束，而每个进程都会记录到与之有关的全局状态。
+
+*** 竞选问题 376
+
+An election algorithm can be used in a distributed system to select a single coordinator. When the election is terminated, there is only one node that calls itself the coordinator or declares itself as the leader, and the other nodes know the identity of this coordinator. The problem is to start from a configuration where all processes are in the same state, and despite failures and unreliable proceeses they should finally arrive at a configuration where exactly one node or process is in the state leader and all other process are in the state non-leader. The election problem is often considered in fully connected networks, where every node is connected to every other node so that any node may send a message to any other.
+
+**** 假设：
+
+每个进程有唯一数字ID
+
+每个机器只有一个进程
+
+每个进程都知道其他全部进程
+
+进程并不知道哪些进程正常工作，那些已经出故障
+
+**** 大欺小(Bully)算法： (ins Synchronous Networks) Page 377
+
+Synchronous Networks: In synchronous systems and complete networks with diameter one, there is a trivial algorithm with O(1) rounds and O(n^2) messages. Each node sends messages to all its neighbors, and all nodes elect the node with the highest (or lowest) ID as the leader. In these systems, the election problem is synonymous with the selection a leader in a Clique. A clique is a complete graph with diameter one.
+
+算法：当一个进程发现协调者不再响应请求时，它就发起一个选举：
+
+P向所有编号比它大的进程发送一个election消息； 
+
+如果无人响应，P获胜成为协调者； 
+
+如果有编号比它大的进程响应，则响应者接管选举工作。P的工作完成。
+
+当以前崩溃的进程恢复时，它将主持一次选举，如果该进程是当前正在运行的进程中进程号最大的，就成为协调者。
+
+总之进程号最大的总是取胜。
+
+(另一个来源的文章)
+
+某个进程x发起选举，向所有id大于它的进程发选举消息
+
+如果接收到大id进程的回复，则放弃选举
+
+接收到选举消息的进程最回复以后，会自己发起选举，转1
+
+如果没有收到任何回复，则x通知所有进自己作为协调者
+
+选举结果就是当前存在的id最大的进程会胜出。
+
+One of the classic election algorithms in distributed systems is the Bully Algorithm. It is also an algorithm for complete networks with diameter one, and it is first mentioned by Hector Garcia-Molina in 1982 in his paper "Elections in a Distributed Computing System" (*), together with the "Invitation Election" algorithm. As Garcia-Molina says, it is named Bully because "the node with the highest identification number forces the nodes with smaller identification numbers into accepting it as coordinator". The process with the highest idenfication number or ID among the active nodes always becomes the coordinator.
+
+The first part of the algorithm works as follows: each node in the system is assigned a unique identification number or ID. If a node N notices that the coordinator is no longer active it initiates an election and attempts to contact all nodes with higher priority:
+
+1) If a node N notices that the coordinator is no longer active then it sends an ELECTION message to all processes with higher numbers. 
+   
+2) If no one responds after a time limit or time-out, N wins the election and becomes coordinator. It can assume that all nodes with higher priority have failed. 
+
+3) If one of the nodes with higher number responds, then N gives up and waits until the node with higher number takes over and becomes the new coordinator.
+
+In the second part of the algorithm, the winner must inform all nodes that it is the new coordinator, and sends out a "COORDINATOR" or "I am elected" messages.
+
+**** Invitation Algorithms: (in Asynchronous Networks) Page 383
+
+Asynchronous Networks: Most algorithms for the election problem in asynchronous networks work with "candidates" who try to capture and invite as many nodes as possible. The candidate which has succeeded in capturing or inviting all nodes becomes the leader.
+
+The "Invitation Election Algorithm" was discovered by Hector Garcia-Molina in 1982 in his paper "Elections in a Distributed Computing System" (*), together with the "Bully Algorithm". It is based on two main ideas:
+
+1) after a coordinator failure, recovering nodes form single groups
+
+2) coordinators periodically try to combine their group with other groups in order to form larger groups
+
+As Garcia-Molina says, "in the Bully Algorithmus, the active node with the highest priority "forces" all other nodes to refrain from trying to become coordinator", so that the highest priority node wins the election. Instead of forcing nodes, in the Invitation Election Algorithm nodes who wish to become coodinator will "invite" other nodes to join it in forming a new group. A group is a set of nodes that agree on a leader.
+
+The combination and unification to larger groups works like this: periodically each leader sends messages to every other node asking whether that node is a leader, and if other nodes reply that they are leaders, the node pauses for a time inversely proportional to its priority, and then tries to invite the other leaders to join the group. Nodes with lower priority defer sending out their invitations for a longer period in order to prevent all group coordinators from sending out invitations at once. A leader which receives an invitation from a node with higher priority (directly or indirectly) sends an accept message to the proposed leader of the group.
+
+The stepwise unification of groups and fragments in the "Invitation Election Algorithm" is very similar to the GHS algorithm from Gallager, Humblet and Spira. The GHS algorithm is a Distributed Algorithm for finding a minimum weight spanning tree, see Distributed Graph Algorithm. During the computation of the GHS algorithm, initially the collection of fragments contains each node as a one-node fragment, and the fragments are step by step combined with other fragments (the lowest-weight outgoing edge is essential). The algorithm terminates when only one fragment or group remains.
+
+Korach, Moran and Zaks compare these fragments or groups to kingdoms. The process of joining fragments or groups becomes then a unification of kingdoms. In their paper "Tight lower and upper bounds for a class of distributed algorithms for a complete network of processors" (1984) they describe an election algorithm where "a king is trying to increase his kingdom by sending messages towards other kings (possibly through their citizens), asking them to join, together with their kingdoms, his kingdom".
+
+**** 环(Ring)算法
+
+将所有进程组织成环，如果协调进程崩溃了，发现协调者崩溃的进程发起一个选举，首先把自己的进程号传给下一个进程，每个进程收到选举消息以后把自己的进程号加进去然后传给下一个，如果下一个进程崩溃了，则传给再下一个。当消息第二次回到发起进程时，消息就变成了确定协调者。发起进程再把确定消息发送出去，每个进程看到这个消息都以消息中编号最大的进程作为协调者，当消息传完这一圈以后就消失。
+
+假设进程按照物理和逻辑顺序进行了排序，那么每个进程就知道它的后继者是谁了。
+
+当任何一个进程注意到协调者不工作时，它就构造一个带有它自己的进程号的election消息，并将该消息发送给它的后继者。
+
+如果后继者崩溃了，发送者沿着此环跳过它的后继者发送给下一个进程，或者再下一个，直到找到一个正在运行进程。
+
+在每一步中，发送者都将自己的进程号加到该消息列表中，以使自己成为协调者的候选人之一。 
+
+最终，消息返回到发起此次选举的进程。当发起者进程接收到一个包含自己进程号的消息时，它识别出这个事件。此时，消息类型变成coordinator消息，并再一次绕环运行，向所有进程通知谁是协调者(成员列表中进程号最大的那个)以及新环中的成员都有谁。这个消息再循环一周后被删除，随后每个进程都恢复原来的工作。
+
+** 共享资源的同步
+*** 互斥
+**** 临界区的访问问题。三个互斥条件：
+
+ME1 同一时间只有一个进程在临界区中执行（safety）
+
+ME2 进入和推出临界区的请求都要在有限时间内满足（liveness）
+
+ME3 如果一个请求先于另外一个，那么临界区的授权也必须按照这个顺序（order）
+
+**** 看同步算法。在所有的同步算法中，都包含以下四项假设：
+
+（1） 每个分布式系统具有N个节点，每个节点有唯一的编号，可以从1 到 N。每个节点中仅有一个进程提出访
+
+问共享资源的请求。
+
+（2） 按序传送信息。即发送进程按序发送消息，接收进程也按相同顺序接收消息。
+
+（3） 每个消息能在有限的时间内被正确地传送到目标进程。
+
+（4） 在处理机间能实现直接通信，即每个进程能把消息直接发送到指定的进程，不需要通过中转处理机。
+
+在同步算法中，比较著名的有 Lamport 算法， Ricart and Agrawla 算法，Mackawa(Square-Root)算法等，下面我们就介绍其中的几个。
+
+**** Lamport 算法 (分布式算法)
+
+在该方法中，利用事件排序方法，对要求访问临界资源的全部事件进行排序，并且按照先来先服务的原则，对事件进行处理。该算法规定，每个进程Pi,在发送请求消息Request时，应该为它打上时间邮戳(Ti,i),其中Ti是进程Pi的逻辑时钟值，而且在每个进程中都保持一个请求队列，队列中包含了按逻辑时钟排序的请求消息。Lamport 算法用以下五项规则定义：
+
+（1）当进程 Pi要求访问某个资源时，该进程将请求消息挂在自己的请求队列中，也发送一个Request(Ti,i)消息给所有其他进程。
+
+（2）当进程 Pj收到 Request(Ti,i)消息时，形成一个打上时间邮戳的 Reply(Tj,j)消息，将它放在自己的请求队列中。应该说明，若进程 Pj 收到 Request(Ti,i) 消息前，也提出过对同一资源的访问请求，那么其时间邮戳应该比T(Ti,i)小。
+
+（3）若满足以下两个条件，则允许进程Pi访问该资源：
+
+-Pi自身请求访问该资源的消息已经处于请求队列的最前面。
+
+-Pi已经接收到从其他所有进程发回的响应消息，这些消息上的邮戳时间晚于T(Ti,i)。
+
+（4）为了释放该资源，Pi从自己的请求队列中消除请求消息，并发送一个打上时间邮戳的Release 消息给其他所有进程。   
+
+（5）当进程 Pj收到Pi的 Release 消息后，从自己的队列中消除Pi的Request(Ti,i)消息。
+
+这样，当每一个进程要访问一个共享资源时，本算法要求该进程发送3（N-1)个消息，其中(N-1)个Request消息，(N-1)个Reply消息，(N-1)个 Release消息。
+
+**** 集中式算法
+
+由单一管理进程管理临界区的使用。进入和推出都要求管理进程的同意。
+
+***** 算法
+
+选举一个进程作为协调者，如最大网络地址号的机器上的进程。
+
+无论何时一个进程要进入临界区，它都要向协调者发送一个请求消息，说明它想要进入哪个临界区并请求允许。
+
+如果没有进程在临界区就发送“允许”应答，该进程进入临界区，如果有进程在临界区，就把该消息放入请求队列，发送“拒绝请求”的应答。
+
+当临界区中的进程退出临界区，向协调者发送“释放”消息，协调者会从请求队列中取出第一个进程，发送“允许”进入的消息。
+
+***** 优点
+
+实现了互斥，每个时刻，协调者只让一个进程进入临界区。
+
+很公平，没有进程会永远阻塞，不会饥饿，不会死锁
+
+容易实现，每使用一次临界区，只需要三条消息（请求，允许，释放）
+
+可以管理临界区或更一般的资源
+
+***** 缺点
+
+协调者是单点故障，在规模较大的系统中，单个协调者会成为性能瓶颈.
+
+如果进程在发出请求之后阻塞，那么请求者就不能区分“拒绝进入”和协调者已经崩溃的两种情况。
+
+**** 分布式算法
+***** Lamprot算法
+
+-- 当进程Si想进入临界区，向其他n-1个进程广播请求REQUEST(tsi, i), 并把请求放入自己请求队列request_queuei。
+
+-- 其他n-1个进程受到请求REQUEST(tsi, i)后，把该请求放入各自的请求队列request_queuej， 并向进程Si响应一个带时间戳的REPLY消息。
+
+-- 进程Si进入临界区，当且仅当满足以下两个条件：
+
+-- -- Si从其他进程收到的消息的时间戳都大于自己的请求时间戳(tsi, i)
+
+-- -- Si的请求是请求队列request_queuei的第一个请求
+
+-- 当进程Si退出临界区：从请求队列request_queuei中删除该请求，并向其他n-1个进程广播一个带时间戳的释放临界区的消息。其他n-1个进程收到该消息后，从请求队列request_queuej中删除该请求
+
+在Lamport算法中，进程Request, REPLY, RELEASE一共发送了3(n-1)条消息，其实在一个接收者收到消息后，如果不同意Si进入临界区，没有必要再发送确认。
+
+可以改进算法在2(n-1)到3(n-1)之间
+
+***** Ricart & Agrawala算法，改进的Lamport算法 
+
+每个要进入临界区的进程先向所有其他进程发消息，得到全部同意后才可进入。当有两个进程同时想进入的时候，比较时间戳，小的可以进入。通过使用Lamport时间戳，可以使得所有进程对于进入请求达成一致。
+
+Ricart 等提出的分布式同步算法，同样基于Lamport 的事件排序，但又做了些修改，使每次访问共享变量时，仅需发送 2(N-1)个消息。 下面是对Ricart and Agrawla 算法的描述。
+
+    （1）当进程Pi要求访问某个资源时，它发送一个Request(Ti,i)消息给所有其他进程。
+
+    （2）当进程Pj收到Request(Ti,i)消息后，执行如下操作：
+
+        -若进程Pj正处在临界区中，则推迟向进程Pi发出Reply响应；
+
+        -若进程Pj当前并不要求访问临界资源，则立即返回一个有时间邮戳的Reply消息；
+
+        -若进程Pj也要求访问临界资源，而在消息Request(Ti,i)中的邮戳时间早于(Tj,i),同样立即返回一个有时间邮戳的 Reply消息；否则，Pj保留 Pi发来的消息Request(Ti,i)，并推迟发出Reply响应。
+
+    （3）当进程Pi收到所有其他进程发来的响应时，便可访问该资源。
+
+    （4）当进程释放该资源后，仅向所有推迟发来 Reply消息的进程发送Reply消息。
+
+ 该算法能够获得较好的性能：能够实现诸进程对共享资源的互斥访问；能够保证不发生死锁，因为在进程--资源图中，不会出现环路；不会出现饥饿现象，因为对共享资源的访问是按照邮戳时间排序的，即按照FCFS原则服务的；每次对共享资源访问时，只要求发2(N-1)个消息。下图说明了进程在访问共享资源时的状态转换：
+#+caption: mutex
+[[./mutex.jpg]]
+
+****** 算法优点：
+
+不会饥饿，死锁；每次进入临界区仅需要2(n-1)条消息；没有单点故障
+
+****** 算法缺点：
+
+第一，单点故障变成了n点故障，如果任何一个进程崩溃，不能应答OK，这种不应答被错误的解释为拒绝请求，阻塞了所有进程进入任何一个临界区。
+
+第二，网络通信开销多于集中式算法；
+
+第三，要么必须使用组通信原语，要么每个进程必须维护组成员清单；
+
+第四，要求所有进程参与做出与进入临界区有关的所有决定，强迫每个进程都承担这样的负载是不可能的，可以在得到大多数进程OK的情况下进入临界区，但实现复杂。
+当然这个算法也有一定的问题：
+
+(另一种表达)
+
+第一，每个要求访问共享资源的进程，必须知道所有进程的名字，因此，一旦有新进程进入系统，它就将通知系统中所有进程。
+
+第二，如果系统中有一个进程失败，则必然会使发出Request消息的进程无法收到全部响应，因此，系统还应该具备这样的功能，即一旦某个进程失效，系统能将该进程的名字通知其他进程。
+
+
+**** 令牌环
+
+进程组织成环，令牌在环中按顺序传播，谁得到令牌谁能进入。
+
+为实现进程互斥，在系统中可设置令牌（token），表示存取权力。令牌本身是一种特殊格式的报文，通常只有一个字节的长度，它不断地在由进程组成的逻辑环（logical ring）中循环。环中的每一个进程只有唯一的前驱者（prodecessor）和唯一的后记者（successor）。当环路中的令牌循环到某个进程并被接收时，如果该进程希望进入临界区，它便保持该令牌，进入临界区。一旦它推出临界区，再把令牌传送给后继进程。如果接收到令牌的进程并不要求进入临界区，便直接将令牌传送给后继进程。由于逻辑环中只有一个令牌，因此也就实现了进程的互斥。    
+
+使用令牌时，必须满足以下两点要求：
+
+（1）逻辑环应该具有及时发现环路中某进程失效或退出，以及通信链路故障的能力。一旦发现上述情况，应立即撤消该进程，或重构逻辑环。
+
+（2）必须保证逻辑环中，在任何时候都有一个令牌在循环，一旦发现令牌丢失，应立即选定一个进程产生新令牌。
+
+利用令牌传送法实现互斥，所需要的消息数目是不定的。因为，不管是否有进程要求进入其临界区，令牌总是在逻辑环中循环，当逻辑环中所有进程都要求进入临界区时，平均每个进程访问临界区只需要一个消息。但如果在令牌循环一周的时间内，只有一个进程要求进入临界区，则等效地需要N个消息（N是逻辑环中进程数）。即使无任何进程要进入临界区，仍需不断的传输令牌。另一方面，     在令牌传送法中，存在着自然的优先级关系，即上游站具有更高的优先级，它能够优先进入临界区。就好象FCFS队列一样，环路中的进程可依次进入自己的临界区，因而不会出现饥饿现象。
+
+***** 算法
+
+-- 假设：总线式的网络中，进程没有固定的顺序，环中为每个进程分配了一个位置，每个进程都直到谁在它的下一个位置。
+
+-- 当环初始化时，进程0得到一个令牌token。该令牌绕着环运行，用点对点发送消息的方式把它从进程k传递到进程k+1(以环大小为模)。进程从它邻近的进程得到令牌后，检查自己是否要进入临界区。如果自己要进入临界区，那么它就进入临界区，做它要做的工作，然后离开临界区。在该进程退出临界区后，它沿着环继续传递令牌。不允许使用同一个令牌进入另一个临界区。
+
+-- 如果一个进程得到了邻近进程传来的令牌，但是它并不想进入临界区，那么它只是将令牌沿环往下传递。因而，当没有进程想进入临界区时，令牌就绕环高速传递。
+
+***** 优点
+
+没有饥饿现象：任何时候都只有一个进程有令牌，并且令牌以固定的顺序循环传递。
+
+***** 缺点
+
+如果令牌丢失，必须重新生成令牌.
+
+检测令牌丢失很困难，网络中令牌出现两次的时间间隔不确定，没有发现令牌可能是丢失，也可能是某个进程在占用。
+
+如果有进程崩溃，该算法会有问题。(恢复方法： 要求每个进程维护进程环的配置信息， 每个进程收到令牌后发出确认信息，当它尝试把令牌传递给它的邻近进程时，如果没有收到确认，该进程就崩溃了，从组中删除该进程，继续传递令牌。)
+*** 三种互斥算法的比较
+
+**** 程进入临界区，需要发送的消息数目不同
+
+集中式算法: 3条消息，请求，允许，释放，简单而有效.
+
+分布式算法：2(n-1)条
+
+令牌环算法: 1~(n-1)条
+
+**** 进入临界区之前的消息延迟不同
+
+集中式算法: 2条消息，请求，允许。
+
+分布式算法：2(n-1)条
+
+令牌环算法: 0~(n-1)条
+
+**** 三种算法在这三种算法在进程崩溃的情况下都损失惨重。
+
+为了避免进程崩溃造成的系统瘫痪，必须引入专门的措施和额外的复杂性。
+
+*** 事务处理
+
+事务模型、两阶段锁、私人工作区、写日志、线性化。
+
+    悲观锁  一次把所有将要用的资源都锁定
+
+    乐观锁  只是锁定当前要用的资源
+ 
+* Distributed Algorithm
+
+A distributed algorithm is an decentralized algorithm that is executed in a distributed system, on more than one machine, node or processor.
+
+** Definition
+
+A distributed algorithm for a collection P of processes is, according to Gerard Tel and his book Introduction to Distributed Algorithms, simply a collection of local algorithms, one for each process in P. In his earlier work Topics in Distributed Algorithms he defined it as follows: "a distributed algorithm executes as a collection of sequential processes, all executing their part of the algorithm independently, but coordinating their activity through communication." Nancy A. Lynch argues "Distributed algorithms are algorithms designed to run on hardware consisting of many interconnected processors. The algorithms are supposed to work correctly, even if the individual processors and communication channels operate at different speeds and even if some of the components fail."
+
+In sequential algorithms steps are taken in a strict sequence and well-defined order. In distributed systems steps are taken in a strict sequence only locally, gloablly the sequence of steps depends on the transmission of messages and can be unpredictable. The order of events is not always well-defined, and failures make the situation even worse. Nearly all distributed algorithms are based on more or less sophisticated communication through message passing. Since a distributed system consists of many nodes, processors or processes interconnected by a message passing network, any algorithm which involves more than one node must use some form of message passing, if there is no distributed shared memory or other way of interprocess communication. The complexity analysis of distributed algorithms involves therefore usually the attempt to measure the total number of messages.
+
+Distributed algorithms are to sequential algorithms what Einstein's physics is to Newton's physics: sequential algorithms are a special, simplified case of distributed algorithms, and in distributed alogrithms there is no global time or common clock, and the observer and speed may influence causality. There are more similarities: for instance according to F. Mattern, the Lorentz transformation corresponds roughly to the Rubberband transformation which leaves causality invariant.
+
+** Different Forms and Types
+
+*** Asynchronous and Synchronous
+
+In general, one can distinguish between asynchronous and synchronous algorithms, as Nancy Lynch does in her book. In asynchronous algorithms, the nodes and processes are not acting at the same time, no timing assumptions exist and messages can have an arbitrary delay, while in synchronous algorithms the nodes are acting in lockstep at the same time. Asynchronous algorithms are not synchronized, they are not occurring at predetermined or regular intervals, and messages can be delivered in any order.
+
+Totally synchronous algorithms are easy to handle, because they all nodes act like a single node at the same time, but they are not practical. They are difficult to justify in real-world situations and difficult to achieve in general distributed systems, because there is no absolute global time in general, unsynchronized processes operate at different speeds and messages have often a considerable time delay. In summary, systems with pure synchrony (perfect timing) or no faults at all would be nice, but they are not realistic: nodes and links fail, and messages may have a time delay.
+
+Totally asynchronous algorithms are powerful in theory, because they are meant to work with arbitrary time delay, but they are notoriously difficult to design as well. They are often very hard or even impossible to construct, because they are too general (for example a node which sends arbitrary slow messages is indistinguishable from a node that really failed). Some problems proved impossible or expensive in the fully asynchronous model can indeed be solved in practice. Therefore elegant theoretical assumptions such as pure asynchrony (no timing assumptions whatsoever), or Byzantine faults (no assumptions limiting faulty behavior) are not practical, too, they lead to pessimistic and frustrating results that are not useful for complex real world systems.
+
+Real systems are complex, they tend to fall somewhere in between the two extreme classes of full synchrony and full asynchrony, for example asynchronous systems with finite average response times or upper bounds for message delivery times.
+
+*** Topologies and Graphs
+
+Besides asynchronous and synchronous forms, one can differentiate further between algorithms for particular topologies (rings, trees, etc.). There are also a number of Distributed Graph Algorithms, which is not surprising, because nearly all distributed systems based on message passing can be described by a graph (except those who use only some form of shared common memory).
+
+*** Fundamental algorithms
+
+A fundamental block used in many distributed algorithms are tokens (which circulate in rings) and waves (which spread through arbitrary topologies). A token which moves through a ring can be considered as a wave for a ring topology. The importance of waves is not surprising, since a wave is one of the most basic forms of emergence in a system. If all nodes are visited sequentially, or an action like "inform all" or "query all" is required, a kind of wave must be used. Fundamental algorithms where all nodes of a network are visited are Total Algorithms and Heart Beat Algorithms.
+
+A common problem besides "inform all" and "query all" is "select one", "elect one", "admit one", etc. The resulting algorithms are named election algorithms, where a single node or process (for example the leader) that is to play a distinguished role in a subsequent computation must be (s)elected. Further typical algorithms in this area are distributed mutal exclusion and deadlock detection algorithms, where the concurrent use of un-shareable resources must be avoided.
+
+Finally it is problem to determine and change the "global state" or the "global order", the associated distributed algorithms are named termination detection, where the end of a distributed computation has to be detected, and distributed garbage collection, where unused memory and references must be released. A basic "toy" algorithm used to explain distributed algorithms in classes is the distributed GCD algorithm.
+
+** Problems and Difficulties
+
+*** Uncertainties and Failures
+
+Distributed algorithms are like distributed systems hard to understand and hard to design, because of their high complexity. Algorithms are the step-by-step definitions of computations, detailed instructions, rules and recipes for producing a solution to a given problem in a finite number of steps. The problem with many real distributed systems is that every node and every link can fail at any time, messages can get lost or arrive with an arbitrary time delay. One cannot say for sure what will happen in the next step. One can specify the behavior for each node, but the overall global behavior which results from the local interactions is often hard to predict.
+
+The accidental or intended emergence of a desirable behavior is more the exception than the rule. Analysis, design, verification and correctness proofs of distributed algorithms are difficult issues. Among the different types of uncertainties and difficulties are for example (according to Nancy Lynch, 1996):
+
+1.processor and link failures (node or message loss)
+
+2.uncertain message delivery (arbitrary transmisson time)
+
+3.unknown message ordering
+
+4.unknown network topologies
+
+5.unknown number of processors
+
+
+Some problems which are characteristic and unique for distributed algorithms are:
+
+1.race conditions (where the result depends on the timing of events)
+
+2.deadlock detection, esp. phantom- or pseudo-deadlocks
+
+3.termination detection
+
+The detection if a centralized, serial or non-distributed algorithm is terminated is trivial, since there is only one processor, one clock and one well-defined state or time. The detection if a distributed algorithm is terminated or not is a problem of its own, since there is no global state or time in a general distributed system. Another problem which occurs in distributed algorithms but not in serial ones is deadlock: mutual blocking of processes, where each process is waiting for a resource one of the other processes holds. Obviously it does not occur in serial algorithms for one processors, and was first met in implementing operating systems.
+
+*** Problem Fields
+
+Termination detectection is difficult, because a distributed system has no global state which can be detected instantly, and there is no global time which is valid for all computers, nodes or entities. In order to define a global state, some authors have proposed algorithms for consistent global snapshots, for example the Chandy-Lamport algorithm. A snapshot is "consistent" if it appears as if it were take at the same instant everywhere in the system, without any violation of causality. In order to define a global time, some authors have proposed methods for consistent global time (logical clocks by Lamport, which find their extension in vector clocks and vector time, etc.). The concept of a "logical time" or timestamps introduced by Lamport allows an asynchronous system to simulate one in which the nodes have access to synchronized clocks. Both real and logical time are monotonically increasing, but the real time is uniformly continuous, whereas the logical time can have discontinuous jumps. But these methods are problematical and doubtful, because they attempt to make distributed computing follow the model of local, centralized computing. As Waldo noticed in 1994, this method ignores "the different failure modes and basic indeterminacy inherent in distributed computing" and leads to systems that are neither reliable and nor scalable.
+
+Thus we have roughly the following problem fields:
+
+1.Attempts to imitate local computing (Synchronous Communication or Synchronization, Logical Time)
+
+2.Attempts to determine global state (Global Snapshots, Deadlock Detection, Termination)
+
+3.Attempts to reach unified state (Agreement or Consensus)
+
+4.Attempts to coordinate access (Contention Problems as Election and Mutual Exclusion)
+
+*** Impossibility Results
+
+Given these difficulties, it is not surprising that the analysis and design of distributed algorithms that work in a general distributed system (where each node and link can fail at any time, and messages can have an arbitrary time delay) is very hard and sometimes even impossible. Already one faulty process can render any guaranty about achieving of a common consensus impossible, as the famous "FLP impossibility argument" says. The "FLP impossibility result" or "FLP impossibility argument" from Fisher, Lynch and Patterson says it is impossible to reach consensus in a distributed, asynchronous systems if only one process is faulty. To be more precise it says there is no guruantee a common consensus can be reached, if a faulty process exists. This fact is intuitive plausible, since a faulty process that is not responding anymore is indistinguishable from a process that answers slowly (if there is an arbitrary time delay in the connection of the asynchronous network).
+
+Consensus and agreement problems are a fundamental challenge in distributed systems. The consensus problem is one of the most thoroughly investigated problem in distributed computing, where several process have to agree on a certain value or decision. Processes in a database system may need to agree whether or not a transaction should be commited or aborted. Processes in a control or monitoring system may need to agree whether or not a particular other process is faulty. Processes in a general distributed system may need to agree whether or not a message has been received. As Nancy Lynch says (in "Chapter 12" Consensus of her book), "the impossibility result implies that there is no purely asynchronous algorithm that reaches the needed agreement and tolerates any failures at all."
+
+** Proof and Verification
+
+The design and verification of distributed programs and algorithms is without doubt a very difficult task. A common way to verify distributed algorithms despite these difficulties is to verify liveness and safety properties. The traditional definition of liveness and safety are:
+
+-- Liveness means "something good will eventually occur" or "something good eventually happens"
+
+-- Safety means "something bad will never happen" or "no bad thing ever happens"
+
+Liveness and safety are two complementary properties, one says that the system is changing, the other that the system is not changing. One claims that the program never enters an unacceptable state, the other assumes that the program always enters a desirable state after a finite number of steps.
+
+*** Liveness
+
+Liveness implies that the system is changing. There is a guarantee of progress, which in turn is guaranteed by lack of deadlocks, the absence of infinite loops and the ensurance of termination. It is a property stating that eventually (after a finite number of steps) some requirement holds. The program eventually enters a desirable state, and some assertion will eventually hold. In other words, every computation contains finally a state where a certain assertion is true. A liveness requirement requires that some property in some configuration which is reachable will eventually hold in every execution. Typical liveness properties are
+
+-- Program termination: the algorithm will terminate in a finite amount of time
+
+-- Upper/Lower bounds: a numerical value or parameter must reach a certain upper (lower) bound (in this case liveness can be proved if the value is monotonically increasing or (decreasing), and never remains constant for an infinite amount of time)
+
+*** Safety
+
+Safety implies the system does not change, it means that the program does nothing wrong, and there is a guarantee that no bad or evil change takes place, which in turn is often proved by invariants. Invariants are assertions that always hold during the execution of the algorithms and are not affected by any action or operation of the algorithm. An invariant property must hold in every execution and in each reachable configuration. Safety properties specify that 'something bad never happens', the program never enters an unacceptable state and some assertion always holds. In other words, a certain assertion is true in every state of every computation of the algorithm. Typical safety properties are (see Owicki and Lamport, Proving Liveness Properties of Concurrent Programs)
+
+-- Partial correctness: if the algorithm begins with the precondition true, then it can never terminate with the postcondition false.
+
+-- Absence of deadlock: the algorithm never enters a state in which no further progress is possible.
+
+-- Absence of infinite loops: the algorithm never enters a state where one or more processes are involved in an infinite loop
+
+-- Mutual exclusion: two different processes are never in their critical sections at the same time.

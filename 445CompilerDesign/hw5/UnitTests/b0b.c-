@@ -1,0 +1,18 @@
+// C-F13
+  main()
+{
+     outputb(false or false);
+     outputb(false or true);
+     outputb(true or false);
+     outputb(true or true);
+
+     outputb(false and false);
+     outputb(false and true);
+     outputb(true and false);
+     outputb(true and true);
+
+     outputb(not false);
+     outputb(not true);
+
+     outnl();
+}

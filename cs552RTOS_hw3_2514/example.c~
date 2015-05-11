@@ -1,0 +1,32 @@
+#include<avr/io.h>
+
+int main()
+{
+  // high nibble for output(columns) low for input(rows)'
+  DDRB = 0XF0;
+  
+  // enable internal pullups for PB0-PB3
+  PORTB = 0X0F;
+
+  // PROTD for indication only
+  ddrd = 0xff;
+
+  while(1) // loop key check forever
+    {
+      // first column
+      PORTB = 0b01111111;
+
+      // check for rows and send key number to portD
+      // instead sending key number to portd you can use
+      // any function that serves pressed button
+      if (bit_is_set(PINB,3)) PORTD =1;
+      if (bit_is_set(PINB,2)) PORTD =2;
+      if (bit_is_set(PINB,1)) PORTD =3;
+      if (bit_is_set(PINB,0)) PORTD =4;
+
+
+
+
+    }
+
+}

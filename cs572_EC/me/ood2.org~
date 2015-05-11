@@ -1,0 +1,329 @@
+#+LaTeX_HEADER: \usepackage{CJKutf8}
+#+LaTeX_HEADER: \usepackage{listings}
+#+LaTeX_HEADER: \begin{CJK}{UTF8}{gbsn}
+
+\usepackage{geometry}
+\geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+
+\lstset
+{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,
+tabsize=4,frame=none,escapeinside=``,extendedchars=false
+}
+
+* 类和对象（2）
+** This指针    
+    当引用一个类的数据成员其引用代码又在类外时,在表达式中总要指明该类一个具体实例,编译器才能知道要访问哪一个数据成员.例如,以下代码首先打印属于对象test1的数据成员n,然后打印属于对象*ptest2的n,CTest是一个类:
+\begin{lstlisting}[language=c++]
+            CTest test1;
+            CTest *ptest2=new CTest;
+            //...
+            cout<<test1.n<<'\n';
+            cout<<ptest2->n<<'\n';
+\end{lstlisting}
+然而,在一个类的成员函数内部引用一个数据成员却不能指明一个类的具体实例:
+\begin{lstlisting}[language=c++]
+            class CTest
+            {
+                 public:
+                     int n;
+                     int getn()
+                     {
+                           return n;
+                      }
+             };
+\end{lstlisting}
+那么,编译器怎样决定引用哪一个实例对象的n拷贝呢?为了分辨,编译器实际上给成员函数传递一个隐藏的对象指针.此指针指向函数调用所要引用的对象.该函数隐式的使用这个指针,例如,在以下调用:
+\begin{lstlisting}[language=c++]
+             CTest test;
+             test.getn();
+\end{lstlisting}
+中,编译器传给getn一个隐藏的指向test对象的指针,getn隐式的使用这个指针,访问属于对象test的成员n.
+
+    利用C++的关键字this可以直接访问这个隐藏的指针.事实上,对于类X,它的每一成员函数中都隐式的声明了this指针:
+\begin{lstlisting}[language=c++]
+              X * const this;
+\end{lstlisting}
+此指针指向该成员函数所在的对象的地址(即函数"当前"引用的对象).在test.getn()调用中,getn()中的this指针指向的就是test对象.而对于
+\begin{lstlisting}[language=c++]
+             CTest test1;
+             test1.getn();
+\end{lstlisting}
+getn()中的this指针,指向的是test1对象.
+
+    由于this指针被声明为* const,它是一个指针常量,因此不能改变它的值(在低版本的C++中,修改this指针是可以的),但可以改变它所指对象的值.例如:
+\begin{lstlisting}[language=c++]
+              int CTest::chargethis() //假定changethis在CTest中已有声明
+              {
+                    CTest temp;
+                    this=temp; //非法
+                    //...
+               }
+\end{lstlisting}
+利用this指针,getn可重写如下:
+\begin{lstlisting}[language=c++]
+               int CTest::getn()
+               { 
+                     return this->n; //等价于return n;
+               }
+\end{lstlisting}
+在数据成员的名字前加上表达式this->是合法的但没有什么效果,因为this指针的使用本来就是隐式的,它只引用数据成员.
+
+   如果需要访问全局数据或函数,而它们的名字又和数据成员或成员函数的名字相同,则必须在名字前面加上作用域分辨符" :: ".例如:
+\begin{lstlisting}[language=c++]
+               int n=0; //全局n
+               class CTest
+               {
+                     int n; //数据成员n
+                     int demo()
+                     {
+                           cout<<::n<<'\n'; //打印全局n
+                           cout<<n<<'\n'; //用this访问数据成员n
+                     }
+               };
+
+\end{lstlisting}
+
+** new和delete运算符    
+      new和delete是C++新引入的单目运算符,它们可以从堆上分配和删除存储块(堆在C++中也叫自由存储).用new运算符时要指明数据类型,以后new就分配一个足以放下指明类型对象的存储,并返回该存储块的首地址作为指向指定类型的指针.在下面,我们用new运算符为内定义类型分配存储:
+\begin{lstlisting}[language=c++]
+             char *pChar; //声明一个指针
+             int *pInt;
+             double *pDouble;
+             pChar=new char; //分配存储对象
+             pInt=new int;
+             pDouble=new double;
+
+             *pChar='a'; //赋值
+             *pInt=5;
+             *pDouble=2.5;
+\end{lstlisting}
+若new运算符不能分配所要求的存储,它返回零值,因此,在使用返回的指针时应检查它:
+\begin{lstlisting}[language=c++]
+             pInt=new int;
+             if(pInt==0)
+                   //处理错误条件
+             else
+                  //可以用pInt了
+\end{lstlisting}
+    当以new运算符分配的存储块用过之后,我们可以用delete运算符作用于指向该地址的指针,删除该存储.例如,以下语句将删除在上例中分配的存储块.
+\begin{lstlisting}[language=c++]
+             delete pChar;
+             delete pInt;
+             delete pDouble;
+\end{lstlisting}
+     在前面,我们曾经用变量定义的方式来生成对象.这种对象的个数和大小在编译时就确定了,在运行之前无法得知对象的个数和大小时,采用变量定义形式并不方便,这时可以利用new运算符动态的生成对象.动态对象的个数和大小都在运行时予以确定,动态对象的撤消也可以通过显式的调用delete加以控制.
+
+      一般说来,new运算符和delete运算符比C中传统的存储分配函数malloc和free更有用. new运算符可以根据对象的类型,自动的决定某个对象的大小,而malloc则要显式指定要分配的存储空间大小.new运算符返回的是一个指向正确类型的指针,malloc返回的是一个void *类型的指针.因此在使用new时不必进行强调类型转换,它是类型安全的,而malloc需要强制类型转换,可能会带来错误.
+
+      我们也可以利用new运算符来为数组分配空间,在分配时,先得指定一个基本类型(即数组元素的类型),再在[]字符内指定它的元素个数,如下例所示:
+\begin{lstlisting}[language=c++]
+                int size;
+                cin>>size; //输入数组的大小
+                char *string=new char[25]; //创建有25个字符的数组
+                int * arrayInt=new int[size]; //创建大小为size的int数组
+                double *arrayDouble=new double[32]; //创建有32个double型元素的数组
+                //...
+\end{lstlisting}
+     在分配一个数组时,new返回数组第一元素的地址.注意,由于new进行动态分配,可以用变量,如size指定数组元素的个数， 这个变量的值具体是多少在运行时才能确定.
+
+      在用delete删除一个数组时,必须包含一对空[]字符来指示要撤消的是一个数组,而不是该基类型的简单对象.例如,可以用以下语句来撤消上例中分配的数组:
+\begin{lstlisting}[language=c++]
+               delete []string;
+               delete []arrayInt;
+               delete []arrayDouble;
+\end{lstlisting}
+    用new分配的存储块不能自动初始化为0,但用new分配内定义类型对象的存储(如一个char)时,可以用相应的值显式初始化该对象,其语法如下:
+\begin{lstlisting}[language=c++]
+               char *pChar=new char('a'); //用'a'初始化char
+               int *pInt=new int(3); //用3初始化int
+\end{lstlisting}
+上面的两个语句不仅为char和int分配了空间,还把它们分别初始化为'a'和3.
+
+** 静态类成员    
+     在常情况下,一个类的各个实例都有它们自己的、属于该类的数据成员和私有拷贝.然而, 若用关键字static声明数据成员,则该数据项的简单拷贝,无论该类创建了多少实例,它始终是存在的(即使类的实例一个也没有创建).例如,以下类定义就定义了静态数据项count:
+\begin{lstlisting}[language=c++]
+              class CTest
+              {
+                  public:
+                  static int count;
+                  //...
+               };
+\end{lstlisting}
+无论CTest类创建了多少实例,count将严格只存放一个拷贝.
+
+    除此而外,如果在类中声明了静态数据成员,必须象全局数据项一样,在类外定义和初始化它.由于静态数据成员的定义在类外出现,则必须用作用域分辨符在声明中说明它是哪个类的(本例是CTest::),定义和初始化count可如下例示:
+\begin{lstlisting}[language=c++]
+             int CTest::count=0;
+   \end{lstlisting}
+由于静态数据成员独立于任何类对象存在,在定义时,用类名和作用域分辨符就可以访问它,无需引用类实例.可以把静态数据成员设想为全局变量和该类的正常数据成员的综合.与全局变量一样,它在函数之外定义和初始化,它表示的单个存储单元和整个程序作业一样持久.与正常的数据成员一样,它在类中声明且作用域仅限于这个类,其访问也是受控的(即,它可以是公有、私有、受保护的成员).
+
+    成员函数也可以用static关键字修饰,如下例所示:
+\begin{lstlisting}[language=c++]
+              class CTest
+              {
+                    //...
+                    static int getCount()
+                    {
+                         //...
+                     }
+              };
+\end{lstlisting}
+*** 静态成员函数有以下性质:
+
+**** 类外的代码可利用类名和作用域分辨符调用这个函数,无需引用一个类的实例(甚至类实例可以不存在),如下例示:
+\begin{lstlisting}[language=c++]
+            void main()
+            {
+                   int count=CTest::getCount();
+                   //...
+             }
+\end{lstlisting}
+**** 静态成员函数只可以引用属于该类的静态数据成员或静态成员函数(因为它无需引用一个类实例就可以被调用,静态成员函数没有this指针存放对象的地址.因此,如果它试图访问一个非静态数据成员,编译器无法判定它所访问的数据成员是哪个对象的).
+
+     静态数据成员和静态成员函数可用于保持用于类的数据项或一个类的所有实例共享的数据项.以下程序说明了以静态成员保持一个类的实例当前个数的计量:
+\begin{lstlisting}[language=c++]
+#include<iostream.h>
+
+class CTest {
+private:
+    static int count;
+public:
+    CTest() {    
+        ++count;
+    }
+    
+    ~CTest() {    
+        --count;
+    }
+    
+    static int getCount() {          
+        return count;
+    }
+};
+
+int CTest::count=0;
+
+void main() {
+    cout<<CTest::getCount()<<"object exist\n";
+    CTest test1; 
+    CTest *ptest2=new CTest;
+    cout<<CTest::getCount()<<"object exist\n";
+    delete ptest2;
+    cout<<CTest::getCount()<<"object exist\n";
+}
+\end{lstlisting}
+本程序打印如下:
+          1 object exist
+
+** 友员    
+     类可以给予另一函数或类存取其私有成员的权力.这样的存取必须将别的类或非成员函数声明为友员.友员当作类成员对待,并且对对象私有区的存取没有限制.如果要用友员来访问类,友员应在此类中声明.声明的形式是在普通声明之前加上friend关键字.应记住,友员无论是在公有区还是在私有区声明都没关系,它只是将友员的名字引入了类作用域.例如:
+\begin{lstlisting}[language=c++]
+               class t1
+               {
+                   private:
+                         int data;
+                         friend void friend_t1(t1 fri); //友员声明
+                   public:
+                         t1(){data=12;}
+                          //...
+               };
+\end{lstlisting}
+t1声明了外部函数friend_t1()是类t1的友员,friend_t1()的定义如下:
+\begin{lstlisting}[language=c++]
+               void friend_t1(t1 fri)
+               {
+                  fri.data=10; //改变了t1的私有变量t1::data的值
+               }
+\end{lstlisting}
+由于它是类t1的友员,因此可修改类t1中的私有数据.
+
+    应注意,友员并不是成员,因此在成员函数中,不能用this指针来访问它.现在假定在t1中加入一成员函数:
+\begin{lstlisting}[language=c++]
+                 void t1::use_friend()
+                 {
+                         t1 fri;
+                         this->friend_t1(fri); //出错,friend_t1不是类成员
+                         ::friend_t1(fri); //正确,访问外部函数friend_t1
+                  }
+\end{lstlisting}
+类似的,在外部函数中,也不能通过t1的对象来访问友员friend_t1():
+\begin{lstlisting}[language=c++]
+                  void main()
+                  {
+                     ti fri,fri1;
+                     fri.friend_t1(fri); //出错,friend_t1不是t1的成员函数
+                     friend_t1(fri1); //正确,调用外部函数friend_t1
+                  }
+\end{lstlisting}
+一个类的成员也可以声明为另一个类的友员,例如:
+\begin{lstlisting}[language=c++]
+              class x{
+                    public:
+                        void f();
+                        //...
+                    private:
+                        int i;
+                        //...
+               };
+
+               class y{
+                   friend void x::f();
+                   int i;
+                   public:
+                   //...
+               };
+\end{lstlisting}
+y声明x的成员函数f()是它的友员,故x::f()可访问y中的私有变量:
+\begin{lstlisting}[language=c++]
+               void x::f()
+               {
+                     y yi;
+                     yi.i=10; //修改了类y的对象yi的私有成员
+               }
+\end{lstlisting}
+与外部友员函数类似,类成员友员只是它所在类的成员函数,而不是声明它为友员的那个类的成员函数.例如:
+\begin{lstlisting}[language=c++]
+             y y1;
+             y1.x::f(); //x::f()不是y的成员函数,出错
+             x x1;
+             x1.f(); //正确,x::f()是x的成员函数
+\end{lstlisting}
+    甚至可以将整个类声明为另一个类的友员:
+\begin{lstlisting}[language=c++]
+             class y
+             {
+                  //...
+             };
+             class x
+             {
+                  friend class y;
+                  //...
+             };
+由于有了这个友员声明,类y的任何成员函数都可以访问类x的私有成员.
+    友员破坏了封装,原本只能通过公有接口间接访问的私有数据,现在可以由友员直接访问.因此,友员要了解它所访问的类的实现细节，当此类的实现有所改动，即使公共接口不改变，友员也要跟着改动。声明有友员的类是难修改的,例如:
+         class sf; //由于在定义sf之前,stack要用到它,先声明sf
+         class stack
+         {
+               char *p; //栈指针
+               char *v; //栈数组
+               int sz;
+            public:
+               stack(int size);
+               char pop();
+               void push(char);
+               ~stack();
+               friend void sf::f(); //sf::f是stack的友员
+         };
+
+        class sf
+        {
+            //...
+            void f()
+            {
+                 //使用stack::p和stack::v
+             }
+         };
+stack声明了sf::f()是它的友员.现在,如果要把stack的数据结构改为链表形式,它不仅要修改pop()和push()的实现,还要修改类sf中f()的实现.也就是说修改从一个模块波及到了另一个模块,而不只限于模块内部.
+   友员能破坏封装,但也能使程序变得简洁而高效.在具体使用时,应权衡二者,再做适当选择.
+
+

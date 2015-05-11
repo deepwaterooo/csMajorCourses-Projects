@@ -1,0 +1,81 @@
+; The following software example first demonstrates initialization of the ports.
+; This software part has to be excecuted only once at the AVR's program start.
+
+; Init-routine			
+
+; Init keypad-I/O
+;
+.DEF rmp = R16 ; define a multipurpose register
+; define ports
+.EQU pKeyOut = PORTB ; Output and Pull-Up-Port
+.EQU pKeyInp = PINB  ; read keypad input
+.EQU pKeyDdr = DDRB  ; data direction register of the port
+; Init-routine
+InitKey:
+	ldi rmp,0b01110000 ; data direction register column lines output
+	out pKeyDdr,rmp    ; set direction register
+	ldi rmp,0b00001111 ; Pull-Up-Resistors to lower four port pins
+	out pKeyOut,rmp    ; to output port
+
+	
+;; check for any key pressed
+;; the following routine detects if any one of the 12 keys is pressed.
+; This routine is called in intervals, e.g. in a delay loop or by use of a timer.
+;
+; Check any key pressed
+;
+AnyKey:
+	ldi rmp,0b00001111 ; PB4..PB6=Null, pull-Up-resistors to input lines
+	out pKeyOut,rmp    ; of port pins PB0..PB3
+	in rmp,pKeyInp     ; read key results
+	ori rmp,0b11110000 ; mask all upper bits with a one
+	cpi rmp,0b11111111 ; all bits = One?
+	breq NoKey         ; yes, no key is pressed
+
+
+;
+; Identify the key pressed
+;
+ReadKey:
+	ldi ZH,HIGH(2*KeyTable) ; Z is pointer to key code table
+	ldi ZL,LOW(2*KeyTable)
+	; read column 1
+	ldi rmp,0b00111111 ; PB6 = 0
+	out pKeyOut,rmp
+	in rmp,pKeyInp ; read input line
+	ori rmp,0b11110000 ; mask upper bits
+	cpi rmp,0b11111111 ; a key in this column pressed?
+	brne KeyRowFound ; key found
+	adiw ZL,4 ; column not found, point Z one row down
+	; read column 2
+	ldi rmp,0b01011111 ; PB5 = 0
+	out pKeyOut,rmp
+	in rmp,pKeyInp ; read again input line
+	ori rmp,0b11110000 ; mask upper bits
+	cpi rmp,0b11111111 ; a key in this column?
+	brne KeyRowFound ; column found
+	adiw ZL,4 ; column not found, another four keys down
+	; read column 3
+	ldi rmp,0b01101111 ; PB4 = 0
+	out pKeyOut,rmp
+	in rmp,pKeyInp ; read last line
+	ori rmp,0b11110000 ; mask upper bits
+	cpi rmp,0b11111111 ; a key in this column?
+	breq NoKey ; unexpected: no key in this column pressed
+KeyRowFound: ; column identified, now identify row
+	lsr rmp ; shift a logic 0 in left, bit 0 to carry
+	brcc KeyFound ; a zero rolled out, key is found
+	adiw ZL,1 ; point to next key code of that column
+	rjmp KeyRowFound ; repeat shift
+KeyFound: ; pressed key is found 
+	lpm ; read key code to R0
+	rjmp KeyProc ; countinue key processing
+NoKey:
+	rjmp NoKeyPressed ; no key pressed
+;
+; Table for code conversion
+;
+KeyTable:
+.DB 0x0A,0x07,0x04,0x01 ; First column, keys *, 7, 4 und 1
+.DB 0x00,0x08,0x05,0x02 ; second column, keys 0, 8, 5 und 2
+.DB 0x0B,0x09,0x06,0x03 ; third column, keys #, 9, 6 und 3

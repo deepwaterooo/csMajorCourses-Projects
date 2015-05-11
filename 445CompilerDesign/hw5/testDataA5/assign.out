@@ -1,0 +1,29 @@
+ERROR(11): Variable 'xraydeltaniner' cannot be declared of type void.
+ERROR(18): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(18): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(19): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(19): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(20): Symbol 'p' is not defined.
+ERROR(20): Symbol 'q' is not defined.
+ERROR(20): Symbol 'r' is not defined.
+ERROR(21): '+=' requires operands of type int but rhs is of type bool.
+ERROR(24): Too many parameters passed for function 'fred' defined on line 7.
+ERROR(24): '+' requires operands of type int but rhs is of type bool.
+ERROR(25): Symbol 'linda' is not defined.
+ERROR(26): Symbol 'linda' is not defined.
+ERROR(26): '+' requires operands of type int but rhs is of type bool.
+ERROR(31): The operation '+' does not work with arrays.
+ERROR(32): The operation '+' does not work with arrays.
+ERROR(32): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(33): The operation 'and' does not work with arrays.
+ERROR(33): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(34): The operation '+' does not work with arrays.
+ERROR(34): Symbol 'xylophone' is not defined.
+ERROR(37): '+' requires operands of type int but lhs is of type bool.
+ERROR(38): '+' requires operands of type int but rhs is of type bool.
+ERROR(39): '+' requires operands of type int but rhs is of type bool.
+ERROR(41): '+' requires operands of type int but rhs is of type void.
+ERROR(42): Too many parameters passed for function 'annie' defined on line 3.
+WARNING(11): Expecting to return type int but function 'main' has no return statement.
+Number of warnings: 1
+Number of errors: 26

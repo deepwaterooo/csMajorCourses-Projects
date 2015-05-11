@@ -4,3 +4,7 @@
 #+author: deepwaterooo
 
 * trying to organize previous courses and projects
+- Will upload more course projects and homeworks when I get time.
+- Will organize cs121/cs210/cs570/cs445/cs572 programming-concentrated course contents here better later.
+
+* cs445 check flash drive has hw2 folder in Mint/445/hw2

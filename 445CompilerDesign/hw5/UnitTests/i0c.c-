@@ -1,0 +1,6 @@
+main(){
+    {
+        bool ss:not true;
+        outputb(ss);
+    }
+}

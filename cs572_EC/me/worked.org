@@ -1,0 +1,44 @@
+#+latex_header: \usepackage{CJKutf8}
+
+#+latex_header: \usepackage{geometry}
+#+latex_header: \geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+#+latex_header: \usepackage{listings}
+
+#+latex_header: \lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false}
+#+latex_header: \begin{CJK}{UTF8}{gbsn}
+
+* ABC我是中国人
+** dfkljdf
+*** gkhfklj
+- this is heyan heyan 
+- goo do to go goo goo good good. 
+*** the second one
+- this is heyan
+- this is my sister
+- 我是中国人，何必学外文 
+** i am god							 
+** this is heyanSSSS
+   SSSSSSSSSSSsSSSSSSSSSSSSSSSSSSS
+* DEF
+\begin{lstlisting}[language=c++]
+int main() {
+    int a;
+}
+\end{lstlisting}
+** heyan
+\begin{lstlisting}[language=c++]
+int main() {
+    int a;
+}
+\end{lstlisting}
+** this is heyan again
+*** this is correctSS
+SS
+** this is correct
+SSSSSSSSSS
+- dklfjdl;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;s
+** this i sgood
+- fldkjjjjjjjjjs;                                    dlkfjdskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+- dklggggggggggggggggggggf
+- dlkgjjjjjjjjjjjjjjjjjjjj
+

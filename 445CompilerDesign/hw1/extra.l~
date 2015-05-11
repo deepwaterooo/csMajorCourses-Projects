@@ -1,0 +1,23 @@
+"{"                     {return '{';}
+"}"                     {return '}';}
+"("                     {return '(';}
+")"                     {return ')';}
+","                     {return ',';}
+":"                     {return ':';}
+";"                     {return ';';}
+"+"                     {return '+';}
+"-"                     {return '-';}
+"*"                     {return '*';}
+"/"                     {return '/';}
+"%"                     {return '%';}
+"<"                     {return '<';}
+">"                     {return '>';}
+"="                     {return '=';}
+
+main() {
+	// lex through the input:
+	yylex();
+}
+
+
+

@@ -1,0 +1,43 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: miller.tm
+Enter command: 
+command: a 10000
+command: g
+100 
+50 
+
+100 
+12 
+
+66 
+25 
+
+777 
+123 
+
+888 
+777 
+
+3 
+987 
+774 
+
+987 
+9 
+
+66 
+77 
+
+10 9 8 7 6 5 4 3 2 1 
+Halted
+Last executed cmd:  658: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 658, PC is now 659
+command: e
+EXEC STAT: Number of instructions executed: 1754
+EXEC STAT: Instruction memory used: 659
+EXEC STAT: Data memory used: 48
+command: x
+Bye.

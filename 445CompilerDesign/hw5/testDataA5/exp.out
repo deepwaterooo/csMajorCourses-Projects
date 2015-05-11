@@ -1,0 +1,11 @@
+ERROR(24): 'and' requires operands of type bool but rhs is of type int.
+ERROR(24): 'or' requires operands of type bool but rhs is of type int.
+ERROR(33): '+' requires operands of type int but lhs is of type bool.
+ERROR(33): '+' requires operands of type int but rhs is of type bool.
+ERROR(33): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(38): Symbol 'x' is not defined.
+ERROR(39): Symbol 'x' is not defined.
+ERROR(42): Symbol 'x' is not defined.
+ERROR(42): Symbol 'x' is not defined.
+Number of warnings: 0
+Number of errors: 9

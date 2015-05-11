@@ -1,0 +1,11 @@
+// C-F13
+int x;
+int y;
+
+  main()
+{
+    x = 753;
+    y = 444;
+    output(x = y);
+    outnl();
+}

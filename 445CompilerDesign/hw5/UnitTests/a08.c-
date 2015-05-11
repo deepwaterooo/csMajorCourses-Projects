@@ -1,0 +1,15 @@
+// C-F13
+bool x;
+
+  main()
+{
+     bool y;
+
+     x = true;
+     y = false;
+     outputb(x);
+     outnl();
+     outputb(y);
+     outnl();
+}
+

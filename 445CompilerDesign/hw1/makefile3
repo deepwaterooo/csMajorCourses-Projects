@@ -1,0 +1,6 @@
+g++ lex.yy.c -lfl
+
+lex.yy.c: c-.l 
+	flex c-.l
+
+

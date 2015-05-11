@@ -1,0 +1,7 @@
+ERROR(19): Expecting Boolean test condition in if statement but got type int.
+ERROR(19): Cannot have a break statement outside of while loop.
+ERROR(20): Expecting Boolean test condition in if statement but got type int.
+ERROR(21): Cannot have a break statement outside of while loop.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 0
+Number of errors: 5

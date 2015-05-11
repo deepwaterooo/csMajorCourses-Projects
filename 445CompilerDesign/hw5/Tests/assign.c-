@@ -1,0 +1,43 @@
+// C-F13
+// C-F09
+// some weird tests
+  annie();
+
+  wu() return;
+
+  fred(int x)
+{
+}
+
+int main(int xraydeltaniner)
+{
+        int x, y;
+        bool a, b;
+
+        a = b = a;
+        x = y = x;
+        a = x = a;
+        x = a = x;
+        p = q = r;
+        x + (x+=true); 
+
+        fred(x);
+        fred(x, x+a);
+        linda(x);
+        linda(x, x+a);
+
+        {
+            int p[10], q[20];
+            x = p + q;
+            a = p + q;
+            x = p  and  q;
+            x = p + q + xylophone;
+        }        
+
+        b+x+x;
+        x+b+x;
+        x+x+b;
+
+        x+annie();
+        annie(42);
+}

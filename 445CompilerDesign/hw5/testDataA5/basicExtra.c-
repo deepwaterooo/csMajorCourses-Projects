@@ -1,0 +1,25 @@
+void frogs();
+
+void main()
+{
+        int ii[5], jj[5];
+        bool aa[5], bb[5];
+        int i, j;
+        bool a, b;
+
+        aa = bb;
+        ii = jj;
+        aa < bb;
+        ii < jj;
+        aa == bb;
+        ii == jj;
+        a<b;
+        a/i;
+        i/a;
+        a%i;
+        i%a;
+        a-i;
+        i-a;
+        frogs()<frogs();
+}
+        

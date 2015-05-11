@@ -1,0 +1,17 @@
+void null()
+{
+}
+
+void cat()
+{
+    return null();
+}
+
+void main()
+{
+    int x;
+    899;
+    x = cat();
+    output(x);
+}
+

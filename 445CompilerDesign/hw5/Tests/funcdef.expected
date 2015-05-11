@@ -1,0 +1,12 @@
+ERROR(5): Symbol 'z' is already defined at line 3.
+WARNING(5): Expecting to return type int but function 'z' has no return statement.
+WARNING(9): Expecting to return type int but function 'y' has no return statement.
+ERROR(13): Symbol 'y' is already defined at line 9.
+ERROR(20): 'x' is a simple variable and cannot be called.
+WARNING(15): Expecting to return type int but function 'x' has no return statement.
+ERROR(25): Cannot use function 'x' as a simple variable.
+WARNING(23): Expecting to return type int but function 'w' has no return statement.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 4
+Number of errors: 5
+------------------------------------

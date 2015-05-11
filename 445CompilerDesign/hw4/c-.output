@@ -1,0 +1,5814 @@
+状态 35 conflicts: 1 shift/reduce
+状态 41 conflicts: 1 shift/reduce
+状态 42 conflicts: 1 shift/reduce
+状态 88 conflicts: 3 shift/reduce
+状态 108 conflicts: 3 shift/reduce
+状态 114 conflicts: 14 shift/reduce
+状态 116 conflicts: 1 shift/reduce
+状态 127 conflicts: 1 shift/reduce
+状态 162 conflicts: 1 shift/reduce
+状态 175 conflicts: 15 shift/reduce
+状态 177 conflicts: 19 shift/reduce
+状态 179 conflicts: 3 shift/reduce, 23 reduce/reduce
+状态 181 conflicts: 3 shift/reduce, 23 reduce/reduce
+状态 183 conflicts: 23 reduce/reduce
+状态 194 conflicts: 1 shift/reduce
+状态 196 conflicts: 1 shift/reduce
+状态 198 conflicts: 1 shift/reduce
+状态 200 conflicts: 1 shift/reduce
+状态 202 conflicts: 1 shift/reduce
+状态 205 conflicts: 1 shift/reduce
+状态 228 conflicts: 5 shift/reduce
+状态 253 conflicts: 1 shift/reduce
+状态 262 conflicts: 3 shift/reduce
+状态 271 conflicts: 3 shift/reduce
+状态 273 conflicts: 3 shift/reduce
+状态 295 conflicts: 3 shift/reduce
+状态 297 conflicts: 3 shift/reduce
+状态 306 conflicts: 1 shift/reduce
+
+
+语法
+
+    0 $accept: program $end
+
+    1 program: declaration_list
+
+    2 declaration_list: declaration_list declaration
+    3                 | declaration
+    4                 | error
+
+    5 declaration: var_declaration
+    6            | fun_declaration
+
+    7 var_declaration: type_specifier var_decl_list ';'
+    8                | type_specifier error ';'
+
+    9 scoped_var_declaration: STATIC type_specifier var_decl_list ';'
+   10                       | type_specifier var_decl_list ';'
+   11                       | type_specifier error ';'
+
+   12 var_decl_list: var_decl_list ',' var_decl_initialize
+   13              | var_decl_initialize
+   14              | error ',' var_decl_initialize
+   15              | var_decl_list ',' error
+
+   16 var_decl_initialize: var_decl_id
+   17                    | var_decl_id ':' simple_expression
+   18                    | error ':' simple_expression
+   19                    | var_decl_id ':' error
+
+   20 var_decl_id: ID
+   21            | ID '[' NUMCONST ']'
+   22            | ID '[' error
+   23            | error '[' NUMCONST ']'
+
+   24 type_specifier: BOOL
+   25               | CHAR
+   26               | INT
+
+   27 fun_declaration: type_specifier ID '(' params ')' statement
+   28                | ID '(' params ')' statement
+   29                | type_specifier error '(' params ')' statement
+   30                | type_specifier ID '(' error
+   31                | ID '(' error ')' statement
+   32                | error ')' statement
+
+   33 params: param_list
+   34       | /* 空 */
+
+   35 param_list: param_list ';' param_type_list
+   36           | param_type_list
+   37           | error ';' param_type_list
+
+   38 param_type_list: type_specifier param_id_list
+   39                | type_specifier error
+
+   40 param_id_list: param_id_list ',' param_id
+   41              | param_id
+   42              | error ',' param_id
+   43              | param_id_list ',' error
+
+   44 param_id: ID
+   45         | ID '[' ']'
+   46         | error '[' NUMCONST ']'
+   47         | ID '[' error
+
+   48 statement_list: statement_list statement
+   49               | /* 空 */
+   50               | statement_list error
+
+   51 statement: ifmatched
+   52          | ifunmatched
+   53          | ifmatched error
+   54          | ifunmatched error
+
+   55 ifmatched: IF '(' simple_expression ')' ifmatched ELSE ifmatched
+   56          | IF '(' error
+   57          | error ')' ifmatched ELSE ifmatched
+   58          | WHILE '(' simple_expression ')' ifmatched
+   59          | WHILE '(' error
+   60          | FOREACH '(' mutable IN simple_expression ')' ifmatched
+   61          | FOREACH '(' error
+   62          | expression_stmt
+
+   63 ifunmatched: IF '(' simple_expression ')' ifmatched ELSE ifunmatched
+   64            | IF '(' simple_expression ')' statement
+   65            | IF '(' simple_expression ')' error ELSE ifunmatched
+   66            | IF '(' error
+   67            | error ')' statement
+   68            | WHILE '(' simple_expression ')' ifunmatched
+   69            | WHILE '(' error
+   70            | FOREACH '(' mutable IN simple_expression ')' ifunmatched
+   71            | FOREACH '(' error
+
+   72 expression_stmt: compound_stmt
+   73                | return_stmt
+   74                | BREAK ';'
+   75                | expressionstmt
+
+   76 return_stmt: RETURN ';'
+   77            | RETURN expression ';'
+   78            | RETURN error
+
+   79 expressionstmt: expression ';'
+   80               | ';'
+   81               | error ';'
+
+   82 compound_stmt: '{' local_declarations statement_list '}'
+   83              | error '}'
+   84              | '{' error statement_list '}'
+
+   85 local_declarations: local_declarations scoped_var_declaration
+   86                   | /* 空 */
+
+   87 expression: simple_expression
+   88           | mutable assignop expression
+   89           | error assignop expression
+   90           | mutable assignop error
+   91           | mutable error expression
+   92           | mutable INC
+   93           | mutable DEC
+   94           | error INC
+   95           | error DEC
+
+   96 assignop: '='
+   97         | PASSIGN
+   98         | MASSIGN
+
+   99 simple_expression: simple_expression OR and_expression
+  100                  | and_expression
+  101                  | simple_expression OR error
+  102                  | error OR and_expression
+
+  103 and_expression: and_expression AND unary_rel_expression
+  104               | unary_rel_expression
+  105               | error AND unary_rel_expression
+  106               | and_expression AND error
+
+  107 unary_rel_expression: NOT unary_rel_expression
+  108                     | rel_expression
+  109                     | NOT error
+
+  110 rel_expression: sum_expression relop sum_expression
+  111               | sum_expression
+  112               | error relop sum_expression
+  113               | sum_expression relop error
+
+  114 relop: '<'
+  115      | '>'
+  116      | LEQ
+  117      | GEQ
+  118      | EQ
+  119      | NEQ
+
+  120 sum_expression: sum_expression sumop term
+  121               | term
+  122               | error sumop term
+  123               | sum_expression sumop error
+
+  124 sumop: '+'
+  125      | '-'
+
+  126 term: term mulop unary_expression
+  127     | unary_expression
+  128     | error mulop unary_expression
+  129     | term mulop error
+
+  130 mulop: '*'
+  131      | '/'
+  132      | '%'
+
+  133 unary_expression: unaryop unary_expression
+  134                 | factor
+  135                 | unaryop error
+
+  136 unaryop: '-'
+  137        | '*'
+
+  138 factor: immutable
+  139       | mutable
+
+  140 mutable: ID
+  141        | ID '[' expression ']'
+  142        | ID '[' error
+  143        | error '['
+
+  144 immutable: call
+  145          | '(' expression ')'
+  146          | constant
+  147          | '(' error
+  148          | error ')'
+
+  149 constant: NUMCONST
+  150         | CHARCONST
+  151         | STRINGCONST
+  152         | TRUE
+  153         | FALSE
+
+  154 call: ID '(' args ')'
+  155     | error '(' args ')'
+  156     | ID '(' error
+
+  157 args: arg_list
+  158     | /* 空 */
+
+  159 arg_list: arg_list ',' expression
+  160         | expression
+  161         | error ',' expression
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+'%' (37) 132
+'(' (40) 27 28 29 30 31 55 56 58 59 60 61 63 64 65 66 68 69 70 71 145
+    147 154 155 156
+')' (41) 27 28 29 31 32 55 57 58 60 63 64 65 67 68 70 145 148 154 155
+'*' (42) 130 137
+'+' (43) 124
+',' (44) 12 14 15 40 42 43 159 161
+'-' (45) 125 136
+'/' (47) 131
+':' (58) 17 18 19
+';' (59) 7 8 9 10 11 35 37 74 76 77 79 80 81
+'<' (60) 114
+'=' (61) 96
+'>' (62) 115
+'[' (91) 21 22 23 45 46 47 141 142 143
+']' (93) 21 23 45 46 141
+'{' (123) 82 84
+'}' (125) 82 83 84
+error (256) 4 8 11 14 15 18 19 22 23 29 30 31 32 37 39 42 43 46 47
+    50 53 54 56 57 59 61 65 66 67 69 71 78 81 83 84 89 90 91 94 95
+    101 102 105 106 109 112 113 122 123 128 129 135 142 143 147 148
+    155 156 161
+PASSIGN (258) 97
+MASSIGN (259) 98
+INC (260) 92 94
+DEC (261) 93 95
+EQ (262) 118
+NEQ (263) 119
+LEQ (264) 116
+GEQ (265) 117
+ID (266) 20 21 22 27 28 30 31 44 45 47 140 141 142 154 156
+CHARCONST (267) 150
+NUMCONST (268) 21 23 46 149
+STRINGCONST (269) 151
+IF (270) 55 56 63 64 65 66
+ELSE (271) 55 57 63 65
+WHILE (272) 58 59 68 69
+FOREACH (273) 60 61 70 71
+IN (274) 60 70
+STATIC (275) 9
+INT (276) 26
+BOOL (277) 24
+CHAR (278) 25
+TRUE (279) 152
+FALSE (280) 153
+RETURN (281) 76 77 78
+BREAK (282) 74
+AND (283) 103 105 106
+OR (284) 99 101 102
+NOT (285) 107 109
+
+
+Nonterminals, with rules where they appear
+
+$accept (48)
+    左： 0
+program (49)
+    左： 1, 右： 0
+declaration_list (50)
+    左： 2 3 4, 右： 1 2
+declaration (51)
+    左： 5 6, 右： 2 3
+var_declaration (52)
+    左： 7 8, 右： 5
+scoped_var_declaration (53)
+    左： 9 10 11, 右： 85
+var_decl_list (54)
+    左： 12 13 14 15, 右： 7 9 10 12 15
+var_decl_initialize (55)
+    左： 16 17 18 19, 右： 12 13 14
+var_decl_id (56)
+    左： 20 21 22 23, 右： 16 17 19
+type_specifier (57)
+    左： 24 25 26, 右： 7 8 9 10 11 27 29 30 38 39
+fun_declaration (58)
+    左： 27 28 29 30 31 32, 右： 6
+params (59)
+    左： 33 34, 右： 27 28 29
+param_list (60)
+    左： 35 36 37, 右： 33 35
+param_type_list (61)
+    左： 38 39, 右： 35 36 37
+param_id_list (62)
+    左： 40 41 42 43, 右： 38 40 43
+param_id (63)
+    左： 44 45 46 47, 右： 40 41 42
+statement_list (64)
+    左： 48 49 50, 右： 48 50 82 84
+statement (65)
+    左： 51 52 53 54, 右： 27 28 29 31 32 48 64 67
+ifmatched (66)
+    左： 55 56 57 58 59 60 61 62, 右： 51 53 55 57 58 60 63
+ifunmatched (67)
+    左： 63 64 65 66 67 68 69 70 71, 右： 52 54 63 65 68 70
+expression_stmt (68)
+    左： 72 73 74 75, 右： 62
+return_stmt (69)
+    左： 76 77 78, 右： 73
+expressionstmt (70)
+    左： 79 80 81, 右： 75
+compound_stmt (71)
+    左： 82 83 84, 右： 72
+local_declarations (72)
+    左： 85 86, 右： 82 85
+expression (73)
+    左： 87 88 89 90 91 92 93 94 95, 右： 77 79 88 89 91 141 145
+    159 160 161
+assignop (74)
+    左： 96 97 98, 右： 88 89 90
+simple_expression (75)
+    左： 99 100 101 102, 右： 17 18 55 58 60 63 64 65 68 70 87
+    99 101
+and_expression (76)
+    左： 103 104 105 106, 右： 99 100 102 103 106
+unary_rel_expression (77)
+    左： 107 108 109, 右： 103 104 105 107
+rel_expression (78)
+    左： 110 111 112 113, 右： 108
+relop (79)
+    左： 114 115 116 117 118 119, 右： 110 112 113
+sum_expression (80)
+    左： 120 121 122 123, 右： 110 111 112 113 120 123
+sumop (81)
+    左： 124 125, 右： 120 122 123
+term (82)
+    左： 126 127 128 129, 右： 120 121 122 126 129
+mulop (83)
+    左： 130 131 132, 右： 126 128 129
+unary_expression (84)
+    左： 133 134 135, 右： 126 127 128 133
+unaryop (85)
+    左： 136 137, 右： 133 135
+factor (86)
+    左： 138 139, 右： 134
+mutable (87)
+    左： 140 141 142 143, 右： 60 70 88 90 91 92 93 139
+immutable (88)
+    左： 144 145 146 147 148, 右： 138
+constant (89)
+    左： 149 150 151 152 153, 右： 146
+call (90)
+    左： 154 155 156, 右： 144
+args (91)
+    左： 157 158, 右： 154 155
+arg_list (92)
+    左： 159 160 161, 右： 157 159
+
+
+状态 0
+
+    0 $accept: . program $end
+
+    error  shift, and go to state 1
+    ID     shift, and go to state 2
+    INT    shift, and go to state 3
+    BOOL   shift, and go to state 4
+    CHAR   shift, and go to state 5
+
+    program           转到状态6
+    declaration_list  转到状态7
+    declaration       转到状态8
+    var_declaration   转到状态9
+    type_specifier    转到状态10
+    fun_declaration   转到状态11
+
+
+状态 1
+
+    4 declaration_list: error .
+   32 fun_declaration: error . ')' statement
+
+    ')'  shift, and go to state 12
+
+    $default  reduce using rule 4 (declaration_list)
+
+
+状态 2
+
+   28 fun_declaration: ID . '(' params ')' statement
+   31                | ID . '(' error ')' statement
+
+    '('  shift, and go to state 13
+
+
+状态 3
+
+   26 type_specifier: INT .
+
+    $default  reduce using rule 26 (type_specifier)
+
+
+状态 4
+
+   24 type_specifier: BOOL .
+
+    $default  reduce using rule 24 (type_specifier)
+
+
+状态 5
+
+   25 type_specifier: CHAR .
+
+    $default  reduce using rule 25 (type_specifier)
+
+
+状态 6
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 14
+
+
+状态 7
+
+    1 program: declaration_list .
+    2 declaration_list: declaration_list . declaration
+
+    error  shift, and go to state 15
+    ID     shift, and go to state 2
+    INT    shift, and go to state 3
+    BOOL   shift, and go to state 4
+    CHAR   shift, and go to state 5
+
+    $end  reduce using rule 1 (program)
+
+    declaration      转到状态16
+    var_declaration  转到状态9
+    type_specifier   转到状态10
+    fun_declaration  转到状态11
+
+
+状态 8
+
+    3 declaration_list: declaration .
+
+    $default  reduce using rule 3 (declaration_list)
+
+
+状态 9
+
+    5 declaration: var_declaration .
+
+    $default  reduce using rule 5 (declaration)
+
+
+状态 10
+
+    7 var_declaration: type_specifier . var_decl_list ';'
+    8                | type_specifier . error ';'
+   27 fun_declaration: type_specifier . ID '(' params ')' statement
+   29                | type_specifier . error '(' params ')' statement
+   30                | type_specifier . ID '(' error
+
+    error  shift, and go to state 17
+    ID     shift, and go to state 18
+
+    var_decl_list        转到状态19
+    var_decl_initialize  转到状态20
+    var_decl_id          转到状态21
+
+
+状态 11
+
+    6 declaration: fun_declaration .
+
+    $default  reduce using rule 6 (declaration)
+
+
+状态 12
+
+   32 fun_declaration: error ')' . statement
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态40
+    ifmatched             转到状态41
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 13
+
+   28 fun_declaration: ID '(' . params ')' statement
+   31                | ID '(' . error ')' statement
+
+    error  shift, and go to state 61
+    INT    shift, and go to state 3
+    BOOL   shift, and go to state 4
+    CHAR   shift, and go to state 5
+
+    ')'  reduce using rule 34 (params)
+
+    type_specifier   转到状态62
+    params           转到状态63
+    param_list       转到状态64
+    param_type_list  转到状态65
+
+
+状态 14
+
+    0 $accept: program $end .
+
+    $default  接受
+
+
+状态 15
+
+   32 fun_declaration: error . ')' statement
+
+    ')'  shift, and go to state 12
+
+
+状态 16
+
+    2 declaration_list: declaration_list declaration .
+
+    $default  reduce using rule 2 (declaration_list)
+
+
+状态 17
+
+    8 var_declaration: type_specifier error . ';'
+   14 var_decl_list: error . ',' var_decl_initialize
+   18 var_decl_initialize: error . ':' simple_expression
+   23 var_decl_id: error . '[' NUMCONST ']'
+   29 fun_declaration: type_specifier error . '(' params ')' statement
+
+    ','  shift, and go to state 66
+    ';'  shift, and go to state 67
+    ':'  shift, and go to state 68
+    '('  shift, and go to state 69
+    '['  shift, and go to state 70
+
+
+状态 18
+
+   20 var_decl_id: ID .
+   21            | ID . '[' NUMCONST ']'
+   22            | ID . '[' error
+   27 fun_declaration: type_specifier ID . '(' params ')' statement
+   30                | type_specifier ID . '(' error
+
+    '('  shift, and go to state 71
+    '['  shift, and go to state 72
+
+    $default  reduce using rule 20 (var_decl_id)
+
+
+状态 19
+
+    7 var_declaration: type_specifier var_decl_list . ';'
+   12 var_decl_list: var_decl_list . ',' var_decl_initialize
+   15              | var_decl_list . ',' error
+
+    ','  shift, and go to state 73
+    ';'  shift, and go to state 74
+
+
+状态 20
+
+   13 var_decl_list: var_decl_initialize .
+
+    $default  reduce using rule 13 (var_decl_list)
+
+
+状态 21
+
+   16 var_decl_initialize: var_decl_id .
+   17                    | var_decl_id . ':' simple_expression
+   19                    | var_decl_id . ':' error
+
+    ':'  shift, and go to state 75
+
+    $default  reduce using rule 16 (var_decl_initialize)
+
+
+状态 22
+
+   57 ifmatched: error . ')' ifmatched ELSE ifmatched
+   67 ifunmatched: error . ')' statement
+   81 expressionstmt: error . ';'
+   83 compound_stmt: error . '}'
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    ';'      shift, and go to state 84
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    '}'      shift, and go to state 87
+    ')'      shift, and go to state 88
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 23
+
+  140 mutable: ID .
+  141        | ID . '[' expression ']'
+  142        | ID . '[' error
+  154 call: ID . '(' args ')'
+  156     | ID . '(' error
+
+    '('  shift, and go to state 103
+    '['  shift, and go to state 104
+
+    $default  reduce using rule 140 (mutable)
+
+
+状态 24
+
+  150 constant: CHARCONST .
+
+    $default  reduce using rule 150 (constant)
+
+
+状态 25
+
+  149 constant: NUMCONST .
+
+    $default  reduce using rule 149 (constant)
+
+
+状态 26
+
+  151 constant: STRINGCONST .
+
+    $default  reduce using rule 151 (constant)
+
+
+状态 27
+
+   55 ifmatched: IF . '(' simple_expression ')' ifmatched ELSE ifmatched
+   56          | IF . '(' error
+   63 ifunmatched: IF . '(' simple_expression ')' ifmatched ELSE ifunmatched
+   64            | IF . '(' simple_expression ')' statement
+   65            | IF . '(' simple_expression ')' error ELSE ifunmatched
+   66            | IF . '(' error
+
+    '('  shift, and go to state 105
+
+
+状态 28
+
+   58 ifmatched: WHILE . '(' simple_expression ')' ifmatched
+   59          | WHILE . '(' error
+   68 ifunmatched: WHILE . '(' simple_expression ')' ifunmatched
+   69            | WHILE . '(' error
+
+    '('  shift, and go to state 106
+
+
+状态 29
+
+   60 ifmatched: FOREACH . '(' mutable IN simple_expression ')' ifmatched
+   61          | FOREACH . '(' error
+   70 ifunmatched: FOREACH . '(' mutable IN simple_expression ')' ifunmatched
+   71            | FOREACH . '(' error
+
+    '('  shift, and go to state 107
+
+
+状态 30
+
+  152 constant: TRUE .
+
+    $default  reduce using rule 152 (constant)
+
+
+状态 31
+
+  153 constant: FALSE .
+
+    $default  reduce using rule 153 (constant)
+
+
+状态 32
+
+   76 return_stmt: RETURN . ';'
+   77            | RETURN . expression ';'
+   78            | RETURN . error
+
+    error        shift, and go to state 108
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    ';'          shift, and go to state 109
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    expression            转到状态110
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 33
+
+   74 expression_stmt: BREAK . ';'
+
+    ';'  shift, and go to state 111
+
+
+状态 34
+
+   80 expressionstmt: ';' .
+
+    $default  reduce using rule 80 (expressionstmt)
+
+
+状态 35
+
+   82 compound_stmt: '{' . local_declarations statement_list '}'
+   84              | '{' . error statement_list '}'
+
+    error  shift, and go to state 112
+
+    error        [reduce using rule 86 (local_declarations)]
+    ID           reduce using rule 86 (local_declarations)
+    CHARCONST    reduce using rule 86 (local_declarations)
+    NUMCONST     reduce using rule 86 (local_declarations)
+    STRINGCONST  reduce using rule 86 (local_declarations)
+    IF           reduce using rule 86 (local_declarations)
+    WHILE        reduce using rule 86 (local_declarations)
+    FOREACH      reduce using rule 86 (local_declarations)
+    STATIC       reduce using rule 86 (local_declarations)
+    INT          reduce using rule 86 (local_declarations)
+    BOOL         reduce using rule 86 (local_declarations)
+    CHAR         reduce using rule 86 (local_declarations)
+    TRUE         reduce using rule 86 (local_declarations)
+    FALSE        reduce using rule 86 (local_declarations)
+    RETURN       reduce using rule 86 (local_declarations)
+    BREAK        reduce using rule 86 (local_declarations)
+    ';'          reduce using rule 86 (local_declarations)
+    '{'          reduce using rule 86 (local_declarations)
+    '('          reduce using rule 86 (local_declarations)
+    '}'          reduce using rule 86 (local_declarations)
+    NOT          reduce using rule 86 (local_declarations)
+    '*'          reduce using rule 86 (local_declarations)
+    '-'          reduce using rule 86 (local_declarations)
+
+    local_declarations  转到状态113
+
+
+状态 36
+
+  145 immutable: '(' . expression ')'
+  147          | '(' . error
+
+    error        shift, and go to state 114
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    expression            转到状态115
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 37
+
+  107 unary_rel_expression: NOT . unary_rel_expression
+  109                     | NOT . error
+
+    error        shift, and go to state 116
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    unary_rel_expression  转到状态117
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 38
+
+  137 unaryop: '*' .
+
+    $default  reduce using rule 137 (unaryop)
+
+
+状态 39
+
+  136 unaryop: '-' .
+
+    $default  reduce using rule 136 (unaryop)
+
+
+状态 40
+
+   32 fun_declaration: error ')' statement .
+
+    $default  reduce using rule 32 (fun_declaration)
+
+
+状态 41
+
+   51 statement: ifmatched .
+   53          | ifmatched . error
+
+    error  shift, and go to state 119
+
+    $end         reduce using rule 51 (statement)
+    error        [reduce using rule 51 (statement)]
+    ID           reduce using rule 51 (statement)
+    CHARCONST    reduce using rule 51 (statement)
+    NUMCONST     reduce using rule 51 (statement)
+    STRINGCONST  reduce using rule 51 (statement)
+    IF           reduce using rule 51 (statement)
+    WHILE        reduce using rule 51 (statement)
+    FOREACH      reduce using rule 51 (statement)
+    INT          reduce using rule 51 (statement)
+    BOOL         reduce using rule 51 (statement)
+    CHAR         reduce using rule 51 (statement)
+    TRUE         reduce using rule 51 (statement)
+    FALSE        reduce using rule 51 (statement)
+    RETURN       reduce using rule 51 (statement)
+    BREAK        reduce using rule 51 (statement)
+    ';'          reduce using rule 51 (statement)
+    '{'          reduce using rule 51 (statement)
+    '('          reduce using rule 51 (statement)
+    '}'          reduce using rule 51 (statement)
+    NOT          reduce using rule 51 (statement)
+    '*'          reduce using rule 51 (statement)
+    '-'          reduce using rule 51 (statement)
+
+
+状态 42
+
+   52 statement: ifunmatched .
+   54          | ifunmatched . error
+
+    error  shift, and go to state 120
+
+    $end         reduce using rule 52 (statement)
+    error        [reduce using rule 52 (statement)]
+    ID           reduce using rule 52 (statement)
+    CHARCONST    reduce using rule 52 (statement)
+    NUMCONST     reduce using rule 52 (statement)
+    STRINGCONST  reduce using rule 52 (statement)
+    IF           reduce using rule 52 (statement)
+    WHILE        reduce using rule 52 (statement)
+    FOREACH      reduce using rule 52 (statement)
+    INT          reduce using rule 52 (statement)
+    BOOL         reduce using rule 52 (statement)
+    CHAR         reduce using rule 52 (statement)
+    TRUE         reduce using rule 52 (statement)
+    FALSE        reduce using rule 52 (statement)
+    RETURN       reduce using rule 52 (statement)
+    BREAK        reduce using rule 52 (statement)
+    ';'          reduce using rule 52 (statement)
+    '{'          reduce using rule 52 (statement)
+    '('          reduce using rule 52 (statement)
+    '}'          reduce using rule 52 (statement)
+    NOT          reduce using rule 52 (statement)
+    '*'          reduce using rule 52 (statement)
+    '-'          reduce using rule 52 (statement)
+
+
+状态 43
+
+   62 ifmatched: expression_stmt .
+
+    $default  reduce using rule 62 (ifmatched)
+
+
+状态 44
+
+   73 expression_stmt: return_stmt .
+
+    $default  reduce using rule 73 (expression_stmt)
+
+
+状态 45
+
+   75 expression_stmt: expressionstmt .
+
+    $default  reduce using rule 75 (expression_stmt)
+
+
+状态 46
+
+   72 expression_stmt: compound_stmt .
+
+    $default  reduce using rule 72 (expression_stmt)
+
+
+状态 47
+
+   79 expressionstmt: expression . ';'
+
+    ';'  shift, and go to state 121
+
+
+状态 48
+
+   87 expression: simple_expression .
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    OR  shift, and go to state 122
+
+    $default  reduce using rule 87 (expression)
+
+
+状态 49
+
+  100 simple_expression: and_expression .
+  103 and_expression: and_expression . AND unary_rel_expression
+  106               | and_expression . AND error
+
+    AND  shift, and go to state 123
+
+    $default  reduce using rule 100 (simple_expression)
+
+
+状态 50
+
+  104 and_expression: unary_rel_expression .
+
+    $default  reduce using rule 104 (and_expression)
+
+
+状态 51
+
+  108 unary_rel_expression: rel_expression .
+
+    $default  reduce using rule 108 (unary_rel_expression)
+
+
+状态 52
+
+  110 rel_expression: sum_expression . relop sum_expression
+  111               | sum_expression .
+  113               | sum_expression . relop error
+  120 sum_expression: sum_expression . sumop term
+  123               | sum_expression . sumop error
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    $default  reduce using rule 111 (rel_expression)
+
+    relop  转到状态124
+    sumop  转到状态125
+
+
+状态 53
+
+  121 sum_expression: term .
+  126 term: term . mulop unary_expression
+  129     | term . mulop error
+
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+
+    $default  reduce using rule 121 (sum_expression)
+
+    mulop  转到状态126
+
+
+状态 54
+
+  127 term: unary_expression .
+
+    $default  reduce using rule 127 (term)
+
+
+状态 55
+
+  133 unary_expression: unaryop . unary_expression
+  135                 | unaryop . error
+
+    error        shift, and go to state 127
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    unary_expression  转到状态128
+    unaryop           转到状态55
+    factor            转到状态56
+    mutable           转到状态118
+    immutable         转到状态58
+    constant          转到状态59
+    call              转到状态60
+
+
+状态 56
+
+  134 unary_expression: factor .
+
+    $default  reduce using rule 134 (unary_expression)
+
+
+状态 57
+
+   88 expression: mutable . assignop expression
+   90           | mutable . assignop error
+   91           | mutable . error expression
+   92           | mutable . INC
+   93           | mutable . DEC
+  139 factor: mutable .
+
+    error    shift, and go to state 129
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 130
+    DEC      shift, and go to state 131
+    '='      shift, and go to state 92
+
+    EQ   reduce using rule 139 (factor)
+    NEQ  reduce using rule 139 (factor)
+    LEQ  reduce using rule 139 (factor)
+    GEQ  reduce using rule 139 (factor)
+    ','  reduce using rule 139 (factor)
+    ';'  reduce using rule 139 (factor)
+    ')'  reduce using rule 139 (factor)
+    ']'  reduce using rule 139 (factor)
+    AND  reduce using rule 139 (factor)
+    OR   reduce using rule 139 (factor)
+    '<'  reduce using rule 139 (factor)
+    '>'  reduce using rule 139 (factor)
+    '*'  reduce using rule 139 (factor)
+    '%'  reduce using rule 139 (factor)
+    '/'  reduce using rule 139 (factor)
+    '-'  reduce using rule 139 (factor)
+    '+'  reduce using rule 139 (factor)
+
+    assignop  转到状态132
+
+
+状态 58
+
+  138 factor: immutable .
+
+    $default  reduce using rule 138 (factor)
+
+
+状态 59
+
+  146 immutable: constant .
+
+    $default  reduce using rule 146 (immutable)
+
+
+状态 60
+
+  144 immutable: call .
+
+    $default  reduce using rule 144 (immutable)
+
+
+状态 61
+
+   31 fun_declaration: ID '(' error . ')' statement
+   37 param_list: error . ';' param_type_list
+
+    ';'  shift, and go to state 133
+    ')'  shift, and go to state 134
+
+
+状态 62
+
+   38 param_type_list: type_specifier . param_id_list
+   39                | type_specifier . error
+
+    error  shift, and go to state 135
+    ID     shift, and go to state 136
+
+    param_id_list  转到状态137
+    param_id       转到状态138
+
+
+状态 63
+
+   28 fun_declaration: ID '(' params . ')' statement
+
+    ')'  shift, and go to state 139
+
+
+状态 64
+
+   33 params: param_list .
+   35 param_list: param_list . ';' param_type_list
+
+    ';'  shift, and go to state 140
+
+    $default  reduce using rule 33 (params)
+
+
+状态 65
+
+   36 param_list: param_type_list .
+
+    $default  reduce using rule 36 (param_list)
+
+
+状态 66
+
+   14 var_decl_list: error ',' . var_decl_initialize
+
+    error  shift, and go to state 141
+    ID     shift, and go to state 142
+
+    var_decl_initialize  转到状态143
+    var_decl_id          转到状态21
+
+
+状态 67
+
+    8 var_declaration: type_specifier error ';' .
+
+    $default  reduce using rule 8 (var_declaration)
+
+
+状态 68
+
+   18 var_decl_initialize: error ':' . simple_expression
+
+    error        shift, and go to state 144
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态145
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 69
+
+   29 fun_declaration: type_specifier error '(' . params ')' statement
+
+    error  shift, and go to state 146
+    INT    shift, and go to state 3
+    BOOL   shift, and go to state 4
+    CHAR   shift, and go to state 5
+
+    ')'  reduce using rule 34 (params)
+
+    type_specifier   转到状态62
+    params           转到状态147
+    param_list       转到状态64
+    param_type_list  转到状态65
+
+
+状态 70
+
+   23 var_decl_id: error '[' . NUMCONST ']'
+
+    NUMCONST  shift, and go to state 148
+
+
+状态 71
+
+   27 fun_declaration: type_specifier ID '(' . params ')' statement
+   30                | type_specifier ID '(' . error
+
+    error  shift, and go to state 149
+    INT    shift, and go to state 3
+    BOOL   shift, and go to state 4
+    CHAR   shift, and go to state 5
+
+    ')'  reduce using rule 34 (params)
+
+    type_specifier   转到状态62
+    params           转到状态150
+    param_list       转到状态64
+    param_type_list  转到状态65
+
+
+状态 72
+
+   21 var_decl_id: ID '[' . NUMCONST ']'
+   22            | ID '[' . error
+
+    error     shift, and go to state 151
+    NUMCONST  shift, and go to state 152
+
+
+状态 73
+
+   12 var_decl_list: var_decl_list ',' . var_decl_initialize
+   15              | var_decl_list ',' . error
+
+    error  shift, and go to state 153
+    ID     shift, and go to state 142
+
+    var_decl_initialize  转到状态154
+    var_decl_id          转到状态21
+
+
+状态 74
+
+    7 var_declaration: type_specifier var_decl_list ';' .
+
+    $default  reduce using rule 7 (var_declaration)
+
+
+状态 75
+
+   17 var_decl_initialize: var_decl_id ':' . simple_expression
+   19                    | var_decl_id ':' . error
+
+    error        shift, and go to state 155
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态156
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 76
+
+   97 assignop: PASSIGN .
+
+    $default  reduce using rule 97 (assignop)
+
+
+状态 77
+
+   98 assignop: MASSIGN .
+
+    $default  reduce using rule 98 (assignop)
+
+
+状态 78
+
+   94 expression: error INC .
+
+    $default  reduce using rule 94 (expression)
+
+
+状态 79
+
+   95 expression: error DEC .
+
+    $default  reduce using rule 95 (expression)
+
+
+状态 80
+
+  118 relop: EQ .
+
+    $default  reduce using rule 118 (relop)
+
+
+状态 81
+
+  119 relop: NEQ .
+
+    $default  reduce using rule 119 (relop)
+
+
+状态 82
+
+  116 relop: LEQ .
+
+    $default  reduce using rule 116 (relop)
+
+
+状态 83
+
+  117 relop: GEQ .
+
+    $default  reduce using rule 117 (relop)
+
+
+状态 84
+
+   81 expressionstmt: error ';' .
+
+    $default  reduce using rule 81 (expressionstmt)
+
+
+状态 85
+
+  155 call: error '(' . args ')'
+
+    error        shift, and go to state 157
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ')'  reduce using rule 158 (args)
+
+    expression            转到状态158
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+    args                  转到状态159
+    arg_list              转到状态160
+
+
+状态 86
+
+  143 mutable: error '[' .
+
+    $default  reduce using rule 143 (mutable)
+
+
+状态 87
+
+   83 compound_stmt: error '}' .
+
+    $default  reduce using rule 83 (compound_stmt)
+
+
+状态 88
+
+   57 ifmatched: error ')' . ifmatched ELSE ifmatched
+   67 ifunmatched: error ')' . statement
+  148 immutable: error ')' .
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    EQ   reduce using rule 148 (immutable)
+    NEQ  reduce using rule 148 (immutable)
+    LEQ  reduce using rule 148 (immutable)
+    GEQ  reduce using rule 148 (immutable)
+    ';'  [reduce using rule 148 (immutable)]
+    AND  reduce using rule 148 (immutable)
+    OR   reduce using rule 148 (immutable)
+    '<'  reduce using rule 148 (immutable)
+    '>'  reduce using rule 148 (immutable)
+    '*'  [reduce using rule 148 (immutable)]
+    '%'  reduce using rule 148 (immutable)
+    '/'  reduce using rule 148 (immutable)
+    '-'  [reduce using rule 148 (immutable)]
+    '+'  reduce using rule 148 (immutable)
+
+    statement             转到状态161
+    ifmatched             转到状态162
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 89
+
+  105 and_expression: error AND . unary_rel_expression
+
+    error        shift, and go to state 163
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    unary_rel_expression  转到状态164
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 90
+
+  102 simple_expression: error OR . and_expression
+
+    error        shift, and go to state 165
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    and_expression        转到状态166
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 91
+
+  114 relop: '<' .
+
+    $default  reduce using rule 114 (relop)
+
+
+状态 92
+
+   96 assignop: '=' .
+
+    $default  reduce using rule 96 (assignop)
+
+
+状态 93
+
+  115 relop: '>' .
+
+    $default  reduce using rule 115 (relop)
+
+
+状态 94
+
+  130 mulop: '*' .
+
+    $default  reduce using rule 130 (mulop)
+
+
+状态 95
+
+  132 mulop: '%' .
+
+    $default  reduce using rule 132 (mulop)
+
+
+状态 96
+
+  131 mulop: '/' .
+
+    $default  reduce using rule 131 (mulop)
+
+
+状态 97
+
+  125 sumop: '-' .
+
+    $default  reduce using rule 125 (sumop)
+
+
+状态 98
+
+  124 sumop: '+' .
+
+    $default  reduce using rule 124 (sumop)
+
+
+状态 99
+
+   89 expression: error assignop . expression
+
+    error        shift, and go to state 167
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    expression            转到状态168
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 100
+
+  112 rel_expression: error relop . sum_expression
+
+    error        shift, and go to state 169
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    sum_expression    转到状态170
+    term              转到状态53
+    unary_expression  转到状态54
+    unaryop           转到状态55
+    factor            转到状态56
+    mutable           转到状态118
+    immutable         转到状态58
+    constant          转到状态59
+    call              转到状态60
+
+
+状态 101
+
+  122 sum_expression: error sumop . term
+
+    error        shift, and go to state 171
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    term              转到状态172
+    unary_expression  转到状态54
+    unaryop           转到状态55
+    factor            转到状态56
+    mutable           转到状态118
+    immutable         转到状态58
+    constant          转到状态59
+    call              转到状态60
+
+
+状态 102
+
+  128 term: error mulop . unary_expression
+
+    error        shift, and go to state 173
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    unary_expression  转到状态174
+    unaryop           转到状态55
+    factor            转到状态56
+    mutable           转到状态118
+    immutable         转到状态58
+    constant          转到状态59
+    call              转到状态60
+
+
+状态 103
+
+  154 call: ID '(' . args ')'
+  156     | ID '(' . error
+
+    error        shift, and go to state 175
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ')'  reduce using rule 158 (args)
+
+    expression            转到状态158
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+    args                  转到状态176
+    arg_list              转到状态160
+
+
+状态 104
+
+  141 mutable: ID '[' . expression ']'
+  142        | ID '[' . error
+
+    error        shift, and go to state 177
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    expression            转到状态178
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 105
+
+   55 ifmatched: IF '(' . simple_expression ')' ifmatched ELSE ifmatched
+   56          | IF '(' . error
+   63 ifunmatched: IF '(' . simple_expression ')' ifmatched ELSE ifunmatched
+   64            | IF '(' . simple_expression ')' statement
+   65            | IF '(' . simple_expression ')' error ELSE ifunmatched
+   66            | IF '(' . error
+
+    error        shift, and go to state 179
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态180
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 106
+
+   58 ifmatched: WHILE '(' . simple_expression ')' ifmatched
+   59          | WHILE '(' . error
+   68 ifunmatched: WHILE '(' . simple_expression ')' ifunmatched
+   69            | WHILE '(' . error
+
+    error        shift, and go to state 181
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态182
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 107
+
+   60 ifmatched: FOREACH '(' . mutable IN simple_expression ')' ifmatched
+   61          | FOREACH '(' . error
+   70 ifunmatched: FOREACH '(' . mutable IN simple_expression ')' ifunmatched
+   71            | FOREACH '(' . error
+
+    error  shift, and go to state 183
+    ID     shift, and go to state 184
+
+    mutable  转到状态185
+
+
+状态 108
+
+   78 return_stmt: RETURN error .
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    ')'      shift, and go to state 186
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    '('       [reduce using rule 78 (return_stmt)]
+    '*'       [reduce using rule 78 (return_stmt)]
+    '-'       [reduce using rule 78 (return_stmt)]
+    $default  reduce using rule 78 (return_stmt)
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 109
+
+   76 return_stmt: RETURN ';' .
+
+    $default  reduce using rule 76 (return_stmt)
+
+
+状态 110
+
+   77 return_stmt: RETURN expression . ';'
+
+    ';'  shift, and go to state 187
+
+
+状态 111
+
+   74 expression_stmt: BREAK ';' .
+
+    $default  reduce using rule 74 (expression_stmt)
+
+
+状态 112
+
+   84 compound_stmt: '{' error . statement_list '}'
+
+    $default  reduce using rule 49 (statement_list)
+
+    statement_list  转到状态188
+
+
+状态 113
+
+   82 compound_stmt: '{' local_declarations . statement_list '}'
+   85 local_declarations: local_declarations . scoped_var_declaration
+
+    STATIC  shift, and go to state 189
+    INT     shift, and go to state 3
+    BOOL    shift, and go to state 4
+    CHAR    shift, and go to state 5
+
+    $default  reduce using rule 49 (statement_list)
+
+    scoped_var_declaration  转到状态190
+    type_specifier          转到状态191
+    statement_list          转到状态192
+
+
+状态 114
+
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  147 immutable: '(' error .
+  148          | error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    ')'      shift, and go to state 186
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    EQ        [reduce using rule 147 (immutable)]
+    NEQ       [reduce using rule 147 (immutable)]
+    LEQ       [reduce using rule 147 (immutable)]
+    GEQ       [reduce using rule 147 (immutable)]
+    ')'       [reduce using rule 147 (immutable)]
+    AND       [reduce using rule 147 (immutable)]
+    OR        [reduce using rule 147 (immutable)]
+    '<'       [reduce using rule 147 (immutable)]
+    '>'       [reduce using rule 147 (immutable)]
+    '*'       [reduce using rule 147 (immutable)]
+    '%'       [reduce using rule 147 (immutable)]
+    '/'       [reduce using rule 147 (immutable)]
+    '-'       [reduce using rule 147 (immutable)]
+    '+'       [reduce using rule 147 (immutable)]
+    $default  reduce using rule 147 (immutable)
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 115
+
+  145 immutable: '(' expression . ')'
+
+    ')'  shift, and go to state 193
+
+
+状态 116
+
+  109 unary_rel_expression: NOT error .
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    ')'       [reduce using rule 109 (unary_rel_expression)]
+    $default  reduce using rule 109 (unary_rel_expression)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 117
+
+  107 unary_rel_expression: NOT unary_rel_expression .
+
+    $default  reduce using rule 107 (unary_rel_expression)
+
+
+状态 118
+
+  139 factor: mutable .
+
+    $default  reduce using rule 139 (factor)
+
+
+状态 119
+
+   53 statement: ifmatched error .
+
+    $default  reduce using rule 53 (statement)
+
+
+状态 120
+
+   54 statement: ifunmatched error .
+
+    $default  reduce using rule 54 (statement)
+
+
+状态 121
+
+   79 expressionstmt: expression ';' .
+
+    $default  reduce using rule 79 (expressionstmt)
+
+
+状态 122
+
+   99 simple_expression: simple_expression OR . and_expression
+  101                  | simple_expression OR . error
+
+    error        shift, and go to state 194
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    and_expression        转到状态195
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 123
+
+  103 and_expression: and_expression AND . unary_rel_expression
+  106               | and_expression AND . error
+
+    error        shift, and go to state 196
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    unary_rel_expression  转到状态197
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 124
+
+  110 rel_expression: sum_expression relop . sum_expression
+  113               | sum_expression relop . error
+
+    error        shift, and go to state 198
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    sum_expression    转到状态199
+    term              转到状态53
+    unary_expression  转到状态54
+    unaryop           转到状态55
+    factor            转到状态56
+    mutable           转到状态118
+    immutable         转到状态58
+    constant          转到状态59
+    call              转到状态60
+
+
+状态 125
+
+  120 sum_expression: sum_expression sumop . term
+  123               | sum_expression sumop . error
+
+    error        shift, and go to state 200
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    term              转到状态201
+    unary_expression  转到状态54
+    unaryop           转到状态55
+    factor            转到状态56
+    mutable           转到状态118
+    immutable         转到状态58
+    constant          转到状态59
+    call              转到状态60
+
+
+状态 126
+
+  126 term: term mulop . unary_expression
+  129     | term mulop . error
+
+    error        shift, and go to state 202
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    unary_expression  转到状态203
+    unaryop           转到状态55
+    factor            转到状态56
+    mutable           转到状态118
+    immutable         转到状态58
+    constant          转到状态59
+    call              转到状态60
+
+
+状态 127
+
+  135 unary_expression: unaryop error .
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+
+    ')'       [reduce using rule 135 (unary_expression)]
+    $default  reduce using rule 135 (unary_expression)
+
+
+状态 128
+
+  133 unary_expression: unaryop unary_expression .
+
+    $default  reduce using rule 133 (unary_expression)
+
+
+状态 129
+
+   91 expression: mutable error . expression
+
+    error        shift, and go to state 167
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    expression            转到状态204
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 130
+
+   92 expression: mutable INC .
+
+    $default  reduce using rule 92 (expression)
+
+
+状态 131
+
+   93 expression: mutable DEC .
+
+    $default  reduce using rule 93 (expression)
+
+
+状态 132
+
+   88 expression: mutable assignop . expression
+   90           | mutable assignop . error
+
+    error        shift, and go to state 205
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    expression            转到状态206
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 133
+
+   37 param_list: error ';' . param_type_list
+
+    INT   shift, and go to state 3
+    BOOL  shift, and go to state 4
+    CHAR  shift, and go to state 5
+
+    type_specifier   转到状态62
+    param_type_list  转到状态207
+
+
+状态 134
+
+   31 fun_declaration: ID '(' error ')' . statement
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态208
+    ifmatched             转到状态41
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 135
+
+   39 param_type_list: type_specifier error .
+   42 param_id_list: error . ',' param_id
+   46 param_id: error . '[' NUMCONST ']'
+
+    ','  shift, and go to state 209
+    '['  shift, and go to state 210
+
+    $default  reduce using rule 39 (param_type_list)
+
+
+状态 136
+
+   44 param_id: ID .
+   45         | ID . '[' ']'
+   47         | ID . '[' error
+
+    '['  shift, and go to state 211
+
+    $default  reduce using rule 44 (param_id)
+
+
+状态 137
+
+   38 param_type_list: type_specifier param_id_list .
+   40 param_id_list: param_id_list . ',' param_id
+   43              | param_id_list . ',' error
+
+    ','  shift, and go to state 212
+
+    $default  reduce using rule 38 (param_type_list)
+
+
+状态 138
+
+   41 param_id_list: param_id .
+
+    $default  reduce using rule 41 (param_id_list)
+
+
+状态 139
+
+   28 fun_declaration: ID '(' params ')' . statement
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态213
+    ifmatched             转到状态41
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 140
+
+   35 param_list: param_list ';' . param_type_list
+
+    INT   shift, and go to state 3
+    BOOL  shift, and go to state 4
+    CHAR  shift, and go to state 5
+
+    type_specifier   转到状态62
+    param_type_list  转到状态214
+
+
+状态 141
+
+   18 var_decl_initialize: error . ':' simple_expression
+   23 var_decl_id: error . '[' NUMCONST ']'
+
+    ':'  shift, and go to state 68
+    '['  shift, and go to state 70
+
+
+状态 142
+
+   20 var_decl_id: ID .
+   21            | ID . '[' NUMCONST ']'
+   22            | ID . '[' error
+
+    '['  shift, and go to state 72
+
+    $default  reduce using rule 20 (var_decl_id)
+
+
+状态 143
+
+   14 var_decl_list: error ',' var_decl_initialize .
+
+    $default  reduce using rule 14 (var_decl_list)
+
+
+状态 144
+
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    OR   shift, and go to state 90
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 145
+
+   18 var_decl_initialize: error ':' simple_expression .
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    OR  shift, and go to state 122
+
+    $default  reduce using rule 18 (var_decl_initialize)
+
+
+状态 146
+
+   37 param_list: error . ';' param_type_list
+
+    ';'  shift, and go to state 133
+
+
+状态 147
+
+   29 fun_declaration: type_specifier error '(' params . ')' statement
+
+    ')'  shift, and go to state 215
+
+
+状态 148
+
+   23 var_decl_id: error '[' NUMCONST . ']'
+
+    ']'  shift, and go to state 216
+
+
+状态 149
+
+   30 fun_declaration: type_specifier ID '(' error .
+   37 param_list: error . ';' param_type_list
+
+    ';'  shift, and go to state 133
+
+    $default  reduce using rule 30 (fun_declaration)
+
+
+状态 150
+
+   27 fun_declaration: type_specifier ID '(' params . ')' statement
+
+    ')'  shift, and go to state 217
+
+
+状态 151
+
+   22 var_decl_id: ID '[' error .
+
+    $default  reduce using rule 22 (var_decl_id)
+
+
+状态 152
+
+   21 var_decl_id: ID '[' NUMCONST . ']'
+
+    ']'  shift, and go to state 218
+
+
+状态 153
+
+   15 var_decl_list: var_decl_list ',' error .
+   18 var_decl_initialize: error . ':' simple_expression
+   23 var_decl_id: error . '[' NUMCONST ']'
+
+    ':'  shift, and go to state 68
+    '['  shift, and go to state 70
+
+    $default  reduce using rule 15 (var_decl_list)
+
+
+状态 154
+
+   12 var_decl_list: var_decl_list ',' var_decl_initialize .
+
+    $default  reduce using rule 12 (var_decl_list)
+
+
+状态 155
+
+   19 var_decl_initialize: var_decl_id ':' error .
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    OR   shift, and go to state 90
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    $default  reduce using rule 19 (var_decl_initialize)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 156
+
+   17 var_decl_initialize: var_decl_id ':' simple_expression .
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    OR  shift, and go to state 122
+
+    $default  reduce using rule 17 (var_decl_initialize)
+
+
+状态 157
+
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+  161 arg_list: error . ',' expression
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    ','      shift, and go to state 219
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    ')'      shift, and go to state 186
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 158
+
+  160 arg_list: expression .
+
+    $default  reduce using rule 160 (arg_list)
+
+
+状态 159
+
+  155 call: error '(' args . ')'
+
+    ')'  shift, and go to state 220
+
+
+状态 160
+
+  157 args: arg_list .
+  159 arg_list: arg_list . ',' expression
+
+    ','  shift, and go to state 221
+
+    $default  reduce using rule 157 (args)
+
+
+状态 161
+
+   67 ifunmatched: error ')' statement .
+
+    $default  reduce using rule 67 (ifunmatched)
+
+
+状态 162
+
+   51 statement: ifmatched .
+   53          | ifmatched . error
+   57 ifmatched: error ')' ifmatched . ELSE ifmatched
+
+    error  shift, and go to state 119
+    ELSE   shift, and go to state 222
+
+    $end         reduce using rule 51 (statement)
+    error        [reduce using rule 51 (statement)]
+    ID           reduce using rule 51 (statement)
+    CHARCONST    reduce using rule 51 (statement)
+    NUMCONST     reduce using rule 51 (statement)
+    STRINGCONST  reduce using rule 51 (statement)
+    IF           reduce using rule 51 (statement)
+    WHILE        reduce using rule 51 (statement)
+    FOREACH      reduce using rule 51 (statement)
+    INT          reduce using rule 51 (statement)
+    BOOL         reduce using rule 51 (statement)
+    CHAR         reduce using rule 51 (statement)
+    TRUE         reduce using rule 51 (statement)
+    FALSE        reduce using rule 51 (statement)
+    RETURN       reduce using rule 51 (statement)
+    BREAK        reduce using rule 51 (statement)
+    ';'          reduce using rule 51 (statement)
+    '{'          reduce using rule 51 (statement)
+    '('          reduce using rule 51 (statement)
+    '}'          reduce using rule 51 (statement)
+    NOT          reduce using rule 51 (statement)
+    '*'          reduce using rule 51 (statement)
+    '-'          reduce using rule 51 (statement)
+
+
+状态 163
+
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 164
+
+  105 and_expression: error AND unary_rel_expression .
+
+    $default  reduce using rule 105 (and_expression)
+
+
+状态 165
+
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 166
+
+  102 simple_expression: error OR and_expression .
+  103 and_expression: and_expression . AND unary_rel_expression
+  106               | and_expression . AND error
+
+    AND  shift, and go to state 123
+
+    $default  reduce using rule 102 (simple_expression)
+
+
+状态 167
+
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    ')'      shift, and go to state 186
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 168
+
+   89 expression: error assignop expression .
+
+    $default  reduce using rule 89 (expression)
+
+
+状态 169
+
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 170
+
+  112 rel_expression: error relop sum_expression .
+  120 sum_expression: sum_expression . sumop term
+  123               | sum_expression . sumop error
+
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    $default  reduce using rule 112 (rel_expression)
+
+    sumop  转到状态125
+
+
+状态 171
+
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+
+    mulop  转到状态102
+
+
+状态 172
+
+  122 sum_expression: error sumop term .
+  126 term: term . mulop unary_expression
+  129     | term . mulop error
+
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+
+    $default  reduce using rule 122 (sum_expression)
+
+    mulop  转到状态126
+
+
+状态 173
+
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+
+
+状态 174
+
+  128 term: error mulop unary_expression .
+
+    $default  reduce using rule 128 (term)
+
+
+状态 175
+
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+  156     | ID '(' error .
+  161 arg_list: error . ',' expression
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    ','      shift, and go to state 219
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    ')'      shift, and go to state 186
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    EQ        [reduce using rule 156 (call)]
+    NEQ       [reduce using rule 156 (call)]
+    LEQ       [reduce using rule 156 (call)]
+    GEQ       [reduce using rule 156 (call)]
+    ','       [reduce using rule 156 (call)]
+    ')'       [reduce using rule 156 (call)]
+    AND       [reduce using rule 156 (call)]
+    OR        [reduce using rule 156 (call)]
+    '<'       [reduce using rule 156 (call)]
+    '>'       [reduce using rule 156 (call)]
+    '*'       [reduce using rule 156 (call)]
+    '%'       [reduce using rule 156 (call)]
+    '/'       [reduce using rule 156 (call)]
+    '-'       [reduce using rule 156 (call)]
+    '+'       [reduce using rule 156 (call)]
+    $default  reduce using rule 156 (call)
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 176
+
+  154 call: ID '(' args . ')'
+
+    ')'  shift, and go to state 223
+
+
+状态 177
+
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  142 mutable: ID '[' error .
+  143        | error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    ')'      shift, and go to state 186
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    PASSIGN   [reduce using rule 142 (mutable)]
+    MASSIGN   [reduce using rule 142 (mutable)]
+    INC       [reduce using rule 142 (mutable)]
+    DEC       [reduce using rule 142 (mutable)]
+    EQ        [reduce using rule 142 (mutable)]
+    NEQ       [reduce using rule 142 (mutable)]
+    LEQ       [reduce using rule 142 (mutable)]
+    GEQ       [reduce using rule 142 (mutable)]
+    ')'       [reduce using rule 142 (mutable)]
+    AND       [reduce using rule 142 (mutable)]
+    OR        [reduce using rule 142 (mutable)]
+    '<'       [reduce using rule 142 (mutable)]
+    '='       [reduce using rule 142 (mutable)]
+    '>'       [reduce using rule 142 (mutable)]
+    '*'       [reduce using rule 142 (mutable)]
+    '%'       [reduce using rule 142 (mutable)]
+    '/'       [reduce using rule 142 (mutable)]
+    '-'       [reduce using rule 142 (mutable)]
+    '+'       [reduce using rule 142 (mutable)]
+    $default  reduce using rule 142 (mutable)
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 178
+
+  141 mutable: ID '[' expression . ']'
+
+    ']'  shift, and go to state 224
+
+
+状态 179
+
+   56 ifmatched: IF '(' error .
+   66 ifunmatched: IF '(' error .
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    OR   shift, and go to state 90
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    $end         reduce using rule 56 (ifmatched)
+    $end         [reduce using rule 66 (ifunmatched)]
+    error        reduce using rule 56 (ifmatched)
+    error        [reduce using rule 66 (ifunmatched)]
+    ID           reduce using rule 56 (ifmatched)
+    ID           [reduce using rule 66 (ifunmatched)]
+    CHARCONST    reduce using rule 56 (ifmatched)
+    CHARCONST    [reduce using rule 66 (ifunmatched)]
+    NUMCONST     reduce using rule 56 (ifmatched)
+    NUMCONST     [reduce using rule 66 (ifunmatched)]
+    STRINGCONST  reduce using rule 56 (ifmatched)
+    STRINGCONST  [reduce using rule 66 (ifunmatched)]
+    IF           reduce using rule 56 (ifmatched)
+    IF           [reduce using rule 66 (ifunmatched)]
+    WHILE        reduce using rule 56 (ifmatched)
+    WHILE        [reduce using rule 66 (ifunmatched)]
+    FOREACH      reduce using rule 56 (ifmatched)
+    FOREACH      [reduce using rule 66 (ifunmatched)]
+    INT          reduce using rule 56 (ifmatched)
+    INT          [reduce using rule 66 (ifunmatched)]
+    BOOL         reduce using rule 56 (ifmatched)
+    BOOL         [reduce using rule 66 (ifunmatched)]
+    CHAR         reduce using rule 56 (ifmatched)
+    CHAR         [reduce using rule 66 (ifunmatched)]
+    TRUE         reduce using rule 56 (ifmatched)
+    TRUE         [reduce using rule 66 (ifunmatched)]
+    FALSE        reduce using rule 56 (ifmatched)
+    FALSE        [reduce using rule 66 (ifunmatched)]
+    RETURN       reduce using rule 56 (ifmatched)
+    RETURN       [reduce using rule 66 (ifunmatched)]
+    BREAK        reduce using rule 56 (ifmatched)
+    BREAK        [reduce using rule 66 (ifunmatched)]
+    ';'          reduce using rule 56 (ifmatched)
+    ';'          [reduce using rule 66 (ifunmatched)]
+    '{'          reduce using rule 56 (ifmatched)
+    '{'          [reduce using rule 66 (ifunmatched)]
+    '('          [reduce using rule 56 (ifmatched)]
+    '('          [reduce using rule 66 (ifunmatched)]
+    '}'          reduce using rule 56 (ifmatched)
+    '}'          [reduce using rule 66 (ifunmatched)]
+    NOT          reduce using rule 56 (ifmatched)
+    NOT          [reduce using rule 66 (ifunmatched)]
+    '*'          [reduce using rule 56 (ifmatched)]
+    '*'          [reduce using rule 66 (ifunmatched)]
+    '-'          [reduce using rule 56 (ifmatched)]
+    '-'          [reduce using rule 66 (ifunmatched)]
+    $default     reduce using rule 56 (ifmatched)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 180
+
+   55 ifmatched: IF '(' simple_expression . ')' ifmatched ELSE ifmatched
+   63 ifunmatched: IF '(' simple_expression . ')' ifmatched ELSE ifunmatched
+   64            | IF '(' simple_expression . ')' statement
+   65            | IF '(' simple_expression . ')' error ELSE ifunmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 225
+    OR   shift, and go to state 122
+
+
+状态 181
+
+   59 ifmatched: WHILE '(' error .
+   69 ifunmatched: WHILE '(' error .
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    OR   shift, and go to state 90
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    $end         reduce using rule 59 (ifmatched)
+    $end         [reduce using rule 69 (ifunmatched)]
+    error        reduce using rule 59 (ifmatched)
+    error        [reduce using rule 69 (ifunmatched)]
+    ID           reduce using rule 59 (ifmatched)
+    ID           [reduce using rule 69 (ifunmatched)]
+    CHARCONST    reduce using rule 59 (ifmatched)
+    CHARCONST    [reduce using rule 69 (ifunmatched)]
+    NUMCONST     reduce using rule 59 (ifmatched)
+    NUMCONST     [reduce using rule 69 (ifunmatched)]
+    STRINGCONST  reduce using rule 59 (ifmatched)
+    STRINGCONST  [reduce using rule 69 (ifunmatched)]
+    IF           reduce using rule 59 (ifmatched)
+    IF           [reduce using rule 69 (ifunmatched)]
+    WHILE        reduce using rule 59 (ifmatched)
+    WHILE        [reduce using rule 69 (ifunmatched)]
+    FOREACH      reduce using rule 59 (ifmatched)
+    FOREACH      [reduce using rule 69 (ifunmatched)]
+    INT          reduce using rule 59 (ifmatched)
+    INT          [reduce using rule 69 (ifunmatched)]
+    BOOL         reduce using rule 59 (ifmatched)
+    BOOL         [reduce using rule 69 (ifunmatched)]
+    CHAR         reduce using rule 59 (ifmatched)
+    CHAR         [reduce using rule 69 (ifunmatched)]
+    TRUE         reduce using rule 59 (ifmatched)
+    TRUE         [reduce using rule 69 (ifunmatched)]
+    FALSE        reduce using rule 59 (ifmatched)
+    FALSE        [reduce using rule 69 (ifunmatched)]
+    RETURN       reduce using rule 59 (ifmatched)
+    RETURN       [reduce using rule 69 (ifunmatched)]
+    BREAK        reduce using rule 59 (ifmatched)
+    BREAK        [reduce using rule 69 (ifunmatched)]
+    ';'          reduce using rule 59 (ifmatched)
+    ';'          [reduce using rule 69 (ifunmatched)]
+    '{'          reduce using rule 59 (ifmatched)
+    '{'          [reduce using rule 69 (ifunmatched)]
+    '('          [reduce using rule 59 (ifmatched)]
+    '('          [reduce using rule 69 (ifunmatched)]
+    '}'          reduce using rule 59 (ifmatched)
+    '}'          [reduce using rule 69 (ifunmatched)]
+    NOT          reduce using rule 59 (ifmatched)
+    NOT          [reduce using rule 69 (ifunmatched)]
+    '*'          [reduce using rule 59 (ifmatched)]
+    '*'          [reduce using rule 69 (ifunmatched)]
+    '-'          [reduce using rule 59 (ifmatched)]
+    '-'          [reduce using rule 69 (ifunmatched)]
+    $default     reduce using rule 59 (ifmatched)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 182
+
+   58 ifmatched: WHILE '(' simple_expression . ')' ifmatched
+   68 ifunmatched: WHILE '(' simple_expression . ')' ifunmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 226
+    OR   shift, and go to state 122
+
+
+状态 183
+
+   61 ifmatched: FOREACH '(' error .
+   71 ifunmatched: FOREACH '(' error .
+  143 mutable: error . '['
+
+    '['  shift, and go to state 86
+
+    $end         reduce using rule 61 (ifmatched)
+    $end         [reduce using rule 71 (ifunmatched)]
+    error        reduce using rule 61 (ifmatched)
+    error        [reduce using rule 71 (ifunmatched)]
+    ID           reduce using rule 61 (ifmatched)
+    ID           [reduce using rule 71 (ifunmatched)]
+    CHARCONST    reduce using rule 61 (ifmatched)
+    CHARCONST    [reduce using rule 71 (ifunmatched)]
+    NUMCONST     reduce using rule 61 (ifmatched)
+    NUMCONST     [reduce using rule 71 (ifunmatched)]
+    STRINGCONST  reduce using rule 61 (ifmatched)
+    STRINGCONST  [reduce using rule 71 (ifunmatched)]
+    IF           reduce using rule 61 (ifmatched)
+    IF           [reduce using rule 71 (ifunmatched)]
+    WHILE        reduce using rule 61 (ifmatched)
+    WHILE        [reduce using rule 71 (ifunmatched)]
+    FOREACH      reduce using rule 61 (ifmatched)
+    FOREACH      [reduce using rule 71 (ifunmatched)]
+    INT          reduce using rule 61 (ifmatched)
+    INT          [reduce using rule 71 (ifunmatched)]
+    BOOL         reduce using rule 61 (ifmatched)
+    BOOL         [reduce using rule 71 (ifunmatched)]
+    CHAR         reduce using rule 61 (ifmatched)
+    CHAR         [reduce using rule 71 (ifunmatched)]
+    TRUE         reduce using rule 61 (ifmatched)
+    TRUE         [reduce using rule 71 (ifunmatched)]
+    FALSE        reduce using rule 61 (ifmatched)
+    FALSE        [reduce using rule 71 (ifunmatched)]
+    RETURN       reduce using rule 61 (ifmatched)
+    RETURN       [reduce using rule 71 (ifunmatched)]
+    BREAK        reduce using rule 61 (ifmatched)
+    BREAK        [reduce using rule 71 (ifunmatched)]
+    ';'          reduce using rule 61 (ifmatched)
+    ';'          [reduce using rule 71 (ifunmatched)]
+    '{'          reduce using rule 61 (ifmatched)
+    '{'          [reduce using rule 71 (ifunmatched)]
+    '('          reduce using rule 61 (ifmatched)
+    '('          [reduce using rule 71 (ifunmatched)]
+    '}'          reduce using rule 61 (ifmatched)
+    '}'          [reduce using rule 71 (ifunmatched)]
+    NOT          reduce using rule 61 (ifmatched)
+    NOT          [reduce using rule 71 (ifunmatched)]
+    '*'          reduce using rule 61 (ifmatched)
+    '*'          [reduce using rule 71 (ifunmatched)]
+    '-'          reduce using rule 61 (ifmatched)
+    '-'          [reduce using rule 71 (ifunmatched)]
+    $default     reduce using rule 61 (ifmatched)
+
+
+状态 184
+
+  140 mutable: ID .
+  141        | ID . '[' expression ']'
+  142        | ID . '[' error
+
+    '['  shift, and go to state 104
+
+    $default  reduce using rule 140 (mutable)
+
+
+状态 185
+
+   60 ifmatched: FOREACH '(' mutable . IN simple_expression ')' ifmatched
+   70 ifunmatched: FOREACH '(' mutable . IN simple_expression ')' ifunmatched
+
+    IN  shift, and go to state 227
+
+
+状态 186
+
+  148 immutable: error ')' .
+
+    $default  reduce using rule 148 (immutable)
+
+
+状态 187
+
+   77 return_stmt: RETURN expression ';' .
+
+    $default  reduce using rule 77 (return_stmt)
+
+
+状态 188
+
+   48 statement_list: statement_list . statement
+   50               | statement_list . error
+   84 compound_stmt: '{' error statement_list . '}'
+
+    error        shift, and go to state 228
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    '}'          shift, and go to state 229
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态230
+    ifmatched             转到状态41
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 189
+
+    9 scoped_var_declaration: STATIC . type_specifier var_decl_list ';'
+
+    INT   shift, and go to state 3
+    BOOL  shift, and go to state 4
+    CHAR  shift, and go to state 5
+
+    type_specifier  转到状态231
+
+
+状态 190
+
+   85 local_declarations: local_declarations scoped_var_declaration .
+
+    $default  reduce using rule 85 (local_declarations)
+
+
+状态 191
+
+   10 scoped_var_declaration: type_specifier . var_decl_list ';'
+   11                       | type_specifier . error ';'
+
+    error  shift, and go to state 232
+    ID     shift, and go to state 142
+
+    var_decl_list        转到状态233
+    var_decl_initialize  转到状态20
+    var_decl_id          转到状态21
+
+
+状态 192
+
+   48 statement_list: statement_list . statement
+   50               | statement_list . error
+   82 compound_stmt: '{' local_declarations statement_list . '}'
+
+    error        shift, and go to state 228
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    '}'          shift, and go to state 234
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态230
+    ifmatched             转到状态41
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 193
+
+  145 immutable: '(' expression ')' .
+
+    $default  reduce using rule 145 (immutable)
+
+
+状态 194
+
+  101 simple_expression: simple_expression OR error .
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    ')'       [reduce using rule 101 (simple_expression)]
+    $default  reduce using rule 101 (simple_expression)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 195
+
+   99 simple_expression: simple_expression OR and_expression .
+  103 and_expression: and_expression . AND unary_rel_expression
+  106               | and_expression . AND error
+
+    AND  shift, and go to state 123
+
+    $default  reduce using rule 99 (simple_expression)
+
+
+状态 196
+
+  106 and_expression: and_expression AND error .
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    ')'       [reduce using rule 106 (and_expression)]
+    $default  reduce using rule 106 (and_expression)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 197
+
+  103 and_expression: and_expression AND unary_rel_expression .
+
+    $default  reduce using rule 103 (and_expression)
+
+
+状态 198
+
+  113 rel_expression: sum_expression relop error .
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    ')'       [reduce using rule 113 (rel_expression)]
+    $default  reduce using rule 113 (rel_expression)
+
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 199
+
+  110 rel_expression: sum_expression relop sum_expression .
+  120 sum_expression: sum_expression . sumop term
+  123               | sum_expression . sumop error
+
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    $default  reduce using rule 110 (rel_expression)
+
+    sumop  转到状态125
+
+
+状态 200
+
+  123 sum_expression: sum_expression sumop error .
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+
+    ')'       [reduce using rule 123 (sum_expression)]
+    $default  reduce using rule 123 (sum_expression)
+
+    mulop  转到状态102
+
+
+状态 201
+
+  120 sum_expression: sum_expression sumop term .
+  126 term: term . mulop unary_expression
+  129     | term . mulop error
+
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+
+    $default  reduce using rule 120 (sum_expression)
+
+    mulop  转到状态126
+
+
+状态 202
+
+  129 term: term mulop error .
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+
+    ')'       [reduce using rule 129 (term)]
+    $default  reduce using rule 129 (term)
+
+
+状态 203
+
+  126 term: term mulop unary_expression .
+
+    $default  reduce using rule 126 (term)
+
+
+状态 204
+
+   91 expression: mutable error expression .
+
+    $default  reduce using rule 91 (expression)
+
+
+状态 205
+
+   89 expression: error . assignop expression
+   90           | mutable assignop error .
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    ')'      shift, and go to state 186
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    ')'       [reduce using rule 90 (expression)]
+    $default  reduce using rule 90 (expression)
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 206
+
+   88 expression: mutable assignop expression .
+
+    $default  reduce using rule 88 (expression)
+
+
+状态 207
+
+   37 param_list: error ';' param_type_list .
+
+    $default  reduce using rule 37 (param_list)
+
+
+状态 208
+
+   31 fun_declaration: ID '(' error ')' statement .
+
+    $default  reduce using rule 31 (fun_declaration)
+
+
+状态 209
+
+   42 param_id_list: error ',' . param_id
+
+    error  shift, and go to state 235
+    ID     shift, and go to state 136
+
+    param_id  转到状态236
+
+
+状态 210
+
+   46 param_id: error '[' . NUMCONST ']'
+
+    NUMCONST  shift, and go to state 237
+
+
+状态 211
+
+   45 param_id: ID '[' . ']'
+   47         | ID '[' . error
+
+    error  shift, and go to state 238
+    ']'    shift, and go to state 239
+
+
+状态 212
+
+   40 param_id_list: param_id_list ',' . param_id
+   43              | param_id_list ',' . error
+
+    error  shift, and go to state 240
+    ID     shift, and go to state 136
+
+    param_id  转到状态241
+
+
+状态 213
+
+   28 fun_declaration: ID '(' params ')' statement .
+
+    $default  reduce using rule 28 (fun_declaration)
+
+
+状态 214
+
+   35 param_list: param_list ';' param_type_list .
+
+    $default  reduce using rule 35 (param_list)
+
+
+状态 215
+
+   29 fun_declaration: type_specifier error '(' params ')' . statement
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态242
+    ifmatched             转到状态41
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 216
+
+   23 var_decl_id: error '[' NUMCONST ']' .
+
+    $default  reduce using rule 23 (var_decl_id)
+
+
+状态 217
+
+   27 fun_declaration: type_specifier ID '(' params ')' . statement
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态243
+    ifmatched             转到状态41
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 218
+
+   21 var_decl_id: ID '[' NUMCONST ']' .
+
+    $default  reduce using rule 21 (var_decl_id)
+
+
+状态 219
+
+  161 arg_list: error ',' . expression
+
+    error        shift, and go to state 167
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    expression            转到状态244
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 220
+
+  155 call: error '(' args ')' .
+
+    $default  reduce using rule 155 (call)
+
+
+状态 221
+
+  159 arg_list: arg_list ',' . expression
+
+    error        shift, and go to state 167
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    expression            转到状态245
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 222
+
+   57 ifmatched: error ')' ifmatched ELSE . ifmatched
+
+    error        shift, and go to state 246
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 247
+    WHILE        shift, and go to state 248
+    FOREACH      shift, and go to state 249
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ifmatched             转到状态250
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 223
+
+  154 call: ID '(' args ')' .
+
+    $default  reduce using rule 154 (call)
+
+
+状态 224
+
+  141 mutable: ID '[' expression ']' .
+
+    $default  reduce using rule 141 (mutable)
+
+
+状态 225
+
+   55 ifmatched: IF '(' simple_expression ')' . ifmatched ELSE ifmatched
+   63 ifunmatched: IF '(' simple_expression ')' . ifmatched ELSE ifunmatched
+   64            | IF '(' simple_expression ')' . statement
+   65            | IF '(' simple_expression ')' . error ELSE ifunmatched
+
+    error        shift, and go to state 251
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态252
+    ifmatched             转到状态253
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 226
+
+   58 ifmatched: WHILE '(' simple_expression ')' . ifmatched
+   68 ifunmatched: WHILE '(' simple_expression ')' . ifunmatched
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ifmatched             转到状态254
+    ifunmatched           转到状态255
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 227
+
+   60 ifmatched: FOREACH '(' mutable IN . simple_expression ')' ifmatched
+   70 ifunmatched: FOREACH '(' mutable IN . simple_expression ')' ifunmatched
+
+    error        shift, and go to state 144
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态256
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 228
+
+   50 statement_list: statement_list error .
+   57 ifmatched: error . ')' ifmatched ELSE ifmatched
+   67 ifunmatched: error . ')' statement
+   81 expressionstmt: error . ';'
+   83 compound_stmt: error . '}'
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    ';'      shift, and go to state 84
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    '}'      shift, and go to state 87
+    ')'      shift, and go to state 88
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    ';'       [reduce using rule 50 (statement_list)]
+    '('       [reduce using rule 50 (statement_list)]
+    '}'       [reduce using rule 50 (statement_list)]
+    '*'       [reduce using rule 50 (statement_list)]
+    '-'       [reduce using rule 50 (statement_list)]
+    $default  reduce using rule 50 (statement_list)
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 229
+
+   84 compound_stmt: '{' error statement_list '}' .
+
+    $default  reduce using rule 84 (compound_stmt)
+
+
+状态 230
+
+   48 statement_list: statement_list statement .
+
+    $default  reduce using rule 48 (statement_list)
+
+
+状态 231
+
+    9 scoped_var_declaration: STATIC type_specifier . var_decl_list ';'
+
+    error  shift, and go to state 257
+    ID     shift, and go to state 142
+
+    var_decl_list        转到状态258
+    var_decl_initialize  转到状态20
+    var_decl_id          转到状态21
+
+
+状态 232
+
+   11 scoped_var_declaration: type_specifier error . ';'
+   14 var_decl_list: error . ',' var_decl_initialize
+   18 var_decl_initialize: error . ':' simple_expression
+   23 var_decl_id: error . '[' NUMCONST ']'
+
+    ','  shift, and go to state 66
+    ';'  shift, and go to state 259
+    ':'  shift, and go to state 68
+    '['  shift, and go to state 70
+
+
+状态 233
+
+   10 scoped_var_declaration: type_specifier var_decl_list . ';'
+   12 var_decl_list: var_decl_list . ',' var_decl_initialize
+   15              | var_decl_list . ',' error
+
+    ','  shift, and go to state 73
+    ';'  shift, and go to state 260
+
+
+状态 234
+
+   82 compound_stmt: '{' local_declarations statement_list '}' .
+
+    $default  reduce using rule 82 (compound_stmt)
+
+
+状态 235
+
+   46 param_id: error . '[' NUMCONST ']'
+
+    '['  shift, and go to state 210
+
+
+状态 236
+
+   42 param_id_list: error ',' param_id .
+
+    $default  reduce using rule 42 (param_id_list)
+
+
+状态 237
+
+   46 param_id: error '[' NUMCONST . ']'
+
+    ']'  shift, and go to state 261
+
+
+状态 238
+
+   47 param_id: ID '[' error .
+
+    $default  reduce using rule 47 (param_id)
+
+
+状态 239
+
+   45 param_id: ID '[' ']' .
+
+    $default  reduce using rule 45 (param_id)
+
+
+状态 240
+
+   43 param_id_list: param_id_list ',' error .
+   46 param_id: error . '[' NUMCONST ']'
+
+    '['  shift, and go to state 210
+
+    $default  reduce using rule 43 (param_id_list)
+
+
+状态 241
+
+   40 param_id_list: param_id_list ',' param_id .
+
+    $default  reduce using rule 40 (param_id_list)
+
+
+状态 242
+
+   29 fun_declaration: type_specifier error '(' params ')' statement .
+
+    $default  reduce using rule 29 (fun_declaration)
+
+
+状态 243
+
+   27 fun_declaration: type_specifier ID '(' params ')' statement .
+
+    $default  reduce using rule 27 (fun_declaration)
+
+
+状态 244
+
+  161 arg_list: error ',' expression .
+
+    $default  reduce using rule 161 (arg_list)
+
+
+状态 245
+
+  159 arg_list: arg_list ',' expression .
+
+    $default  reduce using rule 159 (arg_list)
+
+
+状态 246
+
+   57 ifmatched: error . ')' ifmatched ELSE ifmatched
+   81 expressionstmt: error . ';'
+   83 compound_stmt: error . '}'
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    ';'      shift, and go to state 84
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    '}'      shift, and go to state 87
+    ')'      shift, and go to state 262
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 247
+
+   55 ifmatched: IF . '(' simple_expression ')' ifmatched ELSE ifmatched
+   56          | IF . '(' error
+
+    '('  shift, and go to state 263
+
+
+状态 248
+
+   58 ifmatched: WHILE . '(' simple_expression ')' ifmatched
+   59          | WHILE . '(' error
+
+    '('  shift, and go to state 264
+
+
+状态 249
+
+   60 ifmatched: FOREACH . '(' mutable IN simple_expression ')' ifmatched
+   61          | FOREACH . '(' error
+
+    '('  shift, and go to state 265
+
+
+状态 250
+
+   57 ifmatched: error ')' ifmatched ELSE ifmatched .
+
+    $default  reduce using rule 57 (ifmatched)
+
+
+状态 251
+
+   57 ifmatched: error . ')' ifmatched ELSE ifmatched
+   65 ifunmatched: IF '(' simple_expression ')' error . ELSE ifunmatched
+   67            | error . ')' statement
+   81 expressionstmt: error . ';'
+   83 compound_stmt: error . '}'
+   89 expression: error . assignop expression
+   94           | error . INC
+   95           | error . DEC
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    PASSIGN  shift, and go to state 76
+    MASSIGN  shift, and go to state 77
+    INC      shift, and go to state 78
+    DEC      shift, and go to state 79
+    EQ       shift, and go to state 80
+    NEQ      shift, and go to state 81
+    LEQ      shift, and go to state 82
+    GEQ      shift, and go to state 83
+    ELSE     shift, and go to state 266
+    ';'      shift, and go to state 84
+    '('      shift, and go to state 85
+    '['      shift, and go to state 86
+    '}'      shift, and go to state 87
+    ')'      shift, and go to state 88
+    AND      shift, and go to state 89
+    OR       shift, and go to state 90
+    '<'      shift, and go to state 91
+    '='      shift, and go to state 92
+    '>'      shift, and go to state 93
+    '*'      shift, and go to state 94
+    '%'      shift, and go to state 95
+    '/'      shift, and go to state 96
+    '-'      shift, and go to state 97
+    '+'      shift, and go to state 98
+
+    assignop  转到状态99
+    relop     转到状态100
+    sumop     转到状态101
+    mulop     转到状态102
+
+
+状态 252
+
+   64 ifunmatched: IF '(' simple_expression ')' statement .
+
+    $default  reduce using rule 64 (ifunmatched)
+
+
+状态 253
+
+   51 statement: ifmatched .
+   53          | ifmatched . error
+   55 ifmatched: IF '(' simple_expression ')' ifmatched . ELSE ifmatched
+   63 ifunmatched: IF '(' simple_expression ')' ifmatched . ELSE ifunmatched
+
+    error  shift, and go to state 119
+    ELSE   shift, and go to state 267
+
+    $end         reduce using rule 51 (statement)
+    error        [reduce using rule 51 (statement)]
+    ID           reduce using rule 51 (statement)
+    CHARCONST    reduce using rule 51 (statement)
+    NUMCONST     reduce using rule 51 (statement)
+    STRINGCONST  reduce using rule 51 (statement)
+    IF           reduce using rule 51 (statement)
+    WHILE        reduce using rule 51 (statement)
+    FOREACH      reduce using rule 51 (statement)
+    INT          reduce using rule 51 (statement)
+    BOOL         reduce using rule 51 (statement)
+    CHAR         reduce using rule 51 (statement)
+    TRUE         reduce using rule 51 (statement)
+    FALSE        reduce using rule 51 (statement)
+    RETURN       reduce using rule 51 (statement)
+    BREAK        reduce using rule 51 (statement)
+    ';'          reduce using rule 51 (statement)
+    '{'          reduce using rule 51 (statement)
+    '('          reduce using rule 51 (statement)
+    '}'          reduce using rule 51 (statement)
+    NOT          reduce using rule 51 (statement)
+    '*'          reduce using rule 51 (statement)
+    '-'          reduce using rule 51 (statement)
+
+
+状态 254
+
+   58 ifmatched: WHILE '(' simple_expression ')' ifmatched .
+
+    $default  reduce using rule 58 (ifmatched)
+
+
+状态 255
+
+   68 ifunmatched: WHILE '(' simple_expression ')' ifunmatched .
+
+    $default  reduce using rule 68 (ifunmatched)
+
+
+状态 256
+
+   60 ifmatched: FOREACH '(' mutable IN simple_expression . ')' ifmatched
+   70 ifunmatched: FOREACH '(' mutable IN simple_expression . ')' ifunmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 268
+    OR   shift, and go to state 122
+
+
+状态 257
+
+   14 var_decl_list: error . ',' var_decl_initialize
+   18 var_decl_initialize: error . ':' simple_expression
+   23 var_decl_id: error . '[' NUMCONST ']'
+
+    ','  shift, and go to state 66
+    ':'  shift, and go to state 68
+    '['  shift, and go to state 70
+
+
+状态 258
+
+    9 scoped_var_declaration: STATIC type_specifier var_decl_list . ';'
+   12 var_decl_list: var_decl_list . ',' var_decl_initialize
+   15              | var_decl_list . ',' error
+
+    ','  shift, and go to state 73
+    ';'  shift, and go to state 269
+
+
+状态 259
+
+   11 scoped_var_declaration: type_specifier error ';' .
+
+    $default  reduce using rule 11 (scoped_var_declaration)
+
+
+状态 260
+
+   10 scoped_var_declaration: type_specifier var_decl_list ';' .
+
+    $default  reduce using rule 10 (scoped_var_declaration)
+
+
+状态 261
+
+   46 param_id: error '[' NUMCONST ']' .
+
+    $default  reduce using rule 46 (param_id)
+
+
+状态 262
+
+   57 ifmatched: error ')' . ifmatched ELSE ifmatched
+  148 immutable: error ')' .
+
+    error        shift, and go to state 246
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 247
+    WHILE        shift, and go to state 248
+    FOREACH      shift, and go to state 249
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    EQ   reduce using rule 148 (immutable)
+    NEQ  reduce using rule 148 (immutable)
+    LEQ  reduce using rule 148 (immutable)
+    GEQ  reduce using rule 148 (immutable)
+    ';'  [reduce using rule 148 (immutable)]
+    AND  reduce using rule 148 (immutable)
+    OR   reduce using rule 148 (immutable)
+    '<'  reduce using rule 148 (immutable)
+    '>'  reduce using rule 148 (immutable)
+    '*'  [reduce using rule 148 (immutable)]
+    '%'  reduce using rule 148 (immutable)
+    '/'  reduce using rule 148 (immutable)
+    '-'  [reduce using rule 148 (immutable)]
+    '+'  reduce using rule 148 (immutable)
+
+    ifmatched             转到状态270
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 263
+
+   55 ifmatched: IF '(' . simple_expression ')' ifmatched ELSE ifmatched
+   56          | IF '(' . error
+
+    error        shift, and go to state 271
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态272
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 264
+
+   58 ifmatched: WHILE '(' . simple_expression ')' ifmatched
+   59          | WHILE '(' . error
+
+    error        shift, and go to state 273
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态274
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 265
+
+   60 ifmatched: FOREACH '(' . mutable IN simple_expression ')' ifmatched
+   61          | FOREACH '(' . error
+
+    error  shift, and go to state 275
+    ID     shift, and go to state 184
+
+    mutable  转到状态276
+
+
+状态 266
+
+   65 ifunmatched: IF '(' simple_expression ')' error ELSE . ifunmatched
+
+    error    shift, and go to state 277
+    IF       shift, and go to state 278
+    WHILE    shift, and go to state 279
+    FOREACH  shift, and go to state 280
+
+    ifunmatched  转到状态281
+
+
+状态 267
+
+   55 ifmatched: IF '(' simple_expression ')' ifmatched ELSE . ifmatched
+   63 ifunmatched: IF '(' simple_expression ')' ifmatched ELSE . ifunmatched
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ifmatched             转到状态282
+    ifunmatched           转到状态283
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 268
+
+   60 ifmatched: FOREACH '(' mutable IN simple_expression ')' . ifmatched
+   70 ifunmatched: FOREACH '(' mutable IN simple_expression ')' . ifunmatched
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ifmatched             转到状态284
+    ifunmatched           转到状态285
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 269
+
+    9 scoped_var_declaration: STATIC type_specifier var_decl_list ';' .
+
+    $default  reduce using rule 9 (scoped_var_declaration)
+
+
+状态 270
+
+   57 ifmatched: error ')' ifmatched . ELSE ifmatched
+
+    ELSE  shift, and go to state 222
+
+
+状态 271
+
+   56 ifmatched: IF '(' error .
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    OR   shift, and go to state 90
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    '('       [reduce using rule 56 (ifmatched)]
+    '*'       [reduce using rule 56 (ifmatched)]
+    '-'       [reduce using rule 56 (ifmatched)]
+    $default  reduce using rule 56 (ifmatched)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 272
+
+   55 ifmatched: IF '(' simple_expression . ')' ifmatched ELSE ifmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 286
+    OR   shift, and go to state 122
+
+
+状态 273
+
+   59 ifmatched: WHILE '(' error .
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    OR   shift, and go to state 90
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    '('       [reduce using rule 59 (ifmatched)]
+    '*'       [reduce using rule 59 (ifmatched)]
+    '-'       [reduce using rule 59 (ifmatched)]
+    $default  reduce using rule 59 (ifmatched)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 274
+
+   58 ifmatched: WHILE '(' simple_expression . ')' ifmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 287
+    OR   shift, and go to state 122
+
+
+状态 275
+
+   61 ifmatched: FOREACH '(' error .
+  143 mutable: error . '['
+
+    '['  shift, and go to state 86
+
+    $default  reduce using rule 61 (ifmatched)
+
+
+状态 276
+
+   60 ifmatched: FOREACH '(' mutable . IN simple_expression ')' ifmatched
+
+    IN  shift, and go to state 288
+
+
+状态 277
+
+   67 ifunmatched: error . ')' statement
+
+    ')'  shift, and go to state 289
+
+
+状态 278
+
+   63 ifunmatched: IF . '(' simple_expression ')' ifmatched ELSE ifunmatched
+   64            | IF . '(' simple_expression ')' statement
+   65            | IF . '(' simple_expression ')' error ELSE ifunmatched
+   66            | IF . '(' error
+
+    '('  shift, and go to state 290
+
+
+状态 279
+
+   68 ifunmatched: WHILE . '(' simple_expression ')' ifunmatched
+   69            | WHILE . '(' error
+
+    '('  shift, and go to state 291
+
+
+状态 280
+
+   70 ifunmatched: FOREACH . '(' mutable IN simple_expression ')' ifunmatched
+   71            | FOREACH . '(' error
+
+    '('  shift, and go to state 292
+
+
+状态 281
+
+   65 ifunmatched: IF '(' simple_expression ')' error ELSE ifunmatched .
+
+    $default  reduce using rule 65 (ifunmatched)
+
+
+状态 282
+
+   55 ifmatched: IF '(' simple_expression ')' ifmatched ELSE ifmatched .
+
+    $default  reduce using rule 55 (ifmatched)
+
+
+状态 283
+
+   63 ifunmatched: IF '(' simple_expression ')' ifmatched ELSE ifunmatched .
+
+    $default  reduce using rule 63 (ifunmatched)
+
+
+状态 284
+
+   60 ifmatched: FOREACH '(' mutable IN simple_expression ')' ifmatched .
+
+    $default  reduce using rule 60 (ifmatched)
+
+
+状态 285
+
+   70 ifunmatched: FOREACH '(' mutable IN simple_expression ')' ifunmatched .
+
+    $default  reduce using rule 70 (ifunmatched)
+
+
+状态 286
+
+   55 ifmatched: IF '(' simple_expression ')' . ifmatched ELSE ifmatched
+
+    error        shift, and go to state 246
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 247
+    WHILE        shift, and go to state 248
+    FOREACH      shift, and go to state 249
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ifmatched             转到状态293
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 287
+
+   58 ifmatched: WHILE '(' simple_expression ')' . ifmatched
+
+    error        shift, and go to state 246
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 247
+    WHILE        shift, and go to state 248
+    FOREACH      shift, and go to state 249
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ifmatched             转到状态254
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 288
+
+   60 ifmatched: FOREACH '(' mutable IN . simple_expression ')' ifmatched
+
+    error        shift, and go to state 144
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态294
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 289
+
+   67 ifunmatched: error ')' . statement
+
+    error        shift, and go to state 22
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态161
+    ifmatched             转到状态41
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 290
+
+   63 ifunmatched: IF '(' . simple_expression ')' ifmatched ELSE ifunmatched
+   64            | IF '(' . simple_expression ')' statement
+   65            | IF '(' . simple_expression ')' error ELSE ifunmatched
+   66            | IF '(' . error
+
+    error        shift, and go to state 295
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态296
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 291
+
+   68 ifunmatched: WHILE '(' . simple_expression ')' ifunmatched
+   69            | WHILE '(' . error
+
+    error        shift, and go to state 297
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态298
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 292
+
+   70 ifunmatched: FOREACH '(' . mutable IN simple_expression ')' ifunmatched
+   71            | FOREACH '(' . error
+
+    error  shift, and go to state 299
+    ID     shift, and go to state 184
+
+    mutable  转到状态300
+
+
+状态 293
+
+   55 ifmatched: IF '(' simple_expression ')' ifmatched . ELSE ifmatched
+
+    ELSE  shift, and go to state 301
+
+
+状态 294
+
+   60 ifmatched: FOREACH '(' mutable IN simple_expression . ')' ifmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 302
+    OR   shift, and go to state 122
+
+
+状态 295
+
+   66 ifunmatched: IF '(' error .
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    OR   shift, and go to state 90
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    '('       [reduce using rule 66 (ifunmatched)]
+    '*'       [reduce using rule 66 (ifunmatched)]
+    '-'       [reduce using rule 66 (ifunmatched)]
+    $default  reduce using rule 66 (ifunmatched)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 296
+
+   63 ifunmatched: IF '(' simple_expression . ')' ifmatched ELSE ifunmatched
+   64            | IF '(' simple_expression . ')' statement
+   65            | IF '(' simple_expression . ')' error ELSE ifunmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 303
+    OR   shift, and go to state 122
+
+
+状态 297
+
+   69 ifunmatched: WHILE '(' error .
+  102 simple_expression: error . OR and_expression
+  105 and_expression: error . AND unary_rel_expression
+  112 rel_expression: error . relop sum_expression
+  122 sum_expression: error . sumop term
+  128 term: error . mulop unary_expression
+  143 mutable: error . '['
+  148 immutable: error . ')'
+  155 call: error . '(' args ')'
+
+    EQ   shift, and go to state 80
+    NEQ  shift, and go to state 81
+    LEQ  shift, and go to state 82
+    GEQ  shift, and go to state 83
+    '('  shift, and go to state 85
+    '['  shift, and go to state 86
+    ')'  shift, and go to state 186
+    AND  shift, and go to state 89
+    OR   shift, and go to state 90
+    '<'  shift, and go to state 91
+    '>'  shift, and go to state 93
+    '*'  shift, and go to state 94
+    '%'  shift, and go to state 95
+    '/'  shift, and go to state 96
+    '-'  shift, and go to state 97
+    '+'  shift, and go to state 98
+
+    '('       [reduce using rule 69 (ifunmatched)]
+    '*'       [reduce using rule 69 (ifunmatched)]
+    '-'       [reduce using rule 69 (ifunmatched)]
+    $default  reduce using rule 69 (ifunmatched)
+
+    relop  转到状态100
+    sumop  转到状态101
+    mulop  转到状态102
+
+
+状态 298
+
+   68 ifunmatched: WHILE '(' simple_expression . ')' ifunmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 304
+    OR   shift, and go to state 122
+
+
+状态 299
+
+   71 ifunmatched: FOREACH '(' error .
+  143 mutable: error . '['
+
+    '['  shift, and go to state 86
+
+    $default  reduce using rule 71 (ifunmatched)
+
+
+状态 300
+
+   70 ifunmatched: FOREACH '(' mutable . IN simple_expression ')' ifunmatched
+
+    IN  shift, and go to state 305
+
+
+状态 301
+
+   55 ifmatched: IF '(' simple_expression ')' ifmatched ELSE . ifmatched
+
+    error        shift, and go to state 246
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 247
+    WHILE        shift, and go to state 248
+    FOREACH      shift, and go to state 249
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ifmatched             转到状态282
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 302
+
+   60 ifmatched: FOREACH '(' mutable IN simple_expression ')' . ifmatched
+
+    error        shift, and go to state 246
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 247
+    WHILE        shift, and go to state 248
+    FOREACH      shift, and go to state 249
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    ifmatched             转到状态284
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 303
+
+   63 ifunmatched: IF '(' simple_expression ')' . ifmatched ELSE ifunmatched
+   64            | IF '(' simple_expression ')' . statement
+   65            | IF '(' simple_expression ')' . error ELSE ifunmatched
+
+    error        shift, and go to state 251
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    IF           shift, and go to state 27
+    WHILE        shift, and go to state 28
+    FOREACH      shift, and go to state 29
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    RETURN       shift, and go to state 32
+    BREAK        shift, and go to state 33
+    ';'          shift, and go to state 34
+    '{'          shift, and go to state 35
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    statement             转到状态252
+    ifmatched             转到状态306
+    ifunmatched           转到状态42
+    expression_stmt       转到状态43
+    return_stmt           转到状态44
+    expressionstmt        转到状态45
+    compound_stmt         转到状态46
+    expression            转到状态47
+    simple_expression     转到状态48
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态57
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 304
+
+   68 ifunmatched: WHILE '(' simple_expression ')' . ifunmatched
+
+    error    shift, and go to state 277
+    IF       shift, and go to state 278
+    WHILE    shift, and go to state 279
+    FOREACH  shift, and go to state 280
+
+    ifunmatched  转到状态255
+
+
+状态 305
+
+   70 ifunmatched: FOREACH '(' mutable IN . simple_expression ')' ifunmatched
+
+    error        shift, and go to state 144
+    ID           shift, and go to state 23
+    CHARCONST    shift, and go to state 24
+    NUMCONST     shift, and go to state 25
+    STRINGCONST  shift, and go to state 26
+    TRUE         shift, and go to state 30
+    FALSE        shift, and go to state 31
+    '('          shift, and go to state 36
+    NOT          shift, and go to state 37
+    '*'          shift, and go to state 38
+    '-'          shift, and go to state 39
+
+    simple_expression     转到状态307
+    and_expression        转到状态49
+    unary_rel_expression  转到状态50
+    rel_expression        转到状态51
+    sum_expression        转到状态52
+    term                  转到状态53
+    unary_expression      转到状态54
+    unaryop               转到状态55
+    factor                转到状态56
+    mutable               转到状态118
+    immutable             转到状态58
+    constant              转到状态59
+    call                  转到状态60
+
+
+状态 306
+
+   51 statement: ifmatched .
+   53          | ifmatched . error
+   63 ifunmatched: IF '(' simple_expression ')' ifmatched . ELSE ifunmatched
+
+    error  shift, and go to state 119
+    ELSE   shift, and go to state 308
+
+    $end         reduce using rule 51 (statement)
+    error        [reduce using rule 51 (statement)]
+    ID           reduce using rule 51 (statement)
+    CHARCONST    reduce using rule 51 (statement)
+    NUMCONST     reduce using rule 51 (statement)
+    STRINGCONST  reduce using rule 51 (statement)
+    IF           reduce using rule 51 (statement)
+    WHILE        reduce using rule 51 (statement)
+    FOREACH      reduce using rule 51 (statement)
+    INT          reduce using rule 51 (statement)
+    BOOL         reduce using rule 51 (statement)
+    CHAR         reduce using rule 51 (statement)
+    TRUE         reduce using rule 51 (statement)
+    FALSE        reduce using rule 51 (statement)
+    RETURN       reduce using rule 51 (statement)
+    BREAK        reduce using rule 51 (statement)
+    ';'          reduce using rule 51 (statement)
+    '{'          reduce using rule 51 (statement)
+    '('          reduce using rule 51 (statement)
+    '}'          reduce using rule 51 (statement)
+    NOT          reduce using rule 51 (statement)
+    '*'          reduce using rule 51 (statement)
+    '-'          reduce using rule 51 (statement)
+
+
+状态 307
+
+   70 ifunmatched: FOREACH '(' mutable IN simple_expression . ')' ifunmatched
+   99 simple_expression: simple_expression . OR and_expression
+  101                  | simple_expression . OR error
+
+    ')'  shift, and go to state 309
+    OR   shift, and go to state 122
+
+
+状态 308
+
+   63 ifunmatched: IF '(' simple_expression ')' ifmatched ELSE . ifunmatched
+
+    error    shift, and go to state 277
+    IF       shift, and go to state 278
+    WHILE    shift, and go to state 279
+    FOREACH  shift, and go to state 280
+
+    ifunmatched  转到状态283
+
+
+状态 309
+
+   70 ifunmatched: FOREACH '(' mutable IN simple_expression ')' . ifunmatched
+
+    error    shift, and go to state 277
+    IF       shift, and go to state 278
+    WHILE    shift, and go to state 279
+    FOREACH  shift, and go to state 280
+
+    ifunmatched  转到状态285

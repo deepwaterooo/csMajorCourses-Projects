@@ -1,0 +1,37 @@
+check2(int x, y)
+{
+}
+
+int ski(int x[u], x[34], ]) {}
+
+int ski(int x[u],, bool x[34], x) {}
+
+main() {
+    int x[];
+
+    check2(
+    1);
+    check2(
+    1, 
+    2);
+    check2(
+    1, 
+    2,  
+    3);
+    check2(ski, ski);
+    ski(x[true=true]);
+    ski(x[]);
+}
+
+
+main(int *; int x[; int y]; int x[10; int y 10]) {
+       int 'x';
+       int *;
+       fred(+, +, 34);
+       *=3;
+       }
+
+main(int x[, int y], int x[10, int y 10]) {
+       fred(+, +, 34);
+       *=3;
+       }

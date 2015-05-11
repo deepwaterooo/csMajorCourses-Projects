@@ -1,0 +1,16 @@
+Expression tree of size 21 with 9 internals and 12 leafs has the following formula: 
+((((0.674981)(X) / )((X)(3.44152) * )((X)(X) * )((4.90237)(X) + ) a < b ? c : d )(((4.62778)(X) - )((X)(X) - ) * ) - )
+For pair: (1, 1), the function's value was: 1, and the error was: 0.
+For pair: (2, 4), the function's value was: 4, and the error was: 0.
+For pair: (3, 9), the function's value was: 9, and the error was: 0.
+For pair: (4, 16), the function's value was: 16, and the error was: 0.
+For pair: (5, 25), the function's value was: 25, and the error was: 0.
+For pair: (6, 36), the function's value was: 36, and the error was: 0.
+For pair: (7, 49), the function's value was: 49, and the error was: 0.
+For pair: (8, 64), the function's value was: 64, and the error was: 0.
+For pair: (9, 81), the function's value was: 81, and the error was: 0.
+For pair: (10, 100), the function's value was: 100, and the error was: 0.
+For pair: (11, 121), the function's value was: 121, and the error was: 0.
+Total fitness: 0.
+Average fitness: 2105.85
+Average size: 22

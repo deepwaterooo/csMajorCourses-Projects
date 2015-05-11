@@ -1,0 +1,86 @@
+ERROR(7): Initializer for variable 'x' is not a constant expression.
+ERROR(7): Symbol 'x' is already defined at line 5.
+ERROR(18): '==' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(18): '==' requires that if one operand is an array so must the other operand.
+ERROR(19): 'and' requires operands of type bool but lhs is of type int.
+ERROR(19): 'and' requires operands of type bool but rhs is of type char.
+ERROR(19): The operation 'and' does not work with arrays.
+ERROR(35): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(34): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(38): Symbol 'undef' is not defined.
+ERROR(37): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(41): Symbol 'undef' is not defined.
+ERROR(44): Symbol 'undef' is not defined.
+ERROR(47): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(46): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(46): '+' requires operands of type int but lhs is of type bool.
+ERROR(50): Symbol 'undef' is not defined.
+ERROR(49): '+' requires operands of type int but lhs is of type bool.
+ERROR(53): Symbol 'undef' is not defined.
+ERROR(52): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(52): '+' requires operands of type int but lhs is of type bool.
+ERROR(56): '=' requires operands of the same type but lhs is type bool and rhs is type void.
+ERROR(55): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(55): '+' requires operands of type int but lhs is of type bool.
+ERROR(64): Symbol 'foo' is not defined.
+ERROR(65): Symbol 'foo' is not defined.
+ERROR(66): Symbol 'foo' is not defined.
+ERROR(67): Symbol 'foo' is not defined.
+ERROR(68): Symbol 'foo' is not defined.
+ERROR(68): Symbol 'foo' is not defined.
+ERROR(69): 'x' is a simple variable and cannot be called.
+ERROR(69): '*' requires operands of type int but lhs is of type char.
+ERROR(69): Cannot use function 'test' as a simple variable.
+ERROR(71): Cannot use function 'check' as a simple variable.
+ERROR(72): Cannot use function 'check' as a simple variable.
+ERROR(72): 'x' is a simple variable and cannot be called.
+ERROR(73): Symbol 'c' is not defined.
+ERROR(74): Symbol 'c' is not defined.
+ERROR(76): Symbol 'foo' is not defined.
+ERROR(78): Cannot index nonarray 'x'.
+ERROR(79): Cannot index nonarray 'x'.
+ERROR(80): Symbol 'y' is not defined.
+ERROR(82): Cannot use function 'check' as a simple variable.
+ERROR(83): 'x' is a simple variable and cannot be called.
+ERROR(86): '=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(87): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(87): Expecting type int in parameter 2 of call to 'check' defined on line 26 but got type char.
+ERROR(88): Symbol 'y' is not defined.
+ERROR(88): Too many parameters passed for function 'check' defined on line 26.
+ERROR(88): Too few parameters passed for function 'check' defined on line 26.
+ERROR(89): Expecting array in parameter 2 of call to 'func' defined on line 61.
+ERROR(90): Not expecting array in parameter 1 of call to 'func' defined on line 61.
+ERROR(92): '-' requires operands of type int but rhs is of type char.
+ERROR(91): Expecting array in parameter 2 of call to 'func' defined on line 61.
+ERROR(91): Too many parameters passed for function 'func' defined on line 61.
+ERROR(94): Expecting type int in parameter 1 of call to 'func' defined on line 61 but got type char.
+ERROR(94): Not expecting array in parameter 1 of call to 'func' defined on line 61.
+ERROR(94): Too few parameters passed for function 'func' defined on line 61.
+ERROR(99): Initializer for variable 'x' is not a constant expression.
+ERROR(99): Symbol 'x' is already defined at line 97.
+ERROR(100): Symbol 'x' is already defined at line 97.
+ERROR(101): Variable 'x' is of type char but is being initialized with an expression of type int.
+ERROR(101): Symbol 'x' is already defined at line 97.
+ERROR(102): Symbol 'x' is already defined at line 97.
+ERROR(104): Symbol 'z' is already defined at line 103.
+ERROR(105): Initializer for variable 'y' is not a constant expression.
+ERROR(106): Initializer for variable 'a' is not a constant expression.
+ERROR(106): Initializer for nonarray variable 'a' of type int cannot be initialized with an array.
+ERROR(107): Initializer for variable 'b' is not a constant expression.
+ERROR(108): Initializer for variable 'd' is not a constant expression.
+ERROR(109): Variable 'e' is of type int but is being initialized with an expression of type char.
+ERROR(109): Initializer for nonarray variable 'e' of type int cannot be initialized with an array.
+ERROR(110): Array 'f' must be of type char to be initialized, but is of type int.
+ERROR(111): Initializer for nonarray variable 'g' of type char cannot be initialized with an array.
+ERROR(113): Initializer for variable 'i' is not a constant expression.
+ERROR(114): Initializer for variable 'j' is not a constant expression.
+ERROR(115): Initializer for variable 'k' is not a constant expression.
+ERROR(115): Variable 'k' is of type int but is being initialized with an expression of type bool.
+ERROR(116): Initializer for variable 'j' is not a constant expression.
+ERROR(116): Symbol 'j' is already defined at line 114.
+ERROR(118): Initializer for variable 'j2' is not a constant expression.
+ERROR(127): Function 'retCheck' at line 125 is expecting to return type int but return has no return value.
+ERROR(129): Expecting array in parameter 2 of call to 'retCheck' defined on line 125.
+ERROR(130): Cannot return an array.
+Number of warnings: 0
+Number of errors: 84

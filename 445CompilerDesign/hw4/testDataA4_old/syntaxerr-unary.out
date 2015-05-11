@@ -1,0 +1,8 @@
+ERROR(5): Syntax error.  Unexpected while.
+ERROR(6): Syntax error.  Unexpected ';'.
+ERROR(8): Syntax error.  Unexpected while.
+ERROR(9): Syntax error.  Unexpected ';'.
+ERROR(11): Syntax error.  Unexpected while.
+ERROR(12): Syntax error.  Unexpected ';'.
+Number of warnings: 0
+Number of errors: 6

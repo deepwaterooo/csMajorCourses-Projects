@@ -1,0 +1,8 @@
+ERROR(11): Symbol 'bat' is not defined.
+ERROR(26): Expecting type int in parameter 1 of call to 'cow' defined on line 3 but got type void.
+ERROR(32): Function 'fox' at line 30 is expecting no return value, but return has return value.
+ERROR(37): Function 'gnu' at line 35 is expecting no return value, but return has return value.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 0
+Number of errors: 5
+------------------------------------

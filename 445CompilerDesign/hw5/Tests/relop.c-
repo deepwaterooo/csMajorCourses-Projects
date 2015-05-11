@@ -1,0 +1,46 @@
+// C-F13
+// C-F09
+
+  main()
+{
+        int x, y, z;
+        bool a, b, c;
+
+	while(x<y);
+	while(x>y);
+	while( not x<y);
+	while(x>y);
+	while(x==y) {};
+	while(x<=y) {int x;};
+	while(x>=y) {int x; x=4;};
+	while(x!=y) while(x==y);
+
+	if(x>y);
+	if(x==y) {};
+	if(x<=y) {int x;};
+	if(x>=y) {int x; x=4;};
+	if(x!=y) while(x==y);
+
+	if(x>y);
+	if(x>y); else ;
+	if(x==y) {} else {}
+	if(x<y) if(x>y) x=2; else x=3;
+	if(x<y) { if(x>y) x=2;} else x=3;
+
+        if (b);
+        if ( not b);
+        if (a  and  b);
+        if (a  or  b);
+        if (a  or  b and c);
+        if ( not a  or  b);
+
+        if (x>y  and  y>z);
+        if (x>y  or  y>z);
+        c = x>y  and  y>z;
+        c = x>y  or  y>z;
+        c =  not x>y  and  y>z;
+        c =  not x>y  or  y>z;
+        c = y==x  or  x>y  and  y>z;
+
+        if (b  or  x>y  and  y>z);
+}

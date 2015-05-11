@@ -1,0 +1,49 @@
+
+Symbol Stack:
+              globals ---- 
+   outputc    globals 1 Func outputc returns type void allocated as Global of size -3 at location 0.
+
+    inputc    globals 1 Func inputc returns type char allocated as Global of size -2 at location 0.
+
+     outnl    globals 1 Func outnl returns type void allocated as Global of size -2 at location 0.
+
+   outputb    globals 1 Func outputb returns type void allocated as Global of size -3 at location 0.
+
+    inputb    globals 1 Func inputb returns type bool allocated as Global of size -2 at location 0.
+
+    output    globals 1 Func output returns type void allocated as Global of size -3 at location 0.
+
+     input    globals 1 Func input returns type int allocated as Global of size -2 at location 0.
+
+  numSuits    globals 1 Var numSuits  of type int allocated as Global of size 1 at location -1. foffset: -21; goffset: -2 
+
+   numPips    globals 1 Var numPips  of type int allocated as Local of size 1 at location -2. foffset: -21; goffset: -2 
+
+  numCards    globals 1 Var numCards  of type int allocated as Local of size 1 at location -3. foffset: -21; goffset: -2 
+
+      suit    globals 1 Func suit returns type int allocated as Global of size -3 at location 0.
+
+      pips    globals 1 Func pips returns type int allocated as Global of size -3 at location 0.
+
+         p    globals 1 Func p returns type bool allocated as Global of size -4 at location 0.
+
+       ppp    globals 1 Func ppp returns type bool allocated as Global of size -5 at location 0.
+
+      pppp    globals 1 Func pppp returns type bool allocated as Global of size -6 at location 0.
+
+  handtype    globals 1 Func handtype returns type int allocated as Global of size -8 at location 0.
+
+      main    globals 1 Func main returns type int allocated as Global of size -21 at location 0.
+
+Loop through global scope
+Number of warnings: 0
+Number of errors: 0
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: poker.tm
+Halted
+EXEC STAT: Number of instructions executed: 1000000000
+EXEC STAT: Instruction memory used: 36
+EXEC STAT: Data memory used: 1
+Bye.

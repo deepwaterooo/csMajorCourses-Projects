@@ -1,0 +1,66 @@
+// 9-18-2013
+
+proc first( vector p )
+    foreach A elemof TERMS
+        first ( A ) = {A}
+    foreach A elemof NUM
+        first ( A ) = {}
+    while stillchangingaAy first ( A ) do {
+    	  foreach pi = Ai = x1x2...xn {
+	  	  first ( A ) = first ( A ) U fistlist( x1x2...xn )
+        }
+    }
+end
+
+proc firstlist( x1x2...xn )
+     firstset = {}
+     k = o
+     do {
+     	k++
+	firstset = firstset U ( first( xk ) - e )
+     } while K < n & belong element First( xk )
+
+// if x1x2...xk is nullable
+   if K = n & belong element First( xn ) {
+      firstset = firstset U { e }
+   }
+   return firstset
+}
+
+// first and follow sets webpage -- check !!!
+
+<exp> ::= <exp> <addop>l <term> 
+<exp> ::= <term> 
+
+<addop> ::= + | -
+
+<term> ::= <term> <mulop> <factor>
+<term> ::= <factor>
+
+<mulop> ::= *
+
+<factor> ::= ( <exp> )
+<factor> ::= num
+
+first set for non-terminals: 
+<exp> ::= ( | num  
+<addop> ::= + | -
+<term> ::= ( | num 
+<mulop> ::= *
+<factor> ::= ( | num 
+
+<exp> ::= first(exp), first(term)
+<addop> ::= first(+), first(-)
+<term> ::= first(term), first(factor)
+<mulop> ::= first(*)
+<factor> ::= first( ( ), first(num) 
+
+
+
+
+
+
+
+
+
+

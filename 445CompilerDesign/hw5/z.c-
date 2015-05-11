@@ -1,0 +1,32 @@
+int g;                   // a global array
+
+int dog(int x, y)        // two arguments
+{
+        int z;           // local variable
+
+        z = x + y;       // expression using local vars
+
+        return g*z;      // expression using local and global vars
+}
+
+int h[10];               // global array
+
+cat(int x[], y)      // two arguments one of which is an array
+{
+        int z[10];       // a local array
+
+        z[8] = z[9];     // regular local array stuff
+        h[8] = h[9];     // regular global array stuff
+        z[7] = x[y];     // parm array on right hand side
+        x[7] = z[y];     // parm array on left hand side
+}                        // use default return
+
+main()
+{
+        int a[10];       // local array
+        int b;           // local var
+
+        dog(b, 999);       // call dog
+        cat(a, 6);         // call cat
+        b = dog(777,888);  // get return value from call to dog
+}

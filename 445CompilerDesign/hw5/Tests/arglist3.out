@@ -1,0 +1,10 @@
+ERROR(10): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 0
+Number of errors: 2
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: arglist3.tm
+Halted
+Bye.

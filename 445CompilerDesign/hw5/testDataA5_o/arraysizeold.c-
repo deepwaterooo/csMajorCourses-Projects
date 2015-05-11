@@ -1,0 +1,20 @@
+// C-F09
+int g[12];
+
+void ford(int x[])
+{
+    int i, y[13];
+    y[0] = 666;
+    g[0] = 888;
+//    *x;
+//    *y;
+}
+
+void main()
+{
+    int m[11];
+    m[0] = 777;
+    ford(m);
+    ford(g);
+}
+

@@ -1,0 +1,13 @@
+WARNING(5): Invalid input character: ^.  Character ignored.
+ERROR(5): Syntax error.  Unexpected id: k.  Expecting ']'.
+ERROR(6): Syntax error.  Unexpected id: x.
+ERROR(7): Syntax error.  Unexpected '='.  Expecting '('.
+ERROR(8): Syntax error.  Unexpected id: x0.  Expecting ';'.
+ERROR(9): Syntax error.  Unexpected '+'.
+WARNING(14): Invalid input character: @.  Character ignored.
+WARNING(14): Invalid input character: #.  Character ignored.
+ERROR(14): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(15): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(16): Syntax error.  Unexpected ';'.  Expecting ')'.
+Number of warnings: 3
+Number of errors: 8

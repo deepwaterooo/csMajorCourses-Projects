@@ -1,0 +1,9 @@
+// C-F13
+  cat(int x)
+{
+    output(x); outnl();
+    if (x>0) cat(x-1);
+    return;
+}
+
+  main() cat(10);

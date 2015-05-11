@@ -1,0 +1,8 @@
+ERROR(10): Function 'bat' at line 8 is expecting to return type bool but got type int.
+ERROR(56): Expecting type int in parameter 2 of call to 'dog' defined on line 18 but got type bool.
+ERROR(56): Expecting array in parameter 2 of call to 'dog' defined on line 18.
+ERROR(56): Expecting type bool in parameter 3 of call to 'dog' defined on line 18 but got type int.
+ERROR(56): Not expecting array in parameter 3 of call to 'dog' defined on line 18.
+Number of warnings: 0
+Number of errors: 5
+------------------------------------

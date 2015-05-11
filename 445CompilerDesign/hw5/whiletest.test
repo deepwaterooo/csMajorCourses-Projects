@@ -1,0 +1,18 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: whiletest.tm
+Enter command: 
+command: a 1000
+command: g
+Abort limit reached! (limit = 1000) (see 'a' command in help).
+Halted
+Last executed cmd:  510:  LDC  3,   0(6)  | before:  r[3]: 0     r[6]: 0     m[0]: 9999  |  Load constant 
+PC was 510, PC is now 511
+command: e
+EXEC STAT: Number of instructions executed: 1000
+EXEC STAT: Instruction memory used: 666
+EXEC STAT: Data memory used: 2
+command: x
+Bye.

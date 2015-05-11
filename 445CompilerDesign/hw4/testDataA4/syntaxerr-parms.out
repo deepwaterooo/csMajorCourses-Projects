@@ -1,0 +1,43 @@
+ERROR(4): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(5): Syntax error.  Unexpected id: z.  Expecting bool or char or int.
+ERROR(6): Syntax error.  Unexpected ')'.  Expecting bool or char or int.
+ERROR(8): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(9): Syntax error.  Unexpected id: z.  Expecting ')'.
+ERROR(11): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(12): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(12): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(13): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(13): Syntax error.  Unexpected id: z.  Expecting bool or char or int.
+ERROR(14): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(14): Syntax error.  Unexpected ')'.  Expecting bool or char or int.
+ERROR(16): Syntax error.  Unexpected bool.  Expecting id.
+ERROR(16): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(18): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(19): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(20): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(21): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(22): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(23): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(24): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(25): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(26): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(28): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(29): Syntax error.  Unexpected id: z.  Expecting bool or char or int.
+ERROR(30): Syntax error.  Unexpected ')'.  Expecting bool or char or int.
+ERROR(32): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(33): Syntax error.  Unexpected id: z.  Expecting ')'.
+ERROR(36): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(37): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(37): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(38): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(38): Syntax error.  Unexpected id: z.  Expecting bool or char or int.
+ERROR(39): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(39): Syntax error.  Unexpected ')'.  Expecting bool or char or int.
+ERROR(41): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(41): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(42): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(42): Syntax error.  Unexpected id: z.  Expecting ')'.
+ERROR(43): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(44): Syntax error.  Unexpected ','.  Expecting id.
+Number of warnings: 0
+Number of errors: 41

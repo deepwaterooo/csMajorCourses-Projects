@@ -1,0 +1,7 @@
+ERROR(2): Syntax error.  Unexpected ';'.
+ERROR(3): Syntax error.  Unexpected ':'.  Expecting ',' or ';'.
+ERROR(6): Syntax error.  Unexpected number: 10.  Expecting ',' or ';'.
+ERROR(8): Syntax error.  Unexpected ':'.  Expecting id.
+ERROR(9): Syntax error.  Unexpected ':'.  Expecting id.
+Number of warnings: 0
+Number of errors: 5

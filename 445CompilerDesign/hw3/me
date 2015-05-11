@@ -1,0 +1,3 @@
+ERROR(141): Initializer for variable 'd' is not a constant expression.
+ERROR(143): Initializer for variable 'e' is not a constant expression.
+ERROR(144): Initializer for variable 'f' is not a constant expression.

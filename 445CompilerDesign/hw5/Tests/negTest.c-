@@ -1,0 +1,425 @@
+// C-F13
+// C-F09
+// Negative test set 0: declarations
+
+bool b;             // no error expected
+int i;              // no error expected
+int  v;             // Variable v cannot be declared of type  .
+int arr[10];        // no error expected
+
+int intfunc()   // no error expected
+{
+}
+
+bool boolfunc() // no error expected
+{
+}
+
+   func() // no error expected
+{
+}
+
+  lots(int a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40)
+{
+}
+
+// Negative test set 1: misuse of arrays
+bool t1()
+{
+	return arr; // Cannot return an array.
+}
+
+  t2()
+{
+    if( arr ) {} // Cannot use array as test condition.
+    if( arr[1] ) {} // Expecting boolean test condition.
+    if( arr[1] == 1) {} // No error expected
+
+    while( arr ) {} // Cannot use array as test condition.
+    while( arr[1] ) {} // Expecting boolean test condition.
+    while( arr[1] == 1) {} // No error expected
+}
+
+int t3()
+{
+    return arr[arr]; // Array index is the unindexed array arr.
+}
+     
+  foo1( int a1[], a2 )
+{
+}
+
+int t4()
+{
+    // Expecting array in parameter 1 of call foo defined on line 26.
+    // Not expecting array in parameter 2 of call foo defined on line 26.
+    foo1( 1, arr ); 
+}
+
+  t5()
+{
+    int x;
+
+    x = arr; // The operation = does not work with arrays.
+    arr = 1; // The operation = does not work with arrays.
+
+    x = x + arr; // The operation + does not work with arrays.
+}
+
+// Negative test set 2: parameter passing
+  foo2( bool b; int i )
+{
+}
+
+  foo3(int x)
+{
+}
+
+  foo4()
+{
+}
+
+  t7()
+{
+    foo2();         // Wrong number of parameters for function foo2 defined on line 54.
+    foo2( b );      // Wrong number of parameters for function foo2 defined on line 54.
+    foo2( i );      // Wrong number of parameters for function foo2 defined on line 54.
+    foo2( i, b );   // Expecting bool in parameter 1 of call foo2 defined on line 54. 
+    foo2( b, i, i );// Wrong number of parameters for function foo2 defined on line 54.
+ 
+    foo4();         // no error expected
+    foo4(foo3(3));  // Wrong number of parameters for function foo4 defined on line 62.
+}
+
+// Negative test set 3: returning values
+
+  t8()
+{
+    return arr;     // Cannot return an array (has precedence over next error)
+}
+
+  t9()
+{
+    return b;       // Expecting no return value, but got one.
+}
+
+int t10()
+{
+    return;         // Expecting a return type of int but got none.
+}
+
+int t11()
+{
+    return b;       // Expecting return type of int but got type bool.
+}
+
+bool t12()
+{
+    return i;       // Expecting return type of bool but got type int.
+}
+
+  t14()
+{
+    return foo4();  // Expecting no return value, but got one.
+}
+
+  t15()
+{
+    return;         // no error expected
+}
+
+// Negative test set 4: operator/operand type mismatches
+// Note precedence of operator type mismatch error over operand type mismatch error not 
+//   i.e. if bool and int is used with +, we don't complain that the operands don't match; we 
+//   rather complain that the operator requires int types
+  t16()
+{
+    i+i; i*i; i/i; i%i;               // no error expected
+    b+b; b*b; b/b; b%b;               // + requires things of type int but lhs is of type bool (4 cases)
+    i+b; i*b; i/b; i%b;               // + requires things of type int but rhs is of type bool. (4 cases)
+    b+i; b*i; b/i; b%i;               // + requires things of type int but lhs is of type bool. (4 cases)
+
+    i<i; i<=i; i>i; i>=i;             // no error expected
+    b<b; b<=b; b>b; b>=b;             // < requires things of type int but lhs is of type bool. (4 cases)
+    i<b; i<=b; i>b; i>=b;             // < requires things of type int but rhs is of type bool. (4 cases)
+    b<i; b<=i; b>i; b>=i;             // < requires things of type int but lhs is of type bool. (4 cases)
+
+    i=i;                              // no error expected
+    i=2;                              // no error expected
+    i=b;                              // = requires things of the same type but lhs is int and rhs is bool.       
+    i=true;                           // = requires things of the same type but lhs is int and rhs is bool.
+    i=false;                          // = requires things of the same type but lhs is int and rhs is bool.
+    i=intfunc();                      // no error expected
+    i=boolfunc();                     // = requires things of the same type but lhs is int and rhs is bool.
+    i= func();                     // = requires things of the same type but lhs is int and rhs is  .
+
+    b=b;                              // no error expected
+    b=i;                              // = requires things of the same type but lhs is bool and rhs is int.          
+    b=2;                              // = requires things of the same type but lhs is bool and rhs is int.
+    b=true;                           // no error expected
+    b=false;                          // no error expected  
+    b=intfunc();                      // = requires things of the same type but lhs is bool and rhs is int.
+    b=boolfunc();                     // no error expected
+    b= func();                     // = requires things of the same type but lhs is bool and rhs is  .
+
+     not b;                               // no error expected
+     not true;                            // no error expected
+     not false;                           // no error expected                      
+     not i;                               // Unary  not  requires things of type bool but was given type int.
+     not 2;                               // Unary  not  requires things of type bool but was given type int.
+     not -2;                              // Unary  not  requires things of type bool but was given type int.
+    -b;                               // Unary - requires things of type int but was given type bool.
+    -true;                            // Unary - requires things of type int but was given type bool.
+    -false;                           // Unary - requires things of type int but was given type bool.
+    -i;                               // no error expected
+    -2;                               // no error expected
+                                      
+    b or b;                             // no error expected
+    i or i;                             //  or  requires things of type bool but lhs is of type int.
+    b or i;                             //  or  requires things of type bool but rhs is of type int.
+    i or b;                             //  or  requires things of type bool but lhs is of type int.
+
+    b and b;                             // no error expected
+    i and i;                             //  and  requires things of type bool but lhs is of type int.
+    b and i;                             //  and  requires things of type bool but rhs is of type int.
+    i and b;                             //  and  requires things of type bool but lhs is of type int.
+}
+
+// Negative test set 5: malformed if and while
+  t17()
+{
+    if( b ) {}                        // no error expected
+    if( i ) {}                        // Expecting boolean test condition.
+    if( boolfunc() ) {}               // no error expected
+    if( intfunc() ) {}                // Expecting boolean test condition.
+    if(  func() ) {}               // Expecting boolean test condition.
+
+    while( b ) {}                     // no error expected
+    while( i ) {}                     // Expecting boolean test condition.
+    while( boolfunc() ) {}            // no error expected
+    while( intfunc() ) {}             // Expecting boolean test condition.
+    while(  func() ) {}            // Expecting boolean test condition. 
+}
+
+// Negative test set 6: duplicate definitions
+
+int t18(int a, a)                 // Symbol a is already defined at line 211.
+{
+}
+
+int t19()
+{
+}
+
+int t19()                         // Symbol t19 is already defined at line 215.
+{
+}
+
+int a1;
+int t20(int a1)                       // No error expected
+{
+}
+
+int a2;
+int t21(int a2)                       // No error expected
+{
+    int a2;                           // Symbol a2 is already defined at line 229.                 
+}
+
+int a3;
+int t22(int a3)                       // No error expected
+{
+    {
+        int a3;                       // No error expected
+    }
+}
+
+int t23()                            
+{
+    int a4;                          
+    int a4;                          // Symbol a4 is already defined at line 244.
+}
+
+int t24()                            
+{
+    int a4;  
+    {
+        int a4;                     // no error expected
+    }
+}
+
+int a5;
+int t25( int a6 )                            
+{
+    int a5;                         // no error expected
+    {
+        int a6;                     // no error expected
+    }
+}
+
+int a7;
+bool a7;                            // Symbol a0 is already defined at line 265.
+
+int a8;
+  a8()                       // Symbol a8 is already defined at line 268.
+{
+}
+
+  a9()                       
+{
+}
+int a9;                            // Symbol a9 is already defined at line 273.
+
+// Negative test set 9: missing defintions/scoping
+  t26()
+{
+        zzz();                     // Symbol zzz is not defined.
+}
+
+  t27()
+{
+    { 
+        int x;
+    }
+    x=1;                          // Symbol x is not defined.
+}
+
+int x0;
+  t27( int x1 )
+{
+    int x2;
+    {
+        int x3;
+        { 
+            int x4;
+            x0=1;
+            x1=1;                         
+            x2=1;
+            x3=1;
+            x4=1;
+        }
+        x0=1;
+        x1=1;  
+        x2=1;
+        x3=1;                   
+        x4=1;                    // Symbol x4 is not defined.
+    }
+    x0=1;
+    x1=1;                     
+    x2=1;                       
+    x3=1;                       // Symbol x3 is not defined.
+    x4=1;                       // Symbol x4 is not defined.
+}
+
+  t28( int x1 )
+{
+    {
+        bool x1;
+        x1 = true;             // No error expected
+    }
+}
+
+  t29( bool x1 )
+{
+    {
+        int x1;
+        x1 = true;             // = requires things of the same type but lhs is int and rhs is bool.
+    }
+}
+
+  bar()
+{
+    int bar;
+    bar = 2;                  // No error expected
+}
+
+  bar2()
+{
+    bar2();                  // No error expected
+}
+
+  f1()
+{
+    f2();                    // Symbol f2 is not defined.
+}
+
+  f2()
+{
+   f1();
+}
+
+  bar3(int x1)
+{
+    {
+        bool x1;
+        x1 = false;         // No error expected
+    }
+    x1 = false;             // = requires things of the same type but lhs is int and rhs is bool.      
+}
+
+// Negative test set 10: misc errors
+
+  bar4()
+{
+}
+
+  bar5()
+{
+    {
+        int bar4;
+        bar4 = 1;         // No error expected
+        bar4();           // bar4 is a simple variable and cannot be called.
+    }
+    bar4 = 1;             // Cannot use function bar4 as a simple variable.
+    bar4();
+}
+
+  t30()
+{
+    int x;
+    int y;
+    int z[10];
+    x = y[10];           // Cannot index nonarray y.
+    x = i[10];           // Cannot index nonarray i.
+    x = b[10];           // Cannot index nonarray b.
+    x = bar4[10];        // Cannot use function bar4 as a simple variable.
+    x = z;               // The operation = does not work with arrays.
+    x = z[x];            // No error expected
+    z[x] = x;            // No error expected
+    z[1] = z[2];         // No error expected
+    z[z[1]] = z[z[z[2]]];// No error expected
+     not z;                  // The operation  not  does not work with arrays.
+     not z[1];               // Unary  not  requires things of type bool but was given type int.
+    -z[1];               // No error expected
+    x = z[b];            // Expecting array index to be of type int but got type bool.
+    x = z[bar4()];       // Expecting array index to be of type int but got type  .
+    x = z[z];            // Array index is the unindexed array z.
+    x = z[arr];          // Array index is the unindexed array arr.
+    x = z[intfunc];      // Cannot use function intfunc as a simple variable.
+    x = z[intfunc()];    // No error expected
+    x = z[x0];           // No error expected
+}
+
+int  t31(int  x )       // Variable x cannot be declared of type  .
+{
+      y;              // Variable y cannot be declared of type  .
+    b = x;               // Symbol x is not defined.
+    b = y;               // Symbol y is not defined.
+}
+
+// If a declaration failed, we still can look up other definitions
+int z1;
+  t32()
+{
+      z1;             // Variable z1 cannot be declared of type  .
+    i = z1;              // No error expected
+}
+
+// Precedence of dup def error over   decl
+  t33()
+{
+    int z2;
+      z2;             // Symbol z2 is already defined at line 428.
+    i = z2;              // No error expected
+}
+

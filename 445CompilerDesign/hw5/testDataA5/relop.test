@@ -1,0 +1,18 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: relop.tm
+Enter command: 
+command: a 100
+command: g
+Abort limit reached! (limit = 100) (see 'a' command in help).
+Halted
+Last executed cmd:   53:   LD  3,  -2(1)  | before:  r[3]: 0     r[1]: 9999  m[9997]: 0     |  Load variable x
+PC was 53, PC is now 54
+command: e
+EXEC STAT: Number of instructions executed: 100
+EXEC STAT: Instruction memory used: 525
+EXEC STAT: Data memory used: 3
+command: x
+Bye.

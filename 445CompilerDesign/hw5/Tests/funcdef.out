@@ -1,0 +1,14 @@
+ERROR(5): Symbol 'z' is already defined at line 3.
+WARNING(5): Expecting to return type int but function 'z' has no return statement.
+ERROR(25): Symbol 'x' is not defined.
+ERROR(26): Symbol 'x' is not defined.
+WARNING(23): Expecting to return type int but function 'w' has no return statement.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 2
+Number of errors: 4
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: funcdef.tm
+Halted
+Bye.

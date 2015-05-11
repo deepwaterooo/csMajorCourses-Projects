@@ -1,0 +1,13 @@
+// C-F13
+bool cat()
+{
+    return true;
+}
+
+  main()
+{
+    bool x;
+
+    x = cat() and false;
+    outputb(x);
+}

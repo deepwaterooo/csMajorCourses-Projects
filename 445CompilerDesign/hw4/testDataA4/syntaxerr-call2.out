@@ -1,0 +1,24 @@
+ERROR(5): Syntax error.  Unexpected id: u.  Expecting ']'.
+ERROR(7): Syntax error.  Unexpected id: u.  Expecting ']'.
+ERROR(10): Syntax error.  Unexpected ']'.  Expecting number.
+ERROR(22): Syntax error.  Unexpected '='.  Expecting ']'.
+ERROR(23): Syntax error.  Unexpected ']'.
+ERROR(23): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(27): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(27): Syntax error.  Unexpected ';'.  Expecting ']'.
+ERROR(27): Syntax error.  Unexpected ']'.  Expecting ')'.
+ERROR(27): Syntax error.  Unexpected number: 10.  Expecting ']'.
+ERROR(27): Syntax error.  Unexpected number: 10.  Expecting ')'.
+ERROR(27): Syntax error.  Unexpected number: 10.  Expecting ')'.
+ERROR(28): Syntax error.  Unexpected character constant: 'x'.  Expecting id.
+ERROR(29): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(30): Syntax error.  Unexpected '+'.
+ERROR(30): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(31): Syntax error.  Unexpected '='.
+ERROR(34): Syntax error.  Unexpected ','.  Expecting ']'.
+ERROR(34): Syntax error.  Unexpected int.  Expecting ')'.
+ERROR(35): Syntax error.  Unexpected '+'.
+ERROR(35): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(36): Syntax error.  Unexpected '='.
+Number of warnings: 0
+Number of errors: 22

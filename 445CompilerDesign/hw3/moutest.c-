@@ -1,0 +1,52 @@
+// from Xin Mou
+// F13
+main();
+
+int emu(int x, y, z)
+{                    // Warning: There is no return
+}
+
+test(){
+    int aa[6], bb[6], cc[6];
+    bool dd[6];
+
+    int x;
+    bool b;
+    x = aa[
+        bb[
+            cc[
+                dd[
+                    aa[
+                        dd]]]]];
+    x = aa[
+        bb[
+            cc[
+                dd[
+                    aa[
+                        dd[
+                            1]]]]]];
+    x = aa[
+        bb[
+            cc[
+                dd[
+                    aa[
+                        *dd]]]]];
+    x = aa[
+        bb[
+            cc[
+                dd[
+                    aa[
+                        *x]]]]];
+
+
+    emu(false,
+        true and emu(x+b,
+                     emu(x+b,
+                         emu(x+b,
+                             parrot,
+                             b and x),
+                         b and x),
+                     b and x),
+        true,
+        x*b);
+}

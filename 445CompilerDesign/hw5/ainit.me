@@ -1,0 +1,1169 @@
+
+Symbol Stack:
+              globals ---- 
+    output    globals 1 Func output returns type void allocated as Global of size -3 at location 0.
+Child: 1
+|  Param xyz  of type int allocated as Parameter of size 1 at location -2.
+Func outputb returns type void allocated as Global of size -3 at location -1.
+Child: 1
+|  Param xyz  of type bool allocated as Parameter of size 1 at location -2.
+Func outputc returns type void allocated as Global of size -3 at location -2.
+Child: 1
+|  Param xyz  of type char allocated as Parameter of size 1 at location -2.
+Func input returns type int allocated as Global of size -2 at location -3.
+Func inputb returns type bool allocated as Global of size -2 at location -4.
+Func inputc returns type char allocated as Global of size -2 at location -5.
+Func outnl returns type void allocated as Global of size -2 at location -6.
+Var g  is array of type int allocated as Global of size 11 at location -7. foffset: -41; goffset: -34 
+Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+   outputb    globals 1 Func outputb returns type void allocated as Global of size -3 at location -1.
+Child: 1
+|  Param xyz  of type bool allocated as Parameter of size 1 at location -2.
+Func outputc returns type void allocated as Global of size -3 at location -2.
+Child: 1
+|  Param xyz  of type char allocated as Parameter of size 1 at location -2.
+Func input returns type int allocated as Global of size -2 at location -3.
+Func inputb returns type bool allocated as Global of size -2 at location -4.
+Func inputc returns type char allocated as Global of size -2 at location -5.
+Func outnl returns type void allocated as Global of size -2 at location -6.
+Var g  is array of type int allocated as Global of size 11 at location -7. foffset: -41; goffset: -34 
+Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+   outputc    globals 1 Func outputc returns type void allocated as Global of size -3 at location -2.
+Child: 1
+|  Param xyz  of type char allocated as Parameter of size 1 at location -2.
+Func input returns type int allocated as Global of size -2 at location -3.
+Func inputb returns type bool allocated as Global of size -2 at location -4.
+Func inputc returns type char allocated as Global of size -2 at location -5.
+Func outnl returns type void allocated as Global of size -2 at location -6.
+Var g  is array of type int allocated as Global of size 11 at location -7. foffset: -41; goffset: -34 
+Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+     input    globals 1 Func input returns type int allocated as Global of size -2 at location -3.
+Func inputb returns type bool allocated as Global of size -2 at location -4.
+Func inputc returns type char allocated as Global of size -2 at location -5.
+Func outnl returns type void allocated as Global of size -2 at location -6.
+Var g  is array of type int allocated as Global of size 11 at location -7. foffset: -41; goffset: -34 
+Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+    inputb    globals 1 Func inputb returns type bool allocated as Global of size -2 at location -4.
+Func inputc returns type char allocated as Global of size -2 at location -5.
+Func outnl returns type void allocated as Global of size -2 at location -6.
+Var g  is array of type int allocated as Global of size 11 at location -7. foffset: -41; goffset: -34 
+Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+    inputc    globals 1 Func inputc returns type char allocated as Global of size -2 at location -5.
+Func outnl returns type void allocated as Global of size -2 at location -6.
+Var g  is array of type int allocated as Global of size 11 at location -7. foffset: -41; goffset: -34 
+Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+     outnl    globals 1 Func outnl returns type void allocated as Global of size -2 at location -6.
+Var g  is array of type int allocated as Global of size 11 at location -7. foffset: -41; goffset: -34 
+Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+         g    globals 1 Var g  is array of type int allocated as Global of size 11 at location -7. foffset: -41; goffset: -34 
+Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+      main    globals 1 Func main returns type void allocated as Global of size -41 at location -18.
+Child: 2
+|  Compound [line: 5]
+|  Child: 1
+|  |  Var m  is array of type int allocated as Local of size 12 at location -3. foffset: -41; goffset: -34 
+|  Child: 2
+|  |  Assign: = [line: 7]
+|  |  Child: 1
+|  |  |  Id: m [line: 7]
+|  |  |  Child: 1
+|  |  |  |  Const: 0 [line: 7]
+|  |  Child: 2
+|  |  |  Const: 111 [line: 7]
+|  Sibling: 1
+|  |  Compound [line: 8]
+|  |  Child: 1
+|  |  |  Var c  is array of type int allocated as Local of size 13 at location -15. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 10]
+|  |  |  Child: 1
+|  |  |  |  Id: c [line: 10]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 10]
+|  |  |  Child: 2
+|  |  |  |  Const: 222 [line: 10]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 11]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 11]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 11]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 12]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 12]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 12]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 13]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 13]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: c [line: 13]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 14]
+|  Sibling: 2
+|  |  Compound [line: 16]
+|  |  Child: 1
+|  |  |  Var d  is array of type int allocated as Local of size 14 at location -28. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 18]
+|  |  |  Child: 1
+|  |  |  |  Id: d [line: 18]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 18]
+|  |  |  Child: 2
+|  |  |  |  Const: 333 [line: 18]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 19]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 19]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 19]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 20]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 20]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 21]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 21]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: d [line: 21]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 22]
+|  Sibling: 3
+|  |  Compound [line: 24]
+|  |  Child: 1
+|  |  |  Var s  is array of type int allocated as LocalStatic of size 15 at location -19. foffset: -41; goffset: -34 
+|  |  Child: 2
+|  |  |  Assign: = [line: 26]
+|  |  |  Child: 1
+|  |  |  |  Id: s [line: 26]
+|  |  |  |  Child: 1
+|  |  |  |  |  Const: 0 [line: 26]
+|  |  |  Child: 2
+|  |  |  |  Const: 444 [line: 26]
+|  |  Sibling: 1
+|  |  |  Call: output [line: 27]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 27]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: g [line: 27]
+|  |  Sibling: 2
+|  |  |  Call: output [line: 28]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 28]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: m [line: 28]
+|  |  Sibling: 3
+|  |  |  Call: output [line: 29]
+|  |  |  Child: 1
+|  |  |  |  Op: * [line: 29]
+|  |  |  |  Child: 1
+|  |  |  |  |  Id: s [line: 29]
+|  |  Sibling: 4
+|  |  |  Call: outnl [line: 30]
+|  Sibling: 4
+|  |  Call: output [line: 32]
+|  |  Child: 1
+|  |  |  Op: * [line: 32]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 32]
+|  Sibling: 5
+|  |  Call: output [line: 33]
+|  |  Child: 1
+|  |  |  Op: * [line: 33]
+|  |  |  Child: 1
+|  |  |  |  Id: m [line: 33]
+|  Sibling: 6
+|  |  Call: outnl [line: 34]
+
+Number of warnings: 0
+Number of errors: 0

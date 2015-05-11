@@ -1,0 +1,235 @@
+Tiny语言编译器之TM虚拟机接口
+
+TM虚拟机接口用于生成TM指令，源代码如下：
+//code.h
+//TM接口
+#ifndef _CODE_H_
+#define _CODE_H_
+
+#define pc 7 //程序寄存器
+#define mp 6 //指向数据区顶部
+#define gp 5 //指向数据区底部
+
+#define ac 0
+#define ac1 0
+//输出寄存器指令
+void emitRO(char *op, int r, int s, int t, char* c);
+//输出寄存器内存指令
+void emitRM(char *op, int r, int d, int s, char *c);
+//跳过一些指令标号，返回当前指令标号
+int emitSkip(int howmany);
+//回到loc处产生指令
+void emitBackup(int loc);
+//恢复当前位置
+void emitRestore();
+//将绝对地址指令转化为相对地址指令
+void emitRM_Abs(char *op, int r, int a, char* c);
+//输出注释
+void emitComment(char* c);
+//code.c
+#endif #include "globals.h"
+#include "code.h"
+static int emitLoc = 0 ; //当前标号，用于产生当前指令
+
+static int highEmitLoc = 0; //下一条指令的标号，在调用emitBackup后可以用highEmitLoc恢复当前标号
+
+void emitComment( char * c )
+{ if (TraceCode) fprintf(code,"* %s\n",c);}
+
+void emitRO( char *op, int r, int s, int t, char *c)
+{ fprintf(code,"%3d:  %5s  %d,%d,%d ",emitLoc++,op,r,s,t);
+  if (TraceCode) fprintf(code,"\t%s",c) ;
+  fprintf(code,"\n") ;
+  if (highEmitLoc < emitLoc) highEmitLoc = emitLoc ;
+} 
+
+void emitRM( char * op, int r, int d, int s, char *c)
+{ fprintf(code,"%3d:  %5s  %d,%d(%d) ",emitLoc++,op,r,d,s);
+  if (TraceCode) fprintf(code,"\t%s",c) ;
+  fprintf(code,"\n") ;
+  if (highEmitLoc < emitLoc)  highEmitLoc = emitLoc ;
+} 
+
+
+int emitSkip( int howMany)
+{  int i = emitLoc;
+   emitLoc += howMany ;
+   if (highEmitLoc < emitLoc)  highEmitLoc = emitLoc ;
+   return i;
+} 
+
+
+void emitBackup( int loc)
+{ if (loc > highEmitLoc) emitComment("BUG in emitBackup");
+  emitLoc = loc ;
+} 
+
+void emitRestore(void)
+{ emitLoc = highEmitLoc;}
+
+void emitRM_Abs( char *op, int r, int a, char * c)
+{ fprintf(code,"%3d:  %5s  %d,%d(%d) ",
+               emitLoc,op,r,a-(emitLoc+1),pc);
+  ++emitLoc ;
+  if (TraceCode) fprintf(code,"\t%s",c) ;
+  fprintf(code,"\n") ;
+  if (highEmitLoc < emitLoc) highEmitLoc = emitLoc ;
+} 
+
+
+Tiny语言编译器之代码生成
+
+代码生成是Tiny编译器的最后一项工作，代码生成的基础是语法树和符号表，遍历语法树，生成能够被TM虚拟机执行的指令，其中if语句和repeat语句需要利用emitSkip、emitBackup进行代码回填，因为只有全部语句指令生成完成以后才知道跳转地址。代码生成的源代码如下:
+#include "globals.h"
+#include "symtab.h"
+#include "code.h"
+#include "cgen.h"
+static int tempOffset = 0;
+static void cgen(TreeNode* tree);
+//产生语句的代码
+static void genStmt(TreeNode* tree)
+{
+    TreeNode *p1, *p2, *p3;
+    int savedLoc1, savedLoc2, currentLoc;
+    int loc;
+    switch(tree->kind.stmt)
+    {
+    case IfK:
+        p1=tree->child[0];
+        p2=tree->child[1];
+        p3=tree->child[2];
+        //逻辑表达式的代码
+        cgen(p1);
+        savedLoc1=emitSkip(1); //回填位置1
+        //then部分代码
+        cgen(p2);
+        savedLoc2=emitSkip(1);//回填位置2
+        currentLoc=emitSkip(0);
+        emitBackup(savedLoc1);
+        emitRM_Abs("JEQ", ac, currentLoc, "if: jmp to else"); //回填位置1的代码
+        emitRestore();
+        //else部分代码
+        cgen(p3);
+        currentLoc=emitSkip(0);
+        emitBackup(savedLoc2);
+        emitRM_Abs("LDA", pc, currentLoc, "jmp to end"); //回填位置2的代码
+        emitRestore();
+        break;
+    case RepeatK:
+        p1=tree->child[0];
+        p2=tree->child[1];
+        savedLoc1=emitSkip(0);
+        cgen(p1);
+        cgen(p2);
+        emitRM_Abs("JEQ", ac, savedLoc1, "repeat: jmp back to body");
+        break;
+    case AssignK:
+        p1 = tree->child[0];
+        cgen(p1);
+        loc=st_lookup(tree->attr.name);
+        emitRM("ST", ac, loc, gp, "assign value"); //变量赋值
+        break;
+    case ReadK:
+        emitRO("IN", ac, 0, 0, "read integer value");
+        loc=st_lookup(tree->attr.name);
+        emitRM("ST", ac, loc, gp, "read value");
+        break;
+    case WriteK:
+        p1=tree->child[0];
+        cgen(p1);
+        emitRO("OUT", ac, 0, 0, "write ac");
+        break;
+    default:
+        break;
+    }
+}
+
+//产生表达式的代码
+static void genExp(TreeNode* tree)
+{
+    int loc;
+    TreeNode *p1, *p2;
+    switch(tree->kind.exp)
+    {
+    case ConstK:
+        emitRM("LDC", ac, tree->attr.val, 0, "load const");    
+        break;
+    case IdK:
+        loc = st_lookup(tree->attr.name);
+        emitRM("LD", ac, loc, gp, "load id value");
+        break;
+    case opK:
+        p1=tree->child[0];
+        p2=tree->child[1];
+        cgen(p1);
+        emitRM("ST", ac, tempOffset--, mp, "push left child");
+        cgen(p2);
+        emitRM("LD", ac1, ++tempOffset, mp, "pop left child" );
+        switch(tree->attr.op)
+        {
+        case PLUS:
+            emitRO("ADD", ac, ac1, ac, "op +");
+            break;
+        case MINUS:
+            emitRO("SUB",ac, ac1,ac, "op -");
+            break;
+        case TIMES:
+            emitRO("MUL",ac, ac1, ac, "op *");
+            break;
+        case OVER:
+            emitRO("DIV", ac, ac1, ac, "op /");
+            break;
+        case LT:
+            emitRO("SUB", ac, ac1, ac, "op <");
+            emitRM("JLT", ac, 2, pc, "br if true");
+            emitRM("LDC", ac, 0, ac, "false case");//reg[ac]=0
+            emitRM("LDA", pc, 1, pc, "unconditional jmp");//跳过下面这一句
+            emitRM("LDC", ac, 1, ac, "true case"); //reg[ac]=1
+            break;
+        case EQ:
+            emitRO("SUB", ac, ac1, ac, "op ==");
+            emitRM("JEQ", ac, 2, pc, "br if true");
+            emitRM("LDC", ac, 0, ac, "false case");//reg[ac]=0
+            emitRM("LDA", pc, 1, pc, "unconditional jmp");//跳过下面这一句
+            emitRM("LDC", ac, 1, ac, "true case"); //reg[ac]=1
+        default:
+            break;
+        }
+        break;
+    default:
+        break;
+    }
+}
+
+static void cgen(TreeNode* tree)
+{
+    if(tree!=NULL)
+    {
+        switch(tree->nodekind)
+        {
+            case Stmtk:
+                genStmt(tree);
+                break;
+            case ExpK:
+                genExp(tree);
+                break;
+            default:
+                break;    
+        }
+        cgen(tree->sibling);
+    }
+
+}
+
+//根据语法树生成代码
+void codeGen(TreeNode* syntaxTree, char *codefile)
+{
+    //从内存的地址0处加载内存最大地址到reg[mp]处
+    emitRM("LD", mp, 0, 0, "load maxaddress from location 0");
+    //清除内存地址0处的值
+    emitRM("ST", 0, 0, 0, "clear location 0");
+    cgen(syntaxTree);
+    emitRO("HALT", 0, 0, 0, "");
+}
+
+

@@ -1,0 +1,15 @@
+// C-F13
+  twilight(int mark[]) 
+{
+        int z;
+        z = *mark;
+        output(z);
+        mark[2] = mark[1];
+}
+
+  main()
+{
+        int x;
+        int pinkie[3];
+        twilight(pinkie);
+}

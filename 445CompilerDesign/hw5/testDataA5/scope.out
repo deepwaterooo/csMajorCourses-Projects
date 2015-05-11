@@ -1,0 +1,27 @@
+ERROR(6): Symbol 'b' is not defined.
+ERROR(12): Symbol 'b' is not defined.
+ERROR(18): Symbol 'b' is not defined.
+ERROR(19): Symbol 'c' is not defined.
+ERROR(23): Symbol 'b' is not defined.
+ERROR(24): Symbol 'c' is not defined.
+WARNING(3): Expecting to return type int but function 'ant' has no return statement.
+ERROR(34): Symbol 'y' is already defined at line 31.
+ERROR(36): Symbol 'z' is already defined at line 35.
+ERROR(37): Symbol 'x' is not defined.
+ERROR(41): Symbol 'v' is not defined.
+ERROR(42): Symbol 'u' is not defined.
+ERROR(42): Symbol 'cow' is not defined.
+ERROR(42): Symbol 'v' is not defined.
+ERROR(43): Symbol 'abraxsis' is not defined.
+ERROR(44): Symbol 'a' is not defined.
+ERROR(50): Symbol 'g' is already defined at line 2.
+ERROR(52): Symbol 'g' is already defined at line 2.
+ERROR(71): Symbol 'c' is not defined.
+ERROR(74): Symbol 'z' is not defined.
+ERROR(77): Symbol 'b' is not defined.
+ERROR(78): Symbol 'c' is not defined.
+ERROR(80): Symbol 'y' is not defined.
+ERROR(81): Symbol 'z' is not defined.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 1
+Number of errors: 24

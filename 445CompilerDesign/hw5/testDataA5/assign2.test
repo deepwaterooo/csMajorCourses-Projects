@@ -1,0 +1,21 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: assign2.tm
+Enter command: 
+command: a 10000
+command: g
+111 222 T F 
+333 444 F T 
+222 F 
+444 T 
+Halted
+Last executed cmd:  296: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 296, PC is now 297
+command: e
+EXEC STAT: Number of instructions executed: 368
+EXEC STAT: Instruction memory used: 297
+EXEC STAT: Data memory used: 21
+command: x
+Bye.

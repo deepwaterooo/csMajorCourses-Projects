@@ -1,0 +1,79 @@
+//搜索的爬山法...
+//江苏省选的平衡点
+//爬山无非就是：随机、估价、调整
+//显然有的时候会被卡掉...也会悲剧...
+
+Const
+  Eps=1e-7; //精度
+
+Var
+  n:Longint;
+  ansx,ansy:Double;
+  x,y,weight:Array [0..1001] of Longint;
+
+Function dist(px,py:Double):Double;//估价
+  var
+    tmp:Double;
+    i:Longint;
+  begin
+    tmp:=0;
+    for i:=1 to n do tmp:=tmp+Sqrt(Sqr(px-x[i])+Sqr(py-y[i]))*weight[i];
+    exit(tmp);
+  end;
+
+Procedure Init;
+  var
+    i:Longint;
+  begin
+    readln(n);
+    for i:=1 to n do readln(x[i],y[i],weight[i]);
+  end;
+
+Procedure Main;
+  var
+    r,ans,tmp,delta,nextx,nexty:Double;
+    i:Longint;
+  begin
+    Randomize;
+    ansx:=Random(1000)-1000;
+    ansy:=Random(1000)-1000;
+    r:=1000;//r代表了一个圆
+    ans:=dist(ansx,ansy);
+    while r>Eps do//直到这个圆成为一个足够精度的“点”
+      begin
+        for i:=1 to 100 do//重复100次,随机,估价,调整
+          begin
+            delta:=Random;//取得一个随机种子
+            nextx:=(delta*2-1)*r;nexty:=(Random(2)*2-1)*Sqrt(Sqr(r)-Sqr(nextx));//随机一个解
+            tmp:=dist(ansx+nextx,ansy+nexty);//估价
+            while tmp<ans do//如果解变优了,调整
+              begin
+                ans:=tmp;//调整
+                ansx:=ansx+nextx;
+                ansy:=ansy+nexty;
+                delta:=random;//再次随机、估价、调整
+                nextx:=(delta*2-1)*r;
+                nexty:=(Random(2)*2-1)*Sqrt(Sqr(r)-Sqr(nextx));
+                tmp:=dist(ansx+nextx,ansy+nexty);
+              end;
+          end;
+        r:=r/1.5;//缩小范围
+      end;
+  end;
+
+{
+注意在上面的过程中,每一次我们的做法是,如果解被更新了,那么我们再去尝试继续更新,否则就算了.
+这样做是因为如果我们的当前的解极为不优,那么每一次随机我们有很大的几率得到一个更优的解,我们在少数几次的过程中就能把这个不优解变成一个较为优的解.然后剩下的次数就是在向最优解靠拢了.
+如果我们希望得到一个很优的解,我们可以将其改为每一次直到解被更新才结束.这样得到的解会极优,但是时间可能有点囧.因为可能在某一次我们找到了一个非常非常优的解,导致在下一次的随机中“总是”得不到一个更优解,这样程序就会陷入死循环...
+}
+
+Procedure Print;
+  begin
+    writeln(ansx:0:2,' ',ansy:0:2);
+  end;
+
+Begin
+  Init;
+  Main;
+  Print;
+End.

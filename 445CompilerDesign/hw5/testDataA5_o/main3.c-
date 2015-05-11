@@ -1,0 +1,9 @@
+void main()
+{
+    output(true);
+    outputb(666);
+    outnl();
+
+    return;
+}
+

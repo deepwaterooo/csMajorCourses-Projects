@@ -1,0 +1,32 @@
+\BOOKMARK [1][-]{section.1}{Java编译原理}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Java源文件的编译、下载 、解释和执行}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{JVM规格描述}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{JVM指令系统}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{JVM寄存器}{subsection.1.2}% 5
+\BOOKMARK [3][-]{subsubsection.1.2.3}{JVM栈结构}{subsection.1.2}% 6
+\BOOKMARK [3][-]{subsubsection.1.2.4}{JVM碎片回收堆}{subsection.1.2}% 7
+\BOOKMARK [3][-]{subsubsection.1.2.5}{JVM存储区}{subsection.1.2}% 8
+\BOOKMARK [1][-]{section.2}{Java和JVM运行原理揭秘}{}% 9
+\BOOKMARK [2][-]{subsection.2.1}{Java语言运行的过程}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.2}{JVM：}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{简单介绍Inside JVM体系结构}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Inside JVM运行时数据区}{section.3}% 13
+\BOOKMARK [3][-]{subsubsection.3.1.1}{方法区：}{subsection.3.1}% 14
+\BOOKMARK [3][-]{subsubsection.3.1.2}{堆}{subsection.3.1}% 15
+\BOOKMARK [3][-]{subsubsection.3.1.3}{程序记数器}{subsection.3.1}% 16
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Java栈}{subsection.3.1}% 17
+\BOOKMARK [3][-]{subsubsection.3.1.5}{本地方法栈}{subsection.3.1}% 18
+\BOOKMARK [1][-]{section.4}{深入Java虚拟机：JVM中的Stack和Heap}{}% 19
+\BOOKMARK [2][-]{subsection.4.1}{一般，JVM的内存分为两部分：Stack和Heap。}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.2}{非静态方法和静态方法的区别：}{section.4}% 21
+\BOOKMARK [3][-]{subsubsection.4.2.1}{静态属性和动态属性：}{subsection.4.2}% 22
+\BOOKMARK [1][-]{section.5}{Java虚拟机（JVM）中的内存设置详解}{}% 23
+\BOOKMARK [2][-]{subsection.5.1}{Java Heap分为3个区}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.2}{JVM有2个GC线程}{section.5}% 25
+\BOOKMARK [1][-]{section.6}{深入学习JVM内存设置原理和调优}{}% 26
+\BOOKMARK [2][-]{subsection.6.1}{JVM内存设置原理}{section.6}% 27
+\BOOKMARK [2][-]{subsection.6.2}{JVM内存的调优}{section.6}% 28
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Heap设定与垃圾回收}{subsection.6.2}% 29
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Stack的设定}{subsection.6.2}% 30
+\BOOKMARK [3][-]{subsubsection.6.2.3}{硬件环境}{subsection.6.2}% 31
+\BOOKMARK [3][-]{subsubsection.6.2.4}{4种GC}{subsection.6.2}% 32

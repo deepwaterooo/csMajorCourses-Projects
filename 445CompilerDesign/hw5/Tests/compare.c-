@@ -1,0 +1,28 @@
+// C-F13
+// C-F09
+  main()
+{
+        outputb(1<2);
+        outputb(2<2);
+        outputb(3<2);
+
+        outputb(1==2);
+        outputb(2==2);
+        outputb(3==2);
+
+        outputb(1>2);
+        outputb(2>2);
+        outputb(3>2);
+
+        outputb(1<=2);
+        outputb(2<=2);
+        outputb(3<=2);
+
+        outputb(1>=2);
+        outputb(2>=2);
+        outputb(3>=2);
+
+        outputb(1!=2);
+        outputb(2!=2);
+        outputb(3!=2);
+}

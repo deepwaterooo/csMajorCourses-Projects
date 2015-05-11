@@ -1,0 +1,13 @@
+ERROR(6): Function 'dog' at line 2 is expecting to return type int but got type bool.
+ERROR(13): Function 'cat' at line 9 is expecting to return type int but return has no return value.
+ERROR(240): Symbol 'fred' is already defined at line 239.
+ERROR(241): Symbol 'fred' is already defined at line 239.
+ERROR(242): Symbol 'fred' is already defined at line 239.
+WARNING(238): Expecting to return type int but function 'fred' has no return statement.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 1
+Number of errors: 6
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: allErrors2.tm

@@ -1,0 +1,53 @@
+// C-F13
+  main()
+{
+ foreach ( x );
+ zz;
+ foreach ( x int;
+ zz;
+ foreach ( int );
+ zz;
+ foreach ( int int;
+ zz;
+ foreach int x );
+ zz;
+ foreach int x int;
+ zz;
+ foreach int int );
+ zz;
+ foreach int int int;
+ zz;
+
+ foreach ( x );
+ zz;
+ foreach ( x *;
+ zz;
+ foreach ( * );
+ zz;
+ foreach ( * *;
+ zz;
+ foreach * x );
+ zz;
+ foreach * x *;
+ zz;
+ foreach * * );
+ zz;
+ foreach * * *;
+ zz;
+
+ foreach ( x );
+ zz;
+ foreach ( x ;
+ zz;
+ foreach ( );
+ zz;
+ foreach ( ;
+ zz;
+ foreach x );
+ zz;
+ foreach x ;
+ zz;
+ foreach );
+ zz;
+ foreach ;
+}

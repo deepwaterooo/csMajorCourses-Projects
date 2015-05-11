@@ -1,0 +1,11 @@
+ERROR(13): Expecting type bool in parameter 3 of call to 'kate' defined on line 3 but got type int.
+ERROR(13): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 0
+Number of errors: 3
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: arglist.tm
+Halted
+Bye.

@@ -1,0 +1,7 @@
+ERROR(8): Symbol 'square' is not defined.
+ERROR(10): Symbol 'max' is not defined.
+ERROR(13): Symbol 'toBool' is not defined.
+ERROR(14): Symbol 'toInt' is not defined.
+Number of warnings: 0
+Number of errors: 4
+------------------------------------

@@ -1,0 +1,7 @@
+// C-F13
+main() {
+    while (true) {
+        break;
+        }
+}
+

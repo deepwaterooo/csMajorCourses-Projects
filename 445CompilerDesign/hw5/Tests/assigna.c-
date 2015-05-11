@@ -1,0 +1,41 @@
+// C-F13
+int gnu;
+int goat[16];
+
+  cat(int z[])
+{
+        z[7];
+        *z;
+}
+
+  dog(int x[], p)
+{
+        int a;
+        int y[11];
+
+        // globals
+        gnu = gnu;
+        goat[9] = goat[10];
+        *goat;
+
+        // locals
+        a = a;
+        y[3] = y[4];
+        *y;
+
+        // parameters
+        p = p;
+        x[3] = x[4];
+        *x;
+
+        cat(x);
+}
+
+  main()
+{
+        int m;
+        int ma[22];
+
+        dog(ma, m);
+}
+

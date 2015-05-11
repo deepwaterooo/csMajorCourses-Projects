@@ -1,0 +1,36 @@
+ERROR(12): Too few parameters passed for function 'kate' defined on line 2.
+ERROR(13): Too few parameters passed for function 'kate' defined on line 2.
+ERROR(14): Too few parameters passed for function 'kate' defined on line 2.
+ERROR(16): Too many parameters passed for function 'kate' defined on line 2.
+ERROR(17): Too many parameters passed for function 'kate' defined on line 2.
+ERROR(19): Expecting type int in parameter 1 of call to 'kate' defined on line 2 but got type bool.
+ERROR(19): Expecting type bool in parameter 2 of call to 'kate' defined on line 2 but got type int.
+ERROR(19): Not expecting array in parameter 2 of call to 'kate' defined on line 2.
+ERROR(19): Expecting type int in parameter 3 of call to 'kate' defined on line 2 but got type bool.
+ERROR(19): Expecting type bool in parameter 4 of call to 'kate' defined on line 2 but got type int.
+ERROR(19): Expecting array in parameter 4 of call to 'kate' defined on line 2.
+ERROR(20): Not expecting array in parameter 1 of call to 'kate' defined on line 2.
+ERROR(20): Not expecting array in parameter 2 of call to 'kate' defined on line 2.
+ERROR(20): Expecting array in parameter 3 of call to 'kate' defined on line 2.
+ERROR(20): Expecting array in parameter 4 of call to 'kate' defined on line 2.
+ERROR(21): Expecting type int in parameter 1 of call to 'kate' defined on line 2 but got type bool.
+ERROR(21): Not expecting array in parameter 1 of call to 'kate' defined on line 2.
+ERROR(21): Expecting type bool in parameter 2 of call to 'kate' defined on line 2 but got type int.
+ERROR(21): Expecting type int in parameter 3 of call to 'kate' defined on line 2 but got type bool.
+ERROR(21): Expecting array in parameter 3 of call to 'kate' defined on line 2.
+ERROR(21): Expecting type bool in parameter 4 of call to 'kate' defined on line 2 but got type int.
+ERROR(24): '+' requires operands of type int but rhs is of type bool.
+ERROR(31): Function 'abbey' at line 29 is expecting to return type int but return has no return value.
+ERROR(34): Symbol 'abbey' is already defined at line 29.
+ERROR(36): Function 'abbey' at line 34 is expecting to return type int but return has no return value.
+ERROR(41): Function 'zena' at line 39 is expecting to return type int but got type bool.
+ERROR(46): Function 'zeus' at line 44 is expecting to return type bool but got type int.
+ERROR(51): Function 'blackdog' at line 49 is expecting to return type bool but return has no return value.
+ERROR(58): Cannot return an array.
+ERROR(63): Function 'quaoar' at line 61 is expecting no return value, but return has return value.
+ERROR(68): Function 'ixion' at line 66 is expecting no return value, but return has return value.
+ERROR(74): Function 'varuna' at line 71 is expecting no return value, but return has return value.
+ERROR(74): Cannot return an array.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 0
+Number of errors: 34

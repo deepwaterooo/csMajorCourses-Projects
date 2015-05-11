@@ -1,0 +1,38 @@
+ERROR(6): Function 'dog' at line 2 is expecting to return type int but got type bool.
+ERROR(13): Function 'cat' at line 9 is expecting to return type int but return has no return value.
+ERROR(16): Symbol 'cat' is already defined at line 9.
+ERROR(25): Function 'ox' at line 23 is expecting no return value, but return has return value.
+WARNING(28): Expecting to return type int but function 'emu' has no return statement.
+ERROR(35): Symbol 'x' is already defined at line 34.
+ERROR(43): Variable 'v' cannot be declared of type void.
+ERROR(45): Expecting Boolean test condition in if statement but got type int.
+ERROR(46): Expecting Boolean test condition in while statement but got type int.
+ERROR(48): Cannot use function 'cat' as a simple variable.
+ERROR(49): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(50): '+=' requires operands of type int but rhs is of type bool.
+ERROR(51): '-=' requires operands of type int but lhs is of type bool.
+ERROR(53): Cannot use array as test condition in if statement.
+ERROR(54): Cannot use array as test condition in while statement.
+ERROR(56): Cannot have a break statement outside of while loop.
+ERROR(60): The operation '+' does not work with arrays.
+ERROR(62): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(64): '+' requires operands of type int but lhs is of type bool.
+ERROR(66): '*' requires operands of type int but rhs is of type bool.
+ERROR(68): Unary 'not' requires operands of type bool but was given type int.
+ERROR(70): Cannot index nonarray 'x'.
+ERROR(72): Array 'aa' should be indexed by type int but got type bool.
+ERROR(74): Symbol 'xyzzy' is not defined.
+ERROR(75): Symbol 'meerkat' is not defined.
+ERROR(77): 'x' is a simple variable and cannot be called.
+ERROR(79): Too many parameters passed for function 'dog' defined on line 2.
+ERROR(80): Too few parameters passed for function 'ibex' defined on line 18.
+ERROR(82): Expecting type int in parameter 1 of call to 'dog' defined on line 2 but got type bool.
+ERROR(84): Not expecting array in parameter 1 of call to 'cat' defined on line 9.
+ERROR(86): Expecting array in parameter 1 of call to 'ibex' defined on line 18.
+ERROR(87): Cannot use function 'ibex' as a simple variable.
+ERROR(89): Cannot use function 'ibex' as a simple variable.
+ERROR(89): '+' requires operands of type int but lhs is of type bool.
+ERROR(92): Array index is the unindexed array 'zz'.
+ERROR(94): Cannot return an array.
+Number of warnings: 1
+Number of errors: 35

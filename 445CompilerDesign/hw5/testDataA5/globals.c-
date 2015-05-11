@@ -1,0 +1,4 @@
+// C-F09
+int x;
+int y, z;
+bool a[2], b[3];

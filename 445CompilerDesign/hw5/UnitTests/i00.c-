@@ -1,0 +1,5 @@
+// C-F13
+main(){
+    int i:666;
+    output(i);
+}

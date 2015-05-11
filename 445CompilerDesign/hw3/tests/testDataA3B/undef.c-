@@ -1,0 +1,118 @@
+take1(int s);
+
+int intvalue();
+
+novalue();
+
+main()
+{
+        int x;
+        int x:undef;
+        int y[3];
+
+        x+x;
+        x+undef;
+        x+novalue();
+        undef+x;
+        novalue()+x;
+        undef+undef;
+        novalue()+novalue();
+
+        x+x+x;
+        x+undef+x;
+        x+novalue()+x;
+        undef+x+x;
+        novalue()+x+x;
+        undef+undef+x;
+        novalue()+novalue()+x;
+
+        x = undef;
+        y = undef;
+        undef = x;
+        undef = y;
+
+        undef(x+false, 3=='c', *7);
+        x(x+false, 3=='c', *7);
+
+        novalue = 3;
+        intvalue = 3;
+        
+        take1(novalue());
+        take1(novalue);
+        take1(undef());
+        take1(undef);
+        take1(intvalue());
+        take1(intvalue);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// from Xin Mou
+// F13
+main();
+
+int emu(int x, y, z)
+{                    // Warning: There is no return
+}
+
+test(){
+    int aa[6], bb[6], cc[6];
+    bool dd[6];
+
+    int x;
+    bool b;
+    x = aa[
+        bb[
+            cc[
+                dd[
+                    aa[
+                        dd]]]]];
+    x = aa[
+        bb[
+            cc[
+                dd[
+                    aa[
+                        dd[
+                            1]]]]]];
+    x = aa[
+        bb[
+            cc[
+                dd[
+                    aa[
+                        *dd]]]]];
+    x = aa[
+        bb[
+            cc[
+                dd[
+                    aa[
+                        *x]]]]];
+
+
+    emu(false,
+        true and emu(x+b,
+                     emu(x+b,
+                         emu(x+b,
+                             parrot,
+                             b and x),
+                         b and x),
+                     b and x),
+        true,
+        x*b);
+}

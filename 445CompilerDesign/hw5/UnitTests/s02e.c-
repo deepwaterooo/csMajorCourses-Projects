@@ -1,0 +1,31 @@
+// C-F13
+// testing static variables
+
+// toad() is in global, int toad is in local
+toad() { int toad; }  
+
+int load;
+// load() is in global, int load is in local but statically allocated
+load() 
+{ 
+    static int load; 
+    int load;
+}
+
+bool runningSum;
+
+int sum(bool init; int x) {
+    static int runningSum;
+
+    if (init) runningSum = 0;
+    else runningSum += x;
+
+    return runningSum;
+}
+
+  main()
+{
+    sum(true, 666);
+    sum(false, 3);
+    output(sum(false, 0));
+}

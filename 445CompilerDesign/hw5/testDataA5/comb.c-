@@ -1,0 +1,39 @@
+// C-F10
+int comb(int n; int r)
+{
+     int i; int j; int c;
+     
+     c=1;
+
+     i=n;
+     j=1; 
+     while (j<=r) {
+          c = c*i/j;
+	  i--;
+	  j++;
+     } 
+     return c;
+}
+
+void main()
+{
+     int max; int n;
+     bool xx;
+     int r;
+     
+     max = 20;
+
+     n=1;
+     while (n<=max) {
+          r=0;
+	  while (r<=n) {
+	       output(comb(n, r));
+	       r++;
+	  }
+          outnl();
+	  n++;
+     }
+}
+
+
+

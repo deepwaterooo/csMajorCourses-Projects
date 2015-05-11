@@ -1,0 +1,20 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: overlayTmp2.tm
+Enter command: 
+command: a 10000
+command: g
+888 
+999 
+777 
+Halted
+Last executed cmd:  128: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 128, PC is now 129
+command: e
+EXEC STAT: Number of instructions executed: 144
+EXEC STAT: Instruction memory used: 129
+EXEC STAT: Data memory used: 9
+command: x
+Bye.

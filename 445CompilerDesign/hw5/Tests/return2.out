@@ -1,0 +1,9 @@
+ERROR(4): Function 'fred' at line 3 is expecting to return type int but return has no return value.
+ERROR(9): Symbol 'fred' is already defined at line 3.
+ERROR(10): Function 'fred' at line 9 is expecting no return value, but return has return value.
+ERROR(28): Symbol 'fred' is already defined at line 3.
+ERROR(30): Function 'fred' at line 28 is expecting to return type bool but got type int.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 0
+Number of errors: 6
+------------------------------------

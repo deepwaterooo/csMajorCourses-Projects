@@ -1,0 +1,21 @@
+// C-F13
+main()
+{
+    bool a, b;
+
+    output(a = true);
+    output(b = false);
+    
+
+    output(a and b);
+    output(a or b);
+    output(not a);
+
+    output(111>222);
+    output(111<222);
+    output(111==222);
+    output(111>=222);
+    output(111<=222);
+    output(111!=222);    
+}
+

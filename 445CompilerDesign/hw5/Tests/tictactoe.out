@@ -1,0 +1,5 @@
+ERROR(356): Symbol 'playgame' is not defined.
+ERROR(359): Symbol 'printboard' is not defined.
+Number of warnings: 0
+Number of errors: 2
+------------------------------------

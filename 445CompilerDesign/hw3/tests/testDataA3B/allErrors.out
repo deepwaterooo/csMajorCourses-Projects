@@ -1,0 +1,113 @@
+ERROR(6): Function 'dog' at line 2 is expecting to return type int but got type bool.
+ERROR(13): Function 'cat' at line 9 is expecting to return type int but return has no return value.
+ERROR(16): Symbol 'cat' is already defined at line 9.
+ERROR(25): Function 'ox' at line 23 is expecting no return value, but return has return value.
+WARNING(28): Expecting to return type int but function 'emu' has no return statement.
+ERROR(35): Symbol 'x' is already defined at line 34.
+ERROR(45): Expecting Boolean test condition in if statement but got type int.
+ERROR(46): Expecting Boolean test condition in while statement but got type int.
+ERROR(48): Cannot use function 'cat' as a simple variable.
+ERROR(49): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(50): '+=' requires operands of type int but rhs is of type bool.
+ERROR(51): '-=' requires operands of type int but lhs is of type bool.
+ERROR(53): Cannot use array as test condition in if statement.
+ERROR(54): Cannot use array as test condition in while statement.
+ERROR(59): Cannot have a break statement outside of loop.
+ERROR(62): The operation '+' does not work with arrays.
+ERROR(63): The operation '-' does not work with arrays.
+ERROR(64): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(64): The operation 'not' does not work with arrays.
+ERROR(66): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(68): '+' requires operands of type int but lhs is of type bool.
+ERROR(70): '*' requires operands of type int but rhs is of type bool.
+ERROR(72): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(74): Cannot index nonarray 'x'.
+ERROR(76): Array 'aa' should be indexed by type int but got type bool.
+ERROR(78): Array index is the unindexed array 'zz'.
+ERROR(80): Symbol 'xyzzy' is not defined.
+ERROR(81): Symbol 'meerkat' is not defined.
+ERROR(83): 'x' is a simple variable and cannot be called.
+ERROR(85): Too many parameters passed for function 'dog' defined on line 2.
+ERROR(86): Too few parameters passed for function 'ibex' defined on line 18.
+ERROR(88): Expecting type int in parameter 1 of call to 'dog' defined on line 2 but got type bool.
+ERROR(90): Not expecting array in parameter 1 of call to 'cat' defined on line 9.
+ERROR(91): Expecting type int in parameter 1 of call to 'cat' defined on line 9 but got type void.
+ERROR(93): Expecting array in parameter 1 of call to 'ibex' defined on line 18.
+ERROR(94): Cannot use function 'ibex' as a simple variable.
+ERROR(96): Cannot use function 'ibex' as a simple variable.
+ERROR(96): '+' requires operands of type int but lhs is of type bool.
+ERROR(98): The operation '*' only works with arrays.
+ERROR(100): '*' requires operands of type int but lhs is of type bool.
+ERROR(100): The operation '*' does not work with arrays.
+ERROR(100): '+' requires operands of type int but lhs is of type bool.
+ERROR(100): The operation '*' only works with arrays.
+ERROR(100): The operation 'not' does not work with arrays.
+ERROR(100): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(100): 'or' requires operands of type bool but lhs is of type int.
+ERROR(100): Cannot have a break statement outside of loop.
+ERROR(101): 'and' requires operands of type bool but lhs is of type int.
+ERROR(101): 'and' requires operands of type bool but rhs is of type int.
+ERROR(103): Cannot return an array.
+ERROR(108): Symbol 'main' is already defined at line 32.
+ERROR(122): '==' requires operands of the same type but lhs is type bool and rhs is type char.
+ERROR(127): '=' requires operands of the same type but lhs is type bool and rhs is type char.
+ERROR(131): '!=' requires operands of the same type but lhs is type bool and rhs is type char.
+ERROR(137): Symbol 'z' is already defined at line 106.
+ERROR(139): Variable 'a' is of type int but is being initialized with an expression of type bool.
+ERROR(139): Variable 'b' is of type int but is being initialized with an expression of type bool.
+ERROR(139): Variable 'zz' is of type int but is being initialized with an expression of type char.
+ERROR(141): Initializer for variable 'd' is not a constant expression.
+ERROR(142): '*' requires operands of type int but rhs is of type char.
+ERROR(143): Initializer for variable 'e' is not a constant expression.
+ERROR(144): Initializer for variable 'f' is not a constant expression.
+ERROR(146): Symbol 'main' is already defined at line 32.
+ERROR(159): '==' requires operands of the same type but lhs is type bool and rhs is type char.
+ERROR(165): '=' requires operands of the same type but lhs is type bool and rhs is type char.
+ERROR(183): In foreach statement the variable to the left of 'in' must not be an array.
+ERROR(184): In foreach statement the variable to the left of 'in' must not be an array.
+ERROR(184): Foreach requires operands of 'in' be the same type but lhs is type bool and rhs array is type int.
+ERROR(187): Foreach requires operands of 'in' be the same type but lhs is type bool and rhs array is type int.
+ERROR(189): If not an array, foreach requires rhs of 'in' be of type int but it is type bool.
+ERROR(190): If not an array, foreach requires lhs of 'in' be of type int but it is type bool.
+ERROR(196): Initializer for nonarray variable 'w' of type char cannot be initialized with an array.
+ERROR(197): Variable 'u' is of type int but is being initialized with an expression of type char.
+ERROR(197): Initializer for nonarray variable 'u' of type int cannot be initialized with an array.
+ERROR(198): Array 't' must be of type char to be initialized, but is of type int.
+ERROR(198): Initializer for array variable 't' must be a string, but is of nonarray type int.
+ERROR(199): Initializer for array variable 's' must be a string, but is of nonarray type char.
+ERROR(207): Symbol 'main' is already defined at line 32.
+ERROR(209): Initializer for variable 'x' is not a constant expression.
+ERROR(210): Initializer for nonarray variable 'c' of type char cannot be initialized with an array.
+ERROR(211): Initializer for array variable 'd' must be a string, but is of nonarray type char.
+ERROR(212): Variable 'e' is of type char but is being initialized with an expression of type int.
+ERROR(213): Initializer for array variable 'f' must be a string, but is of nonarray type int.
+ERROR(214): Array 'z' must be of type char to be initialized, but is of type int.
+ERROR(216): '=' requires that if one operand is an array so must the other operand.
+ERROR(217): '=' requires that if one operand is an array so must the other operand.
+ERROR(218): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(219): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(219): '=' requires that if one operand is an array so must the other operand.
+ERROR(220): '=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(222): '==' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(223): '>' requires operands of type char or type int but rhs is of type bool.
+ERROR(224): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(225): The operation '>' does not work with arrays.
+ERROR(226): The operation '>' does not work with arrays.
+ERROR(227): The operation '>' does not work with arrays.
+ERROR(229): Unary '-' requires an operand of type int but was given type char.
+ERROR(230): The operation '*' only works with arrays.
+ERROR(231): The operation '-' does not work with arrays.
+ERROR(234): Unary '++' requires an operand of type int but was given type char.
+ERROR(234): The operation '++' does not work with arrays.
+ERROR(235): The operation '++' does not work with arrays.
+ERROR(236): Unary '--' requires an operand of type int but was given type char.
+ERROR(236): The operation '--' does not work with arrays.
+ERROR(237): The operation '--' does not work with arrays.
+WARNING(207): Expecting to return type int but function 'main' has no return statement.
+ERROR(242): Symbol 'fred' is already defined at line 241.
+ERROR(244): Symbol 'fred' is already defined at line 243.
+ERROR(245): Symbol 'fred' is already defined at line 243.
+ERROR(246): Symbol 'fred' is already defined at line 243.
+WARNING(242): Expecting to return type int but function 'fred' has no return statement.
+Number of warnings: 3
+Number of errors: 108

@@ -1,0 +1,18 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: b0b.tm
+Enter command: 
+command: a 10000
+command: g
+F T T T F F F T T F 
+Halted
+Last executed cmd:  159: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 159, PC is now 160
+command: e
+EXEC STAT: Number of instructions executed: 202
+EXEC STAT: Instruction memory used: 160
+EXEC STAT: Data memory used: 5
+command: x
+Bye.

@@ -1,0 +1,49 @@
+// C-F13
+// C-F09
+int cow(int x)
+{
+	cow(42);
+	return 666;
+}
+
+  ant(int x)
+{
+	bat(x);   // bat undefined
+}
+
+  bat(int x)
+{
+	ant(x);
+}
+
+int dog(int y)
+{
+	return dog(3);
+}
+
+int eel(int y)
+{
+	cow(ant(3));          // wrong type to cow
+	return dog(cow(3));   
+}
+
+  fox(int y)
+{
+	return ant(3);
+}
+
+  gnu(int y)
+{
+	return ant(3);
+}
+
+bool hog(int z)
+{
+	return hog(eel(cow(3)));
+}
+
+int ibex(bool z)
+{
+	return ibex(hog(ibex(hog(ibex(true)))));
+}
+

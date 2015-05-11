@@ -1,0 +1,5 @@
+ERROR(8): Function 'cat' at line 6 is expecting no return value, but return has return value.
+ERROR(15): '=' requires operands of the same type but lhs is type int and rhs is type void.
+Number of warnings: 0
+Number of errors: 2
+------------------------------------

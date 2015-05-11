@@ -1,0 +1,434 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{geometry}
+\geometry{b5paper}
+\usepackage{CJKutf8}
+
+
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{listings}
+
+\usepackage{amsmath,amssymb,amsfonts} % Typical maths resource packages
+\usepackage{graphics}                 % Packages to allow inclusion of graphics
+%\usepackage{color}                    % For creating coloured text and background
+\usepackage{xcolor}                    % For creating coloured text and background
+\usepackage{hyperref}                 % For creating hyperlinks in cross references
+
+\parindent 1cm
+\parskip 0.2cm
+\topmargin 0.1cm
+\oddsidemargin 1cm
+\evensidemargin -0.5cm
+\textwidth 17cm
+\textheight 23cm
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+
+\title{<现代操作系统>读书笔记之--进程间通信3}
+\author{Heyan Huang}
+
+\usepackage{geometry}
+\geometry{left=0cm,right=0cm,top=0.1cm,bottom=0cm}
+
+\newenvironment{narrow}[2]{% 
+\begin{list}{}{% 
+\setlength{\topsep}{0pt}% 
+\setlength{\leftmargin}{#1}% 
+\setlength{\rightmargin}{#2}% 
+%\setlength{\listparindent}{\parindent}% 
+%\setlength{\itemindent}{\parindent}% 
+\setlength{\parsep}{\parskip}% 
+}% 
+\item[]}{\end{list}} 
+%\begin{narrow}{0.35in}{0in}  \end{narrow}
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+\maketitle
+
+
+\lstset{language=c++,
+numbers=left, 
+numberstyle=\tiny, 
+%keywordstyle=\color{blue!70}, commentstyle=\color{red!55!green!55!blue!55}, 
+%frame=shadowbox, 
+%rulesepcolor=\color{red!20!green!20!blue!20},
+escapeinside=``, 
+%xleftmargin=0em,xrightmargin=0em, aboveskip=0.5em
+extendedchars=false %这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+}
+
+\small{} 
+
+\section{互斥量（mutex）}
+
+    当信号量（Semaphore）的计数功能不再需要，信号量简化之后就成为一种新的变量互斥量（mutex）。互斥量在处理共享资源和代码之间的互斥访问方面非常有用。互斥量实现起来简单高效，这一点对于用户空间的线程库非常有用。
+
+    互斥是那种只有两种状态，但每次只能处在其中一种状态的变量。这两种状态分别是锁定和非锁定状态。因此，只需要一个比特就能表示互斥量的两种状态，例如，0代表非锁定和1表示锁定。互斥量有两个相关的操作：mutex\_lock和mutex\_unlock。
+
+    mutex\_lock：当线程需要进入临界区时，它调用mutex\_lock操作，若当前mutex未锁定，则mutex\_lock调用成功，若mutex已经锁定，则调用线程会阻塞，直到当前获得mutex锁的那个线程离开临界区，使得mutex解锁。
+
+    mutex\_unlock：当线程离开临界区，需要解除对mutex的锁定，这时候线程调用mutex\_unlock。mutex很简单，因此在用户空间可以很简单的通过TSL和XCHG指令实现，其原理的代码如下：
+
+\begin{lstlisting}[language=c++]
+mutex_lock:  
+    TSL REGISTER,MUTEX  
+    CMP REGISTER,#0  
+    JZE ok          //`如果mutex为0，则证明mutex目前未锁定，于是返回`
+    CALL thread_yield  
+    JMP mutex_lock      //`再次尝试`
+ok: RET  
+  
+mutex_unlock:  
+    MOVE MUTEX,#0       //`解锁：将mutex设置为0` 
+    RET  
+\end{lstlisting}
+
+这个代码和前面讲到的enter\_region的代码非常类似，但是却有一个很关键的区别：在enter\_region中，如果进程暂时不能进入临界区，那么他一直测试条件，看能否进入，直到时间片用完为止。
+ 
+    而在用户线程中，根本没有时钟中断来使得运行过长的线程停下来，结果就是一个使用上述的忙等待方式企图获取锁的线程会时钟循环，因为别的获得锁的线程根本没机会运行。
+
+    而在mutex\_lock中则不同，如果当前mutex锁定，他就阻塞，让调度机调度其他的线程运行，从而更加充分的利用CPU资源。
+
+    由于thread\_yield仅仅是在用户空间对线程调度器的调用，因此，不需要内核支持，这样实现起来是很简单的。
+
+    除了mutex\_lock和mutex\_unlock之外，可能还需要其他的一些特性，例如mutex\_trylock，该调用会尝试获得锁，但是如果不成功就以失败状态返回，然后该干嘛干嘛，至少并不阻塞。
+
+    由于线程之间共享一个内存空间，所以对于多个线程来说，共享mutex不是什么难事。但是之前提到的Peterson方案、信号量方案等主要是对于进程来说的。他们之间并不共享一份内存空间。那怎么保证多个进程之间共享变量，例如之前提到的turn呢？至少有这么几种办法：
+\begin{itemize}
+\itemsep=-3pt
+\item 将共享数据类型，例如信号量，存储在内核，然后只允许通过系统调用来访问
+\item 大部分现代操作系统（Windows和Unix）都支持使多个进程共享一部分内存空间
+\item 实在不行多个进程还能共享文件吧
+\end{itemize} 
+    如果说多个进程共享大部分内存空间，那么进程和线程的区别就不是那么的明显，但还是存在的。比如说，两个进程还是有自己单独的打开的文件等独有的属性，但这些属性对于多个线程来说是共享的。
+
+
+\section{Pthread库中的互斥量}
+Pthread库中同步的方法的原理还是互斥量。如果一个线程需要进入临界区，那么它需要尝试锁住相关的互斥量。如果互斥量未锁定，它进入临界区并且立马锁定互斥量，并借此防止别的线程进入临界区。
+
+    Pthread的几个主要的调用如下所示，他们的作用都在注释中显示：
+ 
+Cpp代码  收藏代码
+\begin{lstlisting}[language=c++]
+Pthread_mutex_init      //`创建mutex ` 
+Pthread_mutex_destroy   //`销毁mutex ` 
+Pthread_mutex_lock      //`锁定mutex ` 
+Pthread_mutex_trylock   //`尝试锁定mutex`  
+Pthread_mutex_unlock    //`解锁mutex ` 
+\end{lstlisting}
+    Pthread库在实现同步方面还需要使用到另外一种机制：条件变量（Condition Variable）。条件变量往往和互斥量一起使用来确保同步。回想一下生产者-消费者问题。当生产者先检查缓冲区是否已经满了，这可以通过mutex实现，而不需要其他线程的干扰，但是如果发现已经满了，那么就需要一种机制让它阻塞以及之后被唤醒。这就需要通过条件变量来实现了。
+ 
+    与条件变量相关的库调用如下所示：
+ 
+Cpp代码  收藏代码
+\begin{lstlisting}[language=Python]
+Pthread_cond_init       //`创建条件变量 ` 
+Pthread_cond_destroy    //`销毁条件变量 ` 
+Pthread_cond_wait       //`阻塞并且等待信号 ` 
+Pthread_cond_signal     //`发信号唤醒另一个线程 `
+Pthread_cond_broadcast  //`广播唤醒多个线程 `
+\end{lstlisting}
+    互斥量和条件变量总是一起被使用。使用的基本模式如下：一个线程先锁定mutex，然后等待条件变量（换句话说，就是它需要的资源）知道另一个线程接下来可以给它发信号以便继续。
+ 
+    还是以只有一个单元的缓冲区生产者-消费者问题为例看看Pthread的使用：
+ 
+Cpp代码  收藏代码
+\begin{lstlisting}[language=c++]
+#include <stdio.h>  
+#include <pthread.h>  
+#define MAX 1000000000  
+pthread_mutex_t the_mutex;  
+pthread_cond_t condc,condp;  
+int buffer = 0;  
+  
+void *producer(void *ptr) {  
+    int i;  
+    for(i = 0; i <= MAX; i++) {  
+        pthread_mutex_lock(&the_mutex);  
+        while(buffer != 0) {  
+            pthread_cond_wait(&condp,&the_mutex);  
+        }  
+        buffer = 1;  
+        pthread_cond_signal(&condc);  
+        pthread_mutex_unlock(&the_mutex);  
+    }  
+    pthread_exit(0);  
+}  
+  
+void *consumer(coid *ptr) {  
+    int i;  
+    for(i = 0; i <= MAX; i++) {  
+        pthread_mutex_lock(&the_mutex);  
+        while(buffer == 0) {  
+            pthread_cond_wait(&condc,&the_mutex);  
+        }  
+        buffer = 0;  
+        pthread_cond_signal(&condp);  
+        pthread_mutex_unlock(&the_mutex);  
+    }  
+    pthread_exit(0);  
+}  
+  
+int main(int argc,char *argv) {  
+    pthread_t pro,con;  
+    pthread_mutex_init(&the_mutex,0);  
+    pthread_cond_init(&condc);  
+    pthread_cond_init(&condp);  
+    pthread_create(&con,0,consumer,0);  
+    pthread_create(&pro,0,producer,0);  
+    pthread_join(pro,0);  
+    pthread_join(con,0);  
+    pthread_cond_destroy(&condc);  
+    pthread_cond_destroy(&condp);  
+    pthread_mutex_destroy(&the_mutex);  
+} 
+\end{lstlisting}
+
+
+\section{监视器（Monitor）}
+在上一篇博客中提到了那个信号量的例子。对于生产者来说，如果将两个down操作的顺序颠倒一下，后果就会很严重。我们先把那个代码回顾一遍：
+ 
+Cpp代码  收藏代码
+\begin{lstlisting}[language=c++]
+#defone N 100   /*`buffer的大小`*/  
+typedef int semaphore;  
+semaphore mutex = 1;  
+semaphore full = 0;  
+semaphore empty = N;  
+  
+void producer(void) {  
+    int item;  
+    while(TRUE) {  
+        item = produce_item();  
+        down(&empty);       //`看这里 ` 
+        down(&mutex);       //`看这里`  
+        insert_item(item);  
+        up(&mutex);         //`看这里 ` 
+        up(&full);  
+    }  
+}  
+  
+void consumer(void) {  
+    int item;  
+    wile(TRUE) {  
+        down(&full);  
+        down(&mutex);  
+        item = remove_item();  
+        up(&mutex);  
+        up(&empty);  
+        consume_item(item);  
+    }  
+}  
+\end{lstlisting}
+    如果这两个操作颠倒了，换句话说生产者其实还没生产出来就跑去通知消费者了。假设这时候buffer已经满了，那么生产者会阻塞，下面的up(\&mutex)操作根本就没执行。好了，轮到消费者了，消费者上来先down(\&full)，也就是消费掉一个消息，接着要down(\&mutex)。但是这时候一看，mutex已经是0，然后一直等，等到晕倒了（阻塞）。于是乎，大家就一直等下去。这就是死锁。
+ 
+    所以说，在使用信号量解决类似的问题上，程序猿必须非常小心。一不注意，就会出事。鉴于这样的情况，又有人提出了新的办法，他们是Brinch Hansen和Hoare。他们提出了一种高层的同步原语——监视器（monitor）。监视器是一组过程（procedures）、变量（variables）、数据结构打包在一个特殊的模块或者包中。进程可以随时调用里面的过程，但是不能直接访问过程暴露给进程之外的内部数据结构。下面是一个监视器的例子，它是用一种假设的语言写的。
+ 
+Plain代码  收藏代码
+\begin{lstlisting}[language=c++]
+monitor example  
+    integer i;  
+    condition c;  
+    procedure producer()  
+          
+    end;  
+  
+    procedure consumer()  
+  
+    end;  
+end monitor;  
+\end{lstlisting}
+    监视器有一个明显的特点就是同一时刻只允许一个进程进入其中。由于监视器属于语言本身的一部分，因此监视器保证互斥往往是由语言的编译器来实现的。这样的话程序员可以基本不关注监视器如何安排互斥。但是还有一个问题就是，当进程无法继续时如何使它阻塞。这个问题通过条件变量的引进来解决。条件变量有两个相关的操作：wait和signal。当一个监视器过程发现自己无法运行，那么他对某个条件变量进行一次wait操作，例如，对full这个条件变量进行wait。wait操作会使得调用线程阻塞，从而允许别的进程进入监视器。
+ 
+    而另外一个进程，也就是消费者，可以通过给生产者需要的那个条件变量发信号来使得生产者从阻塞中醒来。当执行完signal之后该怎么继续下去呢？有三种方案：
+ \begin{itemize}
+\itemsep=-3pt
+\item 让被唤醒的进程执行；
+\item 执行了signal操作的进程必须立刻离开监视器
+\item 让执行signal操作的进程继续进程，等该进程离开监视器后再由被唤醒的进程进入监视器。
+\end{itemize}
+    这里的条件变量并不是计数器，它不会保存数值以便后面使用，这一点与信号量是不同的。如果对一个没有被wait的条件变量执行signal操作，那么这个signal将会永远消失。因此必须保证wait必须在signal之前。
+ 
+    使用监视器处理生产者、消费者问题的框架如下面的代码：
+ 
+Plain代码  收藏代码
+\begin{lstlisting}[language=Python]
+monitor ProducerConsumer  
+    condition full,empty;  
+    integer count;  
+  
+    procedure insert(item:integer)  
+    begin  
+        if count = N then wait(full);  
+        insert_item(item);  
+        count:=count+1;  
+        if count = 1 then signal(empty);  
+    end;  
+  
+    function remove:integer  
+    begin   
+        if count = 0 then wait(empty)  
+        remove = remove_item;  
+        count = count - 1;  
+        if count = N - 1 then signal(full);  
+    end;  
+  
+    count := 0;  
+end monitor;  
+  
+procedure producer  
+begin   
+    while true do  
+    begin  
+        item = produce_item;  
+        ProducerConsumer.insert(item);  
+    end;  
+end;  
+  
+procedure consumer  
+begin  
+    while true do  
+        item = ProducerConsumer.remove;  
+        consume_item(item)  
+end;  
+\end{lstlisting}
+    实际上，上面是采用一种假象的语言来模拟的。实际上Java语言采用了类似的设计思路，实现同步synchronized。一旦某个线程正在执行synchronized方法，此时，该对象中的其他线程不允许调用其中的任何同步方法。下面看看Java中如何解决生产者消费者问题：
+ 
+Java代码  收藏代码
+\begin{lstlisting}[language=java]
+package net.jerryblog.concurrent;  
+  
+public class  
+ProducerConsumer {  
+    static final int N = 100;              // constant giving the buffer size  
+    static producer p = new producer();    // instantiate a new producer thread  
+    static consumer c = new consumer();    // instantiate a new consumer thread  
+    static our_monitor mon = new our_monitor(); // instantiate a new monitor  
+   
+    public static void main(String args[ ]) {  
+        p.start();      // start the producer thread  
+        c.start();      // start the consumer thread  
+    }  
+   
+    static class producer extends Thread {  
+        public void run( ) {   // run method contains the thread code  
+             int item;  
+             while(true) {     // producer loop  
+                 item = produce_item();  
+                 mon.insert(item);  
+            }  
+        }  
+        private int produce_item(){  
+              
+              
+        }  // actually produce  
+    }  
+   
+    static class consumer extends Thread {  
+        public void run() {    // run method contains the thread code  
+             int item;  
+             while(true) {     // consumer loop  
+                 item = mon.remove();  
+                 consume_item (item);  
+             }  
+        }  
+        private void consume_item (int item) {  }     // actually consume  
+    }  
+   
+    static class our_monitor {                 // this is a monitor  
+        private int buffer[ ] = new int[N];  
+        private int count = 0, lo = 0, hi = 0; // counters and indices  
+   
+        public synchronized void insert (int val) {  
+             if(count == N) go_to_sleep();     //if the buffer is full, go to sleep  
+             buffer [hi] = val;                // insert an item into the buffer  
+             hi = (hi + 1) % N;                // slot to place next item in  
+             count = count + 1;                // one more item in the buffer now  
+             if(count == 1) notify( );         // if consumer was sleeping, wake it up  
+        }  
+   
+        public synchronized int remove( ) {  
+             int val;  
+             if(count == 0) go_to_sleep( );    // if the buffer is empty, go to sleep  
+             val = buffer [lo];                // fetch an item from the buffer  
+             lo = (lo + 1) % N;                // slot to fetch next item from  
+             count = count - 1;                // one few items in the buffer  
+             if(count == N - 1) notify();      // if producer was sleeping, wake it up  
+             return val;  
+        }  
+        private void go_to_sleep() {   
+            try{  
+                wait( );  
+            }catch (InterruptedException exc) {  
+                  
+            }  
+          
+        }  
+    }  
+}  
+\end{lstlisting}
+
+
+\section{消息传递机制}
+
+消息传递是另外一种进程间通信的方式。消息传递机制使用两个原语：send和receive。这一点和信号量很类似。send和receive是系统调用，而不是语言层次的设计。
+ 
+Cpp代码  收藏代码
+\begin{lstlisting}[language=c++]
+send(destination,&message);  
+receive(source,&message);  
+\end{lstlisting}
+    前面一个调用将消息发送给指定的接收者，后者从一个发送者处接收消息。如果没有消息则阻塞或者说返回错误代码。
+ 
+    消息传递系统再设计上有一些信号量或者监视器等所不曾碰到的问题，尤其是当通信进程处在不同的机器上。比如，当消息在网络传输中丢失了。因此一旦接受者接收到了消息，必须返回一个回执（Acknowledgement）。如果说发送者没有收到这个回执消息，那么他会重新发送。
+    那么这又有一个新的问题，怎么区别发送者发送的两次消息是一个消息，只不过由于没有收到回执从新发送了一次？因此给消息一个唯一的序列号，如果接受者接收到的两次消息是一个序列号，那证明是从新发送。
+    使用消息传递机制实现的生产者消费者问题代码如下：
+ 
+Cpp代码  收藏代码
+\begin{lstlisting}[language=c++]
+#define N 100     /* number of slots in the buffer */  
+void producer(void)  
+{  
+    int item;  
+    message m;    /* message buffer */  
+   
+    while (TRUE) {  
+        item = produce_item( );       /* generate something to put in buffer */  
+        receive(consumer, &m);        /* wait for an empty to arrive */  
+        build_message (&m, item);     /* construct a message to send */  
+        send(consumer, &m);           /* send item to consumer */  
+    }  
+}  
+   
+void consumer(void) {  
+    int item, i;  
+    message m;  
+   
+    for (i = 0; i < N; i++) send(producer, &m);  /* send N empties */  
+    while (TRUE) {  
+        receive(producer, &m);         /* get message containing item */  
+        item = extract_item(&m);       /* extract item from message */  
+        send(producer, &m);            /* send back empty reply */  
+        consume_item(tem);             /* do something with the item */  
+    }  
+}  
+\end{lstlisting}
+
+
+\section{屏障（Barrier）}
+    最后要说的一种同步机制是针对一组进程设计的。假设这样的一组情况：有的应用程序会被分成很多不同的阶段（Phase），并且有一个规定，必须所有的进程都执行完一个阶段才能进入下一个阶段。这样就可以通过在每个阶段的末尾放置一个屏障来实现。如图：
+
+    举个例子：假设需要一个时间段测量一次一根铁轨的不同段的温度，存储在一个数组中，每个一段时间用来做科学计算一次。假设这根铁轨特别长，因此，分成若干段，每段的温度由一个进程收集记录。所以，每次提交所有温度之前必须所有进程都统计完这阶段的温度。这时候急需要屏障啦。
+
+
+\end{CJK}
+\end{document}

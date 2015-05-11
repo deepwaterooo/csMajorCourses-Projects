@@ -1,0 +1,8 @@
+ERROR(5): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(6): Syntax error.  Unexpected '='.
+ERROR(7): Syntax error.  Unexpected int.
+ERROR(8): Syntax error.  Unexpected number: 10.
+ERROR(8): Syntax error.  Unexpected ']'.  Expecting ';'.
+Number of warnings: 0
+Number of errors: 5
+------------------------------------

@@ -1,0 +1,19 @@
+// C-F13
+// C-F09
+//
+  adama()
+{}
+
+  roslin()
+{{}{}}
+
+  starbuck()
+{;{;};{;};}         // note if we ended the function in a semicolon then error
+
+  apollo()
+{bool a; { bool b; { bool c;}}}
+
+  numberSix()
+{
+;;;;;
+}

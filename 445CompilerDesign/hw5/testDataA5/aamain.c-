@@ -1,0 +1,6 @@
+// C-F09
+int main()
+{
+    int z;
+    z = z+z;
+}

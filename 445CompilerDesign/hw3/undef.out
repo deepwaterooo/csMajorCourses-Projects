@@ -1,0 +1,43 @@
+WARNING(3): Expecting to return type int but function 'intvalue' has no return statement.
+ERROR(10): Symbol 'undef' is not defined.
+ERROR(10): Initializer for variable 'x' is not a constant expression.
+ERROR(10): Symbol 'x' is already defined at line 9.
+ERROR(14): Symbol 'undef' is not defined.
+ERROR(15): '+' requires operands of type int but rhs is of type void.
+ERROR(16): Symbol 'undef' is not defined.
+ERROR(17): '+' requires operands of type int but lhs is of type void.
+ERROR(18): Symbol 'undef' is not defined.
+ERROR(18): Symbol 'undef' is not defined.
+ERROR(19): '+' requires operands of type int but lhs is of type void.
+ERROR(19): '+' requires operands of type int but rhs is of type void.
+ERROR(22): Symbol 'undef' is not defined.
+ERROR(23): '+' requires operands of type int but rhs is of type void.
+ERROR(24): Symbol 'undef' is not defined.
+ERROR(25): '+' requires operands of type int but lhs is of type void.
+ERROR(26): Symbol 'undef' is not defined.
+ERROR(26): Symbol 'undef' is not defined.
+ERROR(27): '+' requires operands of type int but lhs is of type void.
+ERROR(27): '+' requires operands of type int but rhs is of type void.
+ERROR(29): Symbol 'undef' is not defined.
+ERROR(30): Symbol 'undef' is not defined.
+ERROR(31): Symbol 'undef' is not defined.
+ERROR(32): Symbol 'undef' is not defined.
+ERROR(34): Symbol 'undef' is not defined.
+ERROR(34): '+' requires operands of type int but rhs is of type bool.
+ERROR(34): '==' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(34): The operation '*' only works with arrays.
+ERROR(35): 'x' is a simple variable and cannot be called.
+ERROR(35): '+' requires operands of type int but rhs is of type bool.
+ERROR(35): '==' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(35): The operation '*' only works with arrays.
+ERROR(37): Cannot use function 'novalue' as a simple variable.
+ERROR(37): '=' requires operands of the same type but lhs is type void and rhs is type int.
+ERROR(38): Cannot use function 'intvalue' as a simple variable.
+ERROR(40): Expecting type int in parameter 1 of call to 'take1' defined on line 1 but got type void.
+ERROR(41): Cannot use function 'novalue' as a simple variable.
+ERROR(41): Expecting type int in parameter 1 of call to 'take1' defined on line 1 but got type void.
+ERROR(42): Symbol 'undef' is not defined.
+ERROR(43): Symbol 'undef' is not defined.
+ERROR(45): Cannot use function 'intvalue' as a simple variable.
+Number of warnings: 1
+Number of errors: 40

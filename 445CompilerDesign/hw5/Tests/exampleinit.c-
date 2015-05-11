@@ -1,0 +1,34 @@
+// C-F13
+// int g:444+555;
+// int ga[11];
+// main() {
+//     static int s:666*777;
+//     static int sa[22];
+//     int l:888*999;
+//     int la[33];
+// }
+
+int g:444+555;
+int ga[11];
+int s_1:666*777;
+int sa_2[22];
+
+main() {
+    static int s:666*777;
+    static int sa[22];
+    int l:888*999;
+    int la[33];
+}
+
+// name     type         space
+// g        global       global
+// ga       global       global
+// s-1      localstatic  global
+// sa-2     localstatic  global
+// 
+// // local symtab
+// s        localstatic  global s-1
+// sa       localstatic  global s-2
+// l        local        local
+// la       local        local
+// 

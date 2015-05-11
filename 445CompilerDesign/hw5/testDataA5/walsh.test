@@ -1,0 +1,48 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: walsh.tm
+Enter command: 
+command: a 10000000
+command: g
+entered: 4
+entered: 1
+entered: 4
+entered: 9
+entered: 16
+entered: 25
+entered: 36
+entered: 49
+entered: 64
+entered: 81
+entered: 100
+entered: 121
+entered: 144
+entered: 169
+entered: 196
+entered: 225
+entered: 256
+1496 -136 -272 16 -544 32 64 0 -1088 64 128 0 256 0 0 0 
+1 4 9 16 25 36 49 64 81 100 121 144 169 196 225 256 
+entered: 3
+entered: 0
+entered: 16
+entered: 0
+entered: 0
+entered: 0
+entered: 0
+entered: 0
+entered: 0
+16 -16 16 -16 16 -16 16 -16 
+0 16 0 0 0 0 0 0 
+entered: 0
+Halted
+Last executed cmd:  462: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 462, PC is now 463
+command: e
+EXEC STAT: Number of instructions executed: 11546
+EXEC STAT: Instruction memory used: 463
+EXEC STAT: Data memory used: 56
+command: x
+Bye.

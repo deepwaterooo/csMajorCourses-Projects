@@ -1,0 +1,15 @@
+// C-F13
+char x;
+
+main()
+{
+     char y;
+
+     x = 'X';
+     y = 'Y';
+     outputc(x);
+     outnl();
+     outputc(y);
+     outnl();
+}
+

@@ -1,0 +1,104 @@
+ERROR(16): Symbol 'cat' is not defined.
+ERROR(18): Function 'dog' at line 12 is expecting to return type int but got type bool.
+ERROR(25): Function 'cat' at line 21 is expecting to return type int but return has no return value.
+ERROR(28): Symbol 'cat' is already defined at line 21.
+ERROR(39): Function 'ox' at line 37 is expecting no return value, but return has return value.
+WARNING(42): Expecting to return type int but function 'emu' has no return statement.
+ERROR(54): Symbol 'x' is already defined at line 53.
+ERROR(55): Symbol 'x' is already defined at line 53.
+ERROR(63): Symbol 'v' is not defined.
+ERROR(65): Expecting Boolean test condition in if statement but got type int.
+ERROR(66): Expecting Boolean test condition in while statement but got type int.
+ERROR(67): Expecting Boolean test condition in while statement but got type void.
+ERROR(69): Cannot use function 'cat' as a simple variable.
+ERROR(70): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(71): '+=' requires operands of type int but rhs is of type bool.
+ERROR(72): '-=' requires operands of type int but lhs is of type bool.
+ERROR(73): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(74): Unary '++' requires an operand of type int but was given type bool.
+ERROR(76): Cannot use array as test condition in if statement.
+ERROR(77): Cannot use array as test condition in while statement.
+ERROR(79): Cannot have a break statement outside of loop.
+ERROR(83): The operation '+' does not work with arrays.
+ERROR(84): The operation '<' does not work with arrays.
+ERROR(85): '<' requires operands of type char or type int but lhs is of type bool.
+ERROR(85): '<' requires operands of type char or type int but rhs is of type bool.
+ERROR(85): The operation '<' does not work with arrays.
+ERROR(87): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(91): '+' requires operands of type int but lhs is of type bool.
+ERROR(93): '*' requires operands of type int but rhs is of type bool.
+ERROR(95): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(96): '+' requires operands of type int but rhs is of type bool.
+ERROR(96): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(97): Unary '-' requires an operand of type int but was given type bool.
+ERROR(99): Cannot index nonarray 'x'.
+ERROR(100): 'and' requires operands of type bool but lhs is of type int.
+ERROR(100): 'and' requires operands of type bool but rhs is of type int.
+ERROR(100): '*' requires operands of type int but rhs is of type bool.
+ERROR(101): Symbol 'y' is not defined.
+ERROR(101): 'and' requires operands of type bool but lhs is of type int.
+ERROR(101): '*' requires operands of type int but rhs is of type bool.
+ERROR(102): 'and' requires operands of type bool but lhs is of type int.
+ERROR(102): 'and' requires operands of type bool but rhs is of type int.
+ERROR(102): '*' requires operands of type int but rhs is of type bool.
+ERROR(102): 'or' requires operands of type bool but rhs is of type int.
+ERROR(104): The operation '*' only works with arrays.
+ERROR(105): 'and' requires operands of type bool but lhs is of type int.
+ERROR(109): Array 'aa' should be indexed by type int but got type bool.
+ERROR(111): Cannot use function 'cat' as a simple variable.
+ERROR(113): Array index is the unindexed array 'aa'.
+ERROR(114): Symbol 'AA' is not defined.
+ERROR(116): Symbol 'meerkat' is not defined.
+ERROR(118): Symbol 'xyzzy' is not defined.
+ERROR(119): Symbol 'meerkat' is not defined.
+ERROR(120): Symbol 'xyzzy' is not defined.
+ERROR(120): 'and' requires operands of type bool but rhs is of type int.
+ERROR(122): Symbol 'flight' is not defined.
+ERROR(122): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(122): Unary '-' requires an operand of type int but was given type bool.
+ERROR(122): Symbol 'uu' is not defined.
+ERROR(122): Symbol 'y' is not defined.
+ERROR(122): '*' requires operands of type int but rhs is of type bool.
+ERROR(124): 'x' is a simple variable and cannot be called.
+ERROR(126): Too many parameters passed for function 'dog' defined on line 12.
+ERROR(127): Too few parameters passed for function 'ibex' defined on line 31.
+ERROR(129): Expecting type int in parameter 1 of call to 'dog' defined on line 12 but got type bool.
+ERROR(131): Not expecting array in parameter 1 of call to 'cat' defined on line 21.
+ERROR(133): Expecting array in parameter 1 of call to 'ibex' defined on line 31.
+ERROR(134): Expecting type int in parameter 1 of call to 'ibex' defined on line 31 but got type bool.
+ERROR(135): Cannot use function 'ibex' as a simple variable.
+ERROR(137): Cannot use function 'ibex' as a simple variable.
+ERROR(137): '+' requires operands of type int but lhs is of type bool.
+ERROR(140): Array index is the unindexed array 'zz'.
+ERROR(141): Expecting type int in parameter 1 of call to 'ox' defined on line 37 but got type bool.
+ERROR(141): Array 'aa' should be indexed by type int but got type void.
+ERROR(143): '=' requires operands of the same type but lhs is type int and rhs is type void.
+ERROR(144): '+' requires operands of type int but rhs is of type void.
+ERROR(145): Expecting type int in parameter 1 of call to 'cat' defined on line 21 but got type void.
+ERROR(146): Expecting type int in parameter 1 of call to 'cat' defined on line 21 but got type bool.
+ERROR(149): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(150): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(151): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(151): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(151): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(153): '*' requires operands of type int but rhs is of type bool.
+ERROR(153): '*' requires operands of type int but lhs is of type bool.
+ERROR(153): 'and' requires operands of type bool but lhs is of type int.
+ERROR(153): 'and' requires operands of type bool but rhs is of type int.
+ERROR(155): '+' requires operands of type int but rhs is of type bool.
+ERROR(155): Symbol 'parrot' is not defined.
+ERROR(155): 'and' requires operands of type bool but rhs is of type int.
+ERROR(155): Expecting type int in parameter 3 of call to 'emu' defined on line 42 but got type bool.
+ERROR(156): Expecting type int in parameter 1 of call to 'emu' defined on line 42 but got type bool.
+ERROR(156): '+' requires operands of type int but rhs is of type bool.
+ERROR(156): Symbol 'parrot' is not defined.
+ERROR(156): 'and' requires operands of type bool but rhs is of type int.
+ERROR(156): Expecting type int in parameter 3 of call to 'emu' defined on line 42 but got type bool.
+ERROR(156): 'and' requires operands of type bool but rhs is of type int.
+ERROR(156): Expecting type int in parameter 2 of call to 'emu' defined on line 42 but got type bool.
+ERROR(156): Expecting type int in parameter 3 of call to 'emu' defined on line 42 but got type bool.
+ERROR(156): Too many parameters passed for function 'emu' defined on line 42.
+ERROR(156): '*' requires operands of type int but rhs is of type bool.
+ERROR(158): Cannot return an array.
+Number of warnings: 1
+Number of errors: 101

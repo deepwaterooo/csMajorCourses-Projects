@@ -1,0 +1,27 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: sort.tm
+Enter command: 
+command: a 10000
+command: g
+entered: 31
+entered: 41
+entered: 59
+entered: 26
+entered: 53
+entered: 58
+entered: 97
+entered: 93
+entered: 23
+entered: 84
+23 26 31 41 53 58 59 84 93 97 Halted
+Last executed cmd:  222: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 222, PC is now 223
+command: e
+EXEC STAT: Number of instructions executed: 2521
+EXEC STAT: Instruction memory used: 223
+EXEC STAT: Data memory used: 31
+command: x
+Bye.

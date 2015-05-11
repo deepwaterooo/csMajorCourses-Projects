@@ -1,0 +1,19 @@
+// C-F13
+  main()
+{
+    int z;
+    z = 111;
+    { 
+        int x; 
+
+        x = 222;
+    }        
+    { 
+        int y; 
+
+        output(y); outnl();
+        y = 333;
+        output(y); outnl();
+    }        
+    output(z); outnl();
+}

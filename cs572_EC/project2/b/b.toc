@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Algorithm Emphasize}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Conditional Non-terminal}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Crossover of two sub-trees}{2}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}crossover key steps}{2}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}crossover codes are listed for reference}{2}{subsubsection.1.2.2}
+\contentsline {subsection}{\numberline {1.3}Mutation}{4}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Selection}{5}{subsection.1.4}
+\contentsline {section}{\numberline {2}Results}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Fitness vs Generation Count}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Applying best function on test points}{5}{subsection.2.2}
+\contentsline {section}{\numberline {3}Conclusions}{5}{section.3}
+\contentsline {section}{\numberline {4}example results I got before bad$_{{alloc}}$}{6}{section.4}
+\contentsline {section}{\numberline {5}A expression tree I have got}{7}{section.5}

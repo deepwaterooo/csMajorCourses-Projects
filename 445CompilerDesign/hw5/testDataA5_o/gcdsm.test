@@ -1,0 +1,67 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: gcdsm.tm
+Enter command: 
+command: a 5000
+command: g
+entered: 60 
+entered: 210
+30 Halted
+Last executed cmd:  113: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 113, PC is now 114
+command: e
+EXEC STAT: Number of instructions executed: 178
+EXEC STAT: Instruction memory used: 114
+EXEC STAT: Data memory used: 23
+command: l
+Loading file: gcdsm.tm
+command: g
+entered: 210 
+entered: 60
+30 Halted
+Last executed cmd:  113: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 113, PC is now 114
+command: e
+EXEC STAT: Number of instructions executed: 142
+EXEC STAT: Instruction memory used: 114
+EXEC STAT: Data memory used: 19
+command: l
+Loading file: gcdsm.tm
+command: g
+entered: 8192 
+entered: 496
+16 Halted
+Last executed cmd:  113: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 113, PC is now 114
+command: e
+EXEC STAT: Number of instructions executed: 214
+EXEC STAT: Instruction memory used: 114
+EXEC STAT: Data memory used: 27
+command: l
+Loading file: gcdsm.tm
+command: g
+entered: 1234 
+entered: 4321
+1 Halted
+Last executed cmd:  113: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 113, PC is now 114
+command: e
+EXEC STAT: Number of instructions executed: 322
+EXEC STAT: Instruction memory used: 114
+EXEC STAT: Data memory used: 39
+command: l
+Loading file: gcdsm.tm
+command: g
+entered: 216
+entered: 666
+18 Halted
+Last executed cmd:  113: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 113, PC is now 114
+command: e
+EXEC STAT: Number of instructions executed: 178
+EXEC STAT: Instruction memory used: 114
+EXEC STAT: Data memory used: 23
+command: x
+Bye.

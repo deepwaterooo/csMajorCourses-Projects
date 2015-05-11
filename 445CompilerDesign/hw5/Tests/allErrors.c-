@@ -1,0 +1,96 @@
+// C-F13
+// C-F09
+int dog(int x)
+{
+	bool b;
+
+	return b; // Expecting return type of %s but got type %s.\n",
+}
+
+int cat(int x)
+{
+	bool b;
+
+	return; // Expecting a return type of %s but got none.\n",
+}
+
+int cat;        // Symbol %s is already defined at line %d.\n",
+
+bool ibex(int x[])
+{
+	return true;
+}
+
+  ox(int y)
+{
+	return 666;  // Expecting no return value, but got one.
+}
+
+int emu(int y)
+{                    // NOTE: we don't catch this error
+}
+
+int main()
+{
+	int x;
+	int x;      // Symbol %s is already defined at line %d.\n",
+
+	int aa[6];
+	int zz[6];
+	bool bb[6];
+
+	bool b;
+
+	  v;     // Variable %s cannot be declared of type  .\n",
+
+	if (x) x;   // Expecting boolean test condition.\n",
+	while (x) x;   // Expecting boolean test condition.\n",
+
+	x = cat;
+	x = b;     // %s requires things of the same type but lhs is %s and rhs is %s.\n",
+	x += b;     // %s requires things of the same type but lhs is %s and rhs is %s.\n",
+	b -= x;     // %s requires things of the same type but lhs is %s and rhs is %s.\n",
+
+	if (bb) x;  // Cannot use array as test condition.\n",
+	while (bb) x;  // Cannot use array as test condition.\n",
+
+	break;      // break statement must be inside a while loop."
+
+	while (b) { break; }
+
+	aa + 6;     // The operation %s does not work with arrays.\n",
+
+	x == true;  // %s requires things of the same type but lhs is %s and rhs is %s.\n",
+
+	false + x;  // %s requires things of type %s but lhs is of type %s.\n",
+
+        x * false;  // %s requires things of type %s but rhs is of type %s.\n",
+
+         not x;         // Unary %s requires things of type %s but was given type %s.\n",
+
+	x[496];     // Cannot index nonarray %s.\n",
+
+	aa[b];      // Expecting array index to be of type int but got type %s.\n",
+
+	xyzzy;      // Symbol %s is not defined.\n",
+	meerkat();  // Symbol %s is not defined.\n",
+
+	x();        // %s is a simple variable and cannot be called.\n",
+
+	dog(3, 5);  // Wrong number of parameters for function %s defined on line %d.\n",
+	ibex();     // Wrong number of parameters for function %s defined on line %d.\n",
+
+	dog(true);  // Expecting %s in parameter %i of call %s defined on line %d.\n",
+
+	cat(aa);    // Not expecting array in parameter %i of call %s defined on line %d.\n",
+
+	ibex(x);    // Expecting array in parameter %i of call %s defined on line %d.\n",
+	ibex[3];    // Cannot index nonarray %s.\n",
+
+	ibex + 4;   //  Cannot use function %s as a simple variable.\n",
+
+	aa[zz[1]]; 
+	aa[zz];     // Array index is the unindexed array %s.\n",
+
+	return aa;  // Cannot return an array.\n",
+}

@@ -1,0 +1,35 @@
+// C-F10
+int g[10];
+
+//void main() {
+main() {
+    int m[11];
+    m[0] = 111;
+    {
+        int c[12];
+        c[0] = 222;
+        output(*g);
+        output(*m);
+        output(*c);
+        outnl();
+    }
+    {
+        int d[13];
+        d[0] = 333;
+        output(*g);
+        output(*m);
+        output(*d);
+        outnl();
+    }
+    {
+        static int s[14];
+        s[0] = 444;
+        output(*g);
+        output(*m);
+        output(*s);
+        outnl();
+    }
+    output(*g);
+    output(*m);
+    outnl();
+}

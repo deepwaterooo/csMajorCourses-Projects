@@ -1,0 +1,8 @@
+BOOL flag;
+
+if(flag)       { // do something } // 正确的用法
+if(flag==TRUE) { // do something } // 危险的用法
+if(flag==1)    { // do something } // 危险的用法
+if(!flag)      { // do something } // 正确的用法
+if(flag==FALSE){ // do something } // 不合理的用法
+if(flag==0)    { // do something } // 不合理的用法

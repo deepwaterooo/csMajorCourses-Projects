@@ -1,0 +1,27 @@
+#include <stdlib.h>  
+class Test2  
+{  
+private:   
+int data[2];   
+//…  
+public:  
+//…  
+int __cdecl Compare(const void* elem1, const void* elem2) //成员函数。  
+{   
+printf("%s \n","Calling Test2::Memberfun OK");  
+return *((int*)elem1)- *((int*)elem2) ;   
+}  
+void Memberfun()   
+{   
+data[0]=2; data[1]=5;  
+qsort( data, 2, sizeof(int), Compare); //标准库函数调用成  
+//员函数。编译出错。  
+}  
+//…  
+};  
+int main( )  
+{  
+Test2 t2;  
+t2.Memberfun(); //调用成员函数。  
+return 0;  
+}  

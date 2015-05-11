@@ -1,0 +1,3 @@
+WARNING(4): Expecting to return type int but function 'main' has no return statement.
+Number of warnings: 1
+Number of errors: 0

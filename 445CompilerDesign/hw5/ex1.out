@@ -1,0 +1,123 @@
+Symbol Stack:
+              globals ---- 
+    output    globals 1 Func output returns type void allocated as Global of size -3 at location 0.
+Child: 1
+|  Param xyz  of type int allocated as Parameter of size 1 at location -2.
+Func outputb returns type void allocated as Global of size -3 at location -1.
+Child: 1
+|  Param xyz  of type bool allocated as Parameter of size 1 at location -2.
+Func outputc returns type void allocated as Global of size -3 at location -2.
+Child: 1
+|  Param xyz  of type char allocated as Parameter of size 1 at location -2.
+Func input returns type int allocated as Global of size -2 at location -3.
+Func inputb returns type bool allocated as Global of size -2 at location -4.
+Func inputc returns type char allocated as Global of size -2 at location -5.
+Func outnl returns type void allocated as Global of size -2 at location -6.
+Var g  of type int allocated as Global of size 1 at location -7. foffset: -14; goffset: -22 
+Func dog returns type int allocated as Global of size -5 at location -8.
+Child: 1
+|  Param x  of type int allocated as Parameter of size 1 at location -2.
+Sibling: 1
+|  Param y  of type int allocated as Parameter of size 1 at location -3.
+Child: 2
+|  Compound [line: 22]
+|  Child: 1
+|  |  Var z  of type int allocated as Local of size 1 at location -4. foffset: -14; goffset: -22 
+|  Child: 2
+|  |  Assign: = [line: 20]
+|  |  Child: 1
+|  |  |  Id: z [line: 20]
+|  |  Child: 2
+|  |  |  Op: + [line: 20]
+|  |  |  Child: 1
+|  |  |  |  Id: x [line: 20]
+|  |  |  Child: 2
+|  |  |  |  Id: y [line: 20]
+|  Sibling: 1
+|  |  Return [line: 22]
+|  |  Child: 1
+|  |  |  Op: * [line: 22]
+|  |  |  Child: 1
+|  |  |  |  Id: g [line: 22]
+|  |  |  Child: 2
+|  |  |  |  Id: z [line: 22]
+Var h  is array of type int allocated as Global of size 11 at location -9. foffset: -14; goffset: -22 
+Func cat returns type void allocated as Global of size -15 at location -20.
+Child: 1
+|  Param x  is array of type int allocated as Parameter of size 1 at location -2.
+Sibling: 1
+|  Param y  of type int allocated as Parameter of size 1 at location -3.
+Child: 2
+|  Compound [line: 47]
+|  Child: 1
+|  |  Var z  is array of type int allocated as Local of size 11 at location -4. foffset: -14; goffset: -22 
+|  Child: 2
+|  |  Assign: = [line: 52]
+|  |  Child: 1
+|  |  |  Id: z [line: 52]
+|  |  |  Child: 1
+|  |  |  |  Const: 8 [line: 52]
+|  |  Child: 2
+|  |  |  Id: z [line: 52]
+|  |  |  Child: 1
+|  |  |  |  Const: 9 [line: 52]
+|  Sibling: 1
+|  |  Assign: = [line: 54]
+|  |  Child: 1
+|  |  |  Id: h [line: 54]
+|  |  |  Child: 1
+|  |  |  |  Const: 8 [line: 54]
+|  |  Child: 2
+|  |  |  Id: h [line: 54]
+|  |  |  Child: 1
+|  |  |  |  Const: 9 [line: 54]
+|  Sibling: 2
+|  |  Assign: = [line: 56]
+|  |  Child: 1
+|  |  |  Id: z [line: 56]
+|  |  |  Child: 1
+|  |  |  |  Const: 7 [line: 56]
+|  |  Child: 2
+|  |  |  Id: x [line: 56]
+|  |  |  Child: 1
+|  |  |  |  Id: y [line: 56]
+|  Sibling: 3
+|  |  Assign: = [line: 58]
+|  |  Child: 1
+|  |  |  Id: x [line: 58]
+|  |  |  Child: 1
+|  |  |  |  Const: 7 [line: 58]
+|  |  Child: 2
+|  |  |  Id: z [line: 58]
+|  |  |  Child: 1
+|  |  |  |  Id: y [line: 58]
+Func main returns type void allocated as Global of size -14 at location -21.
+Child: 2
+|  Compound [line: 70]
+|  Child: 1
+|  |  Var a  is array of type int allocated as Local of size 11 at location -2. foffset: -14; goffset: -22 
+|  Sibling: 1
+|  |  Var b  of type int allocated as Local of size 1 at location -13. foffset: -14; goffset: -22 
+|  Child: 2
+|  |  Call: dog [line: 78]
+|  |  Child: 1
+|  |  |  Id: b [line: 78]
+|  |  Sibling: 1
+|  |  |  Const: 999 [line: 78]
+|  Sibling: 1
+|  |  Call: cat [line: 81]
+|  |  Child: 1
+|  |  |  Id: a [line: 81]
+|  |  Sibling: 1
+|  |  |  Const: 6 [line: 81]
+|  Sibling: 2
+|  |  Assign: = [line: 84]
+|  |  Child: 1
+|  |  |  Id: b [line: 84]
+|  |  Child: 2
+|  |  |  Call: dog [line: 84]
+|  |  |  Child: 1
+|  |  |  |  Const: 777 [line: 84]
+|  |  |  Sibling: 1
+|  |  |  |  Const: 888 [line: 84]
+

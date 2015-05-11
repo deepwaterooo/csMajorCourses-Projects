@@ -1,0 +1,114 @@
+Number of warnings: 0
+Number of errors: 0
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: factor.tm
+entered: 210
+Halted
+Command 6 unknown.
+
+Commands are:
+ b(reakpoint <<n>> Set a breakpoint for instr n.  No n means clear breakpoints.
+ c(lear            Reset simulator for new execution of program
+ d(Mem <b <n>>     Print n dMem locations (counting down) starting at b (n can be negative to count up)
+ e(xecStats        Print execution statistics since last load or clear
+ g(o               Execute TM instructions until HALT
+ i(Mem <b <n>>     Print n iMem locations (counting up) starting at b
+ l(oad filename    Load filename into memory (default is last file)
+ p(rint            Toggle printing of total number instructions executed ('go' only)
+ q(uit             Terminate the simulation
+ r(egs             Print the contents of the registers
+ s(tep <n>         Execute n (default 1) TM instructions
+ t(race            Toggle instruction tracing (printing) during execution
+ u(nprompt)        Unprompted for script input
+ x(it              Terminate the simulation
+ = <r> <n>         Set register number r to value n (e.g. set the pc)
+ < <addr> <value>  Set dMem at addr to value
+ (empty line does a step)
+Also a # character placed after input will cause TM to halt
+Command 4 unknown.
+
+Commands are:
+ b(reakpoint <<n>> Set a breakpoint for instr n.  No n means clear breakpoints.
+ c(lear            Reset simulator for new execution of program
+ d(Mem <b <n>>     Print n dMem locations (counting down) starting at b (n can be negative to count up)
+ e(xecStats        Print execution statistics since last load or clear
+ g(o               Execute TM instructions until HALT
+ i(Mem <b <n>>     Print n iMem locations (counting up) starting at b
+ l(oad filename    Load filename into memory (default is last file)
+ p(rint            Toggle printing of total number instructions executed ('go' only)
+ q(uit             Terminate the simulation
+ r(egs             Print the contents of the registers
+ s(tep <n>         Execute n (default 1) TM instructions
+ t(race            Toggle instruction tracing (printing) during execution
+ u(nprompt)        Unprompted for script input
+ x(it              Terminate the simulation
+ = <r> <n>         Set register number r to value n (e.g. set the pc)
+ < <addr> <value>  Set dMem at addr to value
+ (empty line does a step)
+Also a # character placed after input will cause TM to halt
+Command 3 unknown.
+
+Commands are:
+ b(reakpoint <<n>> Set a breakpoint for instr n.  No n means clear breakpoints.
+ c(lear            Reset simulator for new execution of program
+ d(Mem <b <n>>     Print n dMem locations (counting down) starting at b (n can be negative to count up)
+ e(xecStats        Print execution statistics since last load or clear
+ g(o               Execute TM instructions until HALT
+ i(Mem <b <n>>     Print n iMem locations (counting up) starting at b
+ l(oad filename    Load filename into memory (default is last file)
+ p(rint            Toggle printing of total number instructions executed ('go' only)
+ q(uit             Terminate the simulation
+ r(egs             Print the contents of the registers
+ s(tep <n>         Execute n (default 1) TM instructions
+ t(race            Toggle instruction tracing (printing) during execution
+ u(nprompt)        Unprompted for script input
+ x(it              Terminate the simulation
+ = <r> <n>         Set register number r to value n (e.g. set the pc)
+ < <addr> <value>  Set dMem at addr to value
+ (empty line does a step)
+Also a # character placed after input will cause TM to halt
+Command 3 unknown.
+
+Commands are:
+ b(reakpoint <<n>> Set a breakpoint for instr n.  No n means clear breakpoints.
+ c(lear            Reset simulator for new execution of program
+ d(Mem <b <n>>     Print n dMem locations (counting down) starting at b (n can be negative to count up)
+ e(xecStats        Print execution statistics since last load or clear
+ g(o               Execute TM instructions until HALT
+ i(Mem <b <n>>     Print n iMem locations (counting up) starting at b
+ l(oad filename    Load filename into memory (default is last file)
+ p(rint            Toggle printing of total number instructions executed ('go' only)
+ q(uit             Terminate the simulation
+ r(egs             Print the contents of the registers
+ s(tep <n>         Execute n (default 1) TM instructions
+ t(race            Toggle instruction tracing (printing) during execution
+ u(nprompt)        Unprompted for script input
+ x(it              Terminate the simulation
+ = <r> <n>         Set register number r to value n (e.g. set the pc)
+ < <addr> <value>  Set dMem at addr to value
+ (empty line does a step)
+Also a # character placed after input will cause TM to halt
+Command 0 unknown.
+
+Commands are:
+ b(reakpoint <<n>> Set a breakpoint for instr n.  No n means clear breakpoints.
+ c(lear            Reset simulator for new execution of program
+ d(Mem <b <n>>     Print n dMem locations (counting down) starting at b (n can be negative to count up)
+ e(xecStats        Print execution statistics since last load or clear
+ g(o               Execute TM instructions until HALT
+ i(Mem <b <n>>     Print n iMem locations (counting up) starting at b
+ l(oad filename    Load filename into memory (default is last file)
+ p(rint            Toggle printing of total number instructions executed ('go' only)
+ q(uit             Terminate the simulation
+ r(egs             Print the contents of the registers
+ s(tep <n>         Execute n (default 1) TM instructions
+ t(race            Toggle instruction tracing (printing) during execution
+ u(nprompt)        Unprompted for script input
+ x(it              Terminate the simulation
+ = <r> <n>         Set register number r to value n (e.g. set the pc)
+ < <addr> <value>  Set dMem at addr to value
+ (empty line does a step)
+Also a # character placed after input will cause TM to halt
+Bye.

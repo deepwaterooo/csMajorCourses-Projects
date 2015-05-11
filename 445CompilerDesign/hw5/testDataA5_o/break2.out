@@ -1,0 +1,37 @@
+
+Symbol Stack:
+              globals ---- 
+   outputc    globals 1 Func outputc returns type void allocated as Global of size -3 at location 0.
+
+    inputc    globals 1 Func inputc returns type char allocated as Global of size -2 at location 0.
+
+     outnl    globals 1 Func outnl returns type void allocated as Global of size -2 at location 0.
+
+   outputb    globals 1 Func outputb returns type void allocated as Global of size -3 at location 0.
+
+    inputb    globals 1 Func inputb returns type bool allocated as Global of size -2 at location 0.
+
+    output    globals 1 Func output returns type void allocated as Global of size -3 at location 0.
+
+     input    globals 1 Func input returns type int allocated as Global of size -2 at location 0.
+
+      main    globals 1 Func main returns type int allocated as Global of size -4 at location 0.
+
+FuncK->size: -4
+toff: -4
+toff: -4
+toff: -4
+toff: -4
+Loop through global scope
+Number of warnings: 0
+Number of errors: 0
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: break2.tm
+0 0 
+Halted
+EXEC STAT: Number of instructions executed: 86
+EXEC STAT: Instruction memory used: 102
+EXEC STAT: Data memory used: 7
+Bye.

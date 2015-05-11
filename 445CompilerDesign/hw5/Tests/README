@@ -1,0 +1,12 @@
+runExamples is a UNIX script for runing the tests.
+
+files are file types:
+
+.c-       is the source code
+.tm       is the TM code
+.in       in the input to the running tm machine (if not
+          supplied then runExamples.in will be used)
+.out      is the output of the compile and running on tm
+.expected is the expected results in out file
+
+good luck

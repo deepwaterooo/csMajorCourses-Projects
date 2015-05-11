@@ -1,0 +1,27 @@
+character: '^'
+WARNING(2): Invalid input character: ^.  Character ignored.
+character: '^'
+WARNING(2): Invalid input character: ^.  Character ignored.
+character: '^'
+WARNING(2): Invalid input character: ^.  Character ignored.
+character: '^'
+WARNING(2): Invalid input character: ^.  Character ignored.
+character: '#'
+WARNING(3): Invalid input character: #.  Character ignored.
+character: '$'
+WARNING(3): Invalid input character: $.  Character ignored.
+ERROR(3): Syntax error.  Unexpected '%'.  Expecting bool or char or int or id.
+character: '^'
+WARNING(3): Invalid input character: ^.  Character ignored.
+character: '^'
+WARNING(4): Invalid input character: ^.  Character ignored.
+character: '^?'
+WARNING(4): Invalid input character: ^?.  Character ignored.
+character: '\fd'
+WARNING(5): Invalid input character: \fd.  Character ignored.
+character: '\fe'
+WARNING(5): Invalid input character: \fe.  Character ignored.
+character: '\ff'
+WARNING(5): Invalid input character: \ff.  Character ignored.
+Number of warnings: 12
+Number of errors: 1

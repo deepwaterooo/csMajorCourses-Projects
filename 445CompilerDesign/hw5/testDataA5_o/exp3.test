@@ -1,0 +1,23 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: exp3.tm
+Enter command: 
+command: a 10000
+command: g
+1 
+2 
+20000210 
+357948178 
+715896356 
+T 
+Halted
+Last executed cmd:  233: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 233, PC is now 234
+command: e
+EXEC STAT: Number of instructions executed: 276
+EXEC STAT: Instruction memory used: 234
+EXEC STAT: Data memory used: 13
+command: x
+Bye.

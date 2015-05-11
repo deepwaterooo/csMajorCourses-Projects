@@ -1,0 +1,10 @@
+main(){
+    int i:;
+    int j:666: ;
+    static int :666;
+    static :666;
+    char y 'a', b[10] "dogs";
+    int j:toy * boat;
+    bool :true;
+    int :,:,:;
+}

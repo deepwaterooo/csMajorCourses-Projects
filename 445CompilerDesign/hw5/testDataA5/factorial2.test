@@ -1,0 +1,19 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: factorial2.tm
+Enter command: 
+command: a 10000
+command: g
+entered: 15
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 2004310016 
+Halted
+Last executed cmd:  107: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 107, PC is now 108
+command: e
+EXEC STAT: Number of instructions executed: 569
+EXEC STAT: Instruction memory used: 108
+EXEC STAT: Data memory used: 11
+command: x
+Bye.

@@ -1,0 +1,51 @@
+ERROR(10): Symbol 'close' is not defined.
+ERROR(11): Symbol 'close' is not defined.
+ERROR(11): Symbol 'shave' is not defined.
+ERROR(13): Symbol 'gromit' is not defined.
+ERROR(13): Symbol 'gromit' is not defined.
+ERROR(14): Symbol 'gromit' is not defined.
+ERROR(15): Symbol 'gromit' is not defined.
+ERROR(16): Symbol 'close' is not defined.
+ERROR(16): Symbol 'gromit' is not defined.
+ERROR(17): Symbol 'shave' is not defined.
+ERROR(17): Symbol 'gromit' is not defined.
+ERROR(19): Symbol 'a' is not defined.
+ERROR(19): Symbol 'grand' is not defined.
+ERROR(19): Symbol 'day' is not defined.
+ERROR(19): Symbol 'out' is not defined.
+ERROR(21): Symbol 'close' is not defined.
+ERROR(22): Symbol 'shave' is not defined.
+ERROR(23): Symbol 'shave' is not defined.
+ERROR(23): Symbol 'close' is not defined.
+ERROR(23): Symbol 'shave' is not defined.
+ERROR(23): Symbol 'close' is not defined.
+ERROR(24): Symbol 'shave' is not defined.
+ERROR(24): Symbol 'close' is not defined.
+ERROR(24): Symbol 'close' is not defined.
+ERROR(24): Symbol 'shave' is not defined.
+ERROR(25): Symbol 'close' is not defined.
+ERROR(26): Symbol 'shave' is not defined.
+ERROR(27): Symbol 'sheep' is not defined.
+ERROR(28): Symbol 'sheep' is not defined.
+ERROR(29): Symbol 'gromit' is not defined.
+ERROR(29): Symbol 'were' is not defined.
+ERROR(29): Symbol 'rabbit' is not defined.
+ERROR(41): Symbol 'chicken' is not defined.
+ERROR(41): Expecting array in parameter 3 of call to 'Wendolene' defined on line 34.
+ERROR(41): Symbol 'run' is not defined.
+ERROR(41): Expecting array in parameter 4 of call to 'Wendolene' defined on line 34.
+ERROR(43): Cannot use function 'wallace' as a simple variable.
+ERROR(43): Symbol 'gromit' is not defined.
+ERROR(43): '>=' requires operands of type char or type int but lhs is of type void.
+ERROR(46): Symbol 'x' is not defined.
+ERROR(46): Symbol 'y' is not defined.
+ERROR(46): Symbol 'x' is not defined.
+ERROR(46): Symbol 'x' is not defined.
+ERROR(46): Symbol 'x' is not defined.
+ERROR(46): Symbol 'y' is not defined.
+ERROR(50): Too many parameters passed for function 'cheese' defined on line 46.
+ERROR(50): Symbol 'gromit' is not defined.
+WARNING(48): Expecting to return type int but function 'main' has no return statement.
+Number of warnings: 1
+Number of errors: 47
+------------------------------------

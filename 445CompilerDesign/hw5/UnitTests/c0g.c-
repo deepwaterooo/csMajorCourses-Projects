@@ -1,0 +1,16 @@
+// C-F13
+int x[7];
+
+  main()
+{
+    x[3] = 1023;
+    output(x[3]++);
+    outnl();
+    output(x[3]);
+    outnl();
+
+    output(x[3]--);
+    outnl();
+    output(x[3]);
+    outnl();
+}

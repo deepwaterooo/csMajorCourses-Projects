@@ -1,0 +1,18 @@
+// C-F09
+//
+void adama()
+{}
+
+void roslin()
+{{}{}}
+
+void starbuck()
+{;{;};{;};}         // note if we ended the function in a semicolon then error
+
+void apollo()
+{bool a; { bool b; { bool c;}}}
+
+void numberSix()
+{
+;;;;;
+}

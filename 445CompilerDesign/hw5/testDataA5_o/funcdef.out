@@ -1,0 +1,43 @@
+ERROR(4): Symbol 'z' is already defined at line 2.
+WARNING(4): Expecting to return type int but function 'z' has no return statement.
+WARNING(8): Expecting to return type int but function 'y' has no return statement.
+ERROR(12): Symbol 'y' is already defined at line 8.
+ERROR(20): 'x' is a simple variable and cannot be called.
+WARNING(15): Expecting to return type int but function 'x' has no return statement.
+ERROR(25): Cannot use function 'x' as a simple variable.
+WARNING(23): Expecting to return type int but function 'w' has no return statement.
+
+Symbol Stack:
+              globals ---- 
+   outputc    globals 1 Func outputc returns type void allocated as Global of size -3 at location 0.
+
+    inputc    globals 1 Func inputc returns type char allocated as Global of size -2 at location 0.
+
+     outnl    globals 1 Func outnl returns type void allocated as Global of size -2 at location 0.
+
+   outputb    globals 1 Func outputb returns type void allocated as Global of size -3 at location 0.
+
+    inputb    globals 1 Func inputb returns type bool allocated as Global of size -2 at location 0.
+
+    output    globals 1 Func output returns type void allocated as Global of size -3 at location 0.
+
+     input    globals 1 Func input returns type int allocated as Global of size -2 at location 0.
+
+         z    globals 1 Var z  of type int allocated as Global of size 1 at location -1. foffset: -2; goffset: -4 
+
+         y    globals 1 Func y returns type int allocated as Global of size -2 at location 0.
+
+         x    globals 1 Func x returns type int allocated as Global of size -3 at location 0.
+
+         w    globals 1 Func w returns type int allocated as Global of size -2 at location 0.
+
+Loop through global scope
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: funcdef.tm
+Halted
+EXEC STAT: Number of instructions executed: 1
+EXEC STAT: Instruction memory used: 0
+EXEC STAT: Data memory used: 0
+Bye.

@@ -1,0 +1,6 @@
+ERROR(5): Syntax error.  Unexpected '+'.  Expecting id.
+ERROR(6): Syntax error.  Unexpected id: z.  Expecting number.
+ERROR(7): Syntax error.  Unexpected '+'.  Expecting id.
+Number of warnings: 0
+Number of errors: 3
+------------------------------------

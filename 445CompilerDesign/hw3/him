@@ -1,0 +1,11 @@
+ERROR(141): Initializer for variable 'd' is not a constant expression.
+ERROR(143): Initializer for variable 'e' is not a constant expression.
+ERROR(144): Initializer for variable 'f' is not a constant expression.
+ERROR(196): Initializer for nonarray variable 'w' of type char cannot be initialized with an array.
+ERROR(197): Initializer for nonarray variable 'u' of type int cannot be initialized with an array.
+ERROR(198): Initializer for array variable 't' must be a string, but is of nonarray type int.
+ERROR(199): Initializer for array variable 's' must be a string, but is of nonarray type char.
+ERROR(209): Initializer for variable 'x' is not a constant expression.
+ERROR(210): Initializer for nonarray variable 'c' of type char cannot be initialized with an array.
+ERROR(211): Initializer for array variable 'd' must be a string, but is of nonarray type char.
+ERROR(213): Initializer for array variable 'f' must be a string, but is of nonarray type int.

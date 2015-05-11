@@ -1,0 +1,36 @@
+ERR(%d): '%s' is a simple variable and cannot be called.\n	    ERR(%d): '%s' is a simple variable and cannot be called.\n
+ERR(%d): '%s' requires operands of %s but lhs is of %s.\n	    ERR(%d): '%s' requires operands of %s but lhs is of %s.\n
+ERR(%d): '%s' requires operands of %s but rhs is of %s.\n	    ERR(%d): '%s' requires operands of %s but rhs is of %s.\n
+ERR(%d): '%s' requires operands of the same type but lhs is %s and  ERR(%d): '%s' requires operands of the same type but lhs is %s and
+ERR(%d): '%s' requires that if one operand is an array so must the <
+ERR(%d): Array '%s' must be of type char to be initialized, but is <
+ERR(%d): Array '%s' should be indexed by type int but got %s.\n     ERR(%d): Array '%s' should be indexed by type int but got %s.\n
+ERR(%d): Array index is the unindexed array '%s'.\n		    ERR(%d): Array index is the unindexed array '%s'.\n
+ERR(%d): Cannot have a break statement outside of loop.\n	   |ERR(%d): Cannot have a break statement outside of while loop.\n
+ERR(%d): Cannot index nonarray '%s'.\n			            ERR(%d): Cannot index nonarray '%s'.\n
+ERR(%d): Cannot return an array.\n				    ERR(%d): Cannot return an array.\n
+ERR(%d): Cannot use array as test condition in %s statement.\n	    ERR(%d): Cannot use array as test condition in %s statement.\n
+ERR(%d): Cannot use function '%s' as a simple variable.\n	    ERR(%d): Cannot use function '%s' as a simple variable.\n
+ERR(%d): Expecting %s in parameter %i of call to '%s' defined on l  ERR(%d): Expecting %s in parameter %i of call to '%s' defined on l
+ERR(%d): Expecting Boolean test condition in %s statement but got   ERR(%d): Expecting Boolean test condition in %s statement but got 
+ERR(%d): Expecting array in parameter %i of call to '%s' defined o  ERR(%d): Expecting array in parameter %i of call to '%s' defined o
+ERR(%d): Foreach requires operands of 'in' be the same type but lh <
+ERR(%d): Function '%s' at line %d is expecting no return value, bu  ERR(%d): Function '%s' at line %d is expecting no return value, bu
+ERR(%d): Function '%s' at line %d is expecting to return %s but go  ERR(%d): Function '%s' at line %d is expecting to return %s but go
+ERR(%d): Function '%s' at line %d is expecting to return %s but re  ERR(%d): Function '%s' at line %d is expecting to return %s but re
+ERR(%d): If not an array, foreach requires lhs of 'in' be of type  <
+ERR(%d): If not an array, foreach requires rhs of 'in' be of type  <
+ERR(%d): In foreach statement the variable to the left of 'in' mus <
+ERR(%d): Initializer for array variable '%s' must be a string, but <
+ERR(%d): Initializer for nonarray variable '%s' of %s cannot be in <
+ERR(%d): Initializer for variable '%s' is not a constant expressio <
+ERR(%d): Not expecting array in parameter %i of call to '%s' defin  ERR(%d): Not expecting array in parameter %i of call to '%s' defin
+ERR(%d): Symbol '%s' is already defined at line %d.\n		    ERR(%d): Symbol '%s' is already defined at line %d.\n
+ERR(%d): Symbol '%s' is not defined.\n			            ERR(%d): Symbol '%s' is not defined.\n
+ERR(%d): The operation '%s' does not work with arrays.\n	    ERR(%d): The operation '%s' does not work with arrays.\n
+ERR(%d): The operation '%s' only works with arrays.\n	            ERR(%d): The operation '%s' only works with arrays.\n
+ERR(%d): Too few parameters passed for function '%s' defined on li  ERR(%d): Too few parameters passed for function '%s' defined on li
+ERR(%d): Too many parameters passed for function '%s' defined on l  ERR(%d): Too many parameters passed for function '%s' defined on l
+ERR(%d): Unary '%s' requires an operand of %s but was given %s.\n  |ERR(%d): Unary '%s' requires operands of %s but was given %s.\n
+ERR(%d): Variable '%s' is of %s but is being initialized with an e |ERR(%d): Variable '%s' cannot be declared of type void.\n
+WARNING(%d): Expecting to return %s but function '%s' has no return WARNING(%d): Expecting to return %s but function '%s' has no return 

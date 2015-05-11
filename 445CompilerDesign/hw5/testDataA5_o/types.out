@@ -1,0 +1,154 @@
+ERROR(10): '+' requires operands of type int but rhs is of type bool.
+ERROR(11): '+' requires operands of type int but lhs is of type bool.
+ERROR(12): '+' requires operands of type int but lhs is of type bool.
+ERROR(12): '+' requires operands of type int but rhs is of type bool.
+ERROR(14): 'and' requires operands of type bool but lhs is of type int.
+ERROR(14): 'and' requires operands of type bool but rhs is of type int.
+ERROR(15): 'and' requires operands of type bool but lhs is of type int.
+ERROR(16): 'and' requires operands of type bool but rhs is of type int.
+ERROR(20): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(21): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(25): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(26): '==' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(30): '!=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(31): '!=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(34): The operation '+' does not work with arrays.
+ERROR(35): '+' requires operands of type int but rhs is of type bool.
+ERROR(35): The operation '+' does not work with arrays.
+ERROR(36): '+' requires operands of type int but lhs is of type bool.
+ERROR(36): The operation '+' does not work with arrays.
+ERROR(37): '+' requires operands of type int but lhs is of type bool.
+ERROR(37): '+' requires operands of type int but rhs is of type bool.
+ERROR(37): The operation '+' does not work with arrays.
+ERROR(39): 'and' requires operands of type bool but lhs is of type int.
+ERROR(39): 'and' requires operands of type bool but rhs is of type int.
+ERROR(39): The operation 'and' does not work with arrays.
+ERROR(40): 'and' requires operands of type bool but lhs is of type int.
+ERROR(40): The operation 'and' does not work with arrays.
+ERROR(41): 'and' requires operands of type bool but rhs is of type int.
+ERROR(41): The operation 'and' does not work with arrays.
+ERROR(42): The operation 'and' does not work with arrays.
+ERROR(45): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(46): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(50): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(51): '==' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(54): '+' requires operands of type int but lhs is of type bool.
+ERROR(55): '+' requires operands of type int but rhs is of type bool.
+ERROR(56): '+' requires operands of type int but rhs is of type bool.
+ERROR(58): 'or' requires operands of type bool but lhs is of type int.
+ERROR(59): 'or' requires operands of type bool but rhs is of type int.
+ERROR(60): 'or' requires operands of type bool but rhs is of type int.
+ERROR(63): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(64): The operation 'not' does not work with arrays.
+ERROR(65): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(65): The operation 'not' does not work with arrays.
+ERROR(67): Unary '-' requires an operand of type int but was given type bool.
+ERROR(69): Unary '-' requires an operand of type int but was given type bool.
+ERROR(69): The operation '-' does not work with arrays.
+ERROR(70): The operation '-' does not work with arrays.
+ERROR(73): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(74): '>' requires operands of type char or type int but rhs is of type bool.
+ERROR(75): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(76): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(76): '>' requires operands of type char or type int but rhs is of type bool.
+ERROR(80): Expecting Boolean test condition in if statement but got type int.
+ERROR(83): Cannot use array as test condition in if statement.
+ERROR(86): Expecting Boolean test condition in if statement but got type int.
+ERROR(86): Cannot use array as test condition in if statement.
+ERROR(92): Expecting Boolean test condition in if statement but got type int.
+ERROR(95): Expecting Boolean test condition in while statement but got type int.
+ERROR(96): Cannot use array as test condition in while statement.
+ERROR(97): Expecting Boolean test condition in while statement but got type int.
+ERROR(97): Cannot use array as test condition in while statement.
+ERROR(99): Expecting Boolean test condition in while statement but got type int.
+WARNING(2): Expecting to return type int but function 'main' has no return statement.
+
+Symbol Stack:
+              globals ---- 
+   outputc    globals 1 Func outputc returns type void allocated as Global of size -3 at location 0.
+
+    inputc    globals 1 Func inputc returns type char allocated as Global of size -2 at location 0.
+
+     outnl    globals 1 Func outnl returns type void allocated as Global of size -2 at location 0.
+
+   outputb    globals 1 Func outputb returns type void allocated as Global of size -3 at location 0.
+
+    inputb    globals 1 Func inputb returns type bool allocated as Global of size -2 at location 0.
+
+    output    globals 1 Func output returns type void allocated as Global of size -3 at location 0.
+
+     input    globals 1 Func input returns type int allocated as Global of size -2 at location 0.
+
+      main    globals 1 Func main returns type int allocated as Global of size -10 at location 0.
+
+FuncK->size: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -10
+toff: -11
+toff: -10
+toff: -10
+toff: -11
+toff: -10
+toff: -10
+toff: -11
+toff: -10
+toff: -10
+toff: -11
+toff: -10
+toff: -10
+toff: -11
+toff: -10
+toff: -10
+toff: -11
+Loop through global scope
+Number of warnings: 1
+Number of errors: 63
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: types.tm
+Halted
+EXEC STAT: Number of instructions executed: 348
+EXEC STAT: Instruction memory used: 428
+EXEC STAT: Data memory used: 10
+Bye.

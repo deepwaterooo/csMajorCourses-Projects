@@ -1,0 +1,8 @@
+// Itanium，unknown 和 virtual inheritance下的情况.
+struct {
+    FunctionPointer m_func_address; //对Itanium来说是64位
+    int m_delta;
+    int m_vtable_index;
+    int m_vtordisp;
+};
+

@@ -1,0 +1,251 @@
+// C-F13
+int dog(int x)
+{
+    bool b;
+
+    return b;
+}
+
+int cat(int x)
+{
+    bool b;
+
+    return;
+}
+
+int cat;
+
+bool ibex(int x[])
+{
+    return true;
+}
+
+ox(int y)
+{
+    return 666;
+}
+
+int emu(int y)
+{
+}
+
+int main()
+{
+    int x;
+    int x;
+
+    int aa[6];
+    int zz[6];
+    bool bb[6];
+
+    bool b;
+
+    int v;
+
+    if (x) x;
+    while (x) x;
+
+    x = cat;
+    x = b;
+    x += b;
+    b -= x;
+
+    if (bb) x;
+    while (bb) x;
+
+    if (bb[0]) x;
+    while (bb[0]) x;
+
+    break;
+    while (b) break;
+
+    aa + 6;
+    -aa;
+    not aa;
+
+    x == true;
+
+    false + x;
+
+    x * false;
+
+    not x;
+
+    x[496];
+
+    aa[b];
+    aa[zz[1]];
+    aa[zz];
+
+    xyzzy;
+    meerkat();
+
+    x();
+
+    dog(3, 5);
+    ibex();
+
+    dog(true);
+
+    cat(aa);
+    cat(ox(3));
+
+    ibex(x);
+    ibex[3];
+
+    ibex + 4;
+
+    *x;
+
+    if (b+b*aa+*x or not bb and not x) break;
+    5 and 5;
+
+    return aa;
+}
+
+int z;
+
+main()
+{
+        int x[3];
+        char c[3];
+        bool b[3];
+        static int z;
+
+        int xx;
+        char cc;
+        bool bb;
+
+        x == x;
+        c == c;
+        b == b;
+        b == c;
+        "dog"=="cat";
+        x = x;
+        c = c;
+        b = b;
+        b = c;
+        x != x;
+        c != c;
+        b != b;
+        b != c;
+        "dog"!="cat";
+}
+
+int x:3;
+bool y:true;
+char z:'c';
+
+int a:false, b:true, zz:'c';
+int c:2+3;
+int d:2+8*x;
+int d2:2+8*'x';  // won't get non const init error
+int e:2+8*z;
+int f:2+z*8;
+
+main()
+{
+        int x[3];
+        char c[3];
+        bool b[3];
+
+        int xx;
+        char cc;
+        bool bb;
+
+        x == x;
+        c == c;
+        b == b;
+        b == c;
+        "dog"=="cat";
+
+        x = x;
+        c = c;
+        b = b;
+        b = c;
+        // "dog"="cat";
+
+        x != x;
+        c != c;
+        b != b;
+        "dog"!="cat";
+
+        'a'>'b';
+        'a'>='b';
+        'a'<'b';
+        'a'<='b';
+
+        *"dog";
+        *x;
+        *c;
+        *b;
+
+        foreach (x in x);
+        foreach (b in x);
+
+        foreach (xx in x);
+        foreach (bb in x);
+
+        foreach (xx in bb);
+        foreach (bb in xx);
+        foreach (xx in 4+9);
+
+        {
+
+        char v[3]:"dog";
+        char w:"dog";
+        int u:"dog";
+        int t[3]:3;
+        char s[3]:'x';
+
+
+        }
+
+}
+
+
+int main()
+{
+        int y, x:y;
+        char c:"dog";
+        char d[3]:'x';
+        char e:3;
+        char f[3]:5;
+        int z[3]:"dog";
+
+        c = "dog";
+        d = 'x';
+        e = 3;
+        f = 5;
+        z = "dog";
+
+        z=="dog";
+        'x'>true;
+        false>'c';
+        z>"dog";   // fail for types and for array
+        d>f;       // fail for array alone
+        z>z;       // fail for array alone
+        'x'>'a';   // comparision of characters is allowed.
+        -'x';      // fail on type
+        *'x';      // fail not array
+        -z;        // fail on array
+        *f;        // works
+
+        d++;
+        z++;
+        d--;
+        z--;
+}
+
+
+int fred;
+int fred(
+int fred) {
+static int fred,
+fred;
+int fred;
+fred;
+{
+int fred;
+}
+}

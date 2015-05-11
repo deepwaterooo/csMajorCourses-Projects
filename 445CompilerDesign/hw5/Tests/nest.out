@@ -1,0 +1,7 @@
+ERROR(48): Symbol 'a' is already defined at line 32.
+ERROR(49): Symbol 'b' is already defined at line 33.
+ERROR(50): Symbol 'z' is already defined at line 34.
+ERROR(96): Symbol 'agamemnon' is not defined.
+Number of warnings: 0
+Number of errors: 4
+------------------------------------

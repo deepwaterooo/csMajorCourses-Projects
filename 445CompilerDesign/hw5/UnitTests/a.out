@@ -1,0 +1,2087 @@
+====================================
+FILE: a001.c-
+-rw-r--r-- 1 heyan heyan   32 12月  7 11:02 a001.c-
+-rw-r--r-- 1 heyan heyan  190 12月 10 21:39 a001.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a001.out
+-rw-rw-r-- 1 heyan heyan 2162 12月 13 13:40 a001.tm
+a001 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a001.tm
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: a002.c-
+-rw-r--r-- 1 heyan heyan   35 12月  7 11:02 a002.c-
+-rw-r--r-- 1 heyan heyan  190 12月 10 21:39 a002.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a002.out
+-rw-rw-r-- 1 heyan heyan 2286 12月 13 13:40 a002.tm
+a002 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a002.tm
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: a009.c-
+-rw-r--r-- 1 heyan heyan   31 12月  7 11:04 a009.c-
+-rw-r--r-- 1 heyan heyan  190 12月 10 21:39 a009.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a009.out
+-rw-rw-r-- 1 heyan heyan 2160 12月 13 13:40 a009.tm
+a009 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a009.tm
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: a00.c-
+-rw-r--r-- 1 heyan heyan   22 12月  7 11:02 a00.c-
+-rw-r--r-- 1 heyan heyan  189 12月 10 21:39 a00.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a00.out
+-rw-rw-r-- 1 heyan heyan 2123 12月 13 13:40 a00.tm
+a00 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a00.tm
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: a01.c-
+-rw-r--r-- 1 heyan heyan   41 12月  7 11:02 a01.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:39 a01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a01.out
+-rw-rw-r-- 1 heyan heyan 2443 12月 13 13:40 a01.tm
+a01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a01.tm
+							   >	987 Halted
+							   >	Bye.
+====================================
+FILE: a02.c-
+-rw-r--r-- 1 heyan heyan   55 12月  7 11:02 a02.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:39 a02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a02.out
+-rw-rw-r-- 1 heyan heyan 2685 12月 13 13:40 a02.tm
+a02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a02.tm
+							   >	982 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: a03.c-
+-rw-r--r-- 1 heyan heyan   43 12月  7 11:02 a03.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:39 a03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a03.out
+-rw-rw-r-- 1 heyan heyan 2442 12月 13 13:40 a03.tm
+a03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a03.tm
+							   >	T Halted
+							   >	Bye.
+====================================
+FILE: a045.c-
+-rw-r--r-- 1 heyan heyan   40 12月  7 11:02 a045.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:39 a045.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a045.out
+-rw-rw-r-- 1 heyan heyan 2443 12月 13 13:40 a045.tm
+a045 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a045.tm
+							   >	YHalted
+							   >	Bye.
+====================================
+FILE: a04.c-
+-rw-r--r-- 1 heyan heyan   44 12月  7 11:02 a04.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:39 a04.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a04.out
+-rw-rw-r-- 1 heyan heyan 2442 12月 13 13:40 a04.tm
+a04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a04.tm
+							   >	F Halted
+							   >	Bye.
+====================================
+FILE: a05.c-
+-rw-r--r-- 1 heyan heyan   66 12月  7 11:02 a05.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:39 a05.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a05.out
+-rw-rw-r-- 1 heyan heyan 2536 12月 13 13:40 a05.tm
+a05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a05.tm
+							   >	273 Halted
+							   >	Bye.
+====================================
+FILE: a06.c-
+-rw-r--r-- 1 heyan heyan   61 12月  7 11:02 a06.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:39 a06.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a06.out
+-rw-rw-r-- 1 heyan heyan 2539 12月 13 13:40 a06.tm
+a06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a06.tm
+							   >	273 Halted
+							   >	Bye.
+====================================
+FILE: a07.c-
+-rw-r--r-- 1 heyan heyan  132 12月  7 11:02 a07.c-
+-rw-r--r-- 1 heyan heyan  199 12月 10 21:39 a07.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a07.out
+-rw-rw-r-- 1 heyan heyan 3438 12月 13 13:40 a07.tm
+a07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a07.tm
+							   >	341 
+							   >	273 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: a08.c-
+-rw-r--r-- 1 heyan heyan  139 12月  7 11:02 a08.c-
+-rw-r--r-- 1 heyan heyan  195 12月 10 21:39 a08.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a08.out
+-rw-rw-r-- 1 heyan heyan 3436 12月 13 13:40 a08.tm
+a08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a08.tm
+							   >	T 
+							   >	F 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: a09.c-
+-rw-r--r-- 1 heyan heyan  134 12月 10 21:34 a09.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:39 a09.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 a09.out
+-rw-rw-r-- 1 heyan heyan 3436 12月 13 13:40 a09.tm
+a09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: a09.tm
+							   >	X
+							   >	Y
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b01.c-
+-rw-r--r-- 1 heyan heyan   56 12月  7 11:02 b01.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:39 b01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b01.out
+-rw-rw-r-- 1 heyan heyan 2827 12月 13 13:40 b01.tm
+b01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b01.tm
+							   >	650 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b02.c-
+-rw-r--r-- 1 heyan heyan   56 12月  7 11:02 b02.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:39 b02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b02.out
+-rw-rw-r-- 1 heyan heyan 2827 12月 13 13:40 b02.tm
+b02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b02.tm
+							   >	63 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b03.c-
+-rw-r--r-- 1 heyan heyan   56 12月  7 11:02 b03.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:39 b03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b03.out
+-rw-rw-r-- 1 heyan heyan 2801 12月 13 13:40 b03.tm
+b03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b03.tm
+							   >	11 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b04.c-
+-rw-r--r-- 1 heyan heyan   56 12月  7 11:02 b04.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:39 b04.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b04.out
+-rw-rw-r-- 1 heyan heyan 2827 12月 13 13:40 b04.tm
+b04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b04.tm
+							   >	3 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b05.c-
+-rw-r--r-- 1 heyan heyan   56 12月  7 11:02 b05.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:39 b05.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b05.out
+-rw-rw-r-- 1 heyan heyan 2827 12月 13 13:40 b05.tm
+b05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b05.tm
+							   >	37 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b06.c-
+-rw-r--r-- 1 heyan heyan   56 12月  7 11:02 b06.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:39 b06.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b06.out
+-rw-rw-r-- 1 heyan heyan 2827 12月 13 13:40 b06.tm
+b06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b06.tm
+							   >	63 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b07.c-
+-rw-r--r-- 1 heyan heyan   55 12月  7 11:02 b07.c-
+-rw-r--r-- 1 heyan heyan  195 12月 10 21:39 b07.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b07.out
+-rw-rw-r-- 1 heyan heyan 2746 12月 13 13:40 b07.tm
+b07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b07.tm
+							   >	-666 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b08.c-
+-rw-r--r-- 1 heyan heyan   58 12月  7 14:48 b08.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:39 b08.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b08.out
+-rw-rw-r-- 1 heyan heyan 2684 12月 13 13:40 b08.tm
+b08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b08.tm
+							   >	F 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b09.c-
+-rw-r--r-- 1 heyan heyan   65 12月 10 21:34 b09.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 b09.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b09.out
+-rw-rw-r-- 1 heyan heyan 2852 12月 13 13:40 b09.tm
+b09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b09.tm
+							   >	T 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b0a.c-
+-rw-r--r-- 1 heyan heyan   62 12月 10 21:35 b0a.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 b0a.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b0a.out
+-rw-rw-r-- 1 heyan heyan 2800 12月 13 13:40 b0a.tm
+b0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b0a.tm
+							   >	T 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: b0b.c-
+-rw-r--r-- 1 heyan heyan  324 12月  7 11:02 b0b.c-
+-rw-r--r-- 1 heyan heyan  210 12月 10 21:40 b0b.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 b0b.out
+-rw-rw-r-- 1 heyan heyan 6697 12月 13 13:40 b0b.tm
+b0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: b0b.tm
+							   >	F T T T F F F T T F 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c01.c-
+-rw-r--r-- 1 heyan heyan  100 12月  7 11:02 c01.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c01.out
+-rw-rw-r-- 1 heyan heyan 3016 12月 13 13:40 c01.tm
+c01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c01.tm
+							   >	284 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c02.c-
+-rw-r--r-- 1 heyan heyan  111 12月  7 11:02 c02.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 c02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c02.out
+-rw-rw-r-- 1 heyan heyan 3040 12月 13 13:40 c02.tm
+c02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c02.tm
+							   >	F 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c03.c-
+-rw-r--r-- 1 heyan heyan  103 12月  7 11:02 c03.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 c03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c03.out
+-rw-rw-r-- 1 heyan heyan 1778 12月 13 13:40 c03.tm
+c03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c03.tm
+							   >	F 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c04.c-
+-rw-r--r-- 1 heyan heyan   92 12月  7 11:02 c04.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c04.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c04.out
+-rw-rw-r-- 1 heyan heyan 1778 12月 13 13:40 c04.tm
+c04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c04.tm
+							   >	284 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c05.c-
+-rw-r--r-- 1 heyan heyan  110 12月  7 11:02 c05.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c05.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c05.out
+-rw-rw-r-- 1 heyan heyan 2084 12月 13 13:40 c05.tm
+c05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c05.tm
+							   >	284 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c06.c-
+-rw-r--r-- 1 heyan heyan  118 12月  7 11:02 c06.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c06.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c06.out
+-rw-rw-r-- 1 heyan heyan 3390 12月 13 13:40 c06.tm
+c06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c06.tm
+							   >	284 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c07.c-
+-rw-r--r-- 1 heyan heyan  128 12月  7 11:02 c07.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 c07.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c07.out
+-rw-rw-r-- 1 heyan heyan 3362 12月 13 13:40 c07.tm
+c07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c07.tm
+							   >	T 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c08.c-
+-rw-r--r-- 1 heyan heyan  120 12月  7 11:02 c08.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 c08.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c08.out
+-rw-rw-r-- 1 heyan heyan 2084 12月 13 13:40 c08.tm
+c08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c08.tm
+							   >	T 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c09.c-
+-rw-r--r-- 1 heyan heyan  130 12月  7 11:02 c09.c-
+-rw-r--r-- 1 heyan heyan  200 12月 10 21:40 c09.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c09.out
+-rw-rw-r-- 1 heyan heyan 1778 12月 13 13:40 c09.tm
+c09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c09.tm
+							   >	1197 -753 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0a.c-
+-rw-r--r-- 1 heyan heyan  116 12月  7 11:02 c0a.c-
+-rw-r--r-- 1 heyan heyan  200 12月 10 21:40 c0a.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0a.out
+-rw-rw-r-- 1 heyan heyan 1778 12月 13 13:40 c0a.tm
+c0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0a.tm
+							   >	1197 -753 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0b.c-
+-rw-r--r-- 1 heyan heyan   95 12月  7 11:02 c0b.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c0b.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0b.out
+-rw-rw-r-- 1 heyan heyan 1778 12月 13 13:40 c0b.tm
+c0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0b.tm
+							   >	444 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0c2.c-
+-rw-r--r-- 1 heyan heyan  203 12月  7 14:39 c0c2.c-
+-rw-r--r-- 1 heyan heyan  197 12月 10 21:40 c0c2.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0c2.out
+-rw-rw-r-- 1 heyan heyan 4588 12月 13 13:40 c0c2.tm
+c0c2 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0c2.tm
+							   >	ABBBBB
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0c.c-
+-rw-r--r-- 1 heyan heyan  119 12月  7 11:02 c0c.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c0c.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0c.out
+-rw-rw-r-- 1 heyan heyan 2987 12月 13 13:40 c0c.tm
+c0c (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0c.tm
+							   >	444 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0d.c-
+-rw-r--r-- 1 heyan heyan  134 12月  7 11:02 c0d.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c0d.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0d.out
+-rw-rw-r-- 1 heyan heyan 3082 12月 13 13:40 c0d.tm
+c0d (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0d.tm
+							   >	622 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0e.c-
+-rw-r--r-- 1 heyan heyan  166 12月  7 11:02 c0e.c-
+-rw-r--r-- 1 heyan heyan  213 12月 10 21:40 c0e.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0e.out
+-rw-rw-r-- 1 heyan heyan 4500 12月 13 13:40 c0e.tm
+c0e (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0e.tm
+							   >	1024 
+							   >	1024 
+							   >	1023 
+							   >	1023 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0f.c-
+-rw-r--r-- 1 heyan heyan  184 12月  7 11:02 c0f.c-
+-rw-r--r-- 1 heyan heyan  213 12月 10 21:40 c0f.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0f.out
+-rw-rw-r-- 1 heyan heyan 4860 12月 13 13:40 c0f.tm
+c0f (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0f.tm
+							   >	1024 
+							   >	1024 
+							   >	1023 
+							   >	1023 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0g.c-
+-rw-r--r-- 1 heyan heyan  179 12月  7 11:02 c0g.c-
+-rw-r--r-- 1 heyan heyan  213 12月 10 21:40 c0g.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0g.out
+-rw-rw-r-- 1 heyan heyan 4933 12月 13 13:40 c0g.tm
+c0g (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0g.tm
+							   >	1024 
+							   >	1024 
+							   >	1023 
+							   >	1023 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0h.c-
+-rw-r--r-- 1 heyan heyan  233 12月  7 11:02 c0h.c-
+-rw-r--r-- 1 heyan heyan  218 12月 10 21:40 c0h.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c0h.out
+-rw-rw-r-- 1 heyan heyan 5876 12月 13 13:40 c0h.tm
+c0h (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c0h.tm
+							   >	1024 
+							   >	1024 
+							   >	1023 
+							   >	1023 
+							   >	1023 Halted
+							   >	Bye.
+====================================
+FILE: c13.c-
+-rw-r--r-- 1 heyan heyan   605 12月  7 11:02 c13.c-
+-rw-r--r-- 1 heyan heyan   228 12月 10 21:40 c13.expected
+-rw-rw-r-- 1 heyan heyan    79 12月 13 13:40 c13.out
+-rw-rw-r-- 1 heyan heyan 11127 12月 13 13:40 c13.tm
+c13 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c13.tm
+							   >	73 
+							   >	5 
+							   >	17 
+							   >	5 
+							   >	17 
+							   >	5 
+							   >	17 
+							   >	5 
+							   >	17 
+							   >	5 
+							   >	17 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c14.c-
+-rw-r--r-- 1 heyan heyan  159 12月  7 11:02 c14.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c14.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c14.out
+-rw-rw-r-- 1 heyan heyan 3591 12月 13 13:40 c14.tm
+c14 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c14.tm
+							   >	284 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c15.c-
+-rw-r--r-- 1 heyan heyan  152 12月  7 11:02 c15.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c15.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c15.out
+-rw-rw-r-- 1 heyan heyan 2084 12月 13 13:40 c15.tm
+c15 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c15.tm
+							   >	284 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c16.c-
+-rw-r--r-- 1 heyan heyan  168 12月  7 11:02 c16.c-
+-rw-r--r-- 1 heyan heyan  194 12月 10 21:40 c16.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c16.out
+-rw-rw-r-- 1 heyan heyan 2084 12月 13 13:40 c16.tm
+c16 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c16.tm
+							   >	284 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c17.c-
+-rw-r--r-- 1 heyan heyan  160 12月  7 11:02 c17.c-
+-rw-r--r-- 1 heyan heyan  199 12月 10 21:40 c17.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c17.out
+-rw-rw-r-- 1 heyan heyan 2084 12月 13 13:40 c17.tm
+c17 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c17.tm
+							   >	777 -333 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c18.c-
+-rw-r--r-- 1 heyan heyan  168 12月  7 11:02 c18.c-
+-rw-r--r-- 1 heyan heyan  199 12月 10 21:40 c18.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 c18.out
+-rw-rw-r-- 1 heyan heyan 4433 12月 13 13:40 c18.tm
+c18 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: c18.tm
+							   >	777 -333 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: d015.c-
+-rw-r--r-- 1 heyan heyan  248 12月  7 15:02 d015.c-
+-rw-r--r-- 1 heyan heyan  210 12月 10 21:40 d015.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 d015.out
+-rw-rw-r-- 1 heyan heyan 6985 12月 13 13:40 d015.tm
+d015 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: d015.tm
+							   >	T F F T F T T F T T Halted
+							   >	Bye.
+====================================
+FILE: d01.c-
+-rw-r--r-- 1 heyan heyan  367 12月  7 11:02 d01.c-
+-rw-r--r-- 1 heyan heyan  221 12月 10 21:40 d01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 d01.out
+-rw-rw-r-- 1 heyan heyan 9981 12月 13 13:40 d01.tm
+d01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: d01.tm
+							   >	T F F T F T T F T T T F F T T F Halted
+							   >	Bye.
+====================================
+FILE: d02.c-
+-rw-r--r-- 1 heyan heyan  234 12月  7 11:02 d02.c-
+-rw-r--r-- 1 heyan heyan  220 12月 10 21:40 d02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 d02.out
+-rw-rw-r-- 1 heyan heyan 7038 12月 13 13:40 d02.tm
+d02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: d02.tm
+							   >	1019 66443 664 2 66449 0 -491 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: d03.c-
+-rw-r--r-- 1 heyan heyan  213 12月  7 11:02 d03.c-
+-rw-r--r-- 1 heyan heyan  220 12月 10 21:40 d03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 d03.out
+-rw-rw-r-- 1 heyan heyan 7054 12月 13 13:40 d03.tm
+d03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: d03.tm
+							   >	1019 66443 664 2 66449 0 -491 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: d045.c-
+-rw-r--r-- 1 heyan heyan   45 12月  9 12:48 d045.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 d045.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 d045.out
+-rw-rw-r-- 1 heyan heyan 3103 12月 13 13:40 d045.tm
+d045 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: d045.tm
+							   >	F Halted
+							   >	Bye.
+====================================
+FILE: d04.c-
+-rw-r--r-- 1 heyan heyan  434 12月  7 11:02 d04.c-
+-rw-r--r-- 1 heyan heyan  211 12月 10 21:40 d04.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 d04.out
+-rw-rw-r-- 1 heyan heyan 9591 12月 13 13:40 d04.tm
+d04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: d04.tm
+							   >	T T T F T 
+							   >	T T T F F 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: d05.c-
+-rw-r--r-- 1 heyan heyan   748 12月  7 11:02 d05.c-
+-rw-r--r-- 1 heyan heyan   222 12月 10 21:40 d05.expected
+-rw-rw-r-- 1 heyan heyan    79 12月 13 13:40 d05.out
+-rw-rw-r-- 1 heyan heyan 20885 12月 13 13:40 d05.tm
+d05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: d05.tm
+							   >	T T T T T 
+							   >	T F F F F 
+							   >	T T T F F 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: e01.c-
+-rw-r--r-- 1 heyan heyan   478 12月  7 11:02 e01.c-
+-rw-r--r-- 1 heyan heyan   225 12月 10 21:40 e01.expected
+-rw-rw-r-- 1 heyan heyan    79 12月 13 13:40 e01.out
+-rw-rw-r-- 1 heyan heyan 11345 12月 13 13:40 e01.tm
+e01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e01.tm
+							   >	13 23 55 987 13 451 514 55 987 1614 Halted
+							   >	Bye.
+====================================
+FILE: e02.c-
+-rw-r--r-- 1 heyan heyan  180 12月  7 11:02 e02.c-
+-rw-r--r-- 1 heyan heyan  209 12月 10 21:40 e02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e02.out
+-rw-rw-r-- 1 heyan heyan 4378 12月 13 13:40 e02.tm
+e02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e02.tm
+							   >	0 1 2 3 4 5 6 7 8 9 Halted
+							   >	Bye.
+====================================
+FILE: e03.c-
+-rw-r--r-- 1 heyan heyan  210 12月  7 11:02 e03.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 e03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e03.out
+-rw-rw-r-- 1 heyan heyan 4378 12月 13 13:40 e03.tm
+e03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e03.tm
+							   >	0 Halted
+							   >	Bye.
+====================================
+FILE: e04.c-
+-rw-r--r-- 1 heyan heyan   621 12月  7 11:02 e04.c-
+-rw-r--r-- 1 heyan heyan   189 12月 10 21:40 e04.expected
+-rw-rw-r-- 1 heyan heyan    79 12月 13 13:40 e04.out
+-rw-rw-r-- 1 heyan heyan 14075 12月 13 13:40 e04.tm
+e04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e04.tm
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: e05.c-
+-rw-r--r-- 1 heyan heyan   609 12月  7 11:02 e05.c-
+-rw-r--r-- 1 heyan heyan   222 12月 10 21:40 e05.expected
+-rw-rw-r-- 1 heyan heyan    79 12月 13 13:40 e05.out
+-rw-rw-r-- 1 heyan heyan 14075 12月 13 13:40 e05.tm
+e05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e05.tm
+							   >	13 55 987 13 451 514 55 987 1614 Halted
+							   >	Bye.
+====================================
+FILE: e06.c-
+-rw-r--r-- 1 heyan heyan  148 12月  7 11:02 e06.c-
+-rw-r--r-- 1 heyan heyan  205 12月 10 21:40 e06.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e06.out
+-rw-rw-r-- 1 heyan heyan 4023 12月 13 13:40 e06.tm
+e06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e06.tm
+							   >	0 1 2 3 4 5 666 Halted
+							   >	Bye.
+====================================
+FILE: e07.c-
+-rw-r--r-- 1 heyan heyan  153 12月  7 11:02 e07.c-
+-rw-r--r-- 1 heyan heyan  205 12月 10 21:40 e07.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e07.out
+-rw-rw-r-- 1 heyan heyan 4023 12月 13 13:40 e07.tm
+e07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e07.tm
+							   >	0 1 2 3 4 5 666 Halted
+							   >	Bye.
+====================================
+FILE: e08.c-
+-rw-r--r-- 1 heyan heyan  153 12月  7 11:02 e08.c-
+-rw-r--r-- 1 heyan heyan  205 12月 10 21:40 e08.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e08.out
+-rw-rw-r-- 1 heyan heyan 3896 12月 13 13:40 e08.tm
+e08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e08.tm
+							   >	0 1 2 3 4 5 666 Halted
+							   >	Bye.
+====================================
+FILE: e09.c-
+-rw-r--r-- 1 heyan heyan  138 12月  7 11:02 e09.c-
+-rw-r--r-- 1 heyan heyan  213 12月 10 21:40 e09.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e09.out
+-rw-rw-r-- 1 heyan heyan 3780 12月 13 13:40 e09.tm
+e09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e09.tm
+							   >	0 1 2 3 4 5 6 7 8 9 666 Halted
+							   >	Bye.
+====================================
+FILE: e0a.c-
+-rw-r--r-- 1 heyan heyan  253 12月  7 11:02 e0a.c-
+-rw-r--r-- 1 heyan heyan  213 12月 10 21:40 e0a.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e0a.out
+-rw-rw-r-- 1 heyan heyan 5438 12月 13 13:40 e0a.tm
+e0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e0a.tm
+							   >	0 1 2 3 4 5 6 7 8 9 666 Halted
+							   >	Bye.
+====================================
+FILE: e0b.c-
+-rw-r--r-- 1 heyan heyan  263 12月  7 11:02 e0b.c-
+-rw-r--r-- 1 heyan heyan  213 12月 10 21:40 e0b.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e0b.out
+-rw-rw-r-- 1 heyan heyan 5438 12月 13 13:40 e0b.tm
+e0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e0b.tm
+							   >	666 0 1 2 3 4 5 6 7 8 9 Halted
+							   >	Bye.
+====================================
+FILE: e0c.c-
+-rw-r--r-- 1 heyan heyan  211 12月  7 11:02 e0c.c-
+-rw-r--r-- 1 heyan heyan  273 12月 10 21:40 e0c.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e0c.out
+-rw-rw-r-- 1 heyan heyan 4380 12月 13 13:40 e0c.tm
+e0c (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e0c.tm
+							   >	0 1 2 3 4 5 0 0 1 2 3 4 5 1 0 1 2 3 4 5 2 0 1 2 3 4 5 3 
+							   >	Bye.
+====================================
+FILE: e0d.c-
+-rw-r--r-- 1 heyan heyan  267 12月  7 11:02 e0d.c-
+-rw-r--r-- 1 heyan heyan  249 12月 10 21:40 e0d.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 e0d.out
+-rw-rw-r-- 1 heyan heyan 5288 12月 13 13:40 e0d.tm
+e0d (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: e0d.tm
+							   >	0 1 2 3 4 0 0 1 2 3 4 1 0 1 2 3 4 2 0 1 2 3 4 3 0 1 2 3 
+							   >	Bye.
+====================================
+FILE: f01.c-
+-rw-r--r-- 1 heyan heyan   50 12月  7 11:02 f01.c-
+-rw-r--r-- 1 heyan heyan  189 12月 10 21:40 f01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f01.out
+-rw-rw-r-- 1 heyan heyan 2707 12月 13 13:40 f01.tm
+f01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f01.tm
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: f02.c-
+-rw-r--r-- 1 heyan heyan   67 12月  7 11:02 f02.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 f02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f02.out
+-rw-rw-r-- 1 heyan heyan 3026 12月 13 13:40 f02.tm
+f02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f02.tm
+							   >	42 Halted
+							   >	Bye.
+====================================
+FILE: f03.c-
+-rw-r--r-- 1 heyan heyan   90 12月  7 11:02 f03.c-
+-rw-r--r-- 1 heyan heyan  195 12月 10 21:40 f03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f03.out
+-rw-rw-r-- 1 heyan heyan 3507 12月 13 13:40 f03.tm
+f03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f03.tm
+							   >	42 43 Halted
+							   >	Bye.
+====================================
+FILE: f04.c-
+-rw-r--r-- 1 heyan heyan   94 12月  7 11:02 f04.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 f04.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f04.out
+-rw-rw-r-- 1 heyan heyan 3281 12月 13 13:40 f04.tm
+f04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f04.tm
+							   >	42 Halted
+							   >	Bye.
+====================================
+FILE: f05.c-
+-rw-r--r-- 1 heyan heyan   99 12月  7 11:02 f05.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 f05.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f05.out
+-rw-rw-r-- 1 heyan heyan 3281 12月 13 13:40 f05.tm
+f05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f05.tm
+							   >	T Halted
+							   >	Bye.
+====================================
+FILE: f06.c-
+-rw-r--r-- 1 heyan heyan  109 12月 10 21:36 f06.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 f06.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f06.out
+-rw-rw-r-- 1 heyan heyan 3449 12月 13 13:40 f06.tm
+f06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f06.tm
+							   >	F Halted
+							   >	Bye.
+====================================
+FILE: f07.c-
+-rw-r--r-- 1 heyan heyan   71 12月  7 11:02 f07.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 f07.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f07.out
+-rw-rw-r-- 1 heyan heyan 3188 12月 13 13:40 f07.tm
+f07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f07.tm
+							   >	93 Halted
+							   >	Bye.
+====================================
+FILE: f08.c-
+-rw-r--r-- 1 heyan heyan   75 12月  7 11:02 f08.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 f08.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f08.out
+-rw-rw-r-- 1 heyan heyan 3332 12月 13 13:40 f08.tm
+f08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f08.tm
+							   >	874 Halted
+							   >	Bye.
+====================================
+FILE: f09.c-
+-rw-r--r-- 1 heyan heyan   77 12月  7 11:02 f09.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 f09.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f09.out
+-rw-rw-r-- 1 heyan heyan 3534 12月 13 13:40 f09.tm
+f09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f09.tm
+							   >	186 Halted
+							   >	Bye.
+====================================
+FILE: f0a.c-
+-rw-r--r-- 1 heyan heyan   85 12月  7 11:02 f0a.c-
+-rw-r--r-- 1 heyan heyan  195 12月 10 21:40 f0a.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f0a.out
+-rw-rw-r-- 1 heyan heyan 3880 12月 13 13:40 f0a.tm
+f0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f0a.tm
+							   >	17298 Halted
+							   >	Bye.
+====================================
+FILE: f0b.c-
+-rw-r--r-- 1 heyan heyan  110 12月  7 11:02 f0b.c-
+-rw-r--r-- 1 heyan heyan  197 12月 10 21:40 f0b.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f0b.out
+-rw-rw-r-- 1 heyan heyan 3538 12月 13 13:40 f0b.tm
+f0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f0b.tm
+							   >	1001 99 Halted
+							   >	Bye.
+====================================
+FILE: f0c.c-
+-rw-r--r-- 1 heyan heyan  126 12月  7 11:02 f0c.c-
+-rw-r--r-- 1 heyan heyan  197 12月 10 21:40 f0c.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f0c.out
+-rw-rw-r-- 1 heyan heyan 3535 12月 13 13:40 f0c.tm
+f0c (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f0c.tm
+							   >	99 1001 Halted
+							   >	Bye.
+====================================
+FILE: f0d.c-
+-rw-r--r-- 1 heyan heyan  134 12月  7 11:02 f0d.c-
+-rw-r--r-- 1 heyan heyan  197 12月 10 21:40 f0d.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 f0d.out
+-rw-rw-r-- 1 heyan heyan 3538 12月 13 13:40 f0d.tm
+f0d (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: f0d.tm
+							   >	99 1001 Halted
+							   >	Bye.
+====================================
+FILE: g00.c-
+-rw-r--r-- 1 heyan heyan   69 12月  7 11:02 g00.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g00.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g00.out
+-rw-rw-r-- 1 heyan heyan 3104 12月 13 13:40 g00.tm
+g00 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g00.tm
+							   >	637 Halted
+							   >	Bye.
+====================================
+FILE: g01.c-
+-rw-r--r-- 1 heyan heyan  134 12月  7 11:02 g01.c-
+-rw-r--r-- 1 heyan heyan  201 12月 10 21:40 g01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g01.out
+-rw-rw-r-- 1 heyan heyan 3931 12月 13 13:40 g01.tm
+g01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g01.tm
+							   >	637 122 637 Halted
+							   >	Bye.
+====================================
+FILE: g02.c-
+-rw-r--r-- 1 heyan heyan  143 12月  7 11:02 g02.c-
+-rw-r--r-- 1 heyan heyan  201 12月 10 21:40 g02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g02.out
+-rw-rw-r-- 1 heyan heyan 3935 12月 13 13:40 g02.tm
+g02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g02.tm
+							   >	637 122 637 Halted
+							   >	Bye.
+====================================
+FILE: g03.c-
+-rw-r--r-- 1 heyan heyan  109 12月  7 11:02 g03.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g03.out
+-rw-rw-r-- 1 heyan heyan 3362 12月 13 13:40 g03.tm
+g03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g03.tm
+							   >	637 Halted
+							   >	Bye.
+====================================
+FILE: g04.c-
+-rw-r--r-- 1 heyan heyan  101 12月  7 11:02 g04.c-
+-rw-r--r-- 1 heyan heyan  195 12月 10 21:40 g04.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g04.out
+-rw-rw-r-- 1 heyan heyan 3631 12月 13 13:40 g04.tm
+g04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g04.tm
+							   >	29152 Halted
+							   >	Bye.
+====================================
+FILE: g05.c-
+-rw-r--r-- 1 heyan heyan  127 12月  7 11:02 g05.c-
+-rw-r--r-- 1 heyan heyan  196 12月 10 21:40 g05.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g05.out
+-rw-rw-r-- 1 heyan heyan 3911 12月 13 13:40 g05.tm
+g05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g05.tm
+							   >	404484 Halted
+							   >	Bye.
+====================================
+FILE: g06.c-
+-rw-r--r-- 1 heyan heyan  113 12月  7 11:02 g06.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g06.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g06.out
+-rw-rw-r-- 1 heyan heyan 3545 12月 13 13:40 g06.tm
+g06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g06.tm
+							   >	445 Halted
+							   >	Bye.
+====================================
+FILE: g07.c-
+-rw-r--r-- 1 heyan heyan  119 12月  7 11:02 g07.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g07.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g07.out
+-rw-rw-r-- 1 heyan heyan 3622 12月 13 13:40 g07.tm
+g07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g07.tm
+							   >	445 Halted
+							   >	Bye.
+====================================
+FILE: g08.c-
+-rw-r--r-- 1 heyan heyan  127 12月  7 11:02 g08.c-
+-rw-r--r-- 1 heyan heyan  196 12月 10 21:40 g08.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g08.out
+-rw-rw-r-- 1 heyan heyan 3943 12月 13 13:40 g08.tm
+g08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g08.tm
+							   >	198102 Halted
+							   >	Bye.
+====================================
+FILE: g09.c-
+-rw-r--r-- 1 heyan heyan  131 12月  7 11:02 g09.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 g09.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g09.out
+-rw-rw-r-- 1 heyan heyan 4061 12月 13 13:40 g09.tm
+g09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g09.tm
+							   >	2 Halted
+							   >	Bye.
+====================================
+FILE: g0a.c-
+-rw-r--r-- 1 heyan heyan  111 12月  7 11:02 g0a.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g0a.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g0a.out
+-rw-rw-r-- 1 heyan heyan 3546 12月 13 13:40 g0a.tm
+g0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g0a.tm
+							   >	445 Halted
+							   >	Bye.
+====================================
+FILE: g0b.c-
+-rw-r--r-- 1 heyan heyan  103 12月  7 11:02 g0b.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g0b.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g0b.out
+-rw-rw-r-- 1 heyan heyan 3494 12月 13 13:40 g0b.tm
+g0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g0b.tm
+							   >	445 Halted
+							   >	Bye.
+====================================
+FILE: g0c.c-
+-rw-r--r-- 1 heyan heyan   71 12月  7 11:02 g0c.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g0c.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g0c.out
+-rw-rw-r-- 1 heyan heyan 3357 12月 13 13:40 g0c.tm
+g0c (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g0c.tm
+							   >	176 Halted
+							   >	Bye.
+====================================
+FILE: g0d.c-
+-rw-r--r-- 1 heyan heyan   71 12月  7 11:02 g0d.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g0d.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g0d.out
+-rw-rw-r-- 1 heyan heyan 3357 12月 13 13:40 g0d.tm
+g0d (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g0d.tm
+							   >	176 Halted
+							   >	Bye.
+====================================
+FILE: g0e.c-
+-rw-r--r-- 1 heyan heyan  112 12月  7 11:02 g0e.c-
+-rw-r--r-- 1 heyan heyan  195 12月 10 21:40 g0e.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g0e.out
+-rw-rw-r-- 1 heyan heyan 4652 12月 13 13:40 g0e.tm
+g0e (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g0e.tm
+							   >	176 0 Halted
+							   >	Bye.
+====================================
+FILE: g0f.c-
+-rw-r--r-- 1 heyan heyan   97 12月 10 21:14 g0f.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 g0f.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 g0f.out
+-rw-rw-r-- 1 heyan heyan 4476 12月 13 13:40 g0f.tm
+g0f (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: g0f.tm
+							   >	176 Halted
+							   >	Bye.
+====================================
+FILE: h01.c-
+-rw-r--r-- 1 heyan heyan  112 12月  7 11:02 h01.c-
+-rw-r--r-- 1 heyan heyan  223 12月 10 21:40 h01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 h01.out
+-rw-rw-r-- 1 heyan heyan 4420 12月 13 13:40 h01.tm
+h01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: h01.tm
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: h02.c-
+-rw-r--r-- 1 heyan heyan  104 12月  7 11:02 h02.c-
+-rw-r--r-- 1 heyan heyan  223 12月 10 21:40 h02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 h02.out
+-rw-rw-r-- 1 heyan heyan 4368 12月 13 13:40 h02.tm
+h02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: h02.tm
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: h03.c-
+-rw-r--r-- 1 heyan heyan  188 12月  7 11:02 h03.c-
+-rw-r--r-- 1 heyan heyan  231 12月 10 21:40 h03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 h03.out
+-rw-rw-r-- 1 heyan heyan 4980 12月 13 13:40 h03.tm
+h03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: h03.tm
+							   >	12 
+							   >	11 
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: h04.c-
+-rw-r--r-- 1 heyan heyan  185 12月  7 11:02 h04.c-
+-rw-r--r-- 1 heyan heyan  231 12月 10 21:40 h04.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 h04.out
+-rw-rw-r-- 1 heyan heyan 5052 12月 13 13:40 h04.tm
+h04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: h04.tm
+							   >	12 
+							   >	11 
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: h05.c-
+-rw-r--r-- 1 heyan heyan  179 12月  7 11:02 h05.c-
+-rw-r--r-- 1 heyan heyan  231 12月 10 21:40 h05.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 h05.out
+-rw-rw-r-- 1 heyan heyan 4876 12月 13 13:40 h05.tm
+h05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: h05.tm
+							   >	12 
+							   >	11 
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: h06.c-
+-rw-r--r-- 1 heyan heyan  243 12月  7 11:02 h06.c-
+-rw-r--r-- 1 heyan heyan  231 12月 10 21:40 h06.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 h06.out
+-rw-rw-r-- 1 heyan heyan 5438 12月 13 13:40 h06.tm
+h06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: h06.tm
+							   >	12 
+							   >	11 
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: h07.c-
+-rw-r--r-- 1 heyan heyan  162 12月  7 11:02 h07.c-
+-rw-r--r-- 1 heyan heyan  268 12月 10 21:40 h07.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 h07.out
+-rw-rw-r-- 1 heyan heyan 5706 12月 13 13:40 h07.tm
+h07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: h07.tm
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	1 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	1 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	1 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	13 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: i00.c-
+-rw-r--r-- 1 heyan heyan   49 12月  9 12:52 i00.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 i00.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i00.out
+-rw-rw-r-- 1 heyan heyan 2442 12月 13 13:40 i00.tm
+i00 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i00.tm
+							   >	666 Halted
+							   >	Bye.
+====================================
+FILE: i01.c-
+-rw-r--r-- 1 heyan heyan   50 12月 10 21:07 i01.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 i01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i01.out
+-rw-rw-r-- 1 heyan heyan 2497 12月 13 13:40 i01.tm
+i01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i01.tm
+							   >	111 Halted
+							   >	Bye.
+====================================
+FILE: i02.c-
+-rw-r--r-- 1 heyan heyan   53 12月 10 21:07 i02.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 i02.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i02.out
+-rw-rw-r-- 1 heyan heyan 2498 12月 13 13:40 i02.tm
+i02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i02.tm
+							   >	T Halted
+							   >	Bye.
+====================================
+FILE: i03.c-
+-rw-r--r-- 1 heyan heyan   52 12月 10 21:07 i03.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 i03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i03.out
+-rw-rw-r-- 1 heyan heyan 2678 12月 13 13:40 i03.tm
+i03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i03.tm
+							   >	13 Halted
+							   >	Bye.
+====================================
+FILE: i04.c-
+-rw-r--r-- 1 heyan heyan   54 12月 10 21:07 i04.c-
+-rw-r--r-- 1 heyan heyan  193 12月 10 21:40 i04.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i04.out
+-rw-rw-r-- 1 heyan heyan 2495 12月 13 13:40 i04.tm
+i04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i04.tm
+							   >	666 Halted
+							   >	Bye.
+====================================
+FILE: i05.c-
+-rw-r--r-- 1 heyan heyan   90 12月 10 21:07 i05.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 i05.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i05.out
+-rw-rw-r-- 1 heyan heyan 2496 12月 13 13:40 i05.tm
+i05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i05.tm
+							   >	T Halted
+							   >	Bye.
+====================================
+FILE: i06.c-
+-rw-r--r-- 1 heyan heyan   90 12月 10 21:07 i06.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 i06.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i06.out
+-rw-rw-r-- 1 heyan heyan 2497 12月 13 13:40 i06.tm
+i06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i06.tm
+							   >	T Halted
+							   >	Bye.
+====================================
+FILE: i07.c-
+-rw-r--r-- 1 heyan heyan   90 12月 10 21:07 i07.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 i07.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i07.out
+-rw-rw-r-- 1 heyan heyan 2497 12月 13 13:40 i07.tm
+i07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i07.tm
+							   >	T Halted
+							   >	Bye.
+====================================
+FILE: i08.c-
+-rw-r--r-- 1 heyan heyan   38 12月 10 21:07 i08.c-
+-rw-r--r-- 1 heyan heyan  189 12月 10 21:40 i08.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i08.out
+-rw-rw-r-- 1 heyan heyan 2261 12月 13 13:40 i08.tm
+i08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i08.tm
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: i09.c-
+-rw-r--r-- 1 heyan heyan   66 12月 10 21:07 i09.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 i09.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i09.out
+-rw-rw-r-- 1 heyan heyan 2495 12月 13 13:40 i09.tm
+i09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i09.tm
+							   >	26 Halted
+							   >	Bye.
+====================================
+FILE: i0a.c-
+-rw-r--r-- 1 heyan heyan   56 12月 10 21:07 i0a.c-
+-rw-r--r-- 1 heyan heyan  190 12月 10 21:40 i0a.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i0a.out
+-rw-rw-r-- 1 heyan heyan 2496 12月 13 13:40 i0a.tm
+i0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i0a.tm
+							   >	aHalted
+							   >	Bye.
+====================================
+FILE: i0b.c-
+-rw-r--r-- 1 heyan heyan   63 12月 10 21:07 i0b.c-
+-rw-r--r-- 1 heyan heyan  192 12月 10 21:40 i0b.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i0b.out
+-rw-rw-r-- 1 heyan heyan 2607 12月 13 13:40 i0b.tm
+i0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i0b.tm
+							   >	20 Halted
+							   >	Bye.
+====================================
+FILE: i0c.c-
+-rw-r--r-- 1 heyan heyan   69 12月 10 21:07 i0c.c-
+-rw-r--r-- 1 heyan heyan  191 12月 10 21:40 i0c.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 i0c.out
+-rw-rw-r-- 1 heyan heyan 2496 12月 13 13:40 i0c.tm
+i0c (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i0c.tm
+							   >	F Halted
+							   >	Bye.
+====================================
+FILE: j00.c-
+-rw-r--r-- 1 heyan heyan  553 12月 10 21:24 j00.c-
+-rw-r--r-- 1 heyan heyan  217 12月 10 21:40 j00.expected
+-rw-rw-r-- 1 heyan heyan   37 12月 13 13:40 j00.out
+-rw-rw-r-- 1 heyan heyan 8192 12月 13 13:40 j00.tm
+j00.out ztmp6407.txt 不同：第 1 字节，第 1 行
+j00 (Output DIFF)
+							   >	Number of warnings: 0
+							   >	Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: j00.tm
+							   >	7 7 7 
+							   >	7 7 7 
+							   >	7 7 7 
+							   >	7 7 7 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: s00.c-
+-rw-r--r-- 1 heyan heyan 302 12月  7 11:02 s00.c-
+-rw-r--r-- 1 heyan heyan 189 12月 10 21:40 s00.expected
+-rw-rw-r-- 1 heyan heyan 125 12月 13 13:40 s00.out
+-rw-rw-r-- 1 heyan heyan   0 12月 13 13:40 s00.tm
+s00.out ztmp6407.txt 不同：第 1 字节，第 1 行
+s00 (Output DIFF)
+ERROR(LINKER): Procedure main is not defined.		   <
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 1					   |	Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: s00.tm
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: s01.c-
+-rw-r--r-- 1 heyan heyan  214 12月  7 11:02 s01.c-
+-rw-r--r-- 1 heyan heyan  195 12月 10 21:40 s01.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 s01.out
+-rw-rw-r-- 1 heyan heyan 4849 12月 13 13:40 s01.tm
+s01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: s01.tm
+							   >	0 1 2 Halted
+							   >	Bye.
+====================================
+FILE: s025.c-
+-rw-r--r-- 1 heyan heyan 479 12月  7 14:52 s025.c-
+-rw-r--r-- 1 heyan heyan 204 12月 10 21:40 s025.expected
+-rw-rw-r-- 1 heyan heyan  37 12月 13 13:40 s025.out
+-rw-rw-r-- 1 heyan heyan   0 12月 13 13:40 s025.tm
+s025.out ztmp6407.txt 不同：第 1 字节，第 1 行
+s025 (Output DIFF)
+							   >	Number of warnings: 0
+							   >	Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: s025.tm
+							   >	7000 669 7000 Halted
+							   >	Bye.
+====================================
+FILE: s02.c-
+-rw-r--r-- 1 heyan heyan 582 12月  7 11:02 s02.c-
+-rw-r--r-- 1 heyan heyan 203 12月 10 21:40 s02.expected
+-rw-rw-r-- 1 heyan heyan  37 12月 13 13:40 s02.out
+-rw-rw-r-- 1 heyan heyan   0 12月 13 13:40 s02.tm
+s02.out ztmp6407.txt 不同：第 1 字节，第 1 行
+s02 (Output DIFF)
+							   >	Number of warnings: 0
+							   >	Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: s02.tm
+							   >	7000 669 7000 Halted
+							   >	Bye.
+====================================
+FILE: s02e.c-
+-rw-r--r-- 1 heyan heyan 473 12月 10 21:39 s02e.c-
+-rw-r--r-- 1 heyan heyan 189 12月 10 21:40 s02e.expected
+-rw-rw-r-- 1 heyan heyan  37 12月 13 13:40 s02e.out
+-rw-rw-r-- 1 heyan heyan   0 12月 13 13:40 s02e.tm
+s02e.out ztmp6407.txt 不同：第 1 字节，第 1 行
+s02e (Output DIFF)
+							   >	ERROR(9): Symbol 'load' is already defined at line 7.
+							   >	ERROR(12): Symbol 'load' is already defined at line 11.
+							   >	Number of warnings: 0
+							   >	Number of errors: 2
+------------------------------------				------------------------------------
+====================================
+FILE: s03.c-
+-rw-r--r-- 1 heyan heyan  160 12月  7 11:02 s03.c-
+-rw-r--r-- 1 heyan heyan  195 12月 10 21:40 s03.expected
+-rw-rw-r-- 1 heyan heyan   79 12月 13 13:40 s03.out
+-rw-rw-r-- 1 heyan heyan 2995 12月 13 13:40 s03.tm
+s03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: s03.tm
+							   >	10 10 Halted
+							   >	Bye.
+====================================
+FILE: s04.c-
+-rw-r--r-- 1 heyan heyan 264 12月  7 11:02 s04.c-
+-rw-r--r-- 1 heyan heyan 201 12月 10 21:40 s04.expected
+-rw-rw-r-- 1 heyan heyan  37 12月 13 13:40 s04.out
+-rw-rw-r-- 1 heyan heyan   0 12月 13 13:40 s04.tm
+s04.out ztmp6407.txt 不同：第 1 字节，第 1 行
+s04 (Output DIFF)
+							   >	Number of warnings: 0
+							   >	Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: s04.tm
+							   >	111 222 333 Halted
+							   >	Bye.
+====================================
+FILE: s05.c-
+-rw-r--r-- 1 heyan heyan  522 12月  7 11:02 s05.c-
+-rw-r--r-- 1 heyan heyan  222 12月 10 21:40 s05.expected
+-rw-rw-r-- 1 heyan heyan  159 12月 13 13:40 s05.out
+-rw-rw-r-- 1 heyan heyan 1931 12月 13 13:40 s05.tm
+s05.out ztmp6407.txt 不同：第 1 字节，第 1 行
+s05 (Output DIFF)
+ERROR(42): Symbol 'cat' is not defined.			   <
+ERROR(43): Symbol 'dog' is not defined.			   <
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 2					   |	Number of errors: 0
+------------------------------------				------------------------------------
+							   >
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: s05.tm
+							   >	11 22 23 33 34 11 22 23 44 45 55 Halted
+							   >	Bye.

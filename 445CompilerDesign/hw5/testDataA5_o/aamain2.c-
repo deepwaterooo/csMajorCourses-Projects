@@ -1,0 +1,12 @@
+// C-F09
+void main()
+{
+    output(666);
+    outputb(true);
+    outnl();
+    input();
+    inputb();
+
+    return;
+}
+

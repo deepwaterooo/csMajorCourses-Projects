@@ -1,0 +1,28 @@
+ERROR(4): Syntax error.  Unexpected ')'.  Expecting in.
+ERROR(6): Syntax error.  Unexpected int.  Expecting in.
+ERROR(8): Syntax error.  Unexpected int.  Expecting id.
+ERROR(10): Syntax error.  Unexpected int.  Expecting id.
+ERROR(12): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(14): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(18): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(21): Syntax error.  Unexpected ')'.  Expecting in.
+ERROR(23): Syntax error.  Unexpected '*'.  Expecting in.
+ERROR(25): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(27): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(29): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(29): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(31): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(31): Syntax error.  Unexpected ';'.
+ERROR(33): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(35): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(35): Syntax error.  Unexpected ';'.
+ERROR(38): Syntax error.  Unexpected ')'.  Expecting in.
+ERROR(40): Syntax error.  Unexpected ';'.  Expecting in.
+ERROR(42): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(44): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(46): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(48): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(50): Syntax error.  Unexpected ')'.  Expecting '('.
+ERROR(52): Syntax error.  Unexpected ';'.  Expecting '('.
+Number of warnings: 0
+Number of errors: 26

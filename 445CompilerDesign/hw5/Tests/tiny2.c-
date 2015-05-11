@@ -1,0 +1,16 @@
+// C-F13
+// C-F09
+int y;
+
+int wolf(int garion)
+{
+	return 42;
+}
+
+  main()
+{
+	int x;
+	x = 666;
+	y = 42;
+	x = wolf(x);
+}

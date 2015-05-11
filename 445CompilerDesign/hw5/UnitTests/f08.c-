@@ -1,0 +1,10 @@
+// C-F13
+int cat()
+{
+    return 93;
+}
+
+  main()
+{
+    output(781+cat());
+}

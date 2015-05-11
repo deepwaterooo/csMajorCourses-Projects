@@ -1,0 +1,440 @@
+%{
+
+  // definitions section
+
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include "scanType.h"  
+#include "c-.tab.h"
+
+extern int yylex();
+extern int yyparse();
+extern FILE * yyin;
+
+char *yyfilename;
+
+// the root of the abstract syntax tree
+//TreeNode *syntaxTree;
+// pgm * root; 
+
+extern char *yytext;
+extern int linnum;
+
+using namespace std;
+#define YY_DECL extern "C" int yylex()
+//#define YYERROR_VERBOSE
+#define YYDEBUG 1
+
+//void printTree(FILE *, TreeNode *); 
+// void FreeTree(Node *p);
+// void PrintTree(Node *p, int depth);
+
+void yyerror(const char* s);
+void tokBisonExe(Token * token);
+
+%}
+
+%union {
+  Token * token;
+}
+
+%token <token> ID QUIT CHARCONST NUMCONST STRINGCONST
+%token <token> IF ELSE WHILE FOREACH IN
+%token <token> STATIC INT BOOL CHAR E  
+%token <token> TRUE FALSE RETURN BREAK 
+%token <token> OR NOT INC DEC
+%token <token> LEQ GEQ EQ NEQ PASSIGN MASSIGN 
+
+%token <token> lt gt equal plus minus 
+%token <token> multiply divide mod comma semicolon colon
+%token <token> leftp2 leftp leftp3 rightp2 rightp rightp3
+%token <term> AND
+
+%%
+			
+program: declaration_list     //{ $$ = new pgm($1); root = $$;}
+;		 
+declaration_list: declaration_list declaration
+| declaration
+;
+declaration: var_declaration
+| fun_declaration
+;
+
+//4
+var_declaration: type_specifier var_decl_list semicolon
+;
+//5
+scoped_var_declaration: scoped_type_specifier var_decl_list semicolon
+;
+//6
+var_decl_list: var_decl_list comma var_decl_initialize
+| var_decl_initialize
+;
+
+// 7
+var_decl_initialize: var_decl_id  
+| var_decl_id colon simple_expression
+;
+
+//8 
+var_decl_id: ID id_exp0;
+id_exp0: /* empty */
+| leftp3 NUMCONST rightp3 
+;
+
+//9
+scoped_type_specifier: STATIC type_specifier
+| type_specifier
+;
+type_specifier: INT
+| BOOL
+| CHAR
+;
+
+// 11
+fun_declaration: type_specifier ID leftp params rightp statement
+| ID leftp params rightp statement
+;
+
+// 12
+params: param_list
+| 
+;
+// 13
+param_list: param_list semicolon param_type_list
+| param_type_list
+;
+// 14
+param_type_list: type_specifier param_id_list
+;
+// 15
+param_id_list: param_id_list comma param_id
+| param_id
+;
+
+//16
+param_id: ID
+| ID leftp3 mid_exp rightp3
+;
+mid_exp: NUMCONST
+| /* empty */
+;
+
+// 17
+statement: expression_stmt 
+| compound_stmt
+| selection_stmt
+| iteration_stmt
+| return_stmt
+| break_stmt
+;
+// 18
+compound_stmt: leftp2 local_declarations statement_list rightp2
+;
+// 19
+local_declarations: local_declarations scoped_var_declaration
+| 
+;
+// 20
+statement_list: statement_list statement
+| 
+;
+// 21
+expression_stmt: expression semicolon
+| semicolon
+;
+
+//22
+selection_stmt: matched
+| unmatched
+;
+matched: IF leftp simple_expression rightp matched ELSE matched
+| expression_stmt 
+| compound_stmt
+| iteration_stmt
+| return_stmt
+| break_stmt  
+;
+unmatched: IF leftp simple_expression rightp unmatched_exp
+;
+unmatched_exp: matched_exp
+| unmatched
+;
+matched_exp: matched matched_else_exp
+;
+matched_else_exp: /* empty */
+| ELSE unmatched
+;
+/*
+unmatched: 
+  IF leftp simple_expression rightp matched
+| IF leftp simple_expression rightp unmatched
+| IF leftp simple_expression rightp matched ELSE unmatched
+;
+*/
+
+// 23
+iteration_stmt: WHILE leftp simple_expression rightp statement
+| FOREACH leftp mutable IN simple_expression rightp statement
+;
+// 24
+return_stmt: RETURN semicolon
+| RETURN expression semicolon
+;
+// 25
+break_stmt: BREAK semicolon
+;
+
+// 26
+expression: mutable equal expression 
+| mutable PASSIGN expression 
+| mutable MASSIGN expression
+| mutable INC 
+| mutable DEC 
+| simple_expression
+;
+simple_expression: simple_expression OR and_expression 
+| and_expression
+;
+and_expression: and_expression AND unary_rel_expression 
+| unary_rel_expression
+;
+
+//29
+unary_rel_expression: NOT unary_rel_expression 
+| rel_expression
+;
+
+//30
+rel_expression: sum_expression sum_expression_rest;
+sum_expression_rest:  /* empty */
+| relop sum_expression 
+;
+
+relop: lt
+| gt
+| LEQ
+| GEQ 
+| EQ 
+| NEQ 
+;
+
+//32
+sum_expression: sum_expression sumop term 
+| term
+;
+sumop: plus 
+| minus
+;
+term: term mulop unary_expression 
+| unary_expression
+;
+mulop: multiply
+| divide
+| mod
+;
+unary_expression: unaryop unary_expression 
+| factor
+;
+unaryop: minus
+| multiply
+;
+
+
+factor: immutable 
+| mutable
+;
+
+//39
+mutable: ID id_exp39
+;
+id_exp39: /* empty */
+| leftp3 expression rightp3
+;
+// 40
+immutable: leftp expression rightp
+| call 
+| constant
+;
+//41 
+call: ID leftp args rightp
+;
+
+// 42
+args: arg_list 
+| 
+;
+
+arg_list: expression comma arg_list  
+| expression
+;
+constant: NUMCONST 
+| CHARCONST 
+| STRINGCONST 
+| TRUE 
+| FALSE
+;
+
+%%
+
+main(int argc, char* argv[]){
+
+  //yydebug = 1;
+
+  if (argc == 1) 
+    yyin = stdin;
+  else if ( (argc == 2) && argv[1] != "-d" ){
+    printf("No -d option, YYDEBUG turned off!\n");
+    yyin = fopen(argv[1], "r");
+  } else if ( (argc == 3) && argv[1] != "-d" ){
+    ;
+  } else {
+    printf("Usage: ./c- TestFileName\nUsage: ./c- < TestFileName\nUsage: cat TestFileName | ./c-\n");
+    exit(-1);
+  }
+
+  if (yyin == NULL){
+    printf("Can't open/read '%s'\n", argv[1]);
+    exit(-1);
+  }
+
+
+  // for the -d option
+  int d_flag = 0;
+  char * d_value = NULL;
+  int c;
+  while ((c = getopt (argc, argv, "d")) != -1)
+    switch (c) {      
+    case 'd':
+      d_flag = 1;
+      break;
+    case '?':
+      if (optopt == 'c')
+	fprintf (stderr, "Option -%c requires an argument.\n", optopt);
+      else if (isprint (optopt))
+	fprintf (stderr, "Unknown option `-%c'.\n", optopt);
+      else
+	fprintf (stderr, "Unknown option character `\\x%x'.\n", optopt);
+      return 1;
+    default:
+      abort ();
+    }
+  printf ("d_flag = %d\n", d_flag);
+
+
+  yyfilename = argv[1];
+  linnum = 1;
+
+  do {
+    yyparse();
+    //    printTree(stdout, syntaxTree);
+  }   while ( !feof(yyin)) ;
+
+  if (argc != 1)
+    fclose(yyin);
+}
+/*
+void PrintTree(Node *p, int depth){  
+  for (int i = 0; i < depth; i++) cout << '\t';        
+  if(!p->arrived_value.empty()){  
+    cout<<p->arrived_value<<endl;  
+    for (int i = 0; i < depth+1; i++) cout << '\t';   
+  }  
+  cout<<p->attribute;  
+  //cout<<p->attribute<< "\t cnt:" << p->cnt << endl; 
+  if ( (!p->attribute.compare(yes)) || (!p->attribute.compare(no)) )
+		cout << "\t cnt:" << p->cnt << endl;
+  else
+		cout << endl;
+  for (vector<Node*>::iterator it = p->childs.begin(); it != p->childs.end(); it++){  
+    PrintTree(*it, depth + 1);  
+  }  
+}  
+
+void FreeTree(Node *p){  
+  if (p == NULL)  
+    return;  
+  //rootcnt = p->cnt;
+  for (vector<Node*>::iterator it = p->childs.begin(); it != p->childs.end(); it++){  
+	totalcnt += (*it)->cnt ;
+    FreeTree(*it);  
+  }  
+  delete p;  
+  tree_size++;  
+}  
+*/
+
+void tokBisonExe(Token * token){
+  cout << "Line " << linnum << " Token: ";
+
+  switch (token->tokenClass) {    
+    case ID: 
+      cout << "ID"  << " Value: " << yytext << endl;
+      break;
+    case BOOL: 
+      cout << "BOOLEAN" << endl;
+      break;
+    case NUMCONST: 
+      cout << "NUMCONST"  << " Value: " << token->numValue << endl;
+      break;
+    case CHARCONST: 
+      cout << "CHARCONST"  << " Value: " << yytext << endl;
+      break;
+    case STRINGCONST: 
+      cout << "STRINGCONST"  << " Value: " << yytext << endl;
+      break;
+    case LEQ: 
+      cout << "LEQ" << endl;
+      break;
+    case GEQ: 
+      cout << "GEQ" << endl;
+      break;
+    case EQ: 
+      cout << "EQ" << endl;
+      break;
+    case NEQ: 
+      cout << "NEQ" << endl;
+      break;
+    case PASSIGN: 
+      cout << "PASSIGN" << endl;
+      break;
+    case MASSIGN: 
+      cout << "MASSIGN" << endl;
+      break;
+    case INC: 
+      cout << "INC" << endl;
+      break;
+    case DEC: 
+      cout << "DEC" << endl;
+      break;
+    default: 
+      int i = 0;
+      char * a = token->tokenstr;
+      while (*(a) != '\0'){
+	i++;
+	a++;
+      }
+      if (i == 1 )
+	cout << *token->tokenstr; 
+      else {
+	for (int a = 0; a < i; a++) {
+	  char c = *(token->tokenstr);
+	  putchar (toupper(c));
+	  (token->tokenstr)++;
+	}
+      }
+      cout << endl;
+    }
+}
+
+void yyerror(const char* s){
+  fprintf(stderr, "%s in line %d in token %s\n", s, linnum, yytext);
+  //printf("ERROR lineno(%d):%s. I got: %s\n", linnum, s, yytext);
+  exit(-1);
+}
+

@@ -1,0 +1,18 @@
+ERROR(10): The operation '=' does not work with arrays.
+ERROR(11): The operation '=' does not work with arrays.
+ERROR(12): The operation '<' does not work with arrays.
+ERROR(13): The operation '<' does not work with arrays.
+ERROR(14): The operation '==' does not work with arrays.
+ERROR(15): The operation '==' does not work with arrays.
+ERROR(16): '<' requires operands of type int but lhs is of type bool.
+ERROR(16): '<' requires operands of type int but rhs is of type bool.
+ERROR(17): '/' requires operands of type int but lhs is of type bool.
+ERROR(18): '/' requires operands of type int but rhs is of type bool.
+ERROR(19): '%' requires operands of type int but lhs is of type bool.
+ERROR(20): '%' requires operands of type int but rhs is of type bool.
+ERROR(21): '-' requires operands of type int but lhs is of type bool.
+ERROR(22): '-' requires operands of type int but rhs is of type bool.
+ERROR(23): '<' requires operands of type int but lhs is of type void.
+ERROR(23): '<' requires operands of type int but rhs is of type void.
+Number of warnings: 0
+Number of errors: 16

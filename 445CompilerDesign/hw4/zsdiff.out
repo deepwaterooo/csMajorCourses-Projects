@@ -1,0 +1,659 @@
+Limited to 5 seconds total run time and 5000 lines of output  <
+							      <
+* ================================================ *	      <
+|      Tests for CS445 Assignment 4                |	      <
+|       Comparison with Expected Output            |	      <
+* ================================================ *	      <
+							      <
+/export/home/nibbler/TestWorld				      <
+find makefile						      <
+makefile						      <
+a makefile is here					      <
+RUN: c- allErrors.c-					      <
+ERROR(ARGLIST): source file "allErrors.c-" could not be opene <
+RUN: c- < syntaxerr-assign.c-				      <
+ERROR(10): Syntax error.  Unexpected ';'.			ERROR(10): Syntax error.  Unexpected ';'.
+ERROR(11): Syntax error.  Unexpected ';'.			ERROR(11): Syntax error.  Unexpected ';'.
+ERROR(12): Syntax error.  Unexpected ';'.			ERROR(12): Syntax error.  Unexpected ';'.
+ERROR(14): Syntax error.  Unexpected '='.			ERROR(14): Syntax error.  Unexpected '='.
+ERROR(15): Syntax error.  Unexpected +=.			ERROR(15): Syntax error.  Unexpected +=.
+ERROR(16): Syntax error.  Unexpected -=.			ERROR(16): Syntax error.  Unexpected -=.
+ERROR(18): Syntax error.  Unexpected '='.			ERROR(18): Syntax error.  Unexpected '='.
+ERROR(19): Syntax error.  Unexpected +=.			ERROR(19): Syntax error.  Unexpected +=.
+ERROR(20): Syntax error.  Unexpected -=.			ERROR(20): Syntax error.  Unexpected -=.
+ERROR(21): Syntax error.  Unexpected ++.			ERROR(21): Syntax error.  Unexpected ++.
+ERROR(22): Syntax error.  Unexpected --.			ERROR(22): Syntax error.  Unexpected --.
+ERROR(24): Syntax error.  Unexpected bool.			ERROR(24): Syntax error.  Unexpected bool.
+ERROR(25): Syntax error.  Unexpected bool.			ERROR(25): Syntax error.  Unexpected bool.
+ERROR(26): Syntax error.  Unexpected bool.			ERROR(26): Syntax error.  Unexpected bool.
+ERROR(28): Syntax error.  Unexpected '='.			ERROR(28): Syntax error.  Unexpected '='.
+ERROR(29): Syntax error.  Unexpected +=.			ERROR(29): Syntax error.  Unexpected +=.
+ERROR(30): Syntax error.  Unexpected -=.			ERROR(30): Syntax error.  Unexpected -=.
+ERROR(31): Syntax error.  Unexpected ++.			ERROR(31): Syntax error.  Unexpected ++.
+ERROR(32): Syntax error.  Unexpected --.			ERROR(32): Syntax error.  Unexpected --.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 19						Number of errors: 19
+RUN: c- < syntaxerr-call.c-				      <
+ERROR(6): Syntax error.  Unexpected while.			ERROR(6): Syntax error.  Unexpected while.
+ERROR(7): Syntax error.  Unexpected while.			ERROR(7): Syntax error.  Unexpected while.
+ERROR(10): Syntax error.  Unexpected ';'.			ERROR(10): Syntax error.  Unexpected ';'.
+ERROR(11): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(11): Syntax error.  Unexpected ')'.  Expecting ';'.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 4						Number of errors: 4
+RUN: c- < syntaxerr-call2.c-				      <
+ERROR(5): Syntax error.  Unexpected id: u.  Expecting ']'.	ERROR(5): Syntax error.  Unexpected id: u.  Expecting ']'.
+ERROR(7): Syntax error.  Unexpected id: u.  Expecting ']'.	ERROR(7): Syntax error.  Unexpected id: u.  Expecting ']'.
+ERROR(10): Syntax error.  Unexpected ']'.  Expecting number.	ERROR(10): Syntax error.  Unexpected ']'.  Expecting number.
+ERROR(22): Syntax error.  Unexpected '='.  Expecting ']'.	ERROR(22): Syntax error.  Unexpected '='.  Expecting ']'.
+ERROR(23): Syntax error.  Unexpected ']'.			ERROR(23): Syntax error.  Unexpected ']'.
+ERROR(23): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(23): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(27): Syntax error.  Unexpected '*'.  Expecting id.	ERROR(27): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(27): Syntax error.  Unexpected ';'.  Expecting ']'.	ERROR(27): Syntax error.  Unexpected ';'.  Expecting ']'.
+ERROR(27): Syntax error.  Unexpected ']'.  Expecting ')'.	ERROR(27): Syntax error.  Unexpected ']'.  Expecting ')'.
+ERROR(27): Syntax error.  Unexpected number: 10.  Expecting '	ERROR(27): Syntax error.  Unexpected number: 10.  Expecting '
+ERROR(27): Syntax error.  Unexpected number: 10.  Expecting '	ERROR(27): Syntax error.  Unexpected number: 10.  Expecting '
+ERROR(27): Syntax error.  Unexpected number: 10.  Expecting '	ERROR(27): Syntax error.  Unexpected number: 10.  Expecting '
+ERROR(28): Syntax error.  Unexpected character constant: 'x'.	ERROR(28): Syntax error.  Unexpected character constant: 'x'.
+ERROR(29): Syntax error.  Unexpected '*'.  Expecting id.	ERROR(29): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(30): Syntax error.  Unexpected '+'.			ERROR(30): Syntax error.  Unexpected '+'.
+ERROR(30): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(30): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(31): Syntax error.  Unexpected '='.			ERROR(31): Syntax error.  Unexpected '='.
+ERROR(34): Syntax error.  Unexpected ','.  Expecting ']'.	ERROR(34): Syntax error.  Unexpected ','.  Expecting ']'.
+ERROR(34): Syntax error.  Unexpected int.  Expecting ')'.	ERROR(34): Syntax error.  Unexpected int.  Expecting ')'.
+ERROR(35): Syntax error.  Unexpected '+'.			ERROR(35): Syntax error.  Unexpected '+'.
+ERROR(35): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(35): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(36): Syntax error.  Unexpected '='.			ERROR(36): Syntax error.  Unexpected '='.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 22						Number of errors: 22
+RUN: c- < syntaxerr-empty.c-				      <
+ERROR(2): Syntax error.  Unexpected end of input.  Expecting 	ERROR(2): Syntax error.  Unexpected end of input.  Expecting 
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 1						Number of errors: 1
+RUN: c- < syntaxerr-foreach.c-				      <
+ERROR(4): Syntax error.  Unexpected ')'.  Expecting in.		ERROR(4): Syntax error.  Unexpected ')'.  Expecting in.
+ERROR(6): Syntax error.  Unexpected int.  Expecting in.		ERROR(6): Syntax error.  Unexpected int.  Expecting in.
+ERROR(8): Syntax error.  Unexpected int.  Expecting id.		ERROR(8): Syntax error.  Unexpected int.  Expecting id.
+ERROR(10): Syntax error.  Unexpected int.  Expecting id.	ERROR(10): Syntax error.  Unexpected int.  Expecting id.
+ERROR(12): Syntax error.  Unexpected int.  Expecting '('.	ERROR(12): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(14): Syntax error.  Unexpected int.  Expecting '('.	ERROR(14): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(18): Syntax error.  Unexpected int.  Expecting '('.	ERROR(18): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(21): Syntax error.  Unexpected ')'.  Expecting in.	ERROR(21): Syntax error.  Unexpected ')'.  Expecting in.
+ERROR(23): Syntax error.  Unexpected '*'.  Expecting in.	ERROR(23): Syntax error.  Unexpected '*'.  Expecting in.
+ERROR(25): Syntax error.  Unexpected '*'.  Expecting id.	ERROR(25): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(27): Syntax error.  Unexpected '*'.  Expecting id.	ERROR(27): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(29): Syntax error.  Unexpected '*'.  Expecting '('.	ERROR(29): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(29): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(29): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(31): Syntax error.  Unexpected '*'.  Expecting '('.	ERROR(31): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(31): Syntax error.  Unexpected ';'.			ERROR(31): Syntax error.  Unexpected ';'.
+ERROR(33): Syntax error.  Unexpected '*'.  Expecting '('.	ERROR(33): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(35): Syntax error.  Unexpected '*'.  Expecting '('.	ERROR(35): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(35): Syntax error.  Unexpected ';'.			ERROR(35): Syntax error.  Unexpected ';'.
+ERROR(38): Syntax error.  Unexpected ')'.  Expecting in.	ERROR(38): Syntax error.  Unexpected ')'.  Expecting in.
+ERROR(40): Syntax error.  Unexpected ';'.  Expecting in.	ERROR(40): Syntax error.  Unexpected ';'.  Expecting in.
+ERROR(42): Syntax error.  Unexpected ')'.  Expecting id.	ERROR(42): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(44): Syntax error.  Unexpected ';'.  Expecting id.	ERROR(44): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(46): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(46): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(48): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(48): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(50): Syntax error.  Unexpected ')'.  Expecting '('.	ERROR(50): Syntax error.  Unexpected ')'.  Expecting '('.
+ERROR(52): Syntax error.  Unexpected ';'.  Expecting '('.	ERROR(52): Syntax error.  Unexpected ';'.  Expecting '('.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 26						Number of errors: 26
+RUN: c- < syntaxerr-if.c-				      <
+ERROR(6): Syntax error.  Unexpected ++.				ERROR(6): Syntax error.  Unexpected ++.
+ERROR(8): Syntax error.  Unexpected ++.				ERROR(8): Syntax error.  Unexpected ++.
+ERROR(10): Syntax error.  Unexpected ++.			ERROR(10): Syntax error.  Unexpected ++.
+ERROR(12): Syntax error.  Unexpected ++.			ERROR(12): Syntax error.  Unexpected ++.
+ERROR(12): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(12): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(14): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(14): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(16): Syntax error.  Unexpected ++.			ERROR(16): Syntax error.  Unexpected ++.
+ERROR(16): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(16): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(16): Syntax error.  Unexpected number: 222.  Expecting 	ERROR(16): Syntax error.  Unexpected number: 222.  Expecting 
+ERROR(18): Syntax error.  Unexpected ++.			ERROR(18): Syntax error.  Unexpected ++.
+ERROR(18): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(18): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(18): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(18): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(20): Syntax error.  Unexpected ++.  Expecting or or ')'	ERROR(20): Syntax error.  Unexpected ++.  Expecting or or ')'
+ERROR(20): Syntax error.  Unexpected else.			ERROR(20): Syntax error.  Unexpected else.
+ERROR(22): Syntax error.  Unexpected ++.  Expecting or or ')'	ERROR(22): Syntax error.  Unexpected ++.  Expecting or or ')'
+ERROR(22): Syntax error.  Unexpected else.			ERROR(22): Syntax error.  Unexpected else.
+ERROR(24): Syntax error.  Unexpected ++.  Expecting or or ')'	ERROR(24): Syntax error.  Unexpected ++.  Expecting or or ')'
+ERROR(24): Syntax error.  Unexpected ++.			ERROR(24): Syntax error.  Unexpected ++.
+ERROR(26): Syntax error.  Unexpected ++.  Expecting or or ')'	ERROR(26): Syntax error.  Unexpected ++.  Expecting or or ')'
+ERROR(26): Syntax error.  Unexpected ++.			ERROR(26): Syntax error.  Unexpected ++.
+ERROR(28): Syntax error.  Unexpected ++.  Expecting or or ')'	ERROR(28): Syntax error.  Unexpected ++.  Expecting or or ')'
+ERROR(30): Syntax error.  Unexpected ++.  Expecting or or ')'	ERROR(30): Syntax error.  Unexpected ++.  Expecting or or ')'
+ERROR(32): Syntax error.  Unexpected ++.  Expecting or or ')'	ERROR(32): Syntax error.  Unexpected ++.  Expecting or or ')'
+ERROR(32): Syntax error.  Unexpected number: 222.  Expecting 	ERROR(32): Syntax error.  Unexpected number: 222.  Expecting 
+ERROR(34): Syntax error.  Unexpected ++.			ERROR(34): Syntax error.  Unexpected ++.
+ERROR(34): Syntax error.  Unexpected else.			ERROR(34): Syntax error.  Unexpected else.
+ERROR(36): Syntax error.  Unexpected ++.			ERROR(36): Syntax error.  Unexpected ++.
+ERROR(36): Syntax error.  Unexpected else.			ERROR(36): Syntax error.  Unexpected else.
+ERROR(38): Syntax error.  Unexpected ++.			ERROR(38): Syntax error.  Unexpected ++.
+ERROR(38): Syntax error.  Unexpected ++.			ERROR(38): Syntax error.  Unexpected ++.
+ERROR(40): Syntax error.  Unexpected ++.			ERROR(40): Syntax error.  Unexpected ++.
+ERROR(40): Syntax error.  Unexpected ++.			ERROR(40): Syntax error.  Unexpected ++.
+ERROR(42): Syntax error.  Unexpected ++.			ERROR(42): Syntax error.  Unexpected ++.
+ERROR(42): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(42): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(44): Syntax error.  Unexpected ++.			ERROR(44): Syntax error.  Unexpected ++.
+ERROR(44): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(44): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(46): Syntax error.  Unexpected ++.			ERROR(46): Syntax error.  Unexpected ++.
+ERROR(46): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(46): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(46): Syntax error.  Unexpected number: 222.  Expecting 	ERROR(46): Syntax error.  Unexpected number: 222.  Expecting 
+ERROR(48): Syntax error.  Unexpected ++.			ERROR(48): Syntax error.  Unexpected ++.
+ERROR(48): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(48): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(48): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(48): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(50): Syntax error.  Unexpected ++.			ERROR(50): Syntax error.  Unexpected ++.
+ERROR(50): Syntax error.  Unexpected else.			ERROR(50): Syntax error.  Unexpected else.
+ERROR(52): Syntax error.  Unexpected ++.			ERROR(52): Syntax error.  Unexpected ++.
+ERROR(52): Syntax error.  Unexpected else.			ERROR(52): Syntax error.  Unexpected else.
+ERROR(54): Syntax error.  Unexpected ++.			ERROR(54): Syntax error.  Unexpected ++.
+ERROR(54): Syntax error.  Unexpected ++.			ERROR(54): Syntax error.  Unexpected ++.
+ERROR(56): Syntax error.  Unexpected ++.			ERROR(56): Syntax error.  Unexpected ++.
+ERROR(56): Syntax error.  Unexpected ++.			ERROR(56): Syntax error.  Unexpected ++.
+ERROR(58): Syntax error.  Unexpected ++.			ERROR(58): Syntax error.  Unexpected ++.
+ERROR(58): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(58): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(60): Syntax error.  Unexpected ++.			ERROR(60): Syntax error.  Unexpected ++.
+ERROR(60): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(60): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(62): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(62): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(62): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(62): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(64): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(64): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(64): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(64): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(64): Syntax error.  Unexpected ++.			ERROR(64): Syntax error.  Unexpected ++.
+ERROR(66): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(66): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(66): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(66): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(66): Syntax error.  Unexpected ++.			ERROR(66): Syntax error.  Unexpected ++.
+ERROR(66): Syntax error.  Unexpected ++.			ERROR(66): Syntax error.  Unexpected ++.
+ERROR(68): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(68): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(68): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(68): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(68): Syntax error.  Unexpected ++.			ERROR(68): Syntax error.  Unexpected ++.
+ERROR(68): Syntax error.  Unexpected ++.			ERROR(68): Syntax error.  Unexpected ++.
+ERROR(70): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(70): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(70): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(70): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(70): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(70): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(72): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(72): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(72): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(72): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(72): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(72): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(74): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(74): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(74): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(74): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(74): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(74): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(74): Syntax error.  Unexpected number: 222.  Expecting 	ERROR(74): Syntax error.  Unexpected number: 222.  Expecting 
+ERROR(76): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(76): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(76): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(76): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(76): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(76): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(76): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(76): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(78): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(78): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(78): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(78): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(78): Syntax error.  Unexpected else.			ERROR(78): Syntax error.  Unexpected else.
+ERROR(80): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(80): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(80): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(80): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(80): Syntax error.  Unexpected else.			ERROR(80): Syntax error.  Unexpected else.
+ERROR(82): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(82): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(82): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(82): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(82): Syntax error.  Unexpected ++.			ERROR(82): Syntax error.  Unexpected ++.
+ERROR(84): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(84): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(84): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(84): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(84): Syntax error.  Unexpected ++.			ERROR(84): Syntax error.  Unexpected ++.
+ERROR(86): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(86): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(86): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(86): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(86): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(86): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(88): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(88): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(88): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(88): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(88): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(88): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(90): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(90): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(90): Syntax error.  Unexpected id: x.  Expecting ';'.	ERROR(90): Syntax error.  Unexpected id: x.  Expecting ';'.
+ERROR(90): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(90): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(90): Syntax error.  Unexpected number: 222.  Expecting 	ERROR(90): Syntax error.  Unexpected number: 222.  Expecting 
+ERROR(92): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(92): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(92): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(92): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(92): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(92): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(94): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(94): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(94): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(94): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(94): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(94): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(94): Syntax error.  Unexpected ++.			ERROR(94): Syntax error.  Unexpected ++.
+ERROR(96): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(96): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(96): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(96): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(96): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(96): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(96): Syntax error.  Unexpected ++.			ERROR(96): Syntax error.  Unexpected ++.
+ERROR(96): Syntax error.  Unexpected ++.			ERROR(96): Syntax error.  Unexpected ++.
+ERROR(98): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(98): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(98): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(98): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(98): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(98): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(98): Syntax error.  Unexpected ++.			ERROR(98): Syntax error.  Unexpected ++.
+ERROR(98): Syntax error.  Unexpected ++.			ERROR(98): Syntax error.  Unexpected ++.
+ERROR(100): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(100): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(100): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(100): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(100): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(100): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(100): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(100): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(102): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(102): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(102): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(102): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(102): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(102): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(102): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(102): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(104): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(104): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(104): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(104): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(104): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(104): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(104): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(104): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(104): Syntax error.  Unexpected number: 222.  Expecting	ERROR(104): Syntax error.  Unexpected number: 222.  Expecting
+ERROR(106): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(106): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(106): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(106): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(106): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(106): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(106): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(106): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(106): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(106): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(108): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(108): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(108): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(108): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(108): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(108): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(108): Syntax error.  Unexpected number: 111.  Expecting	ERROR(108): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(108): Syntax error.  Unexpected else.			ERROR(108): Syntax error.  Unexpected else.
+ERROR(110): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(110): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(110): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(110): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(110): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(110): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(110): Syntax error.  Unexpected number: 111.  Expecting	ERROR(110): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(110): Syntax error.  Unexpected else.			ERROR(110): Syntax error.  Unexpected else.
+ERROR(112): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(112): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(112): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(112): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(112): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(112): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(112): Syntax error.  Unexpected number: 111.  Expecting	ERROR(112): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(112): Syntax error.  Unexpected ++.			ERROR(112): Syntax error.  Unexpected ++.
+ERROR(114): Syntax error.  Unexpected ++.  Expecting '('.	ERROR(114): Syntax error.  Unexpected ++.  Expecting '('.
+ERROR(114): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(114): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(114): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(114): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(114): Syntax error.  Unexpected number: 111.  Expecting	ERROR(114): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(114): Syntax error.  Unexpected ++.			ERROR(114): Syntax error.  Unexpected ++.
+ERROR(116): Syntax error.  Unexpected ++.			ERROR(116): Syntax error.  Unexpected ++.
+ERROR(116): Syntax error.  Unexpected number: 111.  Expecting	ERROR(116): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(116): Syntax error.  Unexpected else.			ERROR(116): Syntax error.  Unexpected else.
+ERROR(118): Syntax error.  Unexpected ++.			ERROR(118): Syntax error.  Unexpected ++.
+ERROR(118): Syntax error.  Unexpected number: 111.  Expecting	ERROR(118): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(118): Syntax error.  Unexpected else.			ERROR(118): Syntax error.  Unexpected else.
+ERROR(120): Syntax error.  Unexpected ++.			ERROR(120): Syntax error.  Unexpected ++.
+ERROR(120): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(120): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(120): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(120): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(122): Syntax error.  Unexpected ++.			ERROR(122): Syntax error.  Unexpected ++.
+ERROR(122): Syntax error.  Unexpected ++.  Expecting ';'.	ERROR(122): Syntax error.  Unexpected ++.  Expecting ';'.
+ERROR(122): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(122): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(124): Syntax error.  Unexpected ++.			ERROR(124): Syntax error.  Unexpected ++.
+ERROR(124): Syntax error.  Unexpected number: 111.  Expecting	ERROR(124): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(126): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(126): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(126): Syntax error.  Unexpected number: 111.  Expecting	ERROR(126): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(126): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(126): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(128): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(128): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(128): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(128): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(128): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(128): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(130): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(130): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(130): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(130): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(130): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(130): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(130): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(130): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(132): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(132): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(132): Syntax error.  Unexpected number: 111.  Expecting	ERROR(132): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(134): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(134): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(134): Syntax error.  Unexpected number: 111.  Expecting	ERROR(134): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(134): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(134): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(136): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(136): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(136): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(136): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(136): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(136): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(138): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(138): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(138): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(138): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(138): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(138): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(138): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(138): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(140): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(140): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(140): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(140): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(140): Syntax error.  Unexpected number: 111.  Expecting	ERROR(140): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(142): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(142): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(142): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(142): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(142): Syntax error.  Unexpected number: 111.  Expecting	ERROR(142): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(142): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(142): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(144): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(144): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(144): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(144): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(144): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(144): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(144): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(144): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(146): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(146): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(146): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(146): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(146): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(146): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(146): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(146): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(146): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(146): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(148): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(148): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(148): Syntax error.  Unexpected id: x.  Expecting ')'.	ERROR(148): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(148): Syntax error.  Unexpected number: 111.  Expecting	ERROR(148): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(150): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(150): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(150): Syntax error.  Unexpected id: x.  Expecting ')'.	ERROR(150): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(150): Syntax error.  Unexpected number: 111.  Expecting	ERROR(150): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(150): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(150): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(152): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(152): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(152): Syntax error.  Unexpected id: x.  Expecting ')'.	ERROR(152): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(152): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(152): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(152): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(152): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(154): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(154): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(154): Syntax error.  Unexpected id: x.  Expecting ')'.	ERROR(154): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(154): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(154): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(154): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(154): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(154): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(154): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(156): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(156): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(156): Syntax error.  Unexpected id: x.  Expecting ')'.	ERROR(156): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(156): Syntax error.  Unexpected number: 111.  Expecting	ERROR(156): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(158): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(158): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(158): Syntax error.  Unexpected id: x.  Expecting ')'.	ERROR(158): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(158): Syntax error.  Unexpected number: 111.  Expecting	ERROR(158): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(158): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(158): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(160): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(160): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(160): Syntax error.  Unexpected id: x.  Expecting ')'.	ERROR(160): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(160): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(160): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(160): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(160): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(162): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(162): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(162): Syntax error.  Unexpected id: x.  Expecting ')'.	ERROR(162): Syntax error.  Unexpected id: x.  Expecting ')'.
+ERROR(162): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(162): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(162): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(162): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(162): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(162): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(164): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(164): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(164): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(164): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(164): Syntax error.  Unexpected number: 111.  Expecting	ERROR(164): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(166): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(166): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(166): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(166): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(166): Syntax error.  Unexpected number: 111.  Expecting	ERROR(166): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(166): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(166): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(168): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(168): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(168): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(168): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(168): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(168): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(168): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(168): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(170): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(170): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(170): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(170): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(170): Syntax error.  Unexpected ++.  Expecting ')'.	ERROR(170): Syntax error.  Unexpected ++.  Expecting ')'.
+ERROR(170): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(170): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(170): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(170): Syntax error.  Unexpected ';'.  Expecting ')'.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 258						Number of errors: 258
+RUN: c- < syntaxerr-ifminus.c-				      <
+ERROR(10): Syntax error.  Unexpected else.			ERROR(10): Syntax error.  Unexpected else.
+ERROR(16): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(16): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(16): Syntax error.  Unexpected else.			ERROR(16): Syntax error.  Unexpected else.
+ERROR(18): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(18): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(18): Syntax error.  Unexpected else.			ERROR(18): Syntax error.  Unexpected else.
+ERROR(20): Syntax error.  Unexpected else.  Expecting or or '	ERROR(20): Syntax error.  Unexpected else.  Expecting or or '
+ERROR(22): Syntax error.  Unexpected else.  Expecting or or '	ERROR(22): Syntax error.  Unexpected else.  Expecting or or '
+ERROR(24): Syntax error.  Unexpected number: 222.  Expecting 	ERROR(24): Syntax error.  Unexpected number: 222.  Expecting 
+ERROR(26): Syntax error.  Unexpected ')'.			ERROR(26): Syntax error.  Unexpected ')'.
+ERROR(26): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(26): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(26): Syntax error.  Unexpected else.			ERROR(26): Syntax error.  Unexpected else.
+ERROR(28): Syntax error.  Unexpected ')'.			ERROR(28): Syntax error.  Unexpected ')'.
+ERROR(28): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(28): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(28): Syntax error.  Unexpected else.			ERROR(28): Syntax error.  Unexpected else.
+ERROR(30): Syntax error.  Unexpected ')'.			ERROR(30): Syntax error.  Unexpected ')'.
+ERROR(30): Syntax error.  Unexpected else.  Expecting or or '	ERROR(30): Syntax error.  Unexpected else.  Expecting or or '
+ERROR(32): Syntax error.  Unexpected ')'.			ERROR(32): Syntax error.  Unexpected ')'.
+ERROR(32): Syntax error.  Unexpected else.  Expecting or or '	ERROR(32): Syntax error.  Unexpected else.  Expecting or or '
+ERROR(34): Syntax error.  Unexpected ')'.			ERROR(34): Syntax error.  Unexpected ')'.
+ERROR(34): Syntax error.  Unexpected number: 222.  Expecting 	ERROR(34): Syntax error.  Unexpected number: 222.  Expecting 
+ERROR(36): Syntax error.  Unexpected ')'.			ERROR(36): Syntax error.  Unexpected ')'.
+ERROR(36): Syntax error.  Unexpected ';'.  Expecting or or ')	ERROR(36): Syntax error.  Unexpected ';'.  Expecting or or ')
+ERROR(38): Syntax error.  Unexpected ';'.  Expecting or or ')	ERROR(38): Syntax error.  Unexpected ';'.  Expecting or or ')
+ERROR(38): Syntax error.  Unexpected else.			ERROR(38): Syntax error.  Unexpected else.
+ERROR(40): Syntax error.  Unexpected ';'.  Expecting or or ')	ERROR(40): Syntax error.  Unexpected ';'.  Expecting or or ')
+ERROR(40): Syntax error.  Unexpected else.			ERROR(40): Syntax error.  Unexpected else.
+ERROR(42): Syntax error.  Unexpected else.			ERROR(42): Syntax error.  Unexpected else.
+ERROR(44): Syntax error.  Unexpected else.			ERROR(44): Syntax error.  Unexpected else.
+ERROR(46): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(46): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(48): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(48): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(50): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(50): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(52): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(52): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(54): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(54): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(56): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(56): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(58): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(58): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(58): Syntax error.  Unexpected else.			ERROR(58): Syntax error.  Unexpected else.
+ERROR(60): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(60): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(60): Syntax error.  Unexpected else.			ERROR(60): Syntax error.  Unexpected else.
+ERROR(62): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(62): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(68): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(68): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(68): Syntax error.  Unexpected else.			ERROR(68): Syntax error.  Unexpected else.
+ERROR(70): Syntax error.  Unexpected ')'.  Expecting '('.	ERROR(70): Syntax error.  Unexpected ')'.  Expecting '('.
+ERROR(72): Syntax error.  Unexpected ')'.  Expecting '('.	ERROR(72): Syntax error.  Unexpected ')'.  Expecting '('.
+ERROR(74): Syntax error.  Unexpected ')'.  Expecting '('.	ERROR(74): Syntax error.  Unexpected ')'.  Expecting '('.
+ERROR(76): Syntax error.  Unexpected ')'.  Expecting '('.	ERROR(76): Syntax error.  Unexpected ')'.  Expecting '('.
+ERROR(78): Syntax error.  Unexpected ')'.  Expecting '('.	ERROR(78): Syntax error.  Unexpected ')'.  Expecting '('.
+ERROR(80): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(80): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(80): Syntax error.  Unexpected else.			ERROR(80): Syntax error.  Unexpected else.
+ERROR(82): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(82): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(82): Syntax error.  Unexpected else.			ERROR(82): Syntax error.  Unexpected else.
+ERROR(84): Syntax error.  Unexpected ';'.  Expecting '('.	ERROR(84): Syntax error.  Unexpected ';'.  Expecting '('.
+ERROR(86): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(86): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(86): Syntax error.  Unexpected else.			ERROR(86): Syntax error.  Unexpected else.
+ERROR(88): Syntax error.  Unexpected number: 111.  Expecting 	ERROR(88): Syntax error.  Unexpected number: 111.  Expecting 
+ERROR(88): Syntax error.  Unexpected else.			ERROR(88): Syntax error.  Unexpected else.
+ERROR(90): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(90): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(92): Syntax error.  Unexpected else.  Expecting ';'.	ERROR(92): Syntax error.  Unexpected else.  Expecting ';'.
+ERROR(94): Syntax error.  Unexpected number: 111.		ERROR(94): Syntax error.  Unexpected number: 111.
+ERROR(94): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(94): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(94): Syntax error.  Unexpected else.			ERROR(94): Syntax error.  Unexpected else.
+ERROR(96): Syntax error.  Unexpected number: 111.		ERROR(96): Syntax error.  Unexpected number: 111.
+ERROR(96): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(96): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(96): Syntax error.  Unexpected else.			ERROR(96): Syntax error.  Unexpected else.
+ERROR(98): Syntax error.  Unexpected else.			ERROR(98): Syntax error.  Unexpected else.
+ERROR(102): Syntax error.  Unexpected number: 111.  Expecting	ERROR(102): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(104): Syntax error.  Unexpected number: 111.  Expecting	ERROR(104): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(106): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(106): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(108): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(108): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(118): Syntax error.  Unexpected number: 111.  Expecting	ERROR(118): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(120): Syntax error.  Unexpected number: 111.  Expecting	ERROR(120): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(122): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(122): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(124): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(124): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(134): Syntax error.  Unexpected number: 111.  Expecting	ERROR(134): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(136): Syntax error.  Unexpected number: 111.  Expecting	ERROR(136): Syntax error.  Unexpected number: 111.  Expecting
+ERROR(138): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(138): Syntax error.  Unexpected else.  Expecting ')'.
+ERROR(140): Syntax error.  Unexpected else.  Expecting ')'.	ERROR(140): Syntax error.  Unexpected else.  Expecting ')'.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 76						Number of errors: 76
+RUN: c- < syntaxerr-init.c-				      <
+ERROR(2): Syntax error.  Unexpected ';'.			ERROR(2): Syntax error.  Unexpected ';'.
+ERROR(3): Syntax error.  Unexpected ':'.  Expecting ',' or ';	ERROR(3): Syntax error.  Unexpected ':'.  Expecting ',' or ';
+ERROR(6): Syntax error.  Unexpected number: 10.  Expecting ',	ERROR(6): Syntax error.  Unexpected number: 10.  Expecting ',
+ERROR(8): Syntax error.  Unexpected ':'.  Expecting id.		ERROR(8): Syntax error.  Unexpected ':'.  Expecting id.
+ERROR(9): Syntax error.  Unexpected ':'.  Expecting id.		ERROR(9): Syntax error.  Unexpected ':'.  Expecting id.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 5						Number of errors: 5
+RUN: c- < syntaxerr-logic.c-				      <
+ERROR(6): Syntax error.  Unexpected false.  Expecting ';'.	ERROR(6): Syntax error.  Unexpected false.  Expecting ';'.
+ERROR(8): Syntax error.  Unexpected or.				ERROR(8): Syntax error.  Unexpected or.
+ERROR(9): Syntax error.  Unexpected ';'.			ERROR(9): Syntax error.  Unexpected ';'.
+ERROR(10): Syntax error.  Unexpected or.			ERROR(10): Syntax error.  Unexpected or.
+ERROR(11): Syntax error.  Unexpected or.			ERROR(11): Syntax error.  Unexpected or.
+ERROR(15): Syntax error.  Unexpected and.			ERROR(15): Syntax error.  Unexpected and.
+ERROR(16): Syntax error.  Unexpected ';'.			ERROR(16): Syntax error.  Unexpected ';'.
+ERROR(17): Syntax error.  Unexpected and.			ERROR(17): Syntax error.  Unexpected and.
+ERROR(18): Syntax error.  Unexpected and.			ERROR(18): Syntax error.  Unexpected and.
+ERROR(21): Syntax error.  Unexpected and.			ERROR(21): Syntax error.  Unexpected and.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 10						Number of errors: 10
+RUN: c- < syntaxerr-parens.c-				      <
+ERROR(5): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(5): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(6): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(6): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(7): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(7): Syntax error.  Unexpected ';'.  Expecting ')'.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 3						Number of errors: 3
+RUN: c- < syntaxerr-parms.c-				      <
+ERROR(4): Syntax error.  Unexpected ')'.  Expecting id.		ERROR(4): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(5): Syntax error.  Unexpected id: z.  Expecting bool or	ERROR(5): Syntax error.  Unexpected id: z.  Expecting bool or
+ERROR(6): Syntax error.  Unexpected ')'.  Expecting bool or c	ERROR(6): Syntax error.  Unexpected ')'.  Expecting bool or c
+ERROR(8): Syntax error.  Unexpected bool.  Expecting ')'.	ERROR(8): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(9): Syntax error.  Unexpected id: z.  Expecting ')'.	ERROR(9): Syntax error.  Unexpected id: z.  Expecting ')'.
+ERROR(11): Syntax error.  Unexpected ';'.  Expecting id.	ERROR(11): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(12): Syntax error.  Unexpected ';'.  Expecting id.	ERROR(12): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(12): Syntax error.  Unexpected ')'.  Expecting id.	ERROR(12): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(13): Syntax error.  Unexpected ';'.  Expecting id.	ERROR(13): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(13): Syntax error.  Unexpected id: z.  Expecting bool o	ERROR(13): Syntax error.  Unexpected id: z.  Expecting bool o
+ERROR(14): Syntax error.  Unexpected ';'.  Expecting id.	ERROR(14): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(14): Syntax error.  Unexpected ')'.  Expecting bool or 	ERROR(14): Syntax error.  Unexpected ')'.  Expecting bool or 
+ERROR(16): Syntax error.  Unexpected bool.  Expecting id.	ERROR(16): Syntax error.  Unexpected bool.  Expecting id.
+ERROR(16): Syntax error.  Unexpected bool.  Expecting ')'.	ERROR(16): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(18): Syntax error.  Unexpected ')'.  Expecting id.	ERROR(18): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(19): Syntax error.  Unexpected id: y.  Expecting ')'.	ERROR(19): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(20): Syntax error.  Unexpected id: y.  Expecting ')'.	ERROR(20): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(21): Syntax error.  Unexpected id: y.  Expecting ')'.	ERROR(21): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(22): Syntax error.  Unexpected id: y.  Expecting ')'.	ERROR(22): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(23): Syntax error.  Unexpected id: y.  Expecting ')'.	ERROR(23): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(24): Syntax error.  Unexpected id: y.  Expecting ')'.	ERROR(24): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(25): Syntax error.  Unexpected id: y.  Expecting ')'.	ERROR(25): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(26): Syntax error.  Unexpected id: y.  Expecting ')'.	ERROR(26): Syntax error.  Unexpected id: y.  Expecting ')'.
+ERROR(28): Syntax error.  Unexpected ')'.  Expecting id.	ERROR(28): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(29): Syntax error.  Unexpected id: z.  Expecting bool o	ERROR(29): Syntax error.  Unexpected id: z.  Expecting bool o
+ERROR(30): Syntax error.  Unexpected ')'.  Expecting bool or 	ERROR(30): Syntax error.  Unexpected ')'.  Expecting bool or 
+ERROR(32): Syntax error.  Unexpected bool.  Expecting ')'.	ERROR(32): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(33): Syntax error.  Unexpected id: z.  Expecting ')'.	ERROR(33): Syntax error.  Unexpected id: z.  Expecting ')'.
+ERROR(36): Syntax error.  Unexpected ','.  Expecting id.	ERROR(36): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(37): Syntax error.  Unexpected ','.  Expecting id.	ERROR(37): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(37): Syntax error.  Unexpected ')'.  Expecting id.	ERROR(37): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(38): Syntax error.  Unexpected ','.  Expecting id.	ERROR(38): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(38): Syntax error.  Unexpected id: z.  Expecting bool o	ERROR(38): Syntax error.  Unexpected id: z.  Expecting bool o
+ERROR(39): Syntax error.  Unexpected ','.  Expecting id.	ERROR(39): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(39): Syntax error.  Unexpected ')'.  Expecting bool or 	ERROR(39): Syntax error.  Unexpected ')'.  Expecting bool or 
+ERROR(41): Syntax error.  Unexpected ','.  Expecting id.	ERROR(41): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(41): Syntax error.  Unexpected bool.  Expecting ')'.	ERROR(41): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(42): Syntax error.  Unexpected ','.  Expecting id.	ERROR(42): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(42): Syntax error.  Unexpected id: z.  Expecting ')'.	ERROR(42): Syntax error.  Unexpected id: z.  Expecting ')'.
+ERROR(43): Syntax error.  Unexpected ','.  Expecting id.	ERROR(43): Syntax error.  Unexpected ','.  Expecting id.
+ERROR(44): Syntax error.  Unexpected ','.  Expecting id.	ERROR(44): Syntax error.  Unexpected ','.  Expecting id.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 41						Number of errors: 41
+RUN: c- < syntaxerr-small.c-				      <
+WARNING(5): Invalid input character: ^.  Character ignored.	WARNING(5): Invalid input character: ^.  Character ignored.
+ERROR(5): Syntax error.  Unexpected id: k.  Expecting ']'.	ERROR(5): Syntax error.  Unexpected id: k.  Expecting ']'.
+ERROR(6): Syntax error.  Unexpected id: x.			ERROR(6): Syntax error.  Unexpected id: x.
+ERROR(7): Syntax error.  Unexpected '='.  Expecting '('.	ERROR(7): Syntax error.  Unexpected '='.  Expecting '('.
+ERROR(8): Syntax error.  Unexpected id: x0.  Expecting ';'.	ERROR(8): Syntax error.  Unexpected id: x0.  Expecting ';'.
+ERROR(9): Syntax error.  Unexpected '+'.			ERROR(9): Syntax error.  Unexpected '+'.
+WARNING(14): Invalid input character: @.  Character ignored.	WARNING(14): Invalid input character: @.  Character ignored.
+WARNING(14): Invalid input character: #.  Character ignored.	WARNING(14): Invalid input character: #.  Character ignored.
+ERROR(14): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(14): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(15): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(15): Syntax error.  Unexpected ';'.  Expecting ')'.
+ERROR(16): Syntax error.  Unexpected ';'.  Expecting ')'.	ERROR(16): Syntax error.  Unexpected ';'.  Expecting ')'.
+Number of warnings: 3						Number of warnings: 3
+Number of errors: 8						Number of errors: 8
+RUN: c- < syntaxerr-summul.c-				      <
+ERROR(6): Syntax error.  Unexpected number: 222.  Expecting '	ERROR(6): Syntax error.  Unexpected number: 222.  Expecting '
+ERROR(8): Syntax error.  Unexpected '+'.			ERROR(8): Syntax error.  Unexpected '+'.
+ERROR(9): Syntax error.  Unexpected ';'.			ERROR(9): Syntax error.  Unexpected ';'.
+ERROR(10): Syntax error.  Unexpected '+'.			ERROR(10): Syntax error.  Unexpected '+'.
+ERROR(11): Syntax error.  Unexpected '+'.			ERROR(11): Syntax error.  Unexpected '+'.
+ERROR(15): Syntax error.  Unexpected ';'.			ERROR(15): Syntax error.  Unexpected ';'.
+ERROR(16): Syntax error.  Unexpected ';'.			ERROR(16): Syntax error.  Unexpected ';'.
+ERROR(18): Syntax error.  Unexpected ';'.			ERROR(18): Syntax error.  Unexpected ';'.
+ERROR(21): Syntax error.  Unexpected '+'.			ERROR(21): Syntax error.  Unexpected '+'.
+ERROR(22): Syntax error.  Unexpected '+'.			ERROR(22): Syntax error.  Unexpected '+'.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 10						Number of errors: 10
+RUN: c- < syntaxerr-type.c-				      <
+ERROR(2): Syntax error.  Unexpected ';'.  Expecting id.		ERROR(2): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(3): Syntax error.  Unexpected id: b.  Expecting ',' or 	ERROR(3): Syntax error.  Unexpected id: b.  Expecting ',' or 
+ERROR(4): Syntax error.  Unexpected int.  Expecting id.		ERROR(4): Syntax error.  Unexpected int.  Expecting id.
+ERROR(5): Syntax error.  Unexpected int.  Expecting id.		ERROR(5): Syntax error.  Unexpected int.  Expecting id.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 4						Number of errors: 4
+RUN: c- < syntaxerr-typearray.c-			      <
+ERROR(4): Syntax error.  Unexpected id: x.  Expecting number.	ERROR(4): Syntax error.  Unexpected id: x.  Expecting number.
+ERROR(6): Syntax error.  Unexpected '*'.  Expecting ']'.	ERROR(6): Syntax error.  Unexpected '*'.  Expecting ']'.
+ERROR(11): Syntax error.  Unexpected ';'.  Expecting ']'.	ERROR(11): Syntax error.  Unexpected ';'.  Expecting ']'.
+ERROR(13): Syntax error.  Unexpected ']'.  Expecting number.	ERROR(13): Syntax error.  Unexpected ']'.  Expecting number.
+ERROR(15): Syntax error.  Unexpected ';'.  Expecting number.	ERROR(15): Syntax error.  Unexpected ';'.  Expecting number.
+ERROR(17): Syntax error.  Unexpected number: 33.  Expecting '	ERROR(17): Syntax error.  Unexpected number: 33.  Expecting '
+ERROR(19): Syntax error.  Unexpected number: 33.  Expecting '	ERROR(19): Syntax error.  Unexpected number: 33.  Expecting '
+ERROR(21): Syntax error.  Unexpected ']'.  Expecting ',' or '	ERROR(21): Syntax error.  Unexpected ']'.  Expecting ',' or '
+ERROR(25): Syntax error.  Unexpected '['.  Expecting id.	ERROR(25): Syntax error.  Unexpected '['.  Expecting id.
+ERROR(27): Syntax error.  Unexpected '['.  Expecting id.	ERROR(27): Syntax error.  Unexpected '['.  Expecting id.
+ERROR(29): Syntax error.  Unexpected '['.  Expecting id.	ERROR(29): Syntax error.  Unexpected '['.  Expecting id.
+ERROR(31): Syntax error.  Unexpected '['.  Expecting id.	ERROR(31): Syntax error.  Unexpected '['.  Expecting id.
+ERROR(33): Syntax error.  Unexpected number: 33.  Expecting i	ERROR(33): Syntax error.  Unexpected number: 33.  Expecting i
+ERROR(35): Syntax error.  Unexpected number: 33.  Expecting i	ERROR(35): Syntax error.  Unexpected number: 33.  Expecting i
+ERROR(37): Syntax error.  Unexpected ']'.  Expecting id.	ERROR(37): Syntax error.  Unexpected ']'.  Expecting id.
+ERROR(41): Syntax error.  Unexpected bool.  Expecting ']'.	ERROR(41): Syntax error.  Unexpected bool.  Expecting ']'.
+ERROR(43): Syntax error.  Unexpected ']'.  Expecting number.	ERROR(43): Syntax error.  Unexpected ']'.  Expecting number.
+ERROR(45): Syntax error.  Unexpected bool.  Expecting number.	ERROR(45): Syntax error.  Unexpected bool.  Expecting number.
+ERROR(47): Syntax error.  Unexpected number: 33.  Expecting '	ERROR(47): Syntax error.  Unexpected number: 33.  Expecting '
+ERROR(49): Syntax error.  Unexpected number: 33.  Expecting '	ERROR(49): Syntax error.  Unexpected number: 33.  Expecting '
+ERROR(51): Syntax error.  Unexpected ']'.  Expecting ',' or '	ERROR(51): Syntax error.  Unexpected ']'.  Expecting ',' or '
+ERROR(53): Syntax error.  Unexpected bool.  Expecting ',' or 	ERROR(53): Syntax error.  Unexpected bool.  Expecting ',' or 
+ERROR(55): Syntax error.  Unexpected '['.  Expecting id.	ERROR(55): Syntax error.  Unexpected '['.  Expecting id.
+ERROR(57): Syntax error.  Unexpected '['.  Expecting id.	ERROR(57): Syntax error.  Unexpected '['.  Expecting id.
+ERROR(59): Syntax error.  Unexpected '['.  Expecting id.	ERROR(59): Syntax error.  Unexpected '['.  Expecting id.
+ERROR(61): Syntax error.  Unexpected '['.  Expecting id.	ERROR(61): Syntax error.  Unexpected '['.  Expecting id.
+ERROR(63): Syntax error.  Unexpected number: 33.  Expecting i	ERROR(63): Syntax error.  Unexpected number: 33.  Expecting i
+ERROR(65): Syntax error.  Unexpected number: 33.  Expecting i	ERROR(65): Syntax error.  Unexpected number: 33.  Expecting i
+ERROR(67): Syntax error.  Unexpected ']'.  Expecting id.	ERROR(67): Syntax error.  Unexpected ']'.  Expecting id.
+ERROR(69): Syntax error.  Unexpected bool.  Expecting id.	ERROR(69): Syntax error.  Unexpected bool.  Expecting id.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 30						Number of errors: 30
+RUN: c- < syntaxerr-typefun.c-				      <
+ERROR(9): Syntax error.  Unexpected '*'.  Expecting bool or c	ERROR(9): Syntax error.  Unexpected '*'.  Expecting bool or c
+ERROR(14): Syntax error.  Unexpected ';'.  Expecting bool or 	ERROR(14): Syntax error.  Unexpected ';'.  Expecting bool or 
+ERROR(20): Syntax error.  Unexpected '('.  Expecting id.	ERROR(20): Syntax error.  Unexpected '('.  Expecting id.
+ERROR(22): Syntax error.  Unexpected '('.  Expecting id.	ERROR(22): Syntax error.  Unexpected '('.  Expecting id.
+ERROR(24): Syntax error.  Unexpected ')'.  Expecting id.	ERROR(24): Syntax error.  Unexpected ')'.  Expecting id.
+ERROR(26): Syntax error.  Unexpected ';'.  Expecting id.	ERROR(26): Syntax error.  Unexpected ';'.  Expecting id.
+ERROR(30): Syntax error.  Unexpected ';'.  Expecting bool or 	ERROR(30): Syntax error.  Unexpected ';'.  Expecting bool or 
+ERROR(32): Syntax error.  Unexpected id: dog.  Expecting bool	ERROR(32): Syntax error.  Unexpected id: dog.  Expecting bool
+ERROR(34): Syntax error.  Unexpected ';'.  Expecting '('.	ERROR(34): Syntax error.  Unexpected ';'.  Expecting '('.
+ERROR(38): Syntax error.  Unexpected '('.			ERROR(38): Syntax error.  Unexpected '('.
+ERROR(42): Syntax error.  Unexpected ';'.			ERROR(42): Syntax error.  Unexpected ';'.
+ERROR(47): Syntax error.  Unexpected '*'.  Expecting bool or 	ERROR(47): Syntax error.  Unexpected '*'.  Expecting bool or 
+ERROR(51): Syntax error.  Unexpected '*'.  Expecting ',' or '	ERROR(51): Syntax error.  Unexpected '*'.  Expecting ',' or '
+ERROR(53): Syntax error.  Unexpected '('.  Expecting id.	ERROR(53): Syntax error.  Unexpected '('.  Expecting id.
+ERROR(55): Syntax error.  Unexpected '('.  Expecting id.	ERROR(55): Syntax error.  Unexpected '('.  Expecting id.
+ERROR(57): Syntax error.  Unexpected '*'.  Expecting id.	ERROR(57): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(59): Syntax error.  Unexpected '*'.  Expecting id.	ERROR(59): Syntax error.  Unexpected '*'.  Expecting id.
+ERROR(61): Syntax error.  Unexpected id: dog.  Expecting bool	ERROR(61): Syntax error.  Unexpected id: dog.  Expecting bool
+ERROR(63): Syntax error.  Unexpected id: dog.  Expecting bool	ERROR(63): Syntax error.  Unexpected id: dog.  Expecting bool
+ERROR(65): Syntax error.  Unexpected id: dog.  Expecting bool	ERROR(65): Syntax error.  Unexpected id: dog.  Expecting bool
+ERROR(67): Syntax error.  Unexpected id: dog.  Expecting bool	ERROR(67): Syntax error.  Unexpected id: dog.  Expecting bool
+ERROR(69): Syntax error.  Unexpected '('.  Expecting bool or 	ERROR(69): Syntax error.  Unexpected '('.  Expecting bool or 
+ERROR(71): Syntax error.  Unexpected '('.  Expecting bool or 	ERROR(71): Syntax error.  Unexpected '('.  Expecting bool or 
+ERROR(73): Syntax error.  Unexpected '*'.  Expecting bool or 	ERROR(73): Syntax error.  Unexpected '*'.  Expecting bool or 
+ERROR(75): Syntax error.  Unexpected '*'.  Expecting bool or 	ERROR(75): Syntax error.  Unexpected '*'.  Expecting bool or 
+ERROR(78): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(78): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(80): Syntax error.  Unexpected '('.  Expecting ')'.	ERROR(80): Syntax error.  Unexpected '('.  Expecting ')'.
+ERROR(82): Syntax error.  Unexpected bool.  Expecting ')'.	ERROR(82): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(84): Syntax error.  Unexpected bool.  Expecting ')'.	ERROR(84): Syntax error.  Unexpected bool.  Expecting ')'.
+ERROR(86): Syntax error.  Unexpected '('.  Expecting id.	ERROR(86): Syntax error.  Unexpected '('.  Expecting id.
+ERROR(88): Syntax error.  Unexpected '('.  Expecting id.	ERROR(88): Syntax error.  Unexpected '('.  Expecting id.
+ERROR(90): Syntax error.  Unexpected bool.  Expecting id.	ERROR(90): Syntax error.  Unexpected bool.  Expecting id.
+ERROR(92): Syntax error.  Unexpected bool.  Expecting id.	ERROR(92): Syntax error.  Unexpected bool.  Expecting id.
+ERROR(94): Syntax error.  Unexpected id: dog.  Expecting bool	ERROR(94): Syntax error.  Unexpected id: dog.  Expecting bool
+ERROR(96): Syntax error.  Unexpected id: dog.  Expecting bool	ERROR(96): Syntax error.  Unexpected id: dog.  Expecting bool
+ERROR(98): Syntax error.  Unexpected id: dog.  Expecting bool	ERROR(98): Syntax error.  Unexpected id: dog.  Expecting bool
+ERROR(100): Syntax error.  Unexpected id: dog.  Expecting boo	ERROR(100): Syntax error.  Unexpected id: dog.  Expecting boo
+ERROR(102): Syntax error.  Unexpected '('.  Expecting bool or	ERROR(102): Syntax error.  Unexpected '('.  Expecting bool or
+ERROR(104): Syntax error.  Unexpected '('.  Expecting bool or	ERROR(104): Syntax error.  Unexpected '('.  Expecting bool or
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 39						Number of errors: 39
+RUN: c- < syntaxerr-unary.c-				      <
+ERROR(5): Syntax error.  Unexpected while.			ERROR(5): Syntax error.  Unexpected while.
+ERROR(6): Syntax error.  Unexpected ';'.			ERROR(6): Syntax error.  Unexpected ';'.
+ERROR(8): Syntax error.  Unexpected while.			ERROR(8): Syntax error.  Unexpected while.
+ERROR(9): Syntax error.  Unexpected ';'.			ERROR(9): Syntax error.  Unexpected ';'.
+ERROR(11): Syntax error.  Unexpected while.			ERROR(11): Syntax error.  Unexpected while.
+ERROR(12): Syntax error.  Unexpected ';'.			ERROR(12): Syntax error.  Unexpected ';'.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 6						Number of errors: 6
+RUN: c- < syntaxerr-while.c-				      <
+ERROR(6): Syntax error.  Unexpected int.  Expecting or or ')'	ERROR(6): Syntax error.  Unexpected int.  Expecting or or ')'
+ERROR(8): Syntax error.  Unexpected int.			ERROR(8): Syntax error.  Unexpected int.
+ERROR(10): Syntax error.  Unexpected int.			ERROR(10): Syntax error.  Unexpected int.
+ERROR(12): Syntax error.  Unexpected int.  Expecting '('.	ERROR(12): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(14): Syntax error.  Unexpected int.  Expecting '('.	ERROR(14): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(18): Syntax error.  Unexpected int.  Expecting '('.	ERROR(18): Syntax error.  Unexpected int.  Expecting '('.
+ERROR(23): Syntax error.  Unexpected ';'.			ERROR(23): Syntax error.  Unexpected ';'.
+ERROR(25): Syntax error.  Unexpected ')'.			ERROR(25): Syntax error.  Unexpected ')'.
+ERROR(25): Syntax error.  Unexpected ';'.  Expecting or or ')	ERROR(25): Syntax error.  Unexpected ';'.  Expecting or or ')
+ERROR(27): Syntax error.  Unexpected ';'.			ERROR(27): Syntax error.  Unexpected ';'.
+ERROR(29): Syntax error.  Unexpected '*'.  Expecting '('.	ERROR(29): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(29): Syntax error.  Unexpected ')'.  Expecting ';'.	ERROR(29): Syntax error.  Unexpected ')'.  Expecting ';'.
+ERROR(31): Syntax error.  Unexpected '*'.  Expecting '('.	ERROR(31): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(31): Syntax error.  Unexpected ';'.			ERROR(31): Syntax error.  Unexpected ';'.
+ERROR(33): Syntax error.  Unexpected '*'.  Expecting '('.	ERROR(33): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(35): Syntax error.  Unexpected '*'.  Expecting '('.	ERROR(35): Syntax error.  Unexpected '*'.  Expecting '('.
+ERROR(35): Syntax error.  Unexpected ';'.			ERROR(35): Syntax error.  Unexpected ';'.
+ERROR(40): Syntax error.  Unexpected ';'.  Expecting or or ')	ERROR(40): Syntax error.  Unexpected ';'.  Expecting or or ')
+ERROR(42): Syntax error.  Unexpected ')'.			ERROR(42): Syntax error.  Unexpected ')'.
+ERROR(42): Syntax error.  Unexpected ';'.  Expecting or or ')	ERROR(42): Syntax error.  Unexpected ';'.  Expecting or or ')
+ERROR(44): Syntax error.  Unexpected ';'.			ERROR(44): Syntax error.  Unexpected ';'.
+ERROR(46): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(46): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(48): Syntax error.  Unexpected id: x.  Expecting '('.	ERROR(48): Syntax error.  Unexpected id: x.  Expecting '('.
+ERROR(50): Syntax error.  Unexpected ')'.  Expecting '('.	ERROR(50): Syntax error.  Unexpected ')'.  Expecting '('.
+ERROR(52): Syntax error.  Unexpected ';'.  Expecting '('.	ERROR(52): Syntax error.  Unexpected ';'.  Expecting '('.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 25						Number of errors: 25
+							      <
+* End of testing					      <

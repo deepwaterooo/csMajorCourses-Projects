@@ -1,0 +1,26 @@
+// C-F13
+  cat(int z[])
+{
+        *z;
+        z[7];
+}
+        
+
+  dog(int x[])
+{
+        int y[23];
+
+        *x;
+        *y;
+        y[7] = 666;
+        cat(x);
+        cat(y);
+}
+
+  main()
+{
+        int a[17];
+        a[7] = 444;
+        dog(a);
+}
+

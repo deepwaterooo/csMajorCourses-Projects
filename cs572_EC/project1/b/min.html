@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+  <title>Line chart - Share the link - Online charts builder</title>
+  <meta content="Free online charts, charts, charts build, graph online, plot online, generate charts, create graph, share graph, export charts" name="keywords">
+  <meta content="Free online Charts Builder based on highcharts API" name="description">
+  <link href="./css/style.css" rel="stylesheet"/>
+  <link href="./css/header.css" rel="stylesheet"/>
+  <link href="./css/footer.css" rel="stylesheet"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="./js/highcharts.js" type="text/javascript"></script>
+  <script src="./js/modules/exporting.js" type="text/javascript"></script>
+  <script src="./js/util.js" type="text/javascript"></script>
+  <script>
+  $(function () {
+    var chart;
+    var params = getParams(document.location.search); 
+    
+	
+	var title;
+	if(!params.hasOwnProperty("title")) {
+		title = "Basic sample chart";
+    } else {
+		title = params.title;
+	}
+	
+	var yaxis;
+	if(!params.hasOwnProperty("yaxis")) {
+		yaxis = "Basic y axis label";
+    } else {
+		yaxis = params.yaxis;
+	}
+	
+	var xvalues = [];
+    if(params.hasOwnProperty("xvalues")) {
+		  if(params.xvalues != "") {
+		  	xvalues = CSVToArrayStr(params.xvalues, ',');
+		  }
+    }
+	
+	var series = Array();
+	var sample = {};
+	sample.name = 'Sample serie';
+	sample.data = [2,3,4,1,10,2];
+	
+	series.push(sample);
+	
+	if(params.hasOwnProperty("values_serie1")) {
+		if(params.values_serie1 != "") {
+			series = getSeries(params);
+		}
+    }
+    /*var values = CSVToArrayInt(params['values'], ',');*/
+    /*var series = getSeries(params);*/
+
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'line',
+            },
+            title: {
+                text: title,
+                x: -20 //center
+            },
+            xAxis: {
+                categories: xvalues[0]
+            },
+            yAxis: {
+                title: {
+                    text: yaxis
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        this.x +': '+ this.y;
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+
+            series: series
+            /*series: [{
+                name: series[0].name,
+                data: series[0].data[0]
+            }]*/
+        });
+    });
+    
+});
+  </script>
+</head>
+<body topmargin="0" leftmargin="0">
+
+<script>
+$(document).ready(function(){
+  $("#nav-one li").hover(
+    function(){ $("ul", this).fadeIn("fast"); }, 
+    function() { } 
+  );
+  if (document.all) {
+    $("#nav-one li").hoverClass ("sfHover");
+  }
+});
+
+$.fn.hoverClass = function(c) {
+  return this.each(function(){
+    $(this).hover( 
+      function() { $(this).addClass(c);  },
+      function() { $(this).removeClass(c); }
+    );
+  });
+};  
+</script>
+<div id="header">
+  <div id="topbar">
+    <div id="hlinks">
+      <a href="index.php">Home</a>
+      <span class="lsep">|</span>
+      <a href="chartline.php">Line charts</a>
+      <span class="lsep">|</span>
+      <a href="chartbar.php">Bar charts</a>
+      <span class="lsep">|</span>
+      <a href="chartpie.php">Pie charts</a>
+      <span class="lsep">|</span>
+      <a href="chartlive.php">Live charts</a>
+      <span class="lsep">|</span>
+      <a href="chartsamples.php">Samples</a>
+      <span class="lsep">|</span>
+      <a href="charttypes.php">Chart types</a>
+      <span class="lsep">|</span>
+      <a href="chart-devcorner.php">Chart developper corner</a>
+      <span class="lsep">|</span>
+      <a href="charthelp.php">Help</a>
+      <span class="lsep">|</span>
+      <a href="chartabout.php">About</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="container"></div>
+
+<div class="footer" style="background-color:#CCCCCC">
+  <div class="footermenu">
+    <a href="sitemap.xml">sitemap</a>
+    <span class="lsep">|</span>
+    <a href="charthelp.php">help</a>
+    <span class="lsep">|</span>
+    <a href="chartsamples.php">samples</a>
+    <span class="lsep">|</span>
+    <a href="chartabout.php">about</a>
+    <span class="lsep">|</span>
+    <a href="charttypes.php">chart types</a>
+    <span class="lsep">|</span>
+    <a href="chart-devcorner.php">chart developper corner</a>
+  </div>
+   <div class="keywords"> <strong>Keywords</strong> : chart, Online Graphing, create chart, chart sample, chart example, pie chart, bar chart, line chart, online, free, easy, quick, generator, create pie, create bar, create line, education, graph, create graph, finance, publish, statistics, show data, chart service, charting, tool, point, plot, charts, bar graph, line graph, area chart</div>
+
+  <div class="copyright">
+    site design &copy; 2013  by Thibault Duponchelle ;
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+var pluginUrl =
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+_gaq.push(['_setAccount', 'UA-37904912-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+</body>
+</html>

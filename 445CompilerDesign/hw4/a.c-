@@ -1,0 +1,8 @@
+125 int retCheck (int x; int y[])
+126 {
+127     return;
+128     return x;
+129     return retCheck(1, 2);
+130     return y;
+131     return y[x];
+132 }

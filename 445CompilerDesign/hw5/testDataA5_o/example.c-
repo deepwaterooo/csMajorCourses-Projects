@@ -1,0 +1,28 @@
+int g;
+
+void cat(int p, q[])
+{
+        int r, s[10];
+
+        g = p;
+        p = p;
+        r = r;
+        s[100] = 666;
+        s[101] = s[102];
+        q[103] = q[104];
+}
+
+int dog(int a, b)
+{
+        return a+b;
+}
+
+void main()
+{
+        int x, y;
+
+        x = y = 111 * 222 + 333 * 444;
+        y = 111 + (222 * (333 / (444 - 555)));
+        dog(x, y);
+        dog(dog(x, y), 666);
+}

@@ -1,0 +1,39 @@
+ERROR(13): Too few parameters passed for function 'kate' defined on line 3.
+ERROR(14): Too few parameters passed for function 'kate' defined on line 3.
+ERROR(15): Expecting type bool in parameter 3 of call to 'kate' defined on line 3 but got type int.
+ERROR(16): Expecting type bool in parameter 3 of call to 'kate' defined on line 3 but got type int.
+ERROR(16): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(17): Expecting type bool in parameter 3 of call to 'kate' defined on line 3 but got type int.
+ERROR(17): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(18): Expecting type bool in parameter 3 of call to 'kate' defined on line 3 but got type int.
+ERROR(18): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(20): Expecting type int in parameter 1 of call to 'kate' defined on line 3 but got type bool.
+ERROR(20): Expecting type bool in parameter 2 of call to 'kate' defined on line 3 but got type int.
+ERROR(20): Not expecting array in parameter 2 of call to 'kate' defined on line 3.
+ERROR(20): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(21): Not expecting array in parameter 1 of call to 'kate' defined on line 3.
+ERROR(21): Not expecting array in parameter 2 of call to 'kate' defined on line 3.
+ERROR(21): Expecting type bool in parameter 3 of call to 'kate' defined on line 3 but got type int.
+ERROR(21): Expecting array in parameter 3 of call to 'kate' defined on line 3.
+ERROR(21): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(22): Expecting type int in parameter 1 of call to 'kate' defined on line 3 but got type bool.
+ERROR(22): Not expecting array in parameter 1 of call to 'kate' defined on line 3.
+ERROR(22): Expecting type bool in parameter 2 of call to 'kate' defined on line 3 but got type int.
+ERROR(22): Expecting array in parameter 3 of call to 'kate' defined on line 3.
+ERROR(22): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(23): Expecting type bool in parameter 3 of call to 'kate' defined on line 3 but got type int.
+ERROR(23): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(25): '+' requires operands of type int but rhs is of type bool.
+ERROR(25): Expecting type bool in parameter 3 of call to 'kate' defined on line 3 but got type int.
+ERROR(25): Too many parameters passed for function 'kate' defined on line 3.
+ERROR(75): Cannot return an array.
+ERROR(75): Function 'varuna' at line 72 is expecting no return value, but return has return value.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 0
+Number of errors: 31
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: arglist2.tm
+Halted
+Bye.

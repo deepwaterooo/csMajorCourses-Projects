@@ -1,0 +1,8 @@
+void main()
+{
+        output(111+(222+(333+444))); outnl();
+        output(111+222+333+444); outnl();
+        output(111-(222-(333-444))); outnl();
+        output(111-222-333-444); outnl();
+        output(((111-222)-333)-444); outnl();
+}

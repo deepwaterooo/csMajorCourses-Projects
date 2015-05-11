@@ -1,0 +1,234 @@
+** numEntries: 0  depth: 1
+SymTab: Pushing this node: [0x00000001]
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+** numEntries: 1  depth: 1
+SymTab: Pushing this node: [0x00000002]
+** numEntries: 2  depth: 1
+SymTab: Pushing this node: [0x00000002]
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+** numEntries: 3  depth: 1
+SymTab: Pushing this node: [0x00000003]
+** print symbol table
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+** OK: gd already exists 4
+** print symbol table
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+** enter ant
+SymTab: Entering scope ant
+** leave A
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                  ant ---- 
+SymTab: Leaving scope ant and entering scope globals
+** enter bull
+SymTab: Entering scope bull
+** print symbol table
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+SymTab: Pushing this node: [0x00000005]
+** print symbol table
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+SymTab: Pushing this node: [0x00000006]
+SymTab: Pushing this node: [0x00000007]
+** enter civit
+SymTab: Entering scope civit
+SymTab: Pushing this node: [0x00000008]
+SymTab: Pushing this node: [0x00000009]
+** print symbol table
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+        bb       bull 2 [0x00000006]
+        bc       bull 2 [0x00000007]
+                civit ---- 
+        ca      civit 3 [0x00000008]
+        cb      civit 3 [0x00000009]
+** numEntries: 9  depth: 3
+** leave B
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+        bb       bull 2 [0x00000006]
+        bc       bull 2 [0x00000007]
+                civit ---- 
+        ca      civit 3 [0x00000008]
+        cb      civit 3 [0x00000009]
+SymTab: Leaving scope civit and entering scope bull
+** numEntries: 7  depth: 2
+** print symbol table
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+        bb       bull 2 [0x00000006]
+        bc       bull 2 [0x00000007]
+** enter donkey
+SymTab: Entering scope donkey
+** enter elephant
+SymTab: Entering scope elephant
+SymTab: Pushing this node: [0x0000000a]
+SymTab: Pushing this node: [0x0000000b]
+SymTab: Pushing this node: [0x0000000c]
+** print symbol table
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+        bb       bull 2 [0x00000006]
+        bc       bull 2 [0x00000007]
+               donkey ---- 
+             elephant ---- 
+        ea   elephant 4 [0x0000000a]
+        cb   elephant 4 [0x0000000b]
+        ga   elephant 4 [0x0000000c]
+SymTab: looking up: ea and found data: [0x0000000a]
+** ea 0x0000000a
+SymTab: looking up: cb and found data: [0x0000000b]
+** cb 0x0000000b
+SymTab: looking up: ca and did not find it.
+** ca 0x00000000
+SymTab: looking up: bc and found data: [0x00000007]
+** bc 0x00000007
+SymTab: looking up: ga and found data: [0x0000000c]
+** ga 0x0000000c
+SymTab: looking up: gb and found data: [0x00000002]
+** gb 0x00000002
+SymTab: looking up: banana and did not find it.
+** banana 0x00000000
+** print symbol table
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+        bb       bull 2 [0x00000006]
+        bc       bull 2 [0x00000007]
+               donkey ---- 
+             elephant ---- 
+        ea   elephant 4 [0x0000000a]
+        cb   elephant 4 [0x0000000b]
+        ga   elephant 4 [0x0000000c]
+** numEntries: 10  depth: 4
+** leave C
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+        bb       bull 2 [0x00000006]
+        bc       bull 2 [0x00000007]
+               donkey ---- 
+             elephant ---- 
+        ea   elephant 4 [0x0000000a]
+        cb   elephant 4 [0x0000000b]
+        ga   elephant 4 [0x0000000c]
+SymTab: Leaving scope elephant and entering scope donkey
+** numEntries: 7  depth: 3
+** leave D
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+        bb       bull 2 [0x00000006]
+        bc       bull 2 [0x00000007]
+               donkey ---- 
+SymTab: Leaving scope donkey and entering scope bull
+** numEntries: 7  depth: 2
+** leave E
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+                 bull ---- 
+        ba       bull 2 [0x00000005]
+        bb       bull 2 [0x00000006]
+        bc       bull 2 [0x00000007]
+SymTab: Leaving scope bull and entering scope globals
+** numEntries: 4  depth: 1
+** leave F
+
+Symbol Stack:
+              globals ---- 
+        ga    globals 1 [0x00000001]
+        gb    globals 1 [0x00000002]
+        gc    globals 1 [0x00000002]
+        gd    globals 1 [0x00000003]
+SymTab: Leaving scope globals 
+** numEntries: 4  depth: 1

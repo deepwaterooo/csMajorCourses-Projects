@@ -1,0 +1,4 @@
+ERROR(3): Expecting type int in parameter 1 of call to 'output' defined on line -1 but got type bool.
+ERROR(4): Expecting type bool in parameter 1 of call to 'outputb' defined on line -1 but got type int.
+Number of warnings: 0
+Number of errors: 2

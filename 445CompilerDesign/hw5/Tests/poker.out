@@ -1,0 +1,15 @@
+ERROR(76): Symbol 'numCards' is not defined.
+ERROR(80): Symbol 'numCards' is not defined.
+ERROR(80): '<=' requires operands of type char or type int but rhs is of type (null).
+ERROR(83): Symbol 'numCards' is not defined.
+ERROR(83): '<=' requires operands of type char or type int but rhs is of type (null).
+ERROR(85): Symbol 'numCards' is not defined.
+ERROR(85): '<=' requires operands of type char or type int but rhs is of type (null).
+ERROR(87): Symbol 'numCards' is not defined.
+ERROR(87): '<=' requires operands of type char or type int but rhs is of type (null).
+ERROR(89): Symbol 'numCards' is not defined.
+ERROR(89): '<=' requires operands of type char or type int but rhs is of type (null).
+ERROR(91): Symbol 'handtype' is not defined.
+Number of warnings: 0
+Number of errors: 12
+------------------------------------

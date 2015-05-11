@@ -1,0 +1,13 @@
+// C-F13
+// C-F09
+int kate(int a, b, c, d, e; int f)
+{
+	return 666;
+}
+
+int matty()
+{
+    kate(2, 3, 5, 7, 11, 13);
+
+    return 42;
+}

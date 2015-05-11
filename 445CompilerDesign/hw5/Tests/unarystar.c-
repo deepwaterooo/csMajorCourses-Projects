@@ -1,0 +1,22 @@
+// C-F13
+// C-F09
+//
+// Test unary *
+//
+int main()
+{
+   int k, n[7];
+   bool b, a[34];
+   *k;
+   *b;
+   *n;
+   *a;
+   *k+10;
+   *b+10;
+   *n+10;
+   *a+10;
+   a[*n];
+   a[1984];
+   *a**n;
+   return *n;
+}

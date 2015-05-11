@@ -1,0 +1,17 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: everything.tm
+Enter command: 
+command: a 10000
+command: g
+ERROR: Division by 0
+Last executed cmd:   40:  DIV  3,  4, 3   | before:  r[3]: 0     r[4]: 666   r[3]: 0     |  Op / 
+PC was 40, PC is now 41
+command: e
+EXEC STAT: Number of instructions executed: 1355
+EXEC STAT: Instruction memory used: 551
+EXEC STAT: Data memory used: 13
+command: x
+Bye.

@@ -1,0 +1,21 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: ainit.tm
+Enter command: 
+command: a 100000
+command: g
+10 11 12 
+10 11 13 
+10 11 14 
+10 11 
+Halted
+Last executed cmd:  186: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 186, PC is now 187
+command: e
+EXEC STAT: Number of instructions executed: 255
+EXEC STAT: Instruction memory used: 187
+EXEC STAT: Data memory used: 14
+command: x
+Bye.

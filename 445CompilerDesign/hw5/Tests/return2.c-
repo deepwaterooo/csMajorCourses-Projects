@@ -1,0 +1,40 @@
+// C-F13
+// C- F13
+int fred() {
+    return;
+    return true;
+    return 6;
+}
+
+fred() {
+    return 6;
+    return true;
+    return;
+}
+
+fred() {
+    if (true) {
+        return 6;
+        return true;
+        return;
+    }
+    else if (true) {
+        return 6;
+        return true;
+        return;
+    }
+}
+
+bool fred() {
+    if (true) {
+        return 6;
+        return true;
+        return;
+    }
+    else if (true) {
+        return 6;
+        return true;
+        return;
+    }
+}
+

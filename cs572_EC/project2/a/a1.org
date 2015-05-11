@@ -1,0 +1,17 @@
+#+latex_class: cn-article
+#+latex_header: \usepackage{CJKutf8}
+#+latex_header: \begin{CJK}{UTF8}{gbsn}
+#+latex_header: \lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false,keywordstyle=\color{blue!70},commentstyle=\color{red!55!green!55!blue!55!},rulesepcolor=\color{red!20!green!20!blue!20!}}
+#+title: CS572 Project 2a Report
+#+author: Heyan Huang
+
+* Algorithm Descriptions
+I built my algorithm from a bottom up approach, starting from nodes, and then individuals, and then a population with size of individuals of 100. 
+
+* Individual Descriptions
+** Data Structure
+I have use the tree structure to build my individual. 
+
+For each node, I have a node pointer points towards the parent, and four node pointers point towards all the four chicdren. 
+* Results
+* Conclusions

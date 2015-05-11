@@ -1,0 +1,10 @@
+// C-F09
+// a simple loop
+void main()
+{
+    bool x;
+    x = true;
+    while (x) {
+	x =  not x;
+    }
+}

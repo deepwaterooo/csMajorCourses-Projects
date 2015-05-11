@@ -1,0 +1,17 @@
+// C-F13
+int w[33];
+
+int dog(int x) {
+    int y[22], z;
+
+    y[11] = x * 111 + 222;
+    z = y[11];
+    w[13] = -w[15] * x * y[17] * z;
+
+    return z;
+}
+
+main() {
+    dog(666);
+}
+

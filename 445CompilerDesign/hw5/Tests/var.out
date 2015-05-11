@@ -1,0 +1,4 @@
+ERROR(43): Symbol 'dog' is not defined.
+Number of warnings: 0
+Number of errors: 1
+------------------------------------

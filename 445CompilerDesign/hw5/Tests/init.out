@@ -1,0 +1,12 @@
+ERROR(20): Symbol 'gc' is not defined.
+ERROR(20): The operation '*' only works with arrays.
+ERROR(44): Symbol 'y' is already defined at line 8.
+ERROR(47): The operation '*' only works with arrays.
+Number of warnings: 0
+Number of errors: 4
+------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Loading file: init.tm
+Halted
+Bye.

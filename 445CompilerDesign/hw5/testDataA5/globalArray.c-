@@ -1,0 +1,14 @@
+// C-F09
+int x[3];
+bool b[4];
+
+void main()
+{
+   x[2] = 666;   
+   b[3] = true;
+
+   output(x[2]);
+   outputb(b[3]);
+
+   return;
+}

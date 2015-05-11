@@ -1,0 +1,45 @@
+TM version 2.7.1 (enter h for help)...
+
+Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
+Abort Limit: 20000
+Loading file: tictactoe.tm
+Enter command: 
+command: a 30000
+command: g
+
+0 1 2 
+3 4 5 
+6 7 8 
+entered: 0
+
+T F 2 
+3 4 5 
+6 7 8 
+
+entered: 4
+
+T F 2 
+3 T 5 
+6 7 F 
+
+entered: 6
+
+T F F 
+3 T 5 
+T 7 F 
+
+entered: 3
+
+T F F 
+T T 5 
+T 7 F 
+
+Halted
+Last executed cmd: 2804: HALT  0,  0, 0   | before:  r[0]: 9999  r[0]: 9999  r[0]: 9999  |  DONE! 
+PC was 2804, PC is now 2805
+command: e
+EXEC STAT: Number of instructions executed: 12237
+EXEC STAT: Instruction memory used: 2805
+EXEC STAT: Data memory used: 25
+command: x
+Bye.

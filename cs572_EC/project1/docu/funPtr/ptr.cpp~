@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+class p_example 
+{
+    int num;
+public:
+    void set_num(int val) 
+    {
+        num = val;
+    }
+    void show_num();
+};
+
+void p_example::show_num() 
+{
+    cout << num << endl;
+}
+
+void main() 
+{
+    p_example ob, *p; //说明对象指针*p
+    ob.set_num(1);    
+    ob.show_num();
+    p = &ob;          //用地址运算符获取对象地址
+    p->show_num();    //调用成员函数
+}
+

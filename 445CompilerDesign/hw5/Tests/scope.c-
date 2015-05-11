@@ -1,0 +1,83 @@
+// C-F13
+// C-F09
+int g;
+int ant(int x)
+{
+    int a;
+    b;
+    x;
+    g;
+    {
+	int c;
+	a;
+	b;
+	c;
+	g;
+	x;
+    }
+    a;
+    b;
+    c;
+    x;
+    {
+	a;
+	b;
+	c;
+	x;
+    }
+    x;
+}
+
+int bat(int y)
+{
+    int bat;
+    int y;
+    int z;
+    x;
+    ant(y);
+    ant(g);
+    ant(z);
+    ant(v);    // 41
+    u=cow(v);
+    abraxsis;
+    a;
+    z;
+    g;
+    return g;
+}
+
+int g;
+
+int g()
+{
+    int a;
+    int x;
+    {
+	int b;
+        int y;
+        {
+	    int c;
+            int z;
+            a;
+            b;
+            c;
+            x; 
+            y;
+            z;
+        }
+	a;
+	b;
+	c;
+	x; 
+	y;
+	z;
+    }
+    a;
+    b;
+    c;
+    x; 
+    y;
+    z;
+
+    return x;
+}

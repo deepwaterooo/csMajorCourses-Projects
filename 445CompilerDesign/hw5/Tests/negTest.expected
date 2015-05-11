@@ -1,0 +1,144 @@
+WARNING(10): Expecting to return type int but function 'intfunc' has no return statement.
+WARNING(14): Expecting to return type bool but function 'boolfunc' has no return statement.
+ERROR(29): Function 't1' at line 27 is expecting to return type bool but got type int.
+ERROR(29): Cannot return an array.
+ERROR(34): Expecting Boolean test condition in if statement but got type int.
+ERROR(34): Cannot use array as test condition in if statement.
+ERROR(35): Expecting Boolean test condition in if statement but got type int.
+ERROR(38): Expecting Boolean test condition in while statement but got type int.
+ERROR(38): Cannot use array as test condition in while statement.
+ERROR(39): Expecting Boolean test condition in while statement but got type int.
+ERROR(45): Array index is the unindexed array 'arr'.
+ERROR(56): Expecting array in parameter 1 of call to 'foo1' defined on line 48.
+ERROR(56): Not expecting array in parameter 2 of call to 'foo1' defined on line 48.
+WARNING(52): Expecting to return type int but function 't4' has no return statement.
+ERROR(63): '=' requires that if one operand is an array so must the other operand.
+ERROR(64): '=' requires that if one operand is an array so must the other operand.
+ERROR(66): The operation '+' does not work with arrays.
+ERROR(84): Too few parameters passed for function 'foo2' defined on line 70.
+ERROR(85): Too few parameters passed for function 'foo2' defined on line 70.
+ERROR(86): Expecting type bool in parameter 1 of call to 'foo2' defined on line 70 but got type int.
+ERROR(86): Too few parameters passed for function 'foo2' defined on line 70.
+ERROR(87): Expecting type bool in parameter 1 of call to 'foo2' defined on line 70 but got type int.
+ERROR(87): Expecting type int in parameter 2 of call to 'foo2' defined on line 70 but got type bool.
+ERROR(88): Too many parameters passed for function 'foo2' defined on line 70.
+ERROR(91): Too many parameters passed for function 'foo4' defined on line 78.
+ERROR(98): Function 't8' at line 96 is expecting no return value, but return has return value.
+ERROR(98): Cannot return an array.
+ERROR(103): Function 't9' at line 101 is expecting no return value, but return has return value.
+ERROR(108): Function 't10' at line 106 is expecting to return type int but return has no return value.
+ERROR(113): Function 't11' at line 111 is expecting to return type int but got type bool.
+ERROR(118): Function 't12' at line 116 is expecting to return type bool but got type int.
+ERROR(123): Function 't14' at line 121 is expecting no return value, but return has return value.
+ERROR(138): '+' requires operands of type int but lhs is of type bool.
+ERROR(138): '+' requires operands of type int but rhs is of type bool.
+ERROR(138): '*' requires operands of type int but lhs is of type bool.
+ERROR(138): '*' requires operands of type int but rhs is of type bool.
+ERROR(138): '/' requires operands of type int but lhs is of type bool.
+ERROR(138): '/' requires operands of type int but rhs is of type bool.
+ERROR(138): '%' requires operands of type int but lhs is of type bool.
+ERROR(138): '%' requires operands of type int but rhs is of type bool.
+ERROR(139): '+' requires operands of type int but rhs is of type bool.
+ERROR(139): '*' requires operands of type int but rhs is of type bool.
+ERROR(139): '/' requires operands of type int but rhs is of type bool.
+ERROR(139): '%' requires operands of type int but rhs is of type bool.
+ERROR(140): '+' requires operands of type int but lhs is of type bool.
+ERROR(140): '*' requires operands of type int but lhs is of type bool.
+ERROR(140): '/' requires operands of type int but lhs is of type bool.
+ERROR(140): '%' requires operands of type int but lhs is of type bool.
+ERROR(143): '<' requires operands of type char or type int but lhs is of type bool.
+ERROR(143): '<' requires operands of type char or type int but rhs is of type bool.
+ERROR(143): '<=' requires operands of type char or type int but lhs is of type bool.
+ERROR(143): '<=' requires operands of type char or type int but rhs is of type bool.
+ERROR(143): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(143): '>' requires operands of type char or type int but rhs is of type bool.
+ERROR(143): '>=' requires operands of type char or type int but lhs is of type bool.
+ERROR(143): '>=' requires operands of type char or type int but rhs is of type bool.
+ERROR(144): '<' requires operands of type char or type int but rhs is of type bool.
+ERROR(144): '<=' requires operands of type char or type int but rhs is of type bool.
+ERROR(144): '>' requires operands of type char or type int but rhs is of type bool.
+ERROR(144): '>=' requires operands of type char or type int but rhs is of type bool.
+ERROR(145): '<' requires operands of type char or type int but lhs is of type bool.
+ERROR(145): '<=' requires operands of type char or type int but lhs is of type bool.
+ERROR(145): '>' requires operands of type char or type int but lhs is of type bool.
+ERROR(145): '>=' requires operands of type char or type int but lhs is of type bool.
+ERROR(149): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(150): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(151): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(153): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(154): '=' requires operands of the same type but lhs is type int and rhs is type void.
+ERROR(157): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(158): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(161): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(163): '=' requires operands of the same type but lhs is type bool and rhs is type void.
+ERROR(168): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(169): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(170): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(171): Unary '-' requires an operand of type int but was given type bool.
+ERROR(172): Unary '-' requires an operand of type int but was given type bool.
+ERROR(173): Unary '-' requires an operand of type int but was given type bool.
+ERROR(178): 'or' requires operands of type bool but lhs is of type int.
+ERROR(178): 'or' requires operands of type bool but rhs is of type int.
+ERROR(179): 'or' requires operands of type bool but rhs is of type int.
+ERROR(180): 'or' requires operands of type bool but lhs is of type int.
+ERROR(183): 'and' requires operands of type bool but lhs is of type int.
+ERROR(183): 'and' requires operands of type bool but rhs is of type int.
+ERROR(184): 'and' requires operands of type bool but rhs is of type int.
+ERROR(185): 'and' requires operands of type bool but lhs is of type int.
+ERROR(192): Expecting Boolean test condition in if statement but got type int.
+ERROR(194): Expecting Boolean test condition in if statement but got type int.
+ERROR(195): Expecting Boolean test condition in if statement but got type void.
+ERROR(198): Expecting Boolean test condition in while statement but got type int.
+ERROR(200): Expecting Boolean test condition in while statement but got type int.
+ERROR(201): Expecting Boolean test condition in while statement but got type void.
+ERROR(206): Symbol 'a' is already defined at line 206.
+WARNING(206): Expecting to return type int but function 't18' has no return statement.
+WARNING(210): Expecting to return type int but function 't19' has no return statement.
+ERROR(214): Symbol 't19' is already defined at line 210.
+WARNING(214): Expecting to return type int but function 't19' has no return statement.
+WARNING(219): Expecting to return type int but function 't20' has no return statement.
+ERROR(226): Symbol 'a2' is already defined at line 224.
+WARNING(224): Expecting to return type int but function 't21' has no return statement.
+WARNING(230): Expecting to return type int but function 't22' has no return statement.
+ERROR(240): Symbol 'a4' is already defined at line 239.
+WARNING(237): Expecting to return type int but function 't23' has no return statement.
+WARNING(243): Expecting to return type int but function 't24' has no return statement.
+WARNING(252): Expecting to return type int but function 't25' has no return statement.
+ERROR(261): Symbol 'a7' is already defined at line 260.
+ERROR(264): Symbol 'a8' is already defined at line 263.
+ERROR(271): Symbol 'a9' is already defined at line 268.
+ERROR(276): Symbol 'zzz' is not defined.
+ERROR(284): Symbol 'x' is not defined.
+ERROR(288): Symbol 't27' is already defined at line 279.
+ERROR(305): Symbol 'x4' is not defined.
+ERROR(310): Symbol 'x3' is not defined.
+ERROR(311): Symbol 'x4' is not defined.
+ERROR(326): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(343): Symbol 'f2' is not defined.
+ERROR(357): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(371): 'bar4' is a simple variable and cannot be called.
+ERROR(373): Cannot use function 'bar4' as a simple variable.
+ERROR(373): '=' requires operands of the same type but lhs is type void and rhs is type int.
+ERROR(382): Cannot index nonarray 'y'.
+ERROR(383): Cannot index nonarray 'i'.
+ERROR(384): Cannot index nonarray 'b'.
+ERROR(384): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(385): Cannot use function 'bar4' as a simple variable.
+ERROR(385): '=' requires operands of the same type but lhs is type int and rhs is type void.
+ERROR(386): '=' requires that if one operand is an array so must the other operand.
+ERROR(391): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(391): The operation 'not' does not work with arrays.
+ERROR(392): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(394): Array 'z' should be indexed by type int but got type bool.
+ERROR(395): Array 'z' should be indexed by type int but got type void.
+ERROR(396): Array index is the unindexed array 'z'.
+ERROR(397): Array index is the unindexed array 'arr'.
+ERROR(398): Cannot use function 'intfunc' as a simple variable.
+ERROR(405): Symbol 'y' is not defined.
+ERROR(406): '=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(407): Symbol 'y' is not defined.
+WARNING(403): Expecting to return type int but function 't31' has no return statement.
+ERROR(LINKER): Procedure main is not defined.
+Number of warnings: 13
+Number of errors: 128
+------------------------------------
